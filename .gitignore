@@ -12,5 +12,8 @@ state/profile.json
 state/currency_log.json
 assets/minimap_cache/
 *.log
+# password file — NEVER commit this
+installer_password.json
+
 # keep the release zip
 !ExileHUD-Setup.zip
