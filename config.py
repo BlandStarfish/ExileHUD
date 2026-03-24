@@ -1,5 +1,5 @@
 """
-Central configuration for ExileHUD.
+Central configuration for PoELens.
 Edit state/config.json to override defaults without touching this file.
 """
 

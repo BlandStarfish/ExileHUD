@@ -51,21 +51,24 @@ except ImportError:
 # PoE item tooltip header pattern (Ctrl+C from in-game)
 _RARITY_RE = re.compile(r"Rarity: (\w+)")
 _ITEM_CLASS_RE = re.compile(r"Item Class: (.+)")
+_STACK_SIZE_RE = re.compile(r"Stack Size: ([\d,]+)")
 
 
 def parse_item_clipboard(text: str) -> dict:
     """
     Parse a PoE item tooltip (copied with Ctrl+C) into structured fields.
-    Returns: {name, base_type, rarity, item_class, raw}
+    Returns: {name, base_type, rarity, item_class, stack_size, raw}
     """
     lines = [l.strip() for l in text.strip().splitlines() if l.strip()]
-    result = {"raw": text, "name": "", "base_type": "", "rarity": "", "item_class": ""}
+    result = {"raw": text, "name": "", "base_type": "", "rarity": "", "item_class": "", "stack_size": None}
 
     for line in lines:
         if m := _RARITY_RE.match(line):
             result["rarity"] = m.group(1)
         elif m := _ITEM_CLASS_RE.match(line):
             result["item_class"] = m.group(1)
+        elif m := _STACK_SIZE_RE.match(line):
+            result["stack_size"] = int(m.group(1).replace(",", ""))
 
     # Item name is the first non-header line after the separator "--------"
     sections = text.split("--------")
@@ -88,10 +91,15 @@ class PriceChecker:
         self._trade = trade_api
         self._league = league
         self._on_result: list[Callable] = []
+        self._on_currency: list[Callable] = []
 
     def on_result(self, callback: Callable):
         """Register callback(result_dict) for when a price check completes."""
         self._on_result.append(callback)
+
+    def on_currency_detected(self, callback: Callable):
+        """Register callback(currency_name: str, count: int) fired when a currency stack is Ctrl+C'd."""
+        self._on_currency.append(callback)
 
     def check(self):
         """
@@ -110,6 +118,14 @@ class PriceChecker:
 
         item = parse_item_clipboard(text)
         result = {"item": item, "ninja_price": None, "trade_listings": [], "error": None}
+
+        # Currency stack detection — fire on_currency_detected callbacks
+        if item["rarity"] == "Currency" and item["stack_size"] is not None and item["name"]:
+            for cb in self._on_currency:
+                try:
+                    cb(item["name"], item["stack_size"])
+                except Exception as e:
+                    print(f"[PriceChecker] on_currency callback error: {e}")
 
         # Try poe.ninja first (fast, cached)
         search_name = item["name"] if item["rarity"] in ("Unique", "Divination Card") else item["base_type"]

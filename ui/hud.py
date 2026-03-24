@@ -53,7 +53,7 @@ class HUD(QMainWindow):
     # ------------------------------------------------------------------
 
     def _setup_window(self):
-        self.setWindowTitle("ExileHUD")
+        self.setWindowTitle("PoELens")
         self.setWindowFlags(
             Qt.WindowType.WindowStaysOnTopHint |
             Qt.WindowType.FramelessWindowHint |
@@ -128,7 +128,7 @@ class HUD(QMainWindow):
         layout = QHBoxLayout(bar)
         layout.setContentsMargins(8, 0, 8, 0)
 
-        title = QLabel("ExileHUD")
+        title = QLabel("PoELens")
         title.setStyleSheet(f"color: {ACCENT}; font-weight: bold; font-size: 13px;")
         layout.addWidget(title)
         layout.addStretch()
@@ -176,6 +176,10 @@ class HUD(QMainWindow):
     def show_map(self):
         self.show()
         self._tabs.setCurrentIndex(5)  # Quests=0, Tree=1, Price=2, Currency=3, Crafting=4, Map=5
+
+    def on_currency_clipboard(self, currency_name: str, count: int):
+        """Called when a currency stack is Ctrl+C'd in-game."""
+        self._currency_panel.update_from_clipboard_scan(currency_name, count)
 
     def _refresh_currency(self):
         self._currency_panel.refresh()

@@ -1,5 +1,5 @@
 """
-ExileHUD installer.
+PoELens installer.
 
 Run once after cloning:
     python install.py
@@ -131,13 +131,13 @@ def create_shortcut():
     except ImportError:
         return  # Not Windows
 
-    answer = input("\nCreate a Desktop shortcut for ExileHUD? [y/N] ").strip().lower()
+    answer = input("\nCreate a Desktop shortcut for PoELens? [y/N] ").strip().lower()
     if answer != "y":
         print("[SKIP] Desktop shortcut skipped")
         return
 
     desktop = os.path.join(os.path.expanduser("~"), "Desktop")
-    shortcut_path = os.path.join(desktop, "ExileHUD.bat")
+    shortcut_path = os.path.join(desktop, "PoELens.bat")
     bat_path = os.path.join(HERE, "run.bat")
 
     with open(shortcut_path, "w") as f:
@@ -172,7 +172,7 @@ def download_tree_data():
 
 if __name__ == "__main__":
     print("=" * 50)
-    print("  ExileHUD Installer")
+    print("  PoELens Installer")
     print("=" * 50)
 
     check_python()
@@ -184,7 +184,7 @@ if __name__ == "__main__":
 
     print("\n" + "=" * 50)
     print("  Setup complete!")
-    print("  To launch ExileHUD:")
+    print("  To launch PoELens:")
     print("    run.bat          (double-click)")
     print("    python main.py   (from terminal)")
     print("=" * 50)

@@ -10,7 +10,7 @@ from typing import Optional
 
 TRADE_BASE = "https://www.pathofexile.com/api/trade"
 HEADERS = {
-    "User-Agent": "ExileHUD/1.0 (contact: github.com/BlandStarfish/ExileHUD)",
+    "User-Agent": "PoELens/1.0 (contact: github.com/BlandStarfish/ExileHUD)",
 }
 
 # Rate limit: official API allows ~12 requests/10s sustained

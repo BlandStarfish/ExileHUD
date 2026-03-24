@@ -1,5 +1,5 @@
 """
-Generate 5 icon option previews + ICO files for ExileHUD.
+Generate 5 icon option previews + ICO files for PoELens.
 Run: python assets/gen_icons.py
 """
 

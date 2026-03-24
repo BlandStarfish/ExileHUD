@@ -17,6 +17,12 @@ from PyQt6.QtWidgets import (
 from PyQt6.QtCore import Qt, pyqtSignal, pyqtSlot
 from modules.currency_tracker import TRACKED_CURRENCIES
 
+try:
+    from core.screen_reader import ScreenReader as _ScreenReader, is_available as _ocr_available
+except ImportError:
+    _ScreenReader = None
+    _ocr_available = lambda: False
+
 ACCENT = "#e2b96f"
 TEXT   = "#d4c5a9"
 DIM    = "#8a7a65"
@@ -26,10 +32,12 @@ RED    = "#e05050"
 
 class CurrencyPanel(QWidget):
     # Signals for thread-safe UI updates from background OAuth/stash threads
-    _auth_success = pyqtSignal()
-    _auth_failed  = pyqtSignal(str)
-    _stash_loaded = pyqtSignal(object)   # emits dict: {currency_name: count}
-    _stash_error  = pyqtSignal(str)
+    _auth_success     = pyqtSignal()
+    _auth_failed      = pyqtSignal(str)
+    _stash_loaded     = pyqtSignal(object)   # emits dict: {currency_name: count}
+    _stash_error      = pyqtSignal(str)
+    _currency_scanned = pyqtSignal(str, int) # (currency_name, count)
+    _ocr_done         = pyqtSignal(object)   # emits {"text": str, "error": str}
 
     def __init__(self, tracker, oauth_manager=None, stash_api=None, league="Standard"):
         super().__init__()
@@ -40,11 +48,20 @@ class CurrencyPanel(QWidget):
         self._spinboxes: dict[str, QSpinBox] = {}
         self._build_ui()
 
+        # OCR screen reader (optional — requires mss + winrt)
+        if _ScreenReader is not None and _ocr_available():
+            self._screen_reader = _ScreenReader()
+            self._screen_reader.on_result(lambda r: self._ocr_done.emit(r))
+        else:
+            self._screen_reader = None
+
         # Connect signals to slots (ensures UI updates happen on the Qt main thread)
         self._auth_success.connect(self._on_auth_success)
         self._auth_failed.connect(self._on_auth_failed)
         self._stash_loaded.connect(self._on_stash_loaded)
         self._stash_error.connect(self._on_stash_error)
+        self._currency_scanned.connect(self._apply_scanned_currency)
+        self._ocr_done.connect(self._on_ocr_done)
 
         tracker.on_update(self._on_update)
 
@@ -129,6 +146,20 @@ class CurrencyPanel(QWidget):
         btn_row.addWidget(start_btn)
         btn_row.addWidget(snap_btn)
         layout.addLayout(btn_row)
+
+        # ── OCR scan button (shown only if winrt is available) ──
+        if _ocr_available():
+            self._scan_btn = QPushButton("Scan Stash Tab (experimental)")
+            self._scan_btn.setStyleSheet(
+                f"QPushButton {{ color: {DIM}; font-size: 10px; padding: 3px 8px; }}"
+                f"QPushButton:hover {{ color: {TEXT}; }}"
+            )
+            self._scan_btn.setToolTip(
+                "Take a screenshot and extract currency counts via Windows OCR.\n"
+                "Open your currency stash tab in PoE first, then click this."
+            )
+            self._scan_btn.clicked.connect(self._run_ocr_scan)
+            layout.addWidget(self._scan_btn)
 
     def _build_oauth_section(self, layout: QVBoxLayout):
         """Add the OAuth connect / auto-fill row to the layout."""
@@ -308,3 +339,56 @@ class CurrencyPanel(QWidget):
 
     def refresh(self):
         self._on_update(self._tracker.get_display_data())
+
+    def update_from_clipboard_scan(self, currency_name: str, count: int):
+        """Thread-safe: called from price checker when a currency stack is Ctrl+C'd."""
+        self._currency_scanned.emit(currency_name, count)
+
+    @pyqtSlot(str, int)
+    def _apply_scanned_currency(self, currency_name: str, count: int):
+        if currency_name in self._spinboxes:
+            self._spinboxes[currency_name].setValue(count)
+
+    def _run_ocr_scan(self):
+        """Trigger a screen capture + OCR scan."""
+        if self._screen_reader is None:
+            return
+        self._scan_btn.setEnabled(False)
+        self._scan_btn.setText("Scanning...")
+        self._screen_reader.scan()
+
+    @pyqtSlot(object)
+    def _on_ocr_done(self, result: dict):
+        self._scan_btn.setEnabled(True)
+        self._scan_btn.setText("Scan Stash Tab (experimental)")
+        error = result.get("error")
+        text = result.get("text", "")
+        if error or not text:
+            self._session_label.setText(f"Scan: {error or 'No text found'}")
+            return
+
+        # Parse currency counts from OCR text
+        # OCR of PoE currency stash tab produces lines like "Chaos Orb\n912" or "912\nChaos Orb"
+        # We match known currency names and look for an adjacent number
+        import re
+        count_re = re.compile(r"\b(\d[\d,]*)\b")
+        lines = [l.strip() for l in text.splitlines() if l.strip()]
+        updates: dict[str, int] = {}
+
+        for i, line in enumerate(lines):
+            for currency in TRACKED_CURRENCIES:
+                if currency.lower() in line.lower():
+                    # Look for a number on the same line or adjacent lines
+                    for search_line in [line] + lines[max(0, i-1):i] + lines[i+1:i+2]:
+                        m = count_re.search(search_line)
+                        if m:
+                            updates[currency] = int(m.group(1).replace(",", ""))
+                            break
+
+        if updates:
+            for currency, count in updates.items():
+                if currency in self._spinboxes:
+                    self._spinboxes[currency].setValue(count)
+            self._session_label.setText(f"Scan: updated {len(updates)} currencies from screen")
+        else:
+            self._session_label.setText("Scan: no currency data found — open a currency stash tab first")

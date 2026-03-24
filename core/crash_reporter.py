@@ -68,7 +68,7 @@ def _show_crash_dialog(entry: dict):
             raise RuntimeError("No QApplication")
 
         dlg = QDialog()
-        dlg.setWindowTitle("ExileHUD — Unexpected Error")
+        dlg.setWindowTitle("PoELens — Unexpected Error")
         dlg.setFixedWidth(480)
         dlg.setStyleSheet(
             "QDialog { background: #1a1a2e; color: #d4c5a9; font-family: 'Segoe UI'; }"
@@ -82,7 +82,7 @@ def _show_crash_dialog(entry: dict):
         layout.setSpacing(10)
 
         layout.addWidget(QLabel(
-            "<b style='color:#e05050'>ExileHUD encountered an unexpected error.</b>"
+            "<b style='color:#e05050'>PoELens encountered an unexpected error.</b>"
         ))
         layout.addWidget(QLabel(
             f"<span style='color:#8a7a65'>{entry['type']}: {entry['message']}</span>"
@@ -104,7 +104,7 @@ def _show_crash_dialog(entry: dict):
         btns_layout = QHBoxLayout()
         close_btn = QPushButton("Close")
         close_btn.clicked.connect(dlg.accept)
-        restart_btn = QPushButton("Restart ExileHUD")
+        restart_btn = QPushButton("Restart PoELens")
         restart_btn.setStyleSheet(
             "QPushButton { background: #e2b96f; color: #1a1a2e; font-weight: bold; }"
         )
@@ -125,7 +125,7 @@ def _show_crash_dialog(entry: dict):
 
     except Exception:
         # Qt not available — print to stderr
-        print(f"\n[ExileHUD CRASH] {entry['type']}: {entry['message']}", file=sys.stderr)
+        print(f"\n[PoELens CRASH] {entry['type']}: {entry['message']}", file=sys.stderr)
         print("".join(entry["traceback"]), file=sys.stderr)
         print(f"Crash log: {_LOG_PATH}", file=sys.stderr)
 

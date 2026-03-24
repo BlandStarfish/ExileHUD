@@ -23,7 +23,7 @@ def hash_password(password: str, salt: str) -> str:
 
 if __name__ == "__main__":
     print("=" * 40)
-    print("  ExileHUD Installer Password Setup")
+    print("  PoELens Installer Password Setup")
     print("=" * 40)
     print()
 

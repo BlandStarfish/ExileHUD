@@ -1,5 +1,5 @@
 """
-ExileHUD — Path of Exile TOS-compliant overlay.
+PoELens — Path of Exile TOS-compliant overlay.
 
 Entry point. Wires together all modules and launches the PyQt6 overlay.
 
@@ -46,7 +46,7 @@ import ui.hud as hud_module
 
 
 def main():
-    parser = argparse.ArgumentParser(description="ExileHUD overlay")
+    parser = argparse.ArgumentParser(description="PoELens overlay")
     parser.add_argument("--config", help="Path to config JSON override file")
     args = parser.parse_args()
 
@@ -54,7 +54,7 @@ def main():
 
     # Qt application
     app = QApplication(sys.argv)
-    app.setApplicationName("ExileHUD")
+    app.setApplicationName("PoELens")
     app.setQuitOnLastWindowClosed(False)
 
     # Check for updates in background (shows dialog on main thread if found)
@@ -106,6 +106,9 @@ def main():
         stash_api=stash_api,
         character_api=character_api,
     )
+
+    # Wire clipboard currency detection to HUD currency panel
+    price_checker.on_currency_detected(lambda name, count: hud.on_currency_clipboard(name, count))
 
     # Wire hotkeys to HUD actions
     hk.register("price_check",   price_checker.check)

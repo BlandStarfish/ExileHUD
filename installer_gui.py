@@ -1,5 +1,5 @@
 """
-ExileHUD GUI Installer
+PoELens GUI Installer
 ======================
 Self-contained .exe. No Python required on target machine.
 
@@ -25,11 +25,11 @@ from datetime import datetime, timezone
 # ─────────────────────────────────────────────────────────────────────────────
 
 GITHUB_OWNER  = "BlandStarfish"
-GITHUB_REPO   = "ExileHUD"
+GITHUB_REPO   = "ExileHUD"  # TODO: update after GitHub repo is renamed to PoELens
 GITHUB_BRANCH = "master"
 GITHUB_TOKEN  = "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"
 
-APP_NAME      = "ExileHUD"
+APP_NAME      = "PoELens"
 DEFAULT_DEST  = os.path.join(os.path.expanduser("~"), APP_NAME)
 
 # Discord webhook for anonymous install analytics (see README for disclosure).
@@ -59,7 +59,7 @@ class PasswordGate(tk.Tk):
 
     def __init__(self):
         super().__init__()
-        self.title("ExileHUD Setup")
+        self.title("PoELens Setup")
         self.resizable(False, False)
         self.configure(bg=BG)
         self._attempts = 0
@@ -71,7 +71,7 @@ class PasswordGate(tk.Tk):
     def _build(self):
         tk.Frame(self, bg=PANEL, height=56).pack(fill="x")
         hdr = self.children[list(self.children)[-1]]
-        tk.Label(hdr, text="ExileHUD Setup", font=("Segoe UI", 16, "bold"),
+        tk.Label(hdr, text="PoELens Setup", font=("Segoe UI", 16, "bold"),
                  bg=PANEL, fg=GOLD).pack(side="left", padx=16, pady=8)
         tk.Label(hdr, text="Access Required", font=("Segoe UI", 10),
                  bg=PANEL, fg=DIM).pack(side="left", pady=12)
@@ -173,7 +173,7 @@ def _send_analytics(event: str):
 
 
 def _gh_headers() -> dict:
-    h = {"User-Agent": "ExileHUD-Installer/1.0", "Accept": "application/vnd.github+json"}
+    h = {"User-Agent": "PoELens-Installer/1.0", "Accept": "application/vnd.github+json"}
     if GITHUB_TOKEN:
         h["Authorization"] = f"Bearer {GITHUB_TOKEN}"
     return h
@@ -212,7 +212,7 @@ class Installer(tk.Tk):
     def _build(self):
         hdr = tk.Frame(self, bg=PANEL, height=72)
         hdr.pack(fill="x"); hdr.pack_propagate(False)
-        tk.Label(hdr, text="ExileHUD", font=("Segoe UI", 22, "bold"),
+        tk.Label(hdr, text="PoELens", font=("Segoe UI", 22, "bold"),
                  bg=PANEL, fg=GOLD).pack(side="left", padx=20, pady=10)
         tk.Label(hdr, text="Path of Exile Overlay", font=("Segoe UI", 11),
                  bg=PANEL, fg=DIM).pack(side="left", pady=16)
@@ -294,7 +294,7 @@ class Installer(tk.Tk):
         self._cancel_btn.pack(side="right")
 
         self._launch_btn = tk.Button(
-            bf, text="Launch ExileHUD  ▶", command=self._launch,
+            bf, text="Launch PoELens  ▶", command=self._launch,
             bg=GREEN, fg="#0a1a0a", font=("Segoe UI", 11, "bold"),
             relief="flat", padx=24, pady=6, cursor="hand2")
 
@@ -378,7 +378,7 @@ class Installer(tk.Tk):
             self.after(0, lambda: self._log("pip ready."))
 
             # ── 3. Download app source from GitHub ────────────────────
-            self._ui("Downloading ExileHUD from GitHub...", 28)
+            self._ui("Downloading PoELens from GitHub...", 28)
             app_zip = os.path.join(tmp, "app.zip")
             try:
                 self._download(github_zip_url(), app_zip, 28, 45,
@@ -400,8 +400,11 @@ class Installer(tk.Tk):
             self._ui("Extracting app files...", 45)
             with zipfile.ZipFile(app_zip, "r") as zf:
                 zf.extractall(tmp)
-            # GitHub ZIP extracts to REPO-BRANCH/ subfolder
-            extracted = os.path.join(tmp, f"{GITHUB_REPO}-{GITHUB_BRANCH}")
+            # GitHub's zipball API names the root dir {owner}-{repo}-{sha} — find it dynamically
+            subdirs = [d for d in os.listdir(tmp) if os.path.isdir(os.path.join(tmp, d))]
+            if not subdirs:
+                raise RuntimeError("App archive has unexpected structure — no directory found.")
+            extracted = os.path.join(tmp, subdirs[0])
             if os.path.exists(dest):
                 # Preserve .runtime and state/ if updating
                 shutil.rmtree(dest, ignore_errors=True)
@@ -438,7 +441,7 @@ class Installer(tk.Tk):
                     f'set "PYTHONPATH={runtime}\\Lib\\site-packages"\n'
                     f'"{python}" "{main_py}"\n'
                     f'if %errorlevel% neq 0 (\n'
-                    f'    echo ExileHUD exited with an error. Check state\\crash_log.jsonl for details.\n'
+                    f'    echo PoELens exited with an error. Check state\\crash_log.jsonl for details.\n'
                     f'    pause\n'
                     f')\n'
                 )
@@ -475,7 +478,7 @@ class Installer(tk.Tk):
 
     def _download(self, url, path, p0, p1, extra_headers=None):
         os.makedirs(os.path.dirname(path), exist_ok=True)
-        headers = {"User-Agent": "ExileHUD-Installer/1.0"}
+        headers = {"User-Agent": "PoELens-Installer/1.0"}
         if extra_headers:
             headers.update(extra_headers)
         req = urllib.request.Request(url, headers=headers)

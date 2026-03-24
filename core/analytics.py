@@ -1,5 +1,5 @@
 """
-ExileHUD anonymous usage analytics.
+PoELens anonymous usage analytics.
 
 Sends a single non-blocking HTTP POST to ANALYTICS_WEBHOOK_URL when the app
 launches or the installer completes. No personally identifiable information is
@@ -22,7 +22,7 @@ from datetime import datetime, timezone
 ANALYTICS_WEBHOOK_URL = ""
 # ─────────────────────────────────────────────────────────────────────────────
 
-_APP_NAME = "ExileHUD"
+_APP_NAME = "PoELens"
 
 
 def _anon_id() -> str:

@@ -33,6 +33,15 @@ _REDIRECT_PORT = 64738
 _SCOPES        = "account:stashes account:characters"
 _AUTH_TIMEOUT  = 120  # seconds user has to authorize in browser
 _TOKENS_PATH   = os.path.join(os.path.dirname(__file__), "..", "state", "oauth_tokens.json")
+_CONTACT       = "github.com/BlandStarfish/ExileHUD"
+
+
+def _ua(client_id: str) -> str:
+    """
+    GGG-required User-Agent format for OAuth API consumers:
+    OAuth {clientId}/{version} (contact: {contact})
+    """
+    return f"OAuth {client_id}/1.0 (contact: {_CONTACT})"
 
 
 def _b64url(data: bytes) -> str:
@@ -148,7 +157,7 @@ class OAuthManager:
                     html = (
                         b"<html><body style='font-family:sans-serif;"
                         b"background:#1a1a2e;color:#d4c5a9;padding:40px'>"
-                        b"<h2 style='color:#e2b96f'>ExileHUD</h2>"
+                        b"<h2 style='color:#e2b96f'>PoELens</h2>"
                         b"<p>Authentication complete. You may close this tab.</p>"
                         b"<p style='color:#8a7a65;font-size:12px'>"
                         b"This product isn't affiliated with or endorsed by "
@@ -212,7 +221,7 @@ class OAuthManager:
         }).encode()
         req = urllib.request.Request(_TOKEN_URL, data=body, method="POST")
         req.add_header("Content-Type", "application/x-www-form-urlencoded")
-        req.add_header("User-Agent", "ExileHUD/1.0")
+        req.add_header("User-Agent", _ua(self._client_id))
         try:
             with urllib.request.urlopen(req, timeout=15) as resp:
                 tokens = json.loads(resp.read())
@@ -241,7 +250,7 @@ class OAuthManager:
         }).encode()
         req = urllib.request.Request(_TOKEN_URL, data=body, method="POST")
         req.add_header("Content-Type", "application/x-www-form-urlencoded")
-        req.add_header("User-Agent", "ExileHUD/1.0")
+        req.add_header("User-Agent", _ua(self._client_id))
         try:
             with urllib.request.urlopen(req, timeout=15) as resp:
                 tokens = json.loads(resp.read())

@@ -20,13 +20,13 @@ import zipfile
 from PyQt6.QtCore import QObject, pyqtSignal
 
 GITHUB_OWNER  = "BlandStarfish"
-GITHUB_REPO   = "ExileHUD"
+GITHUB_REPO   = "ExileHUD"  # TODO: update after GitHub repo is renamed to PoELens
 GITHUB_BRANCH = "master"
 GITHUB_TOKEN  = "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"
 
 _HERE = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 _VERSION_PATH = os.path.join(_HERE, "state", "version.json")
-_HEADERS = {"User-Agent": "ExileHUD/1.0"}
+_HEADERS = {"User-Agent": "PoELens/1.0"}
 
 
 def _gh_headers() -> dict:
@@ -96,7 +96,11 @@ def _do_update(progress_callback=None) -> bool:
         with zipfile.ZipFile(zip_path, "r") as zf:
             zf.extractall(tmp)
 
-        extracted = os.path.join(tmp, f"{GITHUB_REPO}-{GITHUB_BRANCH}")
+        # GitHub's zipball API names the root dir {owner}-{repo}-{sha} — find it dynamically
+        subdirs = [d for d in os.listdir(tmp) if os.path.isdir(os.path.join(tmp, d))]
+        if not subdirs:
+            raise RuntimeError("Update archive has unexpected structure — no directory found.")
+        extracted = os.path.join(tmp, subdirs[0])
 
         # Back up state/ before overwriting
         state_backup = os.path.join(tmp, "state_backup")
@@ -190,7 +194,7 @@ def show_update_dialog(remote_sha: str, parent=None):
             self.done.emit(ok)
 
     dlg = QDialog(parent)
-    dlg.setWindowTitle("ExileHUD Update Available")
+    dlg.setWindowTitle("PoELens Update Available")
     dlg.setFixedWidth(380)
     dlg.setStyleSheet(
         "QDialog { background: #1a1a2e; color: #d4c5a9; font-family: 'Segoe UI'; }"
@@ -206,7 +210,7 @@ def show_update_dialog(remote_sha: str, parent=None):
     layout.setContentsMargins(20, 16, 20, 16)
     layout.setSpacing(10)
 
-    lbl = QLabel("A new version of ExileHUD is available.\nInstall now? Your settings will be preserved.")
+    lbl = QLabel("A new version of PoELens is available.\nInstall now? Your settings will be preserved.")
     lbl.setWordWrap(True)
     layout.addWidget(lbl)
 

@@ -89,7 +89,7 @@ class MapPanel(QWidget):
         # ── Hint label (shown when no zone data) ──
         self._hint = QLabel(
             "Zone info will appear when you enter an area in PoE.\n"
-            "Make sure ExileHUD is pointed at your Client.txt in settings."
+            "Make sure PoELens is pointed at your Client.txt in settings."
         )
         self._hint.setWordWrap(True)
         self._hint.setStyleSheet(f"color: {DIM}; font-size: 11px;")
@@ -137,12 +137,17 @@ class MapPanel(QWidget):
         self._zone_name.setText(name)
 
         if info:
-            act = info.get("act", "?")
+            zone_type = info.get("type", "")
             lvl = info.get("area_level", "?")
             wp  = "✓ Waypoint" if info.get("waypoint") else "No waypoint"
-            zone_type = info.get("type", "")
-            type_str = "  •  Town" if zone_type == "town" else ""
-            self._zone_meta.setText(f"Act {act}  •  Area level {lvl}  •  {wp}{type_str}")
+
+            if zone_type == "atlas":
+                tier = info.get("tier", "?")
+                self._zone_meta.setText(f"Tier {tier} Map  •  Area level {lvl}  •  {wp}")
+            else:
+                act = info.get("act", "?")
+                type_str = "  •  Town" if zone_type == "town" else ""
+                self._zone_meta.setText(f"Act {act}  •  Area level {lvl}  •  {wp}{type_str}")
 
             boss = info.get("boss")
             if boss:
@@ -151,7 +156,9 @@ class MapPanel(QWidget):
             else:
                 self._boss_label.hide()
 
-            notes = info.get("notes") or _act_resist_note(act)
+            # Atlas maps don't have resistance penalties; campaign fallback only applies to acts
+            act = info.get("act")
+            notes = info.get("notes") or (zone_type != "atlas" and _act_resist_note(act)) or ""
             if notes:
                 self._notes_label.setText(f"\u26a0 {notes}")
                 self._notes_label.show()
