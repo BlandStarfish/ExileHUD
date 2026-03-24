@@ -1415,3 +1415,25 @@ Remaining gaps: (1) atlas map data (data source research), (2) passive tree
 character API sync (TOS research), (3) crafting methods accuracy audit.
 ═══════════════════════════════════════════════════════════════
 
+
+═══════════════════════════════════════════════════════════════
+SESSION ADDENDUM: 2026-03-24  (Post-Session 9 — user-directed)
+═══════════════════════════════════════════════════════════════
+
+## CHANGES MADE
+
+### PAT embedded for private repo access
+User provided a fine-grained GitHub PAT (read-only, scoped to BlandStarfish/ExileHUD).
+Set in:
+  - installer_gui.py line 30: GITHUB_TOKEN = "..."
+  - core/updater.py line 25: GITHUB_TOKEN = "..."
+
+Repo was made private before pushing the token to avoid public exposure.
+Committed and pushed. Both installer downloads and update checks now work
+against the private repo.
+
+### If the PAT expires or needs rotation:
+Generate a new fine-grained token at GitHub → Settings → Developer settings →
+Personal access tokens → Fine-grained tokens. Scope: BlandStarfish/ExileHUD,
+Contents = Read-only. Update both files above and rebuild installer.
+═══════════════════════════════════════════════════════════════
