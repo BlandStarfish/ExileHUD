@@ -182,6 +182,20 @@ class AppState:
                 combined[currency] = combined.get(currency, 0) + delta
         return {k: round(v / total_hours, 2) for k, v in combined.items()}
 
+    def get_session_stats(self, days: int | None = None) -> dict:
+        """
+        Returns total snapshot count and total tracked hours from the currency log.
+        days=None means all-time. days=7 means the last 7 days.
+        """
+        sessions = self._currency_log.get("sessions", [])
+        cutoff = (time.time() - days * 86400) if days is not None else 0
+        filtered = [s for s in sessions if s.get("timestamp", 0) >= cutoff]
+        total_hours = sum(s.get("elapsed_hours", 0) for s in filtered)
+        return {
+            "snapshot_count": len(filtered),
+            "total_hours": round(total_hours, 1),
+        }
+
     def get_currency_rate(self) -> dict:
         """
         Returns currency/hr rates based on the most recent snapshot.

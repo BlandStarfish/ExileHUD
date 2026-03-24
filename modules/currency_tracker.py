@@ -122,6 +122,10 @@ class CurrencyTracker:
             "chaos_rates": chaos_rates,
         }
 
+    def get_session_stats(self, days: int | None = None) -> dict:
+        """Returns total snapshot count and tracked hours from the currency log."""
+        return self._state.get_session_stats(days=days)
+
     def _fire_update(self):
         data = self.get_display_data()
         for cb in self._on_update:

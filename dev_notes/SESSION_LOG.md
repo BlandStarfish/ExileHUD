@@ -1437,3 +1437,143 @@ Generate a new fine-grained token at GitHub → Settings → Developer settings 
 Personal access tokens → Fine-grained tokens. Scope: BlandStarfish/ExileHUD,
 Contents = Read-only. Update both files above and rebuild installer.
 ═══════════════════════════════════════════════════════════════
+
+
+===============================================================
+SESSION: 2026-03-24  (Session 10)
+===============================================================
+
+## ORIENTATION SUMMARY
+Session 10. Second automated session on 2026-03-24. Prior session (Session 9) left
+with an addendum noting the repo was made private + PAT embedded for both
+installer_gui.py and updater.py. Session 9 suggestions:
+1. Crafting methods review (audit for PoE version accuracy)
+2. Atlas map zones (data source research needed)
+3. Passive tree character API (TOS research needed)
+4. Session count / total hours in historical label
+
+Both items 1 and 4 implemented this session. Items 2 and 3 remain deferred
+(item 2 needs data source, item 3 needs TOS confirmation).
+
+## ASSESSMENT GRADES
+
+| Module               | Completeness | Quality | Vision Alignment |
+|----------------------|-------------|---------|-----------------|
+| Quest Tracker        |     8/10     |  9/10   |      9/10       |
+| Passive Tree Viewer  |     8/10     |  9/10   |      9/10       |
+| Price Checker        |     9/10     |  9/10   |      9/10       |
+| Currency Tracker     |     9/10     |  9/10   |      9/10       |
+| Crafting System      |     8/10     |  9/10   |      8/10       |
+| Core Infrastructure  |     9/10     |  9/10   |      9/10       |
+| Map Overlay          |     6/10     |  9/10   |      8/10       |
+| OAuth/Stash API      |     8/10     |  9/10   |      9/10       |
+| Analytics            |     8/10     |  9/10   |      7/10       |
+| Installer            |     9/10     |  8/10   |      9/10       |
+
+Crafting raised from 7 to 8 (recombinator added; stale exalt note fixed).
+No modules below 6 on any axis.
+
+## SMOKE TEST FINDINGS
+
+### Phase 1B -- Logic & Structure Issues
+
+1. data/crafting/methods.json -- exalt_slam: Note said "Exalted Orbs are expensive
+   -- only slam when the item is already near-complete." Inaccurate since 3.13 Echoes
+   of the Atlas (Divine Orbs replaced Exalted Orbs as the premier high-value currency;
+   Exalts now ~15-25c each). Fixed: updated steps and added accurate notes field.
+
+### Phase 1C -- Redundancy & Counter-Vision Issues
+
+No counter-vision issues found. Codebase consistent and clean.
+
+## MAINTENANCE LOG
+
+### Fix 1 -- methods.json: Stale exalt_slam note
+- File: data/crafting/methods.json
+- Issue: Step 4 said "Exalted Orbs are expensive -- only slam when near-complete."
+  Inaccurate since 3.13 Echoes of the Atlas when Divines became the premier currency.
+- Fix: Removed stale step; added accurate notes field reflecting current Exalt value.
+- Why it matters: User reading this would be misled and might avoid a now-accessible
+  crafting method unnecessarily.
+
+## DEVELOPMENT LOG
+
+### Crafting Methods -- Recombinator Added (9th method)
+
+Goal: Add Recombinator crafting to methods.json. Introduced in 3.15 Expedition,
+still in game. Session 9 identified this as missing.
+
+Files modified: data/crafting/methods.json
+
+Change: Added "recombinator" entry with:
+- Description: two items consumed, each mod has independent chance to appear on output
+- 6-step guide covering item selection, bench blocking, and evaluating results
+- Materials: Recombinator x1 (Expedition vendors: Gwennen/Rog/Tujen, or trade)
+- Notes: added 3.15, cost varies by league, shines when combining two partial items
+
+Post-implementation: Pure data addition. CraftingModule.list_methods() loads
+methods.json dynamically -- new entry appears in panel dropdown automatically.
+Zero technical debt, no code changes required.
+
+### Currency Panel -- Session Stats in Historical Label
+
+Goal: Augment "All-time avg" line with "(N snapshots, Xh tracked)" context.
+Suggested in Session 9 as LOW-priority.
+
+Files modified: core/state.py, modules/currency_tracker.py, ui/widgets/currency_panel.py
+
+Changes:
+- state.py: Added get_session_stats(days=None) returning snapshot_count + total_hours.
+  Mirrors filter logic in get_historical_rate() for consistency.
+- currency_tracker.py: Added get_session_stats(days=None) delegating to state.
+- currency_panel.py: _refresh_historical() appends "(N snapshots, Xh tracked)"
+  to the all-time avg text.
+
+UX result:
+  Before: "7-day avg: 310.5c/hr  |  All-time avg: 250.3c/hr"
+  After:  "7-day avg: 310.5c/hr  |  All-time avg: 250.3c/hr  (47 snapshots, 93.4h tracked)"
+
+Post-implementation: Three-layer change (state -> tracker -> panel) follows project
+pattern. No new widgets, no new state, no technical debt.
+
+## TECHNICAL NOTES
+
+- Recombinator in crafting panel: Uses only standard fields (steps/materials/notes).
+  No special handling needed in CraftingPanel. Combo box and Add to Queue work as-is.
+
+- Fossil guide data not rendered: methods.json fossil_crafting has a "fossil_guide"
+  dict (13 fossil types with effects). CraftingPanel ignores this field -- renders
+  only steps/materials/notes. Data is correct; needs a display section. Deferred.
+
+- exalt_slam tags: Removed "expensive" tag, added "mid-tier" to reflect current value.
+
+- state.get_session_stats() edge: Returns snapshot_count=0 / total_hours=0.0 when
+  no data. Panel guard (all_total == 0) fires before this is called so the empty
+  case is already hidden. No additional guard needed.
+
+## SUGGESTIONS FOR NEXT SESSION
+
+1. Fossil guide display in crafting panel (LOW): methods.json has "fossil_guide"
+   dict (13 fossils). CraftingPanel._on_method_selected() should detect this field
+   and render it as an additional section when fossil_crafting is selected.
+   Pure UI addition, no data changes. ~30 lines of code.
+
+2. Map overlay -- atlas map zones (LOW, needs data source): Best option: RePoE
+   (github.com/brather1ng/RePoE) -- structured JSON from GGG data files.
+   If world_areas.json or maps.json exists, adapt format for zones.json.
+   Would raise Map Overlay from 6/10 to 8/10.
+
+3. Passive tree -- character API sync (MEDIUM, needs TOS review): OAuth infrastructure
+   is in place. account:characters scope would auto-populate allocated passive nodes.
+   Before implementing: verify GGG developer docs confirm public client access.
+   Endpoint: GET /character/[character-name]. If confirmed, ~1 session to implement.
+
+## PROJECT HEALTH
+
+Overall grade: 9.1/10 (up from 9.0)
+% complete toward vision: ~96% (up from ~95%)
+
+All 6 features polished. Crafting now has 9 methods including recombinator.
+Currency historical display shows full context (snapshots + hours + top earners).
+Main remaining gap: atlas map data (external data source research needed).
+===============================================================

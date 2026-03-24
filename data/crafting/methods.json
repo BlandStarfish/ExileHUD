@@ -119,12 +119,13 @@
       "Ensure item has fewer than 3 prefixes OR fewer than 3 suffixes",
       "Use Exalted Orb to add one random affix",
       "If result is bad: use Crafting Bench to block bad mods and try again",
-      "Note: Exalted Orbs are expensive — only slam when the item is already near-complete"
+      "Repeat on the unlocked side until satisfied"
     ],
     "materials": [
       {"name": "Exalted Orb", "qty_per_craft": 1, "category": "Currency", "acquire_via": ["Drop", "Trade", "End-game"]}
     ],
-    "tags": ["expensive", "gamble", "open-slot"]
+    "notes": "Since 3.13 (Echoes of the Atlas), Divine Orbs replaced Exalted Orbs as the premier currency. Exalted Orbs are now relatively affordable (typically ~15-25c each), making slam-and-annul loops viable for mid-tier gear.",
+    "tags": ["gamble", "open-slot", "mid-tier"]
   },
 
   "metacraft": {
@@ -147,6 +148,26 @@
     ],
     "notes": "Requires Master crafting bench in your hideout at appropriate level.",
     "tags": ["advanced", "deterministic", "endgame", "meta-craft"]
+  },
+
+  "recombinator": {
+    "name": "Recombinator",
+    "description": "Combine two items to inherit mods from both. Each explicit mod on either item has an independent chance of appearing on the result.",
+    "item_state": "Two rare (or magic) items of the same base type",
+    "goal": "Merge good mods from two partial items into one",
+    "steps": [
+      "Craft two items — each with a different desirable mod (or mod group) you want on the final item",
+      "Ensure both items are the same base type",
+      "Use a Recombinator on the two items (both are consumed)",
+      "Each explicit mod on both inputs has an independent chance to appear on the output",
+      "Evaluate result — if unsatisfactory, craft new inputs and repeat",
+      "Optional: use Crafting Bench to block an undesirable mod before recombining"
+    ],
+    "materials": [
+      {"name": "Recombinator", "qty_per_craft": 1, "category": "Currency", "acquire_via": ["Expedition league mechanic", "Gwennen / Rog / Tujen vendors", "Trade"]}
+    ],
+    "notes": "Added in 3.15 Expedition and still available. Each mod rolls independently — you can get 0 to all mods from both inputs. The method shines when you have two items each with one or two great mods and want to attempt a merge. Cost scales with Recombinator price, which varies by league.",
+    "tags": ["advanced", "expedition", "semi-deterministic", "endgame"]
   },
 
   "chaos_spam": {

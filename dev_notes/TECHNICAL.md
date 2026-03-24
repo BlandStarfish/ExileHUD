@@ -317,3 +317,33 @@ If the repo is made private again, a fine-grained read-only PAT must be set in:
   - installer_gui.py line 30: GITHUB_TOKEN = "your_pat_here"
   - core/updater.py line 25: GITHUB_TOKEN = "your_pat_here"
 The PAT only needs: Actions=read, Contents=read for the repo.
+
+
+### state.py: get_session_stats() (Session 10)
+New method added alongside get_historical_rate(). Returns snapshot_count and
+total_hours from the currency log filtered by optional days cutoff.
+Pattern: same cutoff logic as get_historical_rate(). Returns zeros gracefully
+when no data. Used by currency_tracker.get_session_stats() -> currency_panel
+_refresh_historical() to display "(N snapshots, Xh tracked)" in the all-time label.
+
+### methods.json: recombinator method (Session 10)
+Added as the 9th crafting method. Key mechanics:
+- Two same-base-type items are consumed
+- Each explicit mod on either input independently has a chance to appear on output
+- Result has standard item affix count (not a sum of both inputs)
+- Materials: Recombinator (from Expedition vendors Gwennen/Rog/Tujen or trade)
+- Added 3.15 Expedition, still in game as of 2026
+CraftingPanel renders it from the standard steps/materials/notes fields with no
+special handling. Works in the combo box and Add to Queue workflow unchanged.
+
+### methods.json: exalt_slam accuracy (Session 10)
+"Exalted Orbs are expensive" note removed. Since 3.13 Echoes of the Atlas,
+Divine Orbs replaced Exalted Orbs as the premier currency. Exalts are now
+~15-25c each, making slam-and-annul loops viable for mid-tier gear crafting.
+The "expensive" tag was also removed; replaced with "mid-tier".
+
+### methods.json: fossil_guide field not rendered (Session 10)
+The fossil_crafting entry has a "fossil_guide" dict with 13 fossil types and
+their effects. CraftingPanel._on_method_selected() renders only steps/materials/notes
+fields and ignores fossil_guide. Data is correct -- display is deferred.
+Next session: detect fossil_guide field and render as extra section in method detail.

@@ -278,16 +278,20 @@ class CurrencyPanel(QWidget):
         """Update the 7-day and all-time average labels from the session log."""
         week = self._tracker.get_historical_display_data(days=7)
         alltime = self._tracker.get_historical_display_data(days=None)
+        stats = self._tracker.get_session_stats(days=None)
         week_total = week.get("total_chaos_per_hr", 0)
         all_total = alltime.get("total_chaos_per_hr", 0)
         if all_total == 0:
             self._hist_label.setText("")
             return
 
+        snap_count = stats.get("snapshot_count", 0)
+        total_hours = stats.get("total_hours", 0)
+
         parts = []
         if week_total > 0:
             parts.append(f"7-day avg: {week_total:.1f}c/hr")
-        parts.append(f"All-time avg: {all_total:.1f}c/hr")
+        parts.append(f"All-time avg: {all_total:.1f}c/hr  ({snap_count} snapshots, {total_hours:.1f}h tracked)")
         summary = "  |  ".join(parts)
 
         # Top-3 currencies by all-time chaos/hr (positive earners only)
