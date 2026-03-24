@@ -74,8 +74,9 @@ install.py                   — CLI installer (Python users)
 ## Known Quirks
 
 ### Tab Index (hud.py)
-Tabs are: 0=Quests, 1=Tree, 2=Price, 3=Currency, 4=Crafting, 5=Map
+Tabs are: 0=Quests, 1=Tree, 2=Price, 3=Currency, 4=Crafting, 5=Map, 6=Settings
 `show_crafting()` uses index 4. `show_map()` uses index 5. (Map tab added Session 2)
+Settings tab added Session 12. No hotkey needed — user navigates manually.
 
 ### Updater Signal (updater.py)
 Original code tried `QMetaObject.invokeMethod(app, "_show_update_dialog")` but that method
@@ -389,5 +390,14 @@ currency_panel.py handles the signal to update spinboxes.
    Tier 1-17 maps. Map mod display (affixes/mods on rolled maps) remains unimplemented.
 4. **PoE 2 support** — Config has `poe_version: poe1/poe2` field but no conditional logic
    exists. Passive tree data format differs. Future concern.
-5. **fossil_guide rendering** — methods.json has fossil_guide data; CraftingPanel doesn't
-   render it. Deferred from Session 10. Render as extra collapsible section in method detail.
+5. **fossil_guide rendering** ✅ RESOLVED (Session 12 discovery) — crafting_panel.py
+   _on_method_selected() already renders fossil_guide as a color-coded bullet list using
+   walrus-pattern `if fossil_guide := m.get("fossil_guide"):`. Implemented prior to Session 12.
+
+### settings_panel.py: on_opacity_change callback (Session 12)
+SettingsPanel accepts optional `on_opacity_change: Callable[[float], None]` callback.
+In hud.py, `on_opacity_change=self.setWindowOpacity` is passed directly -- QMainWindow.setWindowOpacity
+accepts a float and matches the callback signature exactly. Opacity is applied immediately on save;
+all other settings (path, league, hotkeys) take effect on next restart.
+Hotkeys partial save: empty fields are excluded from saved dict. config.load() merges with DEFAULTS,
+so clearing a hotkey field resets it to default rather than disabling it entirely.

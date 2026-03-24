@@ -7,6 +7,7 @@ to track currency/hr. Manual spinbox entry is a fallback for users without OAuth
 """
 
 import datetime
+import re
 import threading
 
 from PyQt6.QtWidgets import (
@@ -370,7 +371,6 @@ class CurrencyPanel(QWidget):
         # Parse currency counts from OCR text
         # OCR of PoE currency stash tab produces lines like "Chaos Orb\n912" or "912\nChaos Orb"
         # We match known currency names and look for an adjacent number
-        import re
         count_re = re.compile(r"\b(\d[\d,]*)\b")
         lines = [l.strip() for l in text.splitlines() if l.strip()]
         updates: dict[str, int] = {}

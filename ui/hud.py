@@ -18,6 +18,7 @@ from ui.widgets.currency_panel import CurrencyPanel
 from ui.widgets.crafting_panel import CraftingPanel
 from ui.widgets.passive_tree_panel import PassiveTreePanel
 from ui.widgets.map_panel import MapPanel
+from ui.widgets.settings_panel import SettingsPanel
 
 
 DARK_BG = "#1a1a2e"
@@ -109,14 +110,19 @@ class HUD(QMainWindow):
             league=self._config.get("league", "Standard"),
         )
         self._map_panel      = MapPanel(map_overlay)
+        self._settings_panel = SettingsPanel(
+            self._config,
+            on_opacity_change=self.setWindowOpacity,
+        )
 
-        # Tab indices: Quests=0, Tree=1, Price=2, Currency=3, Crafting=4, Map=5
+        # Tab indices: Quests=0, Tree=1, Price=2, Currency=3, Crafting=4, Map=5, Settings=6
         tabs.addTab(self._quest_panel,    "Quests")
         tabs.addTab(self._tree_panel,     "Tree")
         tabs.addTab(self._price_panel,    "Price")
         tabs.addTab(self._currency_panel, "Currency")
         tabs.addTab(self._crafting_panel, "Crafting")
         tabs.addTab(self._map_panel,      "Map")
+        tabs.addTab(self._settings_panel, "Settings")
 
         layout.addWidget(tabs)
         self.setCentralWidget(root)

@@ -66,6 +66,28 @@ The overlay is organized as tabs (one per module) inside a frameless window, pos
 - Total pending queue cost display
 - **Priority: MEDIUM — complete for core use cases**
 
+### 7. XP Rate Tracker 🔲 PLANNED (Priority: MEDIUM)
+- Tracks experience per hour for the current session
+- Uses Character API (OAuth, `account:characters` scope — already in place) to read XP/level
+- Polls periodically (e.g., every 5 min) or on zone_change events
+- Displays: current level, XP to next level, XP/hr, estimated time-to-level
+- Cross-session historical average: same pattern as currency/hr
+- Requires OAuth connection (shows prompt if not connected, or uses level_up events from Client.txt as fallback)
+
+### 8. Chaos Recipe Counter 🔲 PLANNED (Priority: MEDIUM)
+- Reads stash tabs via existing OAuth stash API to count unidentified rare item sets
+- A full chaos recipe set = 2H weapon OR 1H+offhand, helmet, body, gloves, boots, ring×2, amulet, belt
+- Displays "N full sets ready" per recipe variant (75+ ilvl = chaos; 60-74 ilvl = alt)
+- Tracks which item slots are missing from your stash sets
+- Zero new external dependencies — reuses StashAPI entirely
+
+### 9. Build Notes Panel 🔲 PLANNED (Priority: LOW)
+- Personal notepad inside the overlay for the player's own notes
+- Saves to state/notes.json (gitignored)
+- Plain text input with minimal formatting (newlines)
+- Use cases: boss strategies, league goals, build reminders, map target list
+- No external dependencies, no API calls
+
 ### 6. Map Overlay ✅ IMPLEMENTED (v3)
 - Zone identity card: name (gold, prominent), act/tier, area level, waypoint status, boss info
 - Zone-specific notes for mechanically significant zones (Kitava resistance warnings, key quest hints, Pinnacle Guardian drops)

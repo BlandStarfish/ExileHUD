@@ -1728,3 +1728,160 @@ Clipboard + OCR currency detection adds a smooth QoL path beyond manual spinboxe
 Remaining: fossil_guide rendering (minor UI), map mod display (research needed),
 settings panel (polish), PoE 2 (future).
 ===============================================================
+
+
+═══════════════════════════════════════════════════════════════
+SESSION: 2026-03-24  (Session 12)
+═══════════════════════════════════════════════════════════════
+
+## ORIENTATION SUMMARY
+
+Session 12. Read all prior session notes (11 sessions + addenda). Session 11 left with:
+1. Fossil guide UI in CraftingPanel (LOW) -- ALREADY DONE (discovered during smoke test)
+2. Map mod display (MEDIUM, needs research) -- deferred
+3. Settings panel tab (MEDIUM) -- primary target this session
+4. PoE 2 support (LOW, future) -- deferred
+
+Phase 4 expansion triggered: all 6 original roadmap features complete, all grades >= 7/10.
+
+## ASSESSMENT GRADES
+
+| Module               | Completeness | Quality | Vision Alignment |
+|----------------------|-------------|---------|-----------------|
+| Quest Tracker        |    10/10     |  9/10   |     10/10       |
+| Passive Tree Viewer  |    10/10     |  9/10   |     10/10       |
+| Price Checker        |    10/10     |  9/10   |     10/10       |
+| Currency Tracker     |    10/10     |  9/10   |     10/10       |
+| Crafting System      |    10/10     |  9/10   |      9/10       |
+| Core Infrastructure  |    10/10     |  9/10   |     10/10       |
+| Map Overlay          |     9/10     |  9/10   |      9/10       |
+| Screen OCR           |     7/10     |  8/10   |      8/10       |
+| OAuth/Stash/Char API |     9/10     |  9/10   |      9/10       |
+| Settings Panel       |     9/10     |  9/10   |     10/10       |
+| Installer            |     9/10     |  8/10   |      9/10       |
+
+All modules >= 7/10 on all axes. Phase 4 expansion criteria met.
+
+## SMOKE TEST FINDINGS
+
+### Phase 1B -- Logic & Structure Issues
+
+1. modules/price_check.py:113 -- ANTI-PATTERN: `import time` inside `_do_check()` method body.
+   Fixed: moved to module-level import.
+
+2. ui/widgets/currency_panel.py:374 -- ANTI-PATTERN: `import re` inside `_on_ocr_done()`.
+   Fixed: moved to module-level import.
+
+3. core/screen_reader.py:79 -- ANTI-PATTERN: `import asyncio` inside nested `_run()` function.
+   Fixed: moved to module-level import.
+
+### Phase 1C -- Redundancy & Counter-Vision Issues
+
+None found. Codebase clean and consistent.
+
+### Notable Discovery
+
+crafting_panel.py lines 143-151: fossil_guide IS already rendered in _on_method_selected().
+Session 11 suggestion #1 was already implemented. No action needed.
+
+## MAINTENANCE LOG
+
+### Fix 1 -- price_check.py: Inline import moved to module level
+- File: modules/price_check.py
+- Issue: `import time` inside `_do_check()` method body
+- Fix: Moved to module-level imports; removed inline import
+- Why it matters: Inconsistent with project patterns
+
+### Fix 2 -- currency_panel.py: Inline import moved to module level
+- File: ui/widgets/currency_panel.py
+- Issue: `import re` inside `_on_ocr_done()` method body
+- Fix: Moved to module-level imports (line 10); removed inline import
+- Why it matters: Same anti-pattern as Fix 1
+
+### Fix 3 -- screen_reader.py: Inline import moved to module level
+- File: core/screen_reader.py
+- Issue: `import asyncio` inside nested `_run()` function
+- Fix: Moved to module-level imports; removed inline import
+- Why it matters: asyncio is always needed when this function runs
+
+## DEVELOPMENT LOG
+
+### Feature: Settings Panel Tab
+
+Goal: Allow users to configure PoELens without manual state/config.json editing.
+
+File created: ui/widgets/settings_panel.py
+  - SettingsPanel(QWidget) with on_opacity_change callback
+  - Game section: Client.txt path (QLineEdit + Browse dialog) + League
+  - Overlay section: Opacity (QDoubleSpinBox, 0.10-1.0, applied immediately on save)
+  - Hotkeys section: 5 QLineEdit fields for all configurable hotkeys
+  - Save button: calls config.save(updates) with all field values
+  - Status label: green "Saved. Restart to apply..." on success, red on error
+  - Scrollable inner layout via QScrollArea (future-proof)
+  - Save row anchored outside scroll area -- always visible
+
+File modified: ui/hud.py
+  - Import added, SettingsPanel instantiated with on_opacity_change=self.setWindowOpacity
+  - Added as tab 6 ("Settings")
+  - Tab index comment updated
+
+File modified: dev_notes/TECHNICAL.md
+  - Tab index note updated to include Settings=6
+
+UX improvement: no more manual JSON editing for common configuration changes.
+Opacity changes take effect immediately. All other changes on restart.
+
+### Phase 4 -- Expansion Features Auto-Approved
+
+3 new features added to VISION.md (items 7-9):
+  7. XP Rate Tracker (MEDIUM) -- Character API XP polling, session XP/hr, time-to-level
+  8. Chaos Recipe Counter (MEDIUM) -- stash API rare set counting, per-slot tracking
+  9. Build Notes Panel (LOW) -- personal notepad, state/notes.json
+
+Asana PENDING APPROVALS task created for user review.
+
+## TECHNICAL NOTES
+
+### settings_panel.py: opacity callback
+`on_opacity_change=self.setWindowOpacity` passes QMainWindow.setWindowOpacity directly.
+The float signature matches exactly. No wrapper needed. Clean delegation.
+
+### settings_panel.py: hotkeys partial save
+Empty hotkey fields are excluded from the saved dict (no empty string entries).
+config.load() merges with DEFAULTS, so omitted hotkeys revert to defaults.
+Clearing a hotkey field = reset to default on next restart.
+
+### fossil_guide rendering: confirmed working
+The walrus pattern `if fossil_guide := m.get("fossil_guide"):` in crafting_panel.py
+correctly renders fossil_guide as a color-coded bullet list in the HTML detail view.
+This was already correct code from a prior session.
+
+### Phase 4 expansion rationale
+XP Tracker: mirrors currency_tracker.py pattern exactly. Character API already has XP data.
+Chaos Recipe: extends stash API -- may need get_all_stash_items() method for non-currency tabs.
+Build Notes: simplest possible implementation. QTextEdit + json file. ~50 lines.
+
+## SUGGESTIONS FOR NEXT SESSION
+
+1. XP Rate Tracker (MEDIUM, ROADMAP): Implement modules/xp_tracker.py and
+   ui/widgets/xp_panel.py. Poll Character API every 5 min or on zone_change.
+   Pattern mirrors currency_tracker.py. Store in state/xp_log.json.
+   Add as a tab in hud.py. OAuth must be connected; show prompt if not.
+
+2. Chaos Recipe Counter (MEDIUM, ROADMAP): Implement modules/chaos_recipe.py and
+   ui/widgets/chaos_panel.py. Need StashAPI method to read non-currency stash tabs.
+   Filter unidentified rares by ilvl and slot. Count sets.
+
+3. Build Notes Panel (LOW, ROADMAP): ui/widgets/notes_panel.py. QTextEdit + save/load
+   from state/notes.json. About 50 lines. Fast session win.
+
+## PROJECT HEALTH
+
+Overall grade: 9.6/10 (up from 9.5)
+% complete toward original vision: ~99%
+% complete toward expanded roadmap: ~33% (3 new features now queued)
+
+All 6 original features complete and polished. Settings panel closes last UX friction.
+Three expansion features added with clear implementation paths.
+Codebase quality high. No technical debt introduced.
+═══════════════════════════════════════════════════════════════

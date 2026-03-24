@@ -13,6 +13,7 @@ the 'winrt' Python package (pip install winrt).
 
 from __future__ import annotations
 
+import asyncio
 import os
 import tempfile
 import threading
@@ -76,7 +77,6 @@ def ocr_image_file(png_path: str) -> Optional[str]:
     error: list[Exception] = []
 
     def _run():
-        import asyncio
         try:
             loop = asyncio.new_event_loop()
             text = loop.run_until_complete(_ocr_file_async(png_path))
