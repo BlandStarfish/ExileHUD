@@ -20,7 +20,7 @@ import zipfile
 from PyQt6.QtCore import QObject, pyqtSignal
 
 GITHUB_OWNER  = "BlandStarfish"
-GITHUB_REPO   = "ExileHUD"  # TODO: update after GitHub repo is renamed to PoELens
+GITHUB_REPO   = "PoELens"
 GITHUB_BRANCH = "master"
 GITHUB_TOKEN  = "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"
 

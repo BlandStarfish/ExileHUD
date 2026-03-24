@@ -22,7 +22,7 @@ from typing import Optional
 from modules.currency_tracker import TRACKED_CURRENCIES
 
 _API_BASE     = "https://api.pathofexile.com"
-_CONTACT      = "github.com/BlandStarfish/ExileHUD"
+_CONTACT      = "github.com/BlandStarfish/PoELens"
 _MIN_INTERVAL = 1.0   # minimum seconds between API requests (GGG rate limit respect)
 
 

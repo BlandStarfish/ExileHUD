@@ -38,7 +38,7 @@ _CDN_PAGE  = "https://www.pathofexile.com/passive-skill-tree"
 _FALLBACK_URL = (
     "https://raw.githubusercontent.com/grindinggear/skilltree-export/master/data.json"
 )
-_HEADERS = {"User-Agent": "PoELens/1.0 (github.com/BlandStarfish/ExileHUD)"}
+_HEADERS = {"User-Agent": "PoELens/1.0 (github.com/BlandStarfish/PoELens)"}
 
 
 # ─────────────────────────────────────────────────────────────────────────────

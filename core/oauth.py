@@ -33,7 +33,7 @@ _REDIRECT_PORT = 64738
 _SCOPES        = "account:stashes account:characters"
 _AUTH_TIMEOUT  = 120  # seconds user has to authorize in browser
 _TOKENS_PATH   = os.path.join(os.path.dirname(__file__), "..", "state", "oauth_tokens.json")
-_CONTACT       = "github.com/BlandStarfish/ExileHUD"
+_CONTACT       = "github.com/BlandStarfish/PoELens"
 
 
 def _ua(client_id: str) -> str:
