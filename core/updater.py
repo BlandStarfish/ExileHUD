@@ -22,7 +22,7 @@ from PyQt6.QtCore import QObject, pyqtSignal
 GITHUB_OWNER  = "BlandStarfish"
 GITHUB_REPO   = "ExileHUD"
 GITHUB_BRANCH = "master"
-GITHUB_TOKEN  = ""   # ← same token as installer_gui.py
+GITHUB_TOKEN  = "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"
 
 _HERE = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 _VERSION_PATH = os.path.join(_HERE, "state", "version.json")

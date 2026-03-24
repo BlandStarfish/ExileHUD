@@ -27,7 +27,7 @@ from datetime import datetime, timezone
 GITHUB_OWNER  = "BlandStarfish"
 GITHUB_REPO   = "ExileHUD"
 GITHUB_BRANCH = "master"
-GITHUB_TOKEN  = ""   # leave blank for public repo
+GITHUB_TOKEN  = "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"
 
 APP_NAME      = "ExileHUD"
 DEFAULT_DEST  = os.path.join(os.path.expanduser("~"), APP_NAME)
