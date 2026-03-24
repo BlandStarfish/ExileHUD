@@ -15,5 +15,8 @@ assets/minimap_cache/
 # password file — NEVER commit this
 installer_password.json
 
+# OAuth tokens — contains access/refresh tokens, never commit
+state/oauth_tokens.json
+
 # keep the release zip
 !ExileHUD-Setup.zip

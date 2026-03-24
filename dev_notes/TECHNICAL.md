@@ -190,9 +190,56 @@ session clears displayed rates rather than showing stale previous-session values
 Never pruned. Grows modestly: ~200 bytes/snapshot. 5 snapshots/day * 365 days ≈ 350KB.
 No rotation needed. Long-term use gives increasingly meaningful all-time averages.
 
+### oauth.py: PKCE flow details (Session 6)
+OAuthManager uses OAuth 2.1 Authorization Code + PKCE (S256):
+- code_verifier: base64url(random 32 bytes)
+- code_challenge: base64url(sha256(code_verifier))
+- Local callback server: HTTPServer on localhost:64738 (port fixed for redirect_uri consistency)
+- Auth URL: https://www.pathofexile.com/oauth/authorize
+- Token URL: https://www.pathofexile.com/oauth/token
+- Scope: account:stashes
+- Flow timeout: 120 seconds
+- Tokens stored in state/oauth_tokens.json (gitignored)
+- Token response includes "username" field = PoE account name
+- Refresh token preserved if not rotated by server (kept from previous token set)
+- Token auto-refreshes 60s before expires_at on next get_access_token() call
+
+### stash_api.py: API endpoint (Session 6)
+Base URL: https://api.pathofexile.com (dedicated API subdomain for OAuth endpoints)
+Endpoints:
+  GET /stash/{realm}/{league}              → {"stashes": [...]}
+  GET /stash/{realm}/{league}/{stash_id}   → {"stash": {"items": [...]}}
+Default realm: "pc" (alternatives: "xbox", "sony")
+Rate limiting: 1s minimum between requests; auto-retry once on 429 with Retry-After header
+Currency tab detection: type == "CurrencyStash" preferred; falls back to first 3 PremiumStash/NormalStash tabs
+Item currency counting: item["typeLine"] matched against TRACKED_CURRENCIES; item["stackSize"] summed
+The StashAPI import of TRACKED_CURRENCIES from modules.currency_tracker is intentional — single source of truth for tracked currencies.
+
+### currency_panel.py: Thread-safe OAuth signals (Session 6)
+OAuth and stash API operations run in background threads. UI updates are marshaled to Qt main thread via:
+  _auth_success  = pyqtSignal()           → _on_auth_success()
+  _auth_failed   = pyqtSignal(str)        → _on_auth_failed(message)
+  _stash_loaded  = pyqtSignal(object)     → _on_stash_loaded(amounts_dict)
+  _stash_error   = pyqtSignal(str)        → _on_stash_error(message)
+The pyqtSignal(object) type is used for the stash amounts dict since dict signals work but object is more explicit.
+When oauth_client_id is not configured (empty string), the entire OAuth UI section is omitted from _build_ui()
+so the panel is backward compatible for users without a registered client_id.
+
+### OAuth disclaimer requirement (Session 6)
+GGG requires registered apps to display:
+  "This product isn't affiliated with or endorsed by Grinding Gear Games in any way."
+This disclaimer is shown in the OAuth callback HTML page (displayed in browser after auth).
+
 ## Open Questions
 
-1. **Stash tab API -- OAuth implementation** (UNBLOCKED as of Session 5):
+1. **Stash tab API -- OAuth implementation** (IMPLEMENTED Session 6):
+   core/oauth.py + core/stash_api.py are complete. User needs to register a client_id
+   with GGG by emailing oauth@grindinggear.com and adding it to state/config.json.
+
+   Original research notes preserved below for reference:
+   **IMPLEMENTED as of Session 6 -- details above in Technical Notes section**
+
+1b. **Original research notes -- Stash tab API OAuth** (UNBLOCKED as of Session 5):
    TOS research confirmed: OAuth is the correct, fully TOS-compliant approach.
    POESESSID is technically prohibited (credential-sharing clause) and uses
    undocumented endpoints. The 2020 POE Overlay incident showed POESESSID is

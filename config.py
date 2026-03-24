@@ -36,6 +36,11 @@ DEFAULTS = {
 
     # Currency tracker reset hour (0–23, local time)
     "currency_reset_hour": 0,
+
+    # GGG OAuth client_id for stash tab API access (auto-fill currency counts).
+    # Register by emailing oauth@grindinggear.com.
+    # Leave empty string to use manual spinbox entry only.
+    "oauth_client_id": "",
 }
 
 _config = None

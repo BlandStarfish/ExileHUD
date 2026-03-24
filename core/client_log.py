@@ -10,8 +10,7 @@ Events emitted:
   whisper_in       {"player": str, "message": str}
   whisper_out      {"player": str, "message": str}
   quest_complete   {"name": str}  (parsed from log text)
-  level_up         {"level": int, "class": str}
-  item_found       {"item": str}   (rarity drops from log)
+  level_up         {"player": str, "class": str, "level": int}
 """
 
 import re

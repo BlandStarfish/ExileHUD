@@ -26,6 +26,8 @@ import config as cfg
 from core.client_log import ClientLogWatcher
 from core.state import AppState
 from core.hotkeys import HotkeyManager
+from core.oauth import OAuthManager
+from core.stash_api import StashAPI
 from core.updater import check_and_prompt as check_for_updates
 from api.poe_ninja import PoeNinja
 from api.poe_trade import build_price_check_query, search_item, fetch_listings, extract_prices
@@ -65,6 +67,10 @@ def main():
         def fetch_listings(self, ids, qid): return fetch_listings(ids, qid)
         def extract_prices(self, listings): return extract_prices(listings)
 
+    # OAuth + stash API (optional — requires client_id registration with GGG)
+    oauth_manager = OAuthManager(conf.get("oauth_client_id", ""))
+    stash_api     = StashAPI(oauth_manager)
+
     # Modules
     quest_tracker    = QuestTracker(state)
     price_checker    = PriceChecker(ninja, TradeAPI(), conf["league"])
@@ -91,6 +97,8 @@ def main():
         crafting=crafting,
         map_overlay=map_overlay,
         config=conf,
+        oauth_manager=oauth_manager,
+        stash_api=stash_api,
     )
 
     # Wire hotkeys to HUD actions

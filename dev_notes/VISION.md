@@ -38,12 +38,15 @@ The overlay is organized as tabs (one per module) inside a frameless window, pos
 - Displays ninja price + live listings + trade link
 - **Priority: HIGH — complete and functional**
 
-### 4. Currency Per Hour ✅ IMPLEMENTED (manual input)
+### 4. Currency Per Hour ✅ IMPLEMENTED (manual + optional OAuth auto-fill)
 - User manually enters current currency counts (stash + inventory)
 - "Start Session" sets baseline; "Snapshot" records deltas
 - Calculates per-currency rates and total chaos/hr via poe.ninja conversion
-- **Missing: Stash tab API integration (would auto-read currency from official API)**
-- **Priority: MEDIUM — works but manual entry is friction**
+- Cross-session aggregation: 7-day and all-time average chaos/hr from history
+- **Optional OAuth auto-fill (Session 6)**: if oauth_client_id is configured in config.json,
+  "Connect PoE Account" button opens browser for GGG OAuth 2.1 PKCE auth,
+  "Auto-fill from Stash" then reads currency amounts directly from the official stash tab API
+- **Priority: MEDIUM — manual entry works; OAuth auto-fill improves UX significantly**
 
 ### 5. Crafting System ✅ IMPLEMENTED
 - Cheat sheet browser: 8 methods (alteration spam, essence, fossil, divine, harvest, exalt slam, metacraft, chaos spam)
