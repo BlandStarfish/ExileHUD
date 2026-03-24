@@ -18,7 +18,7 @@ The overlay is organized as tabs (one per module) inside a frameless window, pos
 - Guides user to next uncollected quest with step-by-step directions
 - **Priority: HIGH — complete and functional**
 
-### 2. Passive Tree Viewer ✅ IMPLEMENTED (partial)
+### 2. Passive Tree Viewer ✅ IMPLEMENTED
 - Full PoE passive tree rendered in QGraphicsView
 - Pan (drag) + zoom (scroll wheel)
 - Node hover tooltip (name, type, stats)
@@ -27,8 +27,12 @@ The overlay is organized as tabs (one per module) inside a frameless window, pos
 - Color-coded by node type (keystone, notable, normal, jewel, mastery, ascendancy)
 - Quest integration: shows quest point summary on tree panel ✅ (added Session 1)
 - Tree data downloaded from GGG CDN or official export repo on first run
-- **Missing: Player allocated node tracking (requires stash/character API or manual input)**
-- **Priority: HIGH — core viewing done; player-allocated nodes future work**
+- **Build import: paste PoE tree URL or Path of Building code to highlight allocated nodes** ✅ (added Session 7)
+  - Accepts full PoE tree URL (from in-game export Ctrl+C in skill tree window)
+  - Accepts Path of Building build code (zlib XML base64)
+  - Allocated nodes shown in bright gold, distinct from search highlights
+  - Allocation and search highlights coexist without interference
+- **Priority: HIGH — complete and functional**
 
 ### 3. Price Checking ✅ IMPLEMENTED
 - Ctrl+C in PoE copies item tooltip to clipboard

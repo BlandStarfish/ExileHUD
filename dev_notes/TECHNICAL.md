@@ -230,6 +230,40 @@ GGG requires registered apps to display:
   "This product isn't affiliated with or endorsed by Grinding Gear Games in any way."
 This disclaimer is shown in the OAuth callback HTML page (displayed in browser after auth).
 
+### passive_tree_panel.py: Build URL import (Session 7)
+Accepts two formats:
+
+1. **PoE passive tree URL** (from in-game export or poebuilds website)
+   URL form: `https://www.pathofexile.com/passive-skill-tree/[base64url]`
+   Binary format (big-endian, URL-safe base64):
+     - Bytes 0-3: version uint32 (4 or 6 for PoE1)
+     - Byte 4: character class (0=Scion, 1=Marauder, 2=Ranger, 3=Witch, 4=Duelist, 5=Templar, 6=Shadow)
+     - Byte 5: ascendancy class index
+     - Byte 6: fullscreen flag
+     - Remaining: 2 bytes per allocated node (uint16 big-endian)
+   Node IDs are uint16 matching the keys in PassiveTree.nodes dict.
+
+2. **Path of Building build code** (community standard, widely shared)
+   Format: zlib-compressed XML, base64-encoded (standard base64, not URL-safe)
+   Parser: base64-decode → zlib-decompress → regex search for `nodes="id1,id2,..."`
+   in a `<Spec>` element. Supports both standard zlib (wbits=15) and raw deflate (-15).
+
+`PassiveTree.parse_tree_url(url_or_code)` handles both formats automatically.
+Returns empty set on any parsing failure (graceful degradation).
+
+### passive_tree_panel.py: NodeItem allocation state (Session 7)
+NodeItem now tracks `_allocated: bool` alongside the existing `data(0)` search state.
+Visual priority: hover > search highlight (data(0)="search") > allocated > default.
+Key invariant: `clear_highlight()` clears search state but NOT allocation.
+`set_allocated()` does not override active search color (preserves visual layering).
+ALLOCATED_COLOR = "#ffd700" (bright gold) to distinguish from QUEST_COLOR (teal) and
+SEARCH_COLOR (green).
+
+### install.py: OAuth client_id prompt (Session 7)
+`setup_state()` now prompts for `oauth_client_id` during initial install.
+Optional — pressing Enter skips it. Can always be added later to `state/config.json`.
+Surfaces the feature to new users without breaking non-interactive environments.
+
 ## Open Questions
 
 1. **Stash tab API -- OAuth implementation** (IMPLEMENTED Session 6):

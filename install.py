@@ -83,6 +83,16 @@ def setup_state():
     else:
         print("[WARN] Could not auto-detect Client.txt — edit state/config.json manually")
 
+    # Optional: OAuth client_id for stash tab auto-fill
+    print("\n[Optional] GGG OAuth client_id for currency stash tab auto-fill.")
+    print("  Register by emailing oauth@grindinggear.com (leave blank to skip).")
+    client_id = input("  client_id (or press Enter to skip): ").strip()
+    if client_id:
+        cfg["oauth_client_id"] = client_id
+        print(f"[OK]  OAuth client_id saved")
+    else:
+        print("[SKIP] OAuth skipped — you can add oauth_client_id to state/config.json later")
+
     with open(config_path, "w") as f:
         json.dump(cfg, f, indent=2)
     print("[OK]  state/config.json created")

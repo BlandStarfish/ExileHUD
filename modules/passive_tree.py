@@ -256,6 +256,82 @@ class PassiveTree:
         return [n for n in self.nodes.values() if n.node_type == ntype]
 
     # ------------------------------------------------------------------
+    # Build import
+    # ------------------------------------------------------------------
+
+    @staticmethod
+    def parse_tree_url(url_or_code: str) -> set[str]:
+        """
+        Parse a PoE passive tree URL, tree base64 code, or Path of Building
+        build code into a set of allocated node ID strings.
+
+        Accepted formats:
+          1. Full PoE tree URL from in-game export:
+             https://www.pathofexile.com/passive-skill-tree/[base64]
+          2. Raw base64 PoE tree code (URL-safe base64)
+          3. Path of Building build code (zlib-compressed XML, base64)
+
+        PoE tree binary format (big-endian):
+          Bytes 0-3: version uint32 (4 or 6 for PoE1)
+          Byte 4:    character class
+          Byte 5:    ascendancy class
+          Byte 6:    fullscreen flag
+          Remaining: 2 bytes per allocated node (uint16, big-endian)
+
+        Returns a set of node_id strings (e.g. {"54849", "1234"}).
+        Returns empty set on invalid or unrecognised input.
+        """
+        import base64
+        import re as _re
+        import struct
+        import zlib
+
+        code = url_or_code.strip()
+
+        # Extract code portion from a full URL
+        if "pathofexile.com" in code.lower() and "/" in code:
+            code = code.rstrip("/").rsplit("/", 1)[-1].split("?")[0]
+
+        def _decode(s: str, urlsafe: bool) -> "bytes | None":
+            try:
+                pad = (4 - len(s) % 4) % 4
+                fn = base64.urlsafe_b64decode if urlsafe else base64.b64decode
+                return fn(s + "=" * pad)
+            except Exception:
+                return None
+
+        for urlsafe in (True, False):
+            data = _decode(code, urlsafe)
+            if data is None or len(data) < 4:
+                continue
+
+            version = struct.unpack_from(">I", data, 0)[0]
+
+            # ── PoE1 binary tree format ────────────────────────────────────
+            if version in (4, 6) and len(data) >= 7:
+                # Header: 4-byte version + class + ascendancy + fullscreen = 7 bytes
+                node_data = data[7:]
+                nodes: set[str] = set()
+                for i in range(0, len(node_data) - 1, 2):
+                    nid = struct.unpack_from(">H", node_data, i)[0]
+                    if nid > 0:
+                        nodes.add(str(nid))
+                return nodes
+
+            # ── Path of Building format (zlib-compressed XML) ──────────────
+            for wbits in (15, -15):   # standard zlib, then raw deflate
+                try:
+                    xml = zlib.decompress(data, wbits).decode("utf-8", errors="replace")
+                    m = _re.search(r'\bSpec\b[^>]*\bnodes="([^"]*)"', xml)
+                    if m:
+                        return {n.strip() for n in m.group(1).split(",") if n.strip()}
+                    break   # decompressed but no Spec nodes found — not PoB format
+                except zlib.error:
+                    continue
+
+        return set()
+
+    # ------------------------------------------------------------------
     # Internal helpers
     # ------------------------------------------------------------------
 

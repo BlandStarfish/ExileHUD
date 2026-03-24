@@ -3,7 +3,7 @@ Price check panel — displays results from the last price check hotkey press.
 """
 
 from PyQt6.QtWidgets import QWidget, QVBoxLayout, QLabel, QFrame, QHBoxLayout
-from PyQt6.QtCore import Qt, pyqtSlot
+from PyQt6.QtCore import Qt, QMetaObject, Q_ARG, pyqtSlot
 
 ACCENT = "#e2b96f"
 TEXT   = "#d4c5a9"
@@ -73,7 +73,6 @@ class PricePanel(QWidget):
     def show_result(self, result: dict):
         """Called (from background thread) when a price check completes."""
         # Qt UI updates must happen on the main thread
-        from PyQt6.QtCore import QMetaObject, Q_ARG
         QMetaObject.invokeMethod(self, "_update_ui",
                                  Qt.ConnectionType.QueuedConnection,
                                  Q_ARG("PyQt_PyObject", result))

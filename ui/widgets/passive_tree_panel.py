@@ -52,10 +52,11 @@ NODE_RADII = {
     "mastery":     6,
 }
 
-EDGE_COLOR    = QColor("#2a2a4a")
+EDGE_COLOR      = QColor("#2a2a4a")
 HIGHLIGHT_COLOR = QColor("#e2b96f")
-SEARCH_COLOR  = QColor("#5cba6e")
-QUEST_COLOR   = QColor("#4ae8c8")
+SEARCH_COLOR    = QColor("#5cba6e")
+QUEST_COLOR     = QColor("#4ae8c8")
+ALLOCATED_COLOR = QColor("#ffd700")   # bright gold — player's own allocated nodes
 
 SCALE_FACTOR = 0.04   # tree coords ~28000 wide → ~1120 px scene
 
@@ -88,6 +89,7 @@ class NodeItem(QGraphicsEllipseItem):
         self._node = node
         self._panel = panel
         self._base_r = r
+        self._allocated = False   # True when this node is in the loaded build
 
         fill, border = NODE_COLORS.get(node.node_type, ("#3a3a5a", "#6a6aaa"))
         self.setBrush(QBrush(QColor(fill)))
@@ -103,9 +105,13 @@ class NodeItem(QGraphicsEllipseItem):
         super().hoverEnterEvent(event)
 
     def hoverLeaveEvent(self, event):
-        fill, border = NODE_COLORS.get(self._node.node_type, ("#3a3a5a", "#6a6aaa"))
-        # Restore original pen unless highlighted by search
-        if self.data(0) != "search":
+        # Priority: search highlight > allocated > default
+        if self.data(0) == "search":
+            pass   # keep search color
+        elif self._allocated:
+            self.setPen(QPen(ALLOCATED_COLOR, 3))
+        else:
+            fill, border = NODE_COLORS.get(self._node.node_type, ("#3a3a5a", "#6a6aaa"))
             self.setPen(QPen(QColor(border), 1.5))
         super().hoverLeaveEvent(event)
 
@@ -120,10 +126,30 @@ class NodeItem(QGraphicsEllipseItem):
         self.setZValue(2)
 
     def clear_highlight(self):
-        fill, border = NODE_COLORS.get(self._node.node_type, ("#3a3a5a", "#6a6aaa"))
-        self.setPen(QPen(QColor(border), 1.5))
+        """Clear search highlight. Does NOT affect allocation state."""
         self.setData(0, None)
-        self.setZValue(1)
+        if self._allocated:
+            self.setPen(QPen(ALLOCATED_COLOR, 3))
+            self.setZValue(3)
+        else:
+            fill, border = NODE_COLORS.get(self._node.node_type, ("#3a3a5a", "#6a6aaa"))
+            self.setPen(QPen(QColor(border), 1.5))
+            self.setZValue(1)
+
+    def set_allocated(self, allocated: bool):
+        """Set or clear build allocation highlight (player's own nodes)."""
+        self._allocated = allocated
+        if allocated:
+            if self.data(0) != "search":
+                self.setPen(QPen(ALLOCATED_COLOR, 3))
+            self.setZValue(3)
+        else:
+            if self.data(0) == "search":
+                self.setZValue(2)
+            else:
+                fill, border = NODE_COLORS.get(self._node.node_type, ("#3a3a5a", "#6a6aaa"))
+                self.setPen(QPen(QColor(border), 1.5))
+                self.setZValue(1)
 
 
 # ─────────────────────────────────────────────────────────────────────────────
@@ -137,6 +163,7 @@ class PassiveTreePanel(QWidget):
         self._tree = None
         self._node_items: dict[str, NodeItem] = {}
         self._pinned_node = None
+        self._allocated_ids: set[str] = set()   # node IDs from loaded build code
         self._build_ui()
         self._start_loading()
         if quest_tracker:
@@ -178,6 +205,36 @@ class PassiveTreePanel(QWidget):
         top.addWidget(reset_btn)
 
         layout.addLayout(top)
+
+        # ── Build import ──
+        build_row = QHBoxLayout()
+        self._build_input = QLineEdit()
+        self._build_input.setPlaceholderText(
+            "Paste PoE tree URL or Path of Building code to show your build"
+        )
+        self._build_input.setStyleSheet(
+            "background: #0f0f23; color: #d4c5a9; border: 1px solid #2a2a4a;"
+            " border-radius: 3px; padding: 3px; font-size: 11px;"
+        )
+        build_row.addWidget(self._build_input, 1)
+
+        load_build_btn = QPushButton("Load")
+        load_build_btn.setFixedWidth(52)
+        load_build_btn.setStyleSheet(
+            "QPushButton { color: #ffd700; font-size: 11px; padding: 3px 6px; }"
+        )
+        load_build_btn.clicked.connect(self._load_build)
+        build_row.addWidget(load_build_btn)
+
+        clear_build_btn = QPushButton("Clear")
+        clear_build_btn.setFixedWidth(52)
+        clear_build_btn.setStyleSheet(
+            "QPushButton { font-size: 11px; padding: 3px 6px; }"
+        )
+        clear_build_btn.clicked.connect(self._clear_build)
+        build_row.addWidget(clear_build_btn)
+
+        layout.addLayout(build_row)
 
         # ── Progress / status ──
         self._status = QLabel("Loading passive tree data...")
@@ -278,6 +335,10 @@ class PassiveTreePanel(QWidget):
 
         self._reset_view()
 
+        # Reapply any previously loaded build allocation after tree re-render
+        if self._allocated_ids:
+            self._apply_allocation()
+
     def _refresh_quest_summary(self):
         """Update the quest passive points banner from live quest tracker data."""
         if not self._quest_tracker:
@@ -307,6 +368,50 @@ class PassiveTreePanel(QWidget):
         is the correct integration point.
         """
         return set()
+
+    # ------------------------------------------------------------------
+    # Build import (PoE tree URL / Path of Building code)
+    # ------------------------------------------------------------------
+
+    def _load_build(self):
+        """Parse the pasted build code and highlight the player's allocated nodes."""
+        from modules.passive_tree import PassiveTree
+        code = self._build_input.text().strip()
+        if not code:
+            self._status.setText("Paste a PoE tree URL or Path of Building code first.")
+            return
+
+        ids = PassiveTree.parse_tree_url(code)
+        if not ids:
+            self._status.setText(
+                "Could not parse build code — paste the full URL or the base64 code."
+            )
+            return
+
+        self._allocated_ids = ids
+        self._apply_allocation()
+
+        in_tree = sum(1 for nid in ids if nid in self._node_items)
+        self._status.setText(
+            f"Build loaded — {in_tree} nodes highlighted  "
+            f"({len(ids)} in code, {len(ids) - in_tree} not in current tree data)"
+        )
+
+    def _clear_build(self):
+        """Remove all build allocation highlights."""
+        self._allocated_ids = set()
+        for item in self._node_items.values():
+            item.set_allocated(False)
+        self._build_input.clear()
+        if self._tree:
+            self._status.setText(
+                f"Build cleared — {len(self._tree.nodes)} nodes, {len(self._tree.edges)} connections"
+            )
+
+    def _apply_allocation(self):
+        """Apply allocation highlights to all loaded node items."""
+        for nid, item in self._node_items.items():
+            item.set_allocated(nid in self._allocated_ids)
 
     def _reset_view(self):
         if not self._tree:
