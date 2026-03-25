@@ -15,7 +15,7 @@ Flow:
 Compile with:  build_installer.bat
 """
 
-import hashlib, os, sys, json, shutil, zipfile, threading, urllib.request, socket, platform
+import hashlib, os, sys, json, shutil, time, zipfile, threading, urllib.request, socket, platform
 import subprocess, tempfile, tkinter as tk
 from tkinter import ttk, filedialog
 from datetime import datetime, timezone
@@ -410,7 +410,24 @@ class Installer(tk.Tk):
                 raise RuntimeError("App archive has unexpected structure — no directory found.")
             extracted = os.path.join(tmp, subdirs[0])
             if os.path.exists(dest):
-                shutil.rmtree(dest, ignore_errors=True)
+                # Terminate any running PoELens processes before wiping the folder.
+                # If python.exe has files open under dest, rmtree will silently fail
+                # and the subsequent copytree will crash with FileExistsError.
+                self.after(0, lambda: self._log("Stopping any running PoELens processes..."))
+                subprocess.run(
+                    ["taskkill", "/F", "/IM", "python.exe", "/FI",
+                     f"WINDOWTITLE eq PoELens*"],
+                    capture_output=True,
+                )
+                # Also check for a compiled PoELens.exe in case future builds exist
+                subprocess.run(
+                    ["taskkill", "/F", "/IM", "PoELens.exe"],
+                    capture_output=True,
+                )
+                time.sleep(1)   # let OS release file handles after process termination
+
+                shutil.rmtree(dest, ignore_errors=False)
+
             shutil.copytree(extracted, dest)
             self.after(0, lambda: self._log(f"App files installed to: {dest}"))
 
