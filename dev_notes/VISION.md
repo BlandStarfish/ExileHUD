@@ -66,26 +66,27 @@ The overlay is organized as tabs (one per module) inside a frameless window, pos
 - Total pending queue cost display
 - **Priority: MEDIUM — complete for core use cases**
 
-### 7. XP Rate Tracker 🔲 PLANNED (Priority: MEDIUM)
+### 7. XP Rate Tracker ✅ IMPLEMENTED (Session 13)
 - Tracks experience per hour for the current session
-- Uses Character API (OAuth, `account:characters` scope — already in place) to read XP/level
-- Polls periodically (e.g., every 5 min) or on zone_change events
-- Displays: current level, XP to next level, XP/hr, estimated time-to-level
-- Cross-session historical average: same pattern as currency/hr
-- Requires OAuth connection (shows prompt if not connected, or uses level_up events from Client.txt as fallback)
+- Uses Character API (OAuth, `account:characters` scope) to poll XP/level
+- Polls every 5 min via QTimer + on zone_change events (120s cooldown)
+- Displays: current character, level, XP/hr, XP gained this session, elapsed time
+- Level-up detection: shows "Level N → M" when character leveled during session
+- Requires OAuth connection (shows connect prompt if not authenticated)
+- Time-to-level deferred (requires confirmed XP-per-level table)
 
-### 8. Chaos Recipe Counter 🔲 PLANNED (Priority: MEDIUM)
-- Reads stash tabs via existing OAuth stash API to count unidentified rare item sets
-- A full chaos recipe set = 2H weapon OR 1H+offhand, helmet, body, gloves, boots, ring×2, amulet, belt
-- Displays "N full sets ready" per recipe variant (75+ ilvl = chaos; 60-74 ilvl = alt)
-- Tracks which item slots are missing from your stash sets
-- Zero new external dependencies — reuses StashAPI entirely
+### 8. Chaos Recipe Counter ✅ IMPLEMENTED (Session 13)
+- Scans equipment stash tabs via OAuth stash API to count rare item sets
+- Full set = helmet + chest + gloves + boots + belt + 2×ring + amulet + weapon slot
+- Weapon slot = 1× two-handed OR 1× one-handed + 1× offhand
+- Tracks chaos-tier (ilvl 60-74), regal-tier (ilvl 75+), and any-tier counts per slot
+- Shows which slots are missing for the next complete set
+- User-triggered scan (respects API rate limits)
 
-### 9. Build Notes Panel 🔲 PLANNED (Priority: LOW)
-- Personal notepad inside the overlay for the player's own notes
+### 9. Build Notes Panel ✅ IMPLEMENTED (Session 13)
+- Personal plain-text notepad inside the overlay
 - Saves to state/notes.json (gitignored)
-- Plain text input with minimal formatting (newlines)
-- Use cases: boss strategies, league goals, build reminders, map target list
+- Boss strategies, league goals, build reminders, map target lists
 - No external dependencies, no API calls
 
 ### 6. Map Overlay ✅ IMPLEMENTED (v3)

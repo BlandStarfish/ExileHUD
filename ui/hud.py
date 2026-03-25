@@ -19,6 +19,9 @@ from ui.widgets.crafting_panel import CraftingPanel
 from ui.widgets.passive_tree_panel import PassiveTreePanel
 from ui.widgets.map_panel import MapPanel
 from ui.widgets.settings_panel import SettingsPanel
+from ui.widgets.xp_panel import XPPanel
+from ui.widgets.chaos_panel import ChaosPanel
+from ui.widgets.notes_panel import NotesPanel
 
 
 DARK_BG = "#1a1a2e"
@@ -29,7 +32,8 @@ SUBTEXT  = "#8a7a65"
 
 
 class HUD(QMainWindow):
-    def __init__(self, state, quest_tracker, price_checker, currency_tracker, crafting, map_overlay, config,
+    def __init__(self, state, quest_tracker, price_checker, currency_tracker, crafting,
+                 map_overlay, xp_tracker, chaos_recipe, config,
                  oauth_manager=None, stash_api=None, character_api=None):
         super().__init__()
         self._state = state
@@ -39,7 +43,8 @@ class HUD(QMainWindow):
         self._character_api = character_api
 
         self._setup_window()
-        self._build_ui(quest_tracker, price_checker, currency_tracker, crafting, map_overlay)
+        self._build_ui(quest_tracker, price_checker, currency_tracker, crafting,
+                       map_overlay, xp_tracker, chaos_recipe)
 
         # Wire price checker results to price panel
         price_checker.on_result(self._price_panel.show_result)
@@ -70,7 +75,8 @@ class HUD(QMainWindow):
         else:
             self.setGeometry(1500, 40, 400, 700)
 
-    def _build_ui(self, quest_tracker, price_checker, currency_tracker, crafting, map_overlay):
+    def _build_ui(self, quest_tracker, price_checker, currency_tracker, crafting,
+                  map_overlay, xp_tracker, chaos_recipe):
         root = QWidget()
         root.setStyleSheet(f"""
             QWidget {{ background-color: {DARK_BG}; color: {TEXT}; font-family: 'Segoe UI'; font-size: 12px; border-radius: 8px; }}
@@ -110,18 +116,34 @@ class HUD(QMainWindow):
             league=self._config.get("league", "Standard"),
         )
         self._map_panel      = MapPanel(map_overlay)
+        self._xp_panel       = XPPanel(
+            xp_tracker,
+            oauth_manager=self._oauth_manager,
+            league=self._config.get("league", "Standard"),
+        )
+        self._chaos_panel    = ChaosPanel(
+            chaos_recipe,
+            oauth_manager=self._oauth_manager,
+            stash_api=self._stash_api,
+            league=self._config.get("league", "Standard"),
+        )
+        self._notes_panel    = NotesPanel()
         self._settings_panel = SettingsPanel(
             self._config,
             on_opacity_change=self.setWindowOpacity,
         )
 
-        # Tab indices: Quests=0, Tree=1, Price=2, Currency=3, Crafting=4, Map=5, Settings=6
+        # Tab indices: Quests=0, Tree=1, Price=2, Currency=3, Crafting=4,
+        #              Map=5, XP=6, Chaos=7, Notes=8, Settings=9
         tabs.addTab(self._quest_panel,    "Quests")
         tabs.addTab(self._tree_panel,     "Tree")
         tabs.addTab(self._price_panel,    "Price")
         tabs.addTab(self._currency_panel, "Currency")
         tabs.addTab(self._crafting_panel, "Crafting")
         tabs.addTab(self._map_panel,      "Map")
+        tabs.addTab(self._xp_panel,       "XP")
+        tabs.addTab(self._chaos_panel,    "Recipe")
+        tabs.addTab(self._notes_panel,    "Notes")
         tabs.addTab(self._settings_panel, "Settings")
 
         layout.addWidget(tabs)
@@ -177,11 +199,11 @@ class HUD(QMainWindow):
 
     def show_crafting(self):
         self.show()
-        self._tabs.setCurrentIndex(4)  # Quests=0, Tree=1, Price=2, Currency=3, Crafting=4
+        self._tabs.setCurrentIndex(4)  # Crafting=4
 
     def show_map(self):
         self.show()
-        self._tabs.setCurrentIndex(5)  # Quests=0, Tree=1, Price=2, Currency=3, Crafting=4, Map=5
+        self._tabs.setCurrentIndex(5)  # Map=5
 
     def on_currency_clipboard(self, currency_name: str, count: int):
         """Called when a currency stack is Ctrl+C'd in-game."""

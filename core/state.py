@@ -19,6 +19,13 @@ _PROFILE_DEFAULTS = {
     "currency_session_start": None,
     "currency_baseline": {},     # {"Chaos Orb": N, ...}
     "currency_last_amounts": {}, # last manually entered currency counts (restored on restart)
+    # XP rate tracker
+    "xp_session_start": None,    # timestamp when XP session started
+    "xp_session_char": "",       # character name being tracked
+    "xp_baseline": 0,            # total XP at session start
+    "xp_baseline_level": 0,      # level at session start
+    "xp_last": 0,                # most recently polled XP value
+    "xp_last_level": 0,          # most recently polled level
 }
 
 
@@ -218,3 +225,60 @@ class AppState:
         if elapsed < 0.001:
             return {}
         return {k: round(v / elapsed, 2) for k, v in last["delta"].items()}
+
+    # ------------------------------------------------------------------
+    # XP rate tracking
+    # ------------------------------------------------------------------
+
+    def start_xp_session(self, char_name: str, xp: int, level: int):
+        """Begin a new XP tracking session for the named character."""
+        self._profile["xp_session_start"]  = time.time()
+        self._profile["xp_session_char"]   = char_name
+        self._profile["xp_baseline"]       = xp
+        self._profile["xp_baseline_level"] = level
+        self._profile["xp_last"]           = xp
+        self._profile["xp_last_level"]     = level
+        self._save_profile()
+        self._notify("xp_session", {"char": char_name, "level": level})
+
+    def update_xp(self, xp: int, level: int):
+        """Record the latest polled XP and level values."""
+        self._profile["xp_last"]       = xp
+        self._profile["xp_last_level"] = level
+        self._save_profile()
+        self._notify("xp_update", {"xp": xp, "level": level})
+
+    @property
+    def xp_session_start(self) -> float | None:
+        return self._profile.get("xp_session_start")
+
+    @property
+    def xp_session_char(self) -> str:
+        return self._profile.get("xp_session_char", "")
+
+    def get_xp_display_data(self) -> dict:
+        """
+        Returns display-ready XP data for the current session.
+        Returns {"started": False} if no session is active.
+        """
+        start = self._profile.get("xp_session_start")
+        if not start:
+            return {"started": False}
+
+        baseline      = self._profile.get("xp_baseline", 0)
+        last_xp       = self._profile.get("xp_last", 0)
+        last_level    = self._profile.get("xp_last_level", 0)
+        baseline_level = self._profile.get("xp_baseline_level", 0)
+        elapsed_hours = (time.time() - start) / 3600
+        xp_delta      = last_xp - baseline
+        xp_per_hr     = round(xp_delta / elapsed_hours) if elapsed_hours > 0.001 else 0
+
+        return {
+            "started":        True,
+            "char_name":      self._profile.get("xp_session_char", ""),
+            "level":          last_level,
+            "baseline_level": baseline_level,
+            "xp_this_session": xp_delta,
+            "xp_per_hr":      xp_per_hr,
+            "elapsed_minutes": round(elapsed_hours * 60, 1),
+        }

@@ -40,6 +40,8 @@ from modules.price_check import PriceChecker
 from modules.currency_tracker import CurrencyTracker
 from modules.crafting import CraftingModule
 from modules.map_overlay import MapOverlay
+from modules.xp_tracker import XPTracker
+from modules.chaos_recipe import ChaosRecipe
 
 # Lazy UI import — avoids loading Qt before QApplication exists
 import ui.hud as hud_module
@@ -82,11 +84,14 @@ def main():
     currency_tracker = CurrencyTracker(state, ninja)
     crafting         = CraftingModule(state, ninja)
     map_overlay      = MapOverlay()
+    xp_tracker       = XPTracker(state, character_api)
+    chaos_recipe     = ChaosRecipe(stash_api)
 
     # Client.txt watcher
     log_watcher = ClientLogWatcher(conf["client_log_path"])
-    log_watcher.on("zone_change",   lambda d: state.set_zone(d["zone"]))
-    log_watcher.on("zone_change",   map_overlay.handle_zone_change)
+    log_watcher.on("zone_change",    lambda d: state.set_zone(d["zone"]))
+    log_watcher.on("zone_change",    map_overlay.handle_zone_change)
+    log_watcher.on("zone_change",    xp_tracker.handle_zone_change)
     log_watcher.on("quest_complete", quest_tracker.handle_quest_event)
     log_watcher.start()
 
@@ -101,6 +106,8 @@ def main():
         currency_tracker=currency_tracker,
         crafting=crafting,
         map_overlay=map_overlay,
+        xp_tracker=xp_tracker,
+        chaos_recipe=chaos_recipe,
         config=conf,
         oauth_manager=oauth_manager,
         stash_api=stash_api,

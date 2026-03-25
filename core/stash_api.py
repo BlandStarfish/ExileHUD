@@ -22,6 +22,20 @@ from typing import Optional
 from modules.currency_tracker import TRACKED_CURRENCIES
 
 _API_BASE     = "https://api.pathofexile.com"
+
+# Stash tab types that will never contain rare equipment (skip for chaos recipe scan)
+_EQUIPMENT_SKIP_TYPES = frozenset([
+    "CurrencyStash", "Currency",
+    "FragmentStash", "Fragment",
+    "MapStash",      "Map",
+    "DivinationStash",
+    "UniqueStash",
+    "GemStash",
+    "DeliriumStash",
+    "BlightStash",
+    "MetamorphStash",
+    "BreachStash",
+])
 _CONTACT      = "github.com/BlandStarfish/PoELens"
 _MIN_INTERVAL = 1.0   # minimum seconds between API requests (GGG rate limit respect)
 
@@ -97,6 +111,35 @@ class StashAPI:
                     totals[name] = totals.get(name, 0) + item.get("stackSize", 1)
 
         return totals
+
+    def get_all_stash_items(self, league: str, max_tabs: int = 20) -> list[dict]:
+        """
+        Fetch items from all equipment stash tabs (skips Currency, Map, Fragment, etc.).
+
+        Returns a flat list of item dicts. Respects rate limits — each tab costs one API call.
+        max_tabs limits how many tabs are scanned to bound the total request time.
+        """
+        tabs = self.list_tabs(league)
+        if tabs is None:
+            return []
+
+        eligible = [
+            t for t in tabs
+            if t.get("type") not in _EQUIPMENT_SKIP_TYPES
+        ][:max_tabs]
+
+        items: list[dict] = []
+        for tab in eligible:
+            tab_id = tab.get("id")
+            if not tab_id:
+                continue
+            tab_data = self.get_tab(league, tab_id)
+            if tab_data is None:
+                continue
+            tab_items = tab_data.get("stash", {}).get("items", [])
+            items.extend(tab_items)
+
+        return items
 
     # ------------------------------------------------------------------
     # Internal

@@ -24,11 +24,15 @@ Usage:
   tree.search("life")          # returns list of matching nodes
 """
 
+import base64
 import json
+import math
 import os
 import re
+import struct
 import threading
 import urllib.request
+import zlib
 from dataclasses import dataclass, field
 from typing import Optional
 
@@ -198,8 +202,6 @@ class PassiveTree:
     @classmethod
     def _node_coords(cls, nd: dict, raw: dict) -> tuple[float, float]:
         """Compute absolute x,y from node's group+orbit data or direct coords."""
-        import math
-
         # New format: nodes have direct x, y
         if "x" in nd and "y" in nd:
             return float(nd["x"]), float(nd["y"])
@@ -281,18 +283,13 @@ class PassiveTree:
         Returns a set of node_id strings (e.g. {"54849", "1234"}).
         Returns empty set on invalid or unrecognised input.
         """
-        import base64
-        import re as _re
-        import struct
-        import zlib
-
         code = url_or_code.strip()
 
         # Extract code portion from a full URL
         if "pathofexile.com" in code.lower() and "/" in code:
             code = code.rstrip("/").rsplit("/", 1)[-1].split("?")[0]
 
-        def _decode(s: str, urlsafe: bool) -> "bytes | None":
+        def _decode(s: str, urlsafe: bool) -> bytes | None:
             try:
                 pad = (4 - len(s) % 4) % 4
                 fn = base64.urlsafe_b64decode if urlsafe else base64.b64decode
@@ -322,7 +319,7 @@ class PassiveTree:
             for wbits in (15, -15):   # standard zlib, then raw deflate
                 try:
                     xml = zlib.decompress(data, wbits).decode("utf-8", errors="replace")
-                    m = _re.search(r'\bSpec\b[^>]*\bnodes="([^"]*)"', xml)
+                    m = re.search(r'\bSpec\b[^>]*\bnodes="([^"]*)"', xml)
                     if m:
                         return {n.strip() for n in m.group(1).split(",") if n.strip()}
                     break   # decompressed but no Spec nodes found — not PoB format

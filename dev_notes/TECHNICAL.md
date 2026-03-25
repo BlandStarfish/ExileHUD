@@ -38,6 +38,13 @@ state/                       — Runtime data (gitignored except .gitkeep)
   currency_log.json          — Per-session currency delta log
   version.json               — Installed commit SHA (written by installer)
   crash_log.jsonl            — Rotating crash log (500 entries max)
+modules/
+  xp_tracker.py              — XPTracker: polls Character API, tracks XP/hr
+  chaos_recipe.py            — ChaosRecipe: stash item scanning + set counting
+ui/widgets/
+  xp_panel.py                — XP rate display + session start + auto-poll timer
+  chaos_panel.py             — Chaos/regal recipe set counter display
+  notes_panel.py             — Personal build notes (QTextEdit + state/notes.json)
 installer_gui.py             — Standalone tkinter GUI installer (compiled to .exe)
 install.py                   — CLI installer (Python users)
 ```
@@ -393,6 +400,38 @@ currency_panel.py handles the signal to update spinboxes.
 5. **fossil_guide rendering** ✅ RESOLVED (Session 12 discovery) — crafting_panel.py
    _on_method_selected() already renders fossil_guide as a color-coded bullet list using
    walrus-pattern `if fossil_guide := m.get("fossil_guide"):`. Implemented prior to Session 12.
+
+### Tab indices (Session 13)
+Quests=0, Tree=1, Price=2, Currency=3, Crafting=4, Map=5, XP=6, Recipe=7, Notes=8, Settings=9
+show_crafting() uses index 4. show_map() uses index 5. XP/Recipe/Notes have no hotkeys.
+
+### xp_tracker.py: polling strategy (Session 13)
+XPTracker.handle_zone_change() is called from ClientLogWatcher's background thread (thread-safe).
+It spawns a poll thread only if: xp_session_start is set AND _ZONE_POLL_COOLDOWN (120s) has elapsed.
+XPPanel has a QTimer (every 5min) that also triggers poll() when session is active + OAuth connected.
+The character API returns `experience` as total accumulated XP for the character (not level-local XP).
+XP delta = current_experience - baseline_experience (simple subtraction, no XP table needed).
+Time-to-level estimation deferred — requires confirmed XP table per level.
+
+### chaos_recipe.py: item category format (Session 13)
+GGG stash API item `category` field is a dict: {"armour": ["helmet"]}, {"accessories": ["ring"]},
+{"weapons": ["twohanded", "axe"]}, {"offhand": ["shield"]}, etc.
+Weapon slot filling: 2H weapons each fill 1 weapon slot. 1H weapons each need an offhand pair.
+weapon_slots = two_handers + min(one_handers, offhands)
+Items with ilvl < 60 are excluded. Rare = frameType == 2.
+Chaos tier = ilvl 60-74. Regal tier = ilvl 75+. Any = ilvl 60+.
+StashAPI.get_all_stash_items() skips CurrencyStash, FragmentStash, MapStash, DivinationStash,
+UniqueStash, GemStash, DeliriumStash, BlightStash, MetamorphStash, BreachStash.
+max_tabs=20 default limits scan time; 1s/tab rate limit = max ~20s scan.
+
+### notes_panel.py: storage (Session 13)
+state/notes.json: {"text": "..."} — gitignored (state/ is gitignored except .gitkeep).
+Loads on init, saves on button click only (no auto-save).
+
+### passive_tree.py: inline imports removed (Session 13)
+Moved `math`, `base64`, `struct`, `zlib` from method bodies to module-level imports.
+Removed `import re as _re` inside parse_tree_url() — `re` was already at module level.
+All `_re.search(...)` calls updated to `re.search(...)`.
 
 ### settings_panel.py: on_opacity_change callback (Session 12)
 SettingsPanel accepts optional `on_opacity_change: Callable[[float], None]` callback.
