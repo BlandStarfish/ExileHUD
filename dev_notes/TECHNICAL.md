@@ -667,3 +667,16 @@ _INFO_SETTINGS shifted from 2 to 3 in hud.py.
   Both follow: _load_*() → QVBoxLayout with filter row + legend row + QScrollArea.
   Filter button active state: btn.setProperty("active",...) + unpolish/polish cycle.
   This is now the standard pattern for all static-data Info panels.
+
+### BreachPanel / DeliriumPanel / CurrencyRefPanel — Round 4 static panels (Session 27)
+  All three follow the same pattern as BestiaryPanel, ExpeditionPanel, etc.:
+  _load_*() reads JSON, QVBoxLayout with search + optional filter row + QScrollArea.
+  BreachPanel: left border colored by element; complex multi-section card layout.
+  DeliriumPanel: mechanic_note + simulacrum_note stored in JSON root, shown as footer labels
+    (not inside reward_types array) so always visible regardless of search state.
+  CurrencyRefPanel: 8 category filter buttons with distinct colors; font-size 9px to fit row.
+
+### Info group tab count (Session 27)
+  9 tabs in Info group after H1-H3 addition (Bestiary/Expedition/Syndicate/Vendor/Scarabs/
+  Breach/Delirium/Currency/Settings). Qt scroll buttons (setUsesScrollButtons(True)) handle
+  overflow. _INFO_SETTINGS is now index 8. Shifts by +1 each expansion round.

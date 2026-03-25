@@ -1,0 +1,205 @@
+{
+  "_comment": "PoE currency quick reference. Major orbs and currency items, what they do, and primary crafting uses.",
+  "currencies": [
+    {
+      "name": "Scroll of Wisdom",
+      "short": "Wis",
+      "category": "Basic",
+      "effect": "Identifies an unidentified item.",
+      "primary_use": "Identifying rare and unique items. Extremely common.",
+      "notes": "Effectively zero value. You can vendor Portal Scrolls (5:1) for Wisdom Scrolls."
+    },
+    {
+      "name": "Portal Scroll",
+      "short": "Portal",
+      "category": "Basic",
+      "effect": "Opens a portal to the current map's entrance (Town Portal).",
+      "primary_use": "Town trips during mapping. Vendor recipe: 3× Portal Scrolls → 1 Transmutation.",
+      "notes": "Always carry a stack. Early game use only — endgame players use Portal skill gems instead."
+    },
+    {
+      "name": "Orb of Transmutation",
+      "short": "Trans",
+      "category": "Basic",
+      "effect": "Upgrades a Normal (white) item to Magic (blue), adding 1–2 modifiers.",
+      "primary_use": "Crafting magic flasks; rolling magic maps for Sextants.",
+      "notes": "Abundant. Used in quantity for flask crafting early game."
+    },
+    {
+      "name": "Orb of Augmentation",
+      "short": "Aug",
+      "category": "Basic",
+      "effect": "Adds a modifier to a Magic item that has only one modifier.",
+      "primary_use": "Adding a second affix to a magic item before using an Orb of Regal.",
+      "notes": "Common. Low value individually."
+    },
+    {
+      "name": "Orb of Alteration",
+      "short": "Alt",
+      "category": "Crafting",
+      "effect": "Rerolls the explicit modifiers on a Magic item.",
+      "primary_use": "Alteration spam crafting: roll until desired mods appear, then Regal.",
+      "notes": "Core crafting currency. Vendor recipe for Alts: sell identified magic item."
+    },
+    {
+      "name": "Orb of Regal",
+      "short": "Regal",
+      "category": "Crafting",
+      "effect": "Upgrades a Magic item to Rare, adding one new modifier.",
+      "primary_use": "Finalising alt-spam crafted magic items; base for bench crafting.",
+      "notes": "Low chaos value (~1:1 with chaos in most leagues). Often used in Archnemesis-style strategies."
+    },
+    {
+      "name": "Orb of Alchemy",
+      "short": "Alch",
+      "category": "Crafting",
+      "effect": "Upgrades a Normal item to Rare with 4–6 modifiers.",
+      "primary_use": "Rolling maps (use on white maps); upgrading flasks; crafting starter gear.",
+      "notes": "Extremely common. Buy ratio on trade: ~5–8 Alch = 1 Chaos."
+    },
+    {
+      "name": "Chaos Orb",
+      "short": "Chaos",
+      "category": "Trade",
+      "effect": "Rerolls all modifiers on a Rare item.",
+      "primary_use": "Primary trading currency in PoE. Also used for chaos spam crafting.",
+      "notes": "The baseline trade currency. Effective Chaos per hour is the main income metric."
+    },
+    {
+      "name": "Divine Orb",
+      "short": "Divine",
+      "category": "Trade",
+      "effect": "Rerolls the numeric values of all modifiers on an item (within their ranges).",
+      "primary_use": "Maximising the values of already-well-rolled items. Premium crafting currency.",
+      "notes": "Primary high-end currency since 3.13 (replaced Exalted Orb in this role). ~100–200c each."
+    },
+    {
+      "name": "Exalted Orb",
+      "short": "Exalt",
+      "category": "Crafting",
+      "effect": "Adds a new random modifier to a Rare item.",
+      "primary_use": "Exalt slam crafting: gamble a new mod onto a near-perfect item.",
+      "notes": "Once the premium currency; now ~15–25c each. Good for exalt slams. Usable in crafting bench recipes."
+    },
+    {
+      "name": "Orb of Annulment",
+      "short": "Annul",
+      "category": "Crafting",
+      "effect": "Removes one random modifier from an item.",
+      "primary_use": "Removing a bad mod from a crafted item in multi-mod or suffix/prefix craft.",
+      "notes": "Combined with 'Prefixes Cannot Be Changed' or 'Suffixes Cannot Be Changed' crafting for targeted removal."
+    },
+    {
+      "name": "Orb of Scouring",
+      "short": "Scour",
+      "category": "Crafting",
+      "effect": "Removes all modifiers from a Rare or Magic item, making it Normal.",
+      "primary_use": "Resetting an item for a new crafting attempt.",
+      "notes": "Essential for crafting reset. Cannot remove crafted (bench) mods — use Remove Crafted Mod on bench instead."
+    },
+    {
+      "name": "Blessed Orb",
+      "short": "Blessed",
+      "category": "Crafting",
+      "effect": "Rerolls the numeric values of implicit modifiers on an item.",
+      "primary_use": "Maximising implicit mods (rings, amulets, shields).",
+      "notes": "Niche use. Most valuable on items with strong implicits like Onyx Amulets (+Attributes) or Two-Stone Rings."
+    },
+    {
+      "name": "Chromatic Orb",
+      "short": "Chrom",
+      "category": "Sockets",
+      "effect": "Rerolls the colors of the sockets on an item.",
+      "primary_use": "Getting desired socket colors. Biased toward the item's attribute requirements.",
+      "notes": "Off-color sockets (e.g., red on an ES/Int item) require many Chromatics or crafting bench recipe."
+    },
+    {
+      "name": "Orb of Fusing",
+      "short": "Fuse",
+      "category": "Sockets",
+      "effect": "Rerolls the links between sockets on an item.",
+      "primary_use": "6-linking a chest piece or weapon. Average ~1,500 Fusings for a 6-link.",
+      "notes": "Vendor recipe: sell a 6-link item → 20 Fusings. Crafting bench: 6-link costs 1500 Fusings flat."
+    },
+    {
+      "name": "Jeweller's Orb",
+      "short": "Jew",
+      "category": "Sockets",
+      "effect": "Rerolls the number of sockets on an item.",
+      "primary_use": "Achieving 4, 5, or 6 sockets. Bench recipe locks socket count for 350 Jewellers (6-socket).",
+      "notes": "Max sockets depend on item type (body armours/2H weapons: 6; others: 4)."
+    },
+    {
+      "name": "Vaal Orb",
+      "short": "Vaal",
+      "category": "Crafting",
+      "effect": "Corrupts an item, applying one of four possible outcomes: random implicit, socket count/color change, quality change, or no change. Item cannot be modified after corruption.",
+      "primary_use": "Adding a powerful Vaal implicit to gems or items. 6-linking items (rare).",
+      "notes": "IRREVERSIBLE. Always evaluate whether the item is worth risking before using. Gems can also be corrupted: +1 level or +20% quality are top outcomes."
+    },
+    {
+      "name": "Cartographer's Chisel",
+      "short": "Chisel",
+      "category": "Maps",
+      "effect": "Increases the Quality of a Map by 1% (up to 20%).",
+      "primary_use": "Chiselling maps to 20% quality before using Alchemy/Chaos for more pack size.",
+      "notes": "Chisel recipe: sell a Stone Hammer/Rock Breaker/Gavel with 20% quality → 3 Chisels."
+    },
+    {
+      "name": "Awakened Sextant",
+      "short": "A-Sextant",
+      "category": "Maps",
+      "effect": "Adds a modifier to a Watchstone, affecting all maps in the Atlas region.",
+      "primary_use": "Applying scarab-quantity, pack-size, or encounter-enabling mods to map regions.",
+      "notes": "Each Sextant adds 3 uses. Stack Sextants across overlapping watchstone sockets for maximum coverage."
+    },
+    {
+      "name": "Orb of Horizons",
+      "short": "Horizon",
+      "category": "Maps",
+      "effect": "Rerolls a map into a different map of the same tier.",
+      "primary_use": "Converting unwanted maps into target maps at the same tier.",
+      "notes": "Useful for converting T16 clutter into your preferred T16 farming map."
+    },
+    {
+      "name": "Ancient Orb",
+      "short": "Ancient",
+      "category": "Unique",
+      "effect": "Rerolls a unique item into a different unique of the same item class.",
+      "primary_use": "Gambling in the same unique class — e.g., rerolling a Praetor Crown into a Starkonja's Head.",
+      "notes": "Most used in bulk for Harbinger Uniques or to hit specific league-start uniques."
+    },
+    {
+      "name": "Divine Vessel",
+      "short": "Vessel",
+      "category": "Pantheon",
+      "effect": "Place in the Map Device alongside a map to capture the Soul of a god when that map's boss is killed.",
+      "primary_use": "Upgrading Pantheon powers in the Pantheon menu. Required to unlock major/minor god upgrades.",
+      "notes": "Each captured soul upgrades one Pantheon power. Some boss souls require killing the boss on specific map layouts."
+    },
+    {
+      "name": "Enkindling Orb",
+      "short": "Enkindling",
+      "category": "Flasks",
+      "effect": "Rolls an enchantment on a flask that enhances its effect during use.",
+      "primary_use": "Crafting powerful flask effects (e.g., 'Immune to Freeze during Flask Effect').",
+      "notes": "Mutually exclusive with Instilling Orb. Enkindling = affects the 'during use' window."
+    },
+    {
+      "name": "Instilling Orb",
+      "short": "Instilling",
+      "category": "Flasks",
+      "effect": "Rolls an enchantment on a flask that triggers the flask under certain conditions.",
+      "primary_use": "Automating flask usage (e.g., 'Used when on Full Charges', 'Used when you take a Critical Strike').",
+      "notes": "Mutually exclusive with Enkindling Orb. Instilling = triggers the flask automatically."
+    },
+    {
+      "name": "Mirror of Kalandra",
+      "short": "Mirror",
+      "category": "Trade",
+      "effect": "Creates a Mirror copy of any non-Unique, non-Corrupted item. Original item gains 'Mirrored' tag.",
+      "primary_use": "Copying a perfectly-crafted item for personal use or mirror service income.",
+      "notes": "Rarest drop in the game (~1 in hundreds of thousands of maps). Worth many thousands of Chaos."
+    }
+  ]
+}

@@ -12,6 +12,7 @@ import json
 import os
 from collections import defaultdict
 
+from PyQt6.QtCore import Qt
 from PyQt6.QtWidgets import (
     QWidget, QVBoxLayout, QHBoxLayout, QLabel, QLineEdit,
     QScrollArea, QPushButton,
@@ -221,7 +222,6 @@ class ScarabPanel(QWidget):
             row_lbl = QLabel(f"<b style='color:{color}'>{tier}:</b> {effect}")
             row_lbl.setStyleSheet(f"color: {TEXT}; font-size: 10px;")
             row_lbl.setWordWrap(True)
-            from PyQt6.QtCore import Qt
             row_lbl.setTextFormat(Qt.TextFormat.RichText)
             vl.addWidget(row_lbl)
 

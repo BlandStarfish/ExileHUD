@@ -209,6 +209,40 @@ These features were auto-approved after all F1–F3 items reached completion. Im
 
 ---
 
+## Expansion Roadmap Round 4 (Auto-Approved 2026-03-25)
+
+These features were auto-approved after all G1–G3 items reached 9+/10 completion. Implement in priority order listed.
+
+### H1. Breach Domain Reference ✅ IMPLEMENTED (Session 27)
+- Static reference for all 5 Breach domains (Xoph/Tul/Esh/Uul-Netol/Chayula)
+- Each entry shows: element, splinter name, breachstone name, keystone + effect, blessing + effect, notable unique items, build notes
+- Color-coded by element (Fire=orange, Cold=teal, Lightning=gold, Physical=gray, Chaos=purple)
+- Full-text search across deity, element, keystone, blessing, and unique names
+- Breachstone tier legend (Normal → Charged → Enriched → Pure → Flawless)
+- Data source: data/breaches.json (5 entries, curated)
+- ui/widgets/breach_panel.py; added to Info group as "Breach" tab
+- **Rationale:** Breach is a permanent mechanic. Players farming splinters or planning around blessings frequently need to check which deity gives which keystone/blessing. Having it in the overlay eliminates alt-tabbing mid-map.
+
+### H2. Delirium Reward Type Reference ✅ IMPLEMENTED (Session 27)
+- Static reference for all Delirium reward cluster types (Currency, Jewels, Maps, Scarabs, Gems, etc.)
+- Each entry shows: description, high-value drops, best strategy, notes
+- Full-text search across reward type name and drop descriptions
+- Simulacrum splinter note always visible (collect 300 to form Simulacrum fragment)
+- Data source: data/delirium_rewards.json (12 types, curated)
+- ui/widgets/delirium_panel.py; added to Info group as "Delirium" tab
+- **Rationale:** Delirium Orb stacking is a core endgame strategy. Choosing which cluster type to apply requires knowing what each type generates. Delirium is permanent and the reward type system is complex enough to warrant a reference.
+
+### H3. Currency Quick Reference ✅ IMPLEMENTED (Session 27)
+- Static reference for all major PoE currency orbs: effect, primary crafting use, notes
+- Category filter: Basic, Crafting, Trade, Sockets, Maps, Unique, Flasks, Pantheon
+- Full-text search across name, effect, use, and notes
+- 25 currencies covering everything from Scrolls of Wisdom to Mirror of Kalandra
+- Data source: data/currency_reference.json (25 entries, curated)
+- ui/widgets/currency_ref_panel.py; added to Info group as "Currency" tab
+- **Rationale:** New players frequently need to look up what a currency orb does before using it. Experienced players benefit from edge-case reminders (e.g., Scouring vs Annulment, Enkindling vs Instilling). Faster than alt-tabbing to the wiki.
+
+---
+
 ### 6. Map Overlay ✅ IMPLEMENTED (v3)
 - Zone identity card: name (gold, prominent), act/tier, area level, waypoint status, boss info
 - Zone-specific notes for mechanically significant zones (Kitava resistance warnings, key quest hints, Pinnacle Guardian drops)

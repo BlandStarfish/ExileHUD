@@ -1,0 +1,91 @@
+{
+  "_comment": "Delirium reward cluster types. Each type biases the loot dropped by Delirium encounters in that map.",
+  "mechanic_note": "Apply a Delirium Orb to a map to add a Delirium reward cluster. Clusters stack up to 5×. Stay in the fog longer to maximise rewards — the reward counter fills as you kill monsters near the mirror.",
+  "simulacrum_note": "Collect 300 Simulacrum Splinters (any mix of types) to form a Simulacrum map fragment, regardless of reward cluster type.",
+  "reward_types": [
+    {
+      "name": "Currency",
+      "description": "Drops currency orbs, stacked currency, and high-value base orbs.",
+      "high_value_drops": "Chaos Orbs, Divine Orbs, Exalted Orbs, Mirror Shards",
+      "best_for": "General farming; universally valuable",
+      "notes": "Most commonly stacked reward type. Good base choice when unsure."
+    },
+    {
+      "name": "Jewels",
+      "description": "Drops jewels (Cobalt, Crimson, Viridian), Cluster Jewels, and Abyss Jewels.",
+      "high_value_drops": "Large Cluster Jewels (especially 8-passive), Megalomaniac, Watcher's Eye",
+      "best_for": "Cluster Jewel farming, Watcher's Eye hunting",
+      "notes": "Cluster Jewel rolls vary wildly in value. Watcher's Eye requires active Zana map device mod, not delirium."
+    },
+    {
+      "name": "Maps",
+      "description": "Drops maps of equal or higher tier, unique maps, and map-relevant currency.",
+      "high_value_drops": "Tier 16 maps, Unique maps (Poorjoy's Asylum, Vaults of Atziri), Map fragments",
+      "best_for": "Sustaining map pool; Kirac mission progression",
+      "notes": "Best stacked for atlas completion. Scales well with quantity/packsize."
+    },
+    {
+      "name": "Unique Items",
+      "description": "Drops unique items biased toward the map's item level range.",
+      "high_value_drops": "Specific build-enabling uniques vary by league economy",
+      "best_for": "Target farming build-defining uniques at high item level",
+      "notes": "RNG-heavy. Best combined with strong quantity/rarity bonuses."
+    },
+    {
+      "name": "Divination Cards",
+      "description": "Drops divination cards, including zone-specific and delirium-specific cards.",
+      "high_value_drops": "The Doctor, Brother's Stash, Seven Years Bad Luck (for Mirror)",
+      "best_for": "Divination card farming strategies; completing card sets",
+      "notes": "Card drops are zone-specific. Check which cards drop in your target map first."
+    },
+    {
+      "name": "Scarabs",
+      "description": "Drops scarabs of all tiers and mechanic types.",
+      "high_value_drops": "Winged scarabs (Ambush, Expedition, Breach, etc.)",
+      "best_for": "Building scarab supply for mechanic-stacking strategies",
+      "notes": "Scarabs are highly liquid currency in most leagues."
+    },
+    {
+      "name": "Fossils",
+      "description": "Drops fossils and resonators from the Delve league.",
+      "high_value_drops": "Lucent, Faceted, Fractured, Sanctified Fossil",
+      "best_for": "Fossil crafting setups; selling high-tier fossils",
+      "notes": "Lucent and Faceted fossils are consistently valuable for specific crafts."
+    },
+    {
+      "name": "Fragments",
+      "description": "Drops map fragments, Divine Vessels, Sacrifice fragments, and boss keys.",
+      "high_value_drops": "Shaper/Elder fragments, Uber Elder fragments, Simulacrum Splinters",
+      "best_for": "Boss material farming; Simulacrum splinter accumulation",
+      "notes": "Simulacrum Splinters drop from ANY delirium cluster type, but Fragments type biases toward them."
+    },
+    {
+      "name": "Armour",
+      "description": "Drops body armours, helmets, gloves, and boots of varied base types.",
+      "high_value_drops": "High item level rare bases for crafting (ilvl 86+ Titan Gauntlets, etc.)",
+      "best_for": "Farming high-ilvl bases for crafting or selling",
+      "notes": "Value depends on current meta bases. Check trade prices before committing."
+    },
+    {
+      "name": "Weapons",
+      "description": "Drops weapons across all types (swords, bows, wands, staves, etc.).",
+      "high_value_drops": "High item level rare bases; Influence weapon bases at ilvl 86+",
+      "best_for": "Farming weapon bases for crafting or selling",
+      "notes": "Same caveat as Armour — check base prices each league."
+    },
+    {
+      "name": "Gems",
+      "description": "Drops skill gems, including high-level and quality gems.",
+      "high_value_drops": "Level 21 gems, 23% quality gems, Awakened support gems (rare)",
+      "best_for": "Levelling valuable gems; stocking support gems to sell",
+      "notes": "Level 21 / 20% quality gems are common farming targets. Good paired with Beyond maps."
+    },
+    {
+      "name": "Harbinger",
+      "description": "Biases drops toward Harbinger currency: Shards, Annulment Shards, Exalted Shards.",
+      "high_value_drops": "Ancient Orbs, Orbs of Horizons, Harbinger Orbs, Exalted Orb Shards",
+      "best_for": "Shard farming; converting shards into full orbs",
+      "notes": "Exalted Shards (16 = 1 Exalted Orb) are consistently valuable. Ancient Orbs can reroll unique items."
+    }
+  ]
+}

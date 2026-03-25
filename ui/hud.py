@@ -37,6 +37,9 @@ from ui.widgets.lab_panel import LabPanel
 from ui.widgets.syndicate_panel import SyndicatePanel
 from ui.widgets.vendor_recipes_panel import VendorRecipesPanel
 from ui.widgets.scarab_panel import ScarabPanel
+from ui.widgets.breach_panel import BreachPanel
+from ui.widgets.delirium_panel import DeliriumPanel
+from ui.widgets.currency_ref_panel import CurrencyRefPanel
 
 
 DARK_BG = "#1a1a2e"
@@ -76,7 +79,10 @@ _INFO_EXPEDITION      = 1
 _INFO_SYNDICATE       = 2
 _INFO_VENDOR_RECIPES  = 3
 _INFO_SCARABS         = 4
-_INFO_SETTINGS        = 5
+_INFO_BREACH          = 5
+_INFO_DELIRIUM        = 6
+_INFO_CURRENCY_REF    = 7
+_INFO_SETTINGS        = 8
 
 
 class HUD(QMainWindow):
@@ -224,6 +230,9 @@ class HUD(QMainWindow):
         self._syndicate_panel        = SyndicatePanel()
         self._vendor_recipes_panel   = VendorRecipesPanel()
         self._scarab_panel           = ScarabPanel()
+        self._breach_panel           = BreachPanel()
+        self._delirium_panel         = DeliriumPanel()
+        self._currency_ref_panel     = CurrencyRefPanel()
         self._currency_flip_panel    = CurrencyFlipPanel(currency_flip) if currency_flip else QWidget()
         self._lab_panel              = LabPanel(lab_tracker) if lab_tracker else QWidget()
 
@@ -274,14 +283,17 @@ class HUD(QMainWindow):
         self._inner_tabs.append(end_tabs)
         outer_tabs.addTab(end_tabs, "Endgame")             # _GRP_ENDGAME   = 2
 
-        # Info group: Bestiary · Expedition · Syndicate · Vendor · Scarabs · Settings
+        # Info group: Bestiary · Expedition · Syndicate · Vendor · Scarabs · Breach · Delirium · Currency · Settings
         info_tabs = _make_inner()
         info_tabs.addTab(self._bestiary_panel,       "Bestiary")   # _INFO_BESTIARY       = 0
         info_tabs.addTab(self._expedition_panel,     "Expedition") # _INFO_EXPEDITION     = 1
         info_tabs.addTab(self._syndicate_panel,      "Syndicate")  # _INFO_SYNDICATE      = 2
         info_tabs.addTab(self._vendor_recipes_panel, "Vendor")     # _INFO_VENDOR_RECIPES = 3
         info_tabs.addTab(self._scarab_panel,         "Scarabs")    # _INFO_SCARABS        = 4
-        info_tabs.addTab(self._settings_panel,       "Settings")   # _INFO_SETTINGS       = 5
+        info_tabs.addTab(self._breach_panel,         "Breach")     # _INFO_BREACH         = 5
+        info_tabs.addTab(self._delirium_panel,       "Delirium")   # _INFO_DELIRIUM       = 6
+        info_tabs.addTab(self._currency_ref_panel,   "Currency")   # _INFO_CURRENCY_REF   = 7
+        info_tabs.addTab(self._settings_panel,       "Settings")   # _INFO_SETTINGS       = 8
         self._inner_tabs.append(info_tabs)
         outer_tabs.addTab(info_tabs, "Info")                       # _GRP_INFO            = 3
 

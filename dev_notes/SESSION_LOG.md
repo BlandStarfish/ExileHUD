@@ -4113,3 +4113,178 @@ Only remaining item: PoE2 passive tree (blocked).
 256 tests pass. No technical debt. No regressions.
 
 ═══════════════════════════════════════════════════════════════
+
+═══════════════════════════════════════════════════════════════
+SESSION: 2026-03-25 (Session 27)
+═══════════════════════════════════════════════════════════════
+
+## ORIENTATION SUMMARY
+
+Session 26 completed G2 (Vendor Recipe Browser), G3 (Scarab Browser), and CurrencyFlipPanel
+auto-refresh timer. Suggestions for this session:
+  1. Phase 4 Round 4 (G1-G3 all at 9+/10 — expansion criteria met again)
+  2. PoE2 passive tree (blocked — no official GGG export)
+  3. UX polish: Scarab panel poe.ninja price per tier (low priority)
+
+Baseline: 256 tests passing, no technical debt.
+
+## ASSESSMENT GRADES
+
+Module                  | Completeness | Quality | Vision Alignment
+------------------------|-------------|---------|----------------
+Quest Tracker           |    10/10    |  9/10   |    10/10
+Passive Tree Viewer     |    10/10    |  9/10   |    10/10
+Price Checker           |    10/10    |  9/10   |    10/10
+Currency Tracker        |    10/10    |  9/10   |    10/10
+Crafting System         |    10/10    |  9/10   |     9/10
+Core Infrastructure     |    10/10    |  9/10   |    10/10
+Map Overlay             |    10/10    |  9/10   |    10/10
+XP Rate Tracker         |    10/10    |  9/10   |    10/10
+Chaos Recipe Counter    |     9/10    |  9/10   |     9/10
+Build Notes Panel       |    10/10    |  9/10   |     9/10
+OAuth/Stash/Char API    |     9/10    |  9/10   |     9/10
+Div Card Tracker        |     9/10    |  9/10   |     9/10
+Atlas Tracker           |     9/10    |  9/10   |     9/10
+Bestiary Browser        |    10/10    |  9/10   |    10/10
+Heist Planner           |     9/10    |  9/10   |     9/10
+Gem Planner             |     9/10    |  9/10   |     9/10
+Map Stash Scanner       |     9/10    |  9/10   |     9/10
+Expedition Browser      |    10/10    |  9/10   |    10/10
+Currency Flip Calc      |     9/10    |  9/10   |     9/10
+Lab Tracker             |    10/10    |  9/10   |    10/10
+Syndicate Planner       |     9/10    |  9/10   |    10/10
+Vendor Recipe Browser   |     9/10    |  9/10   |    10/10
+Scarab Browser          |     9/10    |  9/10   |    10/10
+Breach Domain Ref       |     9/10    |  9/10   |    10/10 (new)
+Delirium Reward Types   |     9/10    |  9/10   |     9/10 (new)
+Currency Quick Ref      |     9/10    |  9/10   |     9/10 (new)
+Test Suite              |    10/10    |  9/10   |     9/10
+
+## SMOKE TEST FINDINGS
+
+Phase 1B -- Logic and Structure Issues
+1. scarab_panel.py: `from PyQt6.QtCore import Qt` imported inside the for loop body
+   in _make_mechanic_group(). Minor style issue; module imports belong at top level.
+
+Phase 1C -- Redundancy and Counter-Vision Issues
+None found.
+
+## MAINTENANCE LOG
+
+### Fix 1 -- scarab_panel.py: Qt import inside loop
+- File: ui/widgets/scarab_panel.py
+- Issue: `from PyQt6.QtCore import Qt` was inside the for loop body
+- Fix: Moved to module-level import alongside existing PyQt6 imports at the top of file
+- Why it matters: Module imports should be at the top level per PEP 8. While Python caches
+  the import, the statement executes each iteration and is a code style violation.
+
+## DEVELOPMENT LOG
+
+### Phase 4 Round 4 -- Expansion Ideas Auto-Approved
+
+Criteria met: all G1-G3 features at 9+/10. Three new features generated, auto-approved,
+and added to VISION.md under "Expansion Roadmap Round 4":
+
+  H1. Breach Domain Reference (HIGH)
+  H2. Delirium Reward Type Reference (MEDIUM)
+  H3. Currency Quick Reference (LOW)
+
+### Feature: H1 Breach Domain Reference
+
+Files created:
+  data/breaches.json: 5 entries (Xoph, Tul, Esh, Uul-Netol, Chayula)
+    Each entry: deity, element, splinter, breachstone, domain, keystone, keystone_effect,
+    blessing, blessing_effect, notable_uniques (list), notes
+    Root-level: breachstone_tiers (Normal/Charged/Enriched/Pure/Flawless), breachstone_note
+  ui/widgets/breach_panel.py: BreachPanel
+    Header count + breachstone tier note
+    Element color legend
+    Full-text search: deity, element, keystone, blessing, uniques, notes
+    Cards: element badge, splinter name, keystone (gold), blessing (green), uniques, notes
+    Left border colored by element
+  tests/test_breach_panel.py: 14 tests
+
+Files modified:
+  ui/hud.py: Added BreachPanel import, _INFO_BREACH=5, "Breach" tab at index 5
+  dev_notes/VISION.md: Added H1-H3 under Expansion Roadmap Round 4; H1 marked IMPLEMENTED
+
+### Feature: H2 Delirium Reward Type Reference
+
+Files created:
+  data/delirium_rewards.json: 12 reward type entries
+    Types: Currency, Jewels, Maps, Unique Items, Divination Cards, Scarabs, Fossils,
+           Fragments, Armour, Weapons, Gems, Harbinger
+    Each entry: name, description, high_value_drops, best_for, notes
+    Root-level: mechanic_note, simulacrum_note (always visible as footer)
+  ui/widgets/delirium_panel.py: DeliriumPanel
+    Full-text search; cards with high_value (green), best_for (teal/dim), notes (italic)
+    mechanic_note and simulacrum_note shown as always-visible footer labels
+  tests/test_delirium_panel.py: 11 tests
+
+Files modified:
+  ui/hud.py: Added DeliriumPanel import, _INFO_DELIRIUM=6, "Delirium" tab at index 6
+  dev_notes/VISION.md: H2 marked IMPLEMENTED
+
+### Feature: H3 Currency Quick Reference
+
+Files created:
+  data/currency_reference.json: 25 currency entries
+    Categories: Basic (2), Crafting (6), Trade (3), Sockets (3), Maps (3),
+                Unique (1), Flasks (2), Pantheon (1)
+    Each entry: name, short, category, effect, primary_use, notes
+  ui/widgets/currency_ref_panel.py: CurrencyRefPanel
+    Category filter: All + 8 categories (each with distinct color)
+    Full-text search; cards with effect, Use (teal), notes (dim italic)
+    Left border colored by category
+  tests/test_currency_ref_panel.py: 13 tests
+
+Files modified:
+  ui/hud.py: Added CurrencyRefPanel import, _INFO_CURRENCY_REF=7, "Currency" tab at index 7
+             _INFO_SETTINGS shifted to 8
+  dev_notes/VISION.md: H3 marked IMPLEMENTED
+
+Test count: 256 -> 294 (+38 new, all pass)
+
+## TECHNICAL NOTES
+
+Breach element colors:
+  Fire=ORANGE (#e8864a), Cold=TEAL (#4ae8c8), Lightning=ACCENT (#e2b96f),
+  Physical=gray (#a0a0a0), Chaos=PURPLE (#9a4ae8)
+  _ELEMENT_COLORS dict in breach_panel.py is authoritative.
+
+Delirium mechanic_note and simulacrum_note:
+  Stored in the JSON root (not in reward_types array) so they appear as always-visible
+  footer labels regardless of search state. Pattern differs from other panels where notes
+  are inline with entries.
+
+Info group tab count:
+  Now 9 tabs (0-8). Qt scroll buttons handle overflow. _INFO_SETTINGS shifts each round
+  to remain last. Current value: 8.
+
+Asana session summary:
+  create_task MCP still unavailable. Used asana_create_project_status on
+  HUMAN INBOX project (GID: 1213723884881761). Status GID: 1213812169695938.
+
+## SUGGESTIONS FOR NEXT SESSION
+
+1. Phase 4 Round 5 (HIGH): H1-H3 all at 9+/10. Run Phase 4 again -- generate next
+   expansion round (I1-I3). Candidates: Incursion room reference, Maven boss guide,
+   Delve fossil depth chart.
+
+2. PoE2 passive tree (BLOCKED): No official GGG skilltree-export for PoE2.
+   Check https://github.com/grindinggear/skilltree-export for new branches/releases.
+
+3. Currency Reference UX (LOW): Consider poe.ninja live price column in CurrencyRefPanel.
+   Would require passing ninja instance (currently fully stateless/static).
+
+4. Scarab panel price per tier (LOW, from Session 26 deferral):
+   Add live price column using poe.ninja scarab endpoint if valuable.
+
+## PROJECT HEALTH
+
+Overall grade: 10/10
+~100% complete toward full vision (original + E1-E6 + F1-F3 + G1-G3 + H1-H3).
+Only remaining item: PoE2 passive tree (blocked, no GGG ETA).
+294 tests pass. No technical debt. No regressions.
+
+═══════════════════════════════════════════════════════════════

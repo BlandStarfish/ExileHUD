@@ -1,0 +1,92 @@
+{
+  "_comment": "PoE Breach domain reference. 5 deities, each with a distinct element, keystone, blessing, and unique items.",
+  "breachstone_tiers": ["Normal", "Charged", "Enriched", "Pure", "Flawless"],
+  "breachstone_note": "Collect 100 Splinters to form a Breachstone. Higher tiers award more and better items. Flawless is the rarest and most rewarding.",
+  "breaches": [
+    {
+      "deity": "Xoph",
+      "element": "Fire",
+      "splinter": "Splinter of Xoph",
+      "breachstone": "Xoph's Breachstone",
+      "domain": "Domain of Xoph",
+      "keystone": "Xoph's Heart",
+      "keystone_effect": "Your hits cannot Leech Life from Enemies. Gain 1% of Damage as Extra Fire Damage per 2% Missing Enemy Life.",
+      "blessing": "Xoph's Blood",
+      "blessing_effect": "Upgrades Xoph's Heart amulet: grants Avatar of Fire and causes Nearby Enemies to have -10% Fire Resistance.",
+      "notable_uniques": [
+        "Xoph's Blood (Amber Amulet) — Avatar of Fire + Fire Damage near enemies",
+        "Xoph's Nurture (Crude Bow) — % Fire Damage, Ignite Proliferation",
+        "Xoph's Inception (Breach Ring) — Fire Damage to Spells and Attacks"
+      ],
+      "notes": "Xoph's Blood is a top-tier build-enabler for Avatar of Fire builds. Blessing is highly sought after."
+    },
+    {
+      "deity": "Tul",
+      "element": "Cold",
+      "splinter": "Splinter of Tul",
+      "breachstone": "Tul's Breachstone",
+      "domain": "Domain of Tul",
+      "keystone": "Tul's Echo",
+      "keystone_effect": "Cold Skills Echo — they repeat once for 50% less Damage. Cannot Leech Mana from Enemies.",
+      "blessing": "Tul's Chaos",
+      "blessing_effect": "Upgrades Tul's Own Hand gloves: grants Hypothermia and a Frostbite aura effect on nearby enemies.",
+      "notable_uniques": [
+        "Tul's Own Hand (Titan Gauntlets) — Cold Damage and Freeze bonuses",
+        "Tul's Reach (Shadow Bow) — Cold Damage, Chilling projectiles",
+        "Tul's Caress (Breach Ring) — Cold Damage to Spells and Attacks"
+      ],
+      "notes": "Echo keystone doubles hit count, which can double on-hit effects (poison, bleed, frenzy charge gain). Great for cold hit builds."
+    },
+    {
+      "deity": "Esh",
+      "element": "Lightning",
+      "splinter": "Splinter of Esh",
+      "breachstone": "Esh's Breachstone",
+      "domain": "Domain of Esh",
+      "keystone": "Esh's Mirror",
+      "keystone_effect": "Spells have a 10% chance to be reflected back at the Caster. 30% reduced effect of Shock on you.",
+      "blessing": "Esh's Guidance",
+      "blessing_effect": "Upgrades Esh's Visage shield: grants immunity to Shock; Nearby Enemies have 50% increased Shock effect taken.",
+      "notable_uniques": [
+        "Esh's Visage (Titanium Spirit Shield) — Spell block, ES, Shock immunity when blessed",
+        "Esh's Tear (Breach Ring) — Lightning Damage to Spells and Attacks",
+        "Esh's Bequest (Jewel) — Gain power charges on kill"
+      ],
+      "notes": "Esh's Visage blessed is excellent for Shock-focused builds or as a defensive shield. One of the more accessible breach blessings."
+    },
+    {
+      "deity": "Uul-Netol",
+      "element": "Physical",
+      "splinter": "Splinter of Uul-Netol",
+      "breachstone": "Uul-Netol's Breachstone",
+      "domain": "Domain of Uul-Netol",
+      "keystone": "Uul-Netol's Pulse",
+      "keystone_effect": "Cannot be Stunned. You have Bone Armour that absorbs damage. Bone Armour regenerates over time.",
+      "blessing": "Uul-Netol's Vow",
+      "blessing_effect": "Upgrades Uul-Netol's Kiss: Bone Armour from Enemies slain by Skeleton minions; minion bonuses.",
+      "notable_uniques": [
+        "Uul-Netol's Kiss (Karui Chopper) — % chance to Cause Bleed, Physical Damage",
+        "Uul-Netol's Embrace (Carnal Armour) — Summon Skeletons on kill, minion bonuses",
+        "Uul-Netol's Fleshcrusher (Breach Ring) — Physical Damage to Attacks"
+      ],
+      "notes": "Physical breach domain. Uul-Netol's Embrace is popular for Skeleton Mage builds. Splinters are slower to collect due to rarity."
+    },
+    {
+      "deity": "Chayula",
+      "element": "Chaos",
+      "splinter": "Splinter of Chayula",
+      "breachstone": "Chayula's Breachstone",
+      "domain": "Domain of Chayula",
+      "keystone": "Chayula's Dream",
+      "keystone_effect": "Chaos Resistance can be Overcapped. Each 1% Overcapped Chaos Resistance grants 1% Damage Reduction.",
+      "blessing": "Chayula's Breach",
+      "blessing_effect": "Upgrades Chayula's Will: Chaos Damage Leeched as Life; Blink on Critical Strike.",
+      "notable_uniques": [
+        "Chayula's Will (Silken Hood) — Chaos Resistance, no Chaos Resistance penalty",
+        "Chayula's Presence (Onyx Amulet) — +% Chaos Resistance, stun immunity",
+        "Chayula's Flicker (Slink Boots) — Chaos Damage, Blink when blessed"
+      ],
+      "notes": "Chayula Breachstone is the hardest domain and the most valuable. Chayula's Presence is sought for chaos-immune builds. Requires a strong build to run."
+    }
+  ]
+}
