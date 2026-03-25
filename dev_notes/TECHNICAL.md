@@ -611,3 +611,31 @@ Format: {"Normal": bool, "Cruel": bool, "Merciless": bool, "Eternal": bool}
 on_update callbacks are no-arg (unlike QuestTracker which passes status list).
 LabPanel calls tracker.get_status() directly in _refresh() rather than receiving
 data via callback, which avoids coupling the callback signature to the UI refresh logic.
+
+### ExpeditionPanel: category filter buttons (Session 25)
+Quick-filter row added above the danger legend. Buttons: All / Loot Bonuses / Monster Buffs / Area Modifiers.
+_active_category state tracks active filter (None = All). _on_search() applies category filter first,
+then text query on the resulting pool. _set_active_filter() updates button [active='true'] property
+and calls style().unpolish/polish to force Qt to re-evaluate the dynamic property stylesheet.
+Button colors are static (defined inline per button); the [active='true'] rule changes the label color
+and border-color to match the button's own accent color using QPushButton[active='true'] CSS selector.
+
+### SyndicatePanel: data + panel (Session 25)
+data/syndicate_members.json: 22 entries, each with name, factions (list), primary_faction,
+intel_reward (string), safehouse_rewards (dict: division -> reward string), notes.
+Valid factions: Transportation, Research, Fortification, Intervention.
+primary_faction must appear in factions list (validated by tests).
+
+SyndicatePanel follows BestiaryPanel/ExpeditionPanel patterns:
+  - Division filter buttons with per-division colors (teal/gold/orange/red)
+  - Full-text search across name, factions, intel_reward, safehouse_rewards values, notes
+  - Member cards with faction abbreviation badges (first 4 chars: Tran/Rese/Fort/Inte)
+  - safehouse_rewards rendered as per-division colored labels using RichText format
+  - Left border accented by primary_faction color
+
+tests/test_syndicate_panel.py: 17 data integrity tests. All tests use the fixture
+pattern from conftest (load JSON once per module). Key members verified by name:
+Catarina (Research), Vorici (Transportation), Elreon (Research), Aisling (Transportation).
+
+Tab placement: Info group, index 2 (between Expedition and Settings).
+_INFO_SETTINGS shifted from 2 to 3 in hud.py.

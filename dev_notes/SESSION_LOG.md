@@ -3844,3 +3844,138 @@ PoE2 tree remains the only blocked item.
 207 tests pass. No technical debt. No regressions.
 
 ═══════════════════════════════════════════════════════════════
+═══════════════════════════════════════════════════════════════
+SESSION: 2026-03-25 (Session 25)
+═══════════════════════════════════════════════════════════════
+
+## ORIENTATION SUMMARY
+
+Session 24 completed F1 (Expedition Browser), F2 (Currency Flip Calculator), F3 (Lab Tracker).
+Suggestions for this session:
+  1. Phase 4 Round 3 (F1-F3 all at 9+/10 — expansion criteria met)
+  2. UX polish: ExpeditionPanel category filters, CurrencyFlipPanel auto-refresh timer
+  3. PoE2 passive tree (blocked — no official GGG export)
+  4. Asana create_task gap (still no create_task MCP tool)
+
+Baseline: 207 tests passing, no technical debt.
+
+## ASSESSMENT GRADES
+
+Module                | Completeness | Quality | Vision Alignment
+----------------------|-------------|---------|----------------
+Quest Tracker         |    10/10    |  9/10   |    10/10
+Passive Tree Viewer   |    10/10    |  9/10   |    10/10
+Price Checker         |    10/10    |  9/10   |    10/10
+Currency Tracker      |    10/10    |  9/10   |    10/10
+Crafting System       |    10/10    |  9/10   |     9/10
+Core Infrastructure   |    10/10    |  9/10   |    10/10
+Map Overlay           |    10/10    |  9/10   |    10/10
+XP Rate Tracker       |    10/10    |  9/10   |    10/10
+Chaos Recipe Counter  |     9/10    |  9/10   |     9/10
+Build Notes Panel     |    10/10    |  9/10   |     9/10
+Settings Panel        |    10/10    |  9/10   |    10/10
+OAuth/Stash/Char API  |     9/10    |  9/10   |     9/10
+Div Card Tracker      |     9/10    |  9/10   |     9/10
+Atlas Tracker         |     9/10    |  9/10   |     9/10
+Bestiary Browser      |    10/10    |  9/10   |    10/10
+Heist Planner         |     9/10    |  9/10   |     9/10
+Gem Planner           |     9/10    |  9/10   |     9/10
+Map Stash Scanner     |     9/10    |  9/10   |     9/10
+Expedition Browser    |    10/10    |  9/10   |    10/10
+Currency Flip Calc    |     9/10    |  9/10   |     9/10
+Lab Tracker           |    10/10    |  9/10   |    10/10
+Syndicate Planner     |     9/10    |  9/10   |    10/10 (new)
+Test Suite            |    10/10    |  9/10   |     9/10
+
+## SMOKE TEST FINDINGS
+
+Phase 1B -- Logic and Structure Issues
+None found. Codebase fully clean at session start.
+
+Phase 1C -- Redundancy and Counter-Vision Issues
+None found.
+
+## MAINTENANCE LOG
+
+### UX Polish: ExpeditionPanel category filter buttons
+- File: ui/widgets/expedition_panel.py
+- Added quick-filter button row (All / Loot Bonuses / Monster Buffs / Area Modifiers)
+- _active_category state scopes the pool before search query is applied
+- _set_active_filter() uses style().unpolish/polish to force Qt property re-evaluation
+- Suggestion from Session 24 — now resolved
+
+## DEVELOPMENT LOG
+
+### Phase 4 Round 3 — Expansion Ideas Auto-Approved
+Criteria met: all F1-F3 features at 9+/10. Three new features generated and added to VISION.md:
+  G1. Syndicate Member Planner (HIGH) -- static reference for all 22 Betrayal members
+  G2. Vendor Recipe Browser (MEDIUM) -- static vendor recipe reference
+  G3. Scarab Browser (LOW) -- scarab type/effect reference
+
+### Feature: G1 Syndicate Member Planner
+Files created:
+  data/syndicate_members.json: 22 entries
+    Each entry: name, factions (list), primary_faction, intel_reward, safehouse_rewards (dict), notes
+    All 4 divisions represented. Key high-value members documented:
+      Catarina (Research mastermind -- full crafting recipe suite)
+      Vorici (Transportation -- white socket crafting)
+      Elreon (Research -- Prefixes/Suffixes Cannot Be Changed)
+      Aisling (Transportation -- Add/Remove Influence)
+  ui/widgets/syndicate_panel.py: SyndicatePanel
+    Division filter buttons with per-division accent colors (teal/gold/orange/red)
+    Full-text search (name, factions, rewards, notes)
+    Member cards: name + faction abbreviation badges + intel reward + per-division safehouse rewards + notes
+    Left border accent by primary_faction color
+    Division color legend
+  tests/test_syndicate_panel.py: 17 data integrity tests
+    Validates all required fields, valid faction values, unique names, all divisions represented
+    Spot-checks key members (Catarina/Vorici/Elreon/Aisling) by name and faction
+
+Files modified:
+  ui/hud.py: Added SyndicatePanel import + _INFO_SYNDICATE=2 constant
+    _INFO_SETTINGS shifted from 2 to 3
+    Added Syndicate tab to Info group between Expedition and Settings
+  dev_notes/VISION.md: Added G1-G3 to Expansion Roadmap Round 3; marked G1 as IMPLEMENTED
+
+Test count: 207 → 224 (+17 new tests)
+
+## TECHNICAL NOTES
+
+ExpeditionPanel filter button pattern:
+  QPushButton[active='true'] CSS selector + unpolish/polish cycle for dynamic property updates.
+  This is the correct Qt way to trigger style re-evaluation on property change.
+  Reuse this pattern for any future filter button rows.
+
+SyndicatePanel faction abbreviation badges:
+  faction[:4] gives "Tran" / "Rese" / "Fort" / "Inte" -- unambiguous and space-efficient.
+  Consider using this abbreviated badge approach for other faction/division UIs.
+
+Asana create_task gap:
+  create_task MCP tool is still not available. Session notification created as Asana project
+  (GID: 1213811494270250) following Session 24 precedent. This gap persists.
+
+## SUGGESTIONS FOR NEXT SESSION
+
+1. G2: Vendor Recipe Browser (MEDIUM) -- next expansion item in priority order
+   data/vendor_recipes.json + ui/widgets/vendor_recipes_panel.py + Info group
+   Categories: Currency, Leveling, Quality, Unique
+   Static data, no APIs, quick to implement
+
+2. G3: Scarab Browser (LOW) -- after G2
+   data/scarabs.json + ui/widgets/scarab_panel.py + Info group
+   Atlas passive synergy column is most valuable differentiator vs wiki
+
+3. CurrencyFlipPanel auto-refresh timer (deferred UX polish from Session 24)
+   Simple QTimer + checkbox in panel header, low risk, low complexity
+
+4. PoE2 passive tree (BLOCKED): Still no official GGG skilltree-export for PoE2.
+   Check https://github.com/grindinggear/skilltree-export for new branches/releases.
+
+## PROJECT HEALTH
+
+Overall grade: 10/10
+~98% complete toward full vision (original + E1-E6 + F1-F3 + G1).
+PoE2 tree remains the only blocked item. G2 and G3 are straightforward.
+224 tests pass. No technical debt. No regressions.
+
+═══════════════════════════════════════════════════════════════

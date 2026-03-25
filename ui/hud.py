@@ -34,6 +34,7 @@ from ui.widgets.map_stash_panel import MapStashPanel
 from ui.widgets.expedition_panel import ExpeditionPanel
 from ui.widgets.currency_flip_panel import CurrencyFlipPanel
 from ui.widgets.lab_panel import LabPanel
+from ui.widgets.syndicate_panel import SyndicatePanel
 
 
 DARK_BG = "#1a1a2e"
@@ -70,7 +71,8 @@ _END_MAP_STASH = 5
 
 _INFO_BESTIARY    = 0
 _INFO_EXPEDITION  = 1
-_INFO_SETTINGS    = 2
+_INFO_SYNDICATE   = 2
+_INFO_SETTINGS    = 3
 
 
 class HUD(QMainWindow):
@@ -215,6 +217,7 @@ class HUD(QMainWindow):
             league=league,
         ) if map_scanner else QWidget()
         self._expedition_panel   = ExpeditionPanel()
+        self._syndicate_panel    = SyndicatePanel()
         self._currency_flip_panel = CurrencyFlipPanel(currency_flip) if currency_flip else QWidget()
         self._lab_panel = LabPanel(lab_tracker) if lab_tracker else QWidget()
 
@@ -265,11 +268,12 @@ class HUD(QMainWindow):
         self._inner_tabs.append(end_tabs)
         outer_tabs.addTab(end_tabs, "Endgame")             # _GRP_ENDGAME   = 2
 
-        # Info group: Bestiary · Expedition · Settings
+        # Info group: Bestiary · Expedition · Syndicate · Settings
         info_tabs = _make_inner()
         info_tabs.addTab(self._bestiary_panel,   "Bestiary")   # _INFO_BESTIARY   = 0
         info_tabs.addTab(self._expedition_panel, "Expedition") # _INFO_EXPEDITION = 1
-        info_tabs.addTab(self._settings_panel,   "Settings")   # _INFO_SETTINGS   = 2
+        info_tabs.addTab(self._syndicate_panel,  "Syndicate")  # _INFO_SYNDICATE  = 2
+        info_tabs.addTab(self._settings_panel,   "Settings")   # _INFO_SETTINGS   = 3
         self._inner_tabs.append(info_tabs)
         outer_tabs.addTab(info_tabs, "Info")                   # _GRP_INFO        = 3
 

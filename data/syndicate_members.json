@@ -1,0 +1,265 @@
+{
+  "_comment": "PoE Betrayal Syndicate member reference. Division affinities and safehouse rewards.",
+  "members": [
+    {
+      "name": "Cameria the Coldblooded",
+      "factions": ["Fortification", "Research", "Transportation"],
+      "primary_faction": "Fortification",
+      "intel_reward": "Scarabs (high-tier)",
+      "safehouse_rewards": {
+        "Fortification": "Unique item (corrupted)",
+        "Research": "Scarab cache",
+        "Transportation": "Currency (high-tier)"
+      },
+      "notes": "One of the best members for scarab rewards. Keep in Research or Fortification for maximum value."
+    },
+    {
+      "name": "Elreon, Loremaster",
+      "factions": ["Research", "Fortification", "Transportation"],
+      "primary_faction": "Research",
+      "intel_reward": "Crafting bench recipes (mana cost reduction)",
+      "safehouse_rewards": {
+        "Research": "Crafting bench recipe (Prefixes/Suffixes Cannot Be Changed)",
+        "Fortification": "Rare item with crafted mods",
+        "Transportation": "Currency cache"
+      },
+      "notes": "Research safehouse gives the extremely valuable 'Prefixes/Suffixes Cannot Be Changed' crafting recipe. Highest priority Research member."
+    },
+    {
+      "name": "Gravicius Publicani",
+      "factions": ["Fortification", "Intervention", "Transportation"],
+      "primary_faction": "Fortification",
+      "intel_reward": "Rare armour pieces",
+      "safehouse_rewards": {
+        "Fortification": "Rare armour with 6 links",
+        "Intervention": "Map device options",
+        "Transportation": "Rare currency"
+      },
+      "notes": "Fortification safehouse can give 6-linked armour pieces. Good for selling to other players."
+    },
+    {
+      "name": "Guff the Tourney Man",
+      "factions": ["Transportation", "Fortification", "Research"],
+      "primary_faction": "Transportation",
+      "intel_reward": "Maps (mid-tier)",
+      "safehouse_rewards": {
+        "Transportation": "Map cache (mid-tier)",
+        "Fortification": "Rare weapon",
+        "Research": "Quality gems"
+      },
+      "notes": "Low-priority member. Transportation safehouse gives mediocre maps."
+    },
+    {
+      "name": "Haku, Warmaster",
+      "factions": ["Fortification", "Transportation", "Intervention"],
+      "primary_faction": "Fortification",
+      "intel_reward": "Armour pieces (linked)",
+      "safehouse_rewards": {
+        "Fortification": "Crafting bench recipe (armour/life mods)",
+        "Transportation": "Linked armour cache",
+        "Intervention": "Weapon cache"
+      },
+      "notes": "Fortification safehouse gives life and armour crafting recipes. Good pairing with Elreon for crafting setups."
+    },
+    {
+      "name": "Hillock the Thunderbrute",
+      "factions": ["Transportation", "Fortification", "Intervention"],
+      "primary_faction": "Transportation",
+      "intel_reward": "Quality currency (whetstones/scraps)",
+      "safehouse_rewards": {
+        "Transportation": "Crafting bench recipe (quality on flasks/gems/maps)",
+        "Fortification": "Rare weapon (high quality)",
+        "Intervention": "Quality-granting items"
+      },
+      "notes": "Transportation safehouse gives valuable quality crafting recipes. Best member for improving gem/flask quality."
+    },
+    {
+      "name": "It that Fled",
+      "factions": ["Research", "Transportation", "Fortification"],
+      "primary_faction": "Research",
+      "intel_reward": "Unique fragments",
+      "safehouse_rewards": {
+        "Research": "Unique map (Valdo's, etc.)",
+        "Transportation": "Fragment cache",
+        "Fortification": "Unique accessory"
+      },
+      "notes": "Research gives unique maps which can be valuable. Keep in Research if farming unique map targets."
+    },
+    {
+      "name": "Janus Perandus",
+      "factions": ["Transportation", "Research", "Fortification"],
+      "primary_faction": "Transportation",
+      "intel_reward": "Perandus coins",
+      "safehouse_rewards": {
+        "Transportation": "Perandus cache (Cadiro deal opportunity)",
+        "Research": "Rare ring/amulet with good mods",
+        "Fortification": "Currency"
+      },
+      "notes": "Transportation safehouse provides Perandus coins and Cadiro deal access. Very league-dependent in value."
+    },
+    {
+      "name": "Jorgin the Organist",
+      "factions": ["Research", "Intervention", "Fortification"],
+      "primary_faction": "Research",
+      "intel_reward": "Enchanted items (Talisman-like)",
+      "safehouse_rewards": {
+        "Research": "Crafting bench recipe (talisman-imprint crafting)",
+        "Intervention": "Rare item with implicit",
+        "Fortification": "Corrupted rare"
+      },
+      "notes": "Research safehouse gives talisman crafting which is situationally useful for specific build optimizations."
+    },
+    {
+      "name": "Korell the Rapacious",
+      "factions": ["Intervention", "Transportation", "Fortification"],
+      "primary_faction": "Intervention",
+      "intel_reward": "Rare weapons",
+      "safehouse_rewards": {
+        "Intervention": "Crafting bench recipe (weapon mods)",
+        "Transportation": "Rare weapon cache",
+        "Fortification": "Linked weapon"
+      },
+      "notes": "Low-priority unless specifically farming weapon crafting recipes."
+    },
+    {
+      "name": "Leo Redmane",
+      "factions": ["Intervention", "Fortification", "Transportation"],
+      "primary_faction": "Intervention",
+      "intel_reward": "PvP-related (minimal use)",
+      "safehouse_rewards": {
+        "Intervention": "Crafting bench recipe (Prefixes/Suffixes Cannot Be Changed — lesser variant)",
+        "Fortification": "Rare armour",
+        "Transportation": "Currency"
+      },
+      "notes": "Intervention safehouse gives a crafting recipe. Lower priority than Elreon for most builds."
+    },
+    {
+      "name": "Rin Yuushu",
+      "factions": ["Transportation", "Research", "Intervention"],
+      "primary_faction": "Transportation",
+      "intel_reward": "Maps (with mods)",
+      "safehouse_rewards": {
+        "Transportation": "Map cache with high-tier maps",
+        "Research": "Atlas region completion rewards",
+        "Intervention": "Watchstone equivalent"
+      },
+      "notes": "Transportation safehouse gives good maps. Useful for sustaining map pool."
+    },
+    {
+      "name": "Riker Maloney",
+      "factions": ["Intervention", "Research", "Transportation"],
+      "primary_faction": "Intervention",
+      "intel_reward": "Life flasks",
+      "safehouse_rewards": {
+        "Intervention": "Unique flask",
+        "Research": "Quality flasks",
+        "Transportation": "Currency"
+      },
+      "notes": "Generally low value. Only useful when targeting specific unique flasks."
+    },
+    {
+      "name": "Rog the Chieftain",
+      "factions": ["Intervention", "Fortification", "Research"],
+      "primary_faction": "Intervention",
+      "intel_reward": "Expedition-style currency (trinkets)",
+      "safehouse_rewards": {
+        "Intervention": "Expedition artifacts (Astragali, Orbis, etc.)",
+        "Fortification": "Rare items (Expedition quality)",
+        "Research": "Logbook-adjacent rewards"
+      },
+      "notes": "Intervention safehouse gives Expedition artifacts. Best for players farming Expedition content."
+    },
+    {
+      "name": "Serva the Corrupt",
+      "factions": ["Research", "Fortification", "Intervention"],
+      "primary_faction": "Research",
+      "intel_reward": "Rare corrupted items",
+      "safehouse_rewards": {
+        "Research": "Crafting bench recipe (corruption-adjacent: remove crafted mod)",
+        "Fortification": "Corrupted unique",
+        "Intervention": "Vaal items"
+      },
+      "notes": "'Remove Crafted Mod' recipe from Research is very valuable for specific crafting sequences."
+    },
+    {
+      "name": "Skultus the Flesh-Sculptor",
+      "factions": ["Research", "Intervention", "Transportation"],
+      "primary_faction": "Research",
+      "intel_reward": "Flask quality items",
+      "safehouse_rewards": {
+        "Research": "Crafting bench recipe (flask mods: immune suffix)",
+        "Intervention": "Unique flask",
+        "Transportation": "Currency"
+      },
+      "notes": "Research safehouse gives flask immune crafting (e.g., 'Bubbling' / immune to bleeding). Useful for character setup early."
+    },
+    {
+      "name": "Specter Syndicate member (Syndicate Operative)",
+      "factions": ["Intervention"],
+      "primary_faction": "Intervention",
+      "intel_reward": "Generic drops",
+      "safehouse_rewards": {
+        "Intervention": "Generic rare items"
+      },
+      "notes": "Placeholder/filler member. No significant rewards."
+    },
+    {
+      "name": "Tora, Master of the Hunt",
+      "factions": ["Research", "Fortification", "Transportation"],
+      "primary_faction": "Research",
+      "intel_reward": "Gems (quality)",
+      "safehouse_rewards": {
+        "Research": "Crafting bench recipe (gem quality, level)",
+        "Fortification": "Rare bow/quiver",
+        "Transportation": "Gem cache"
+      },
+      "notes": "Research safehouse gives gem crafting recipes. Valuable for quality and level crafts on gems."
+    },
+    {
+      "name": "Aisling Laffrey",
+      "factions": ["Transportation", "Research", "Fortification"],
+      "primary_faction": "Transportation",
+      "intel_reward": "Rare item with extra suffix",
+      "safehouse_rewards": {
+        "Transportation": "Crafting bench recipe (Add/Remove Influence)",
+        "Research": "Rare item with shaper/elder mod",
+        "Fortification": "Influenced rare armour"
+      },
+      "notes": "'Add/Remove Influence' recipe from Transportation is extremely valuable. Top-priority member for end-game crafting."
+    },
+    {
+      "name": "Catarina, Master of the Dead",
+      "factions": ["Research"],
+      "primary_faction": "Research",
+      "intel_reward": "Intelligence (progression to Research safehouse leader)",
+      "safehouse_rewards": {
+        "Research": "Crafting bench recipes (Suffix Cannot Be Changed / full suite)"
+      },
+      "notes": "Catarina is the Research Mastermind leader. Her safehouse gives the complete 'Cannot Be Changed' crafting recipe suite — the most valuable Betrayal reward for end-game crafting."
+    },
+    {
+      "name": "Vorici, Master Assassin",
+      "factions": ["Transportation", "Research", "Intervention"],
+      "primary_faction": "Transportation",
+      "intel_reward": "Socket manipulation currency",
+      "safehouse_rewards": {
+        "Transportation": "Crafting bench recipe (white sockets, color sockets)",
+        "Research": "Socket links crafting",
+        "Intervention": "Chromatic orbs"
+      },
+      "notes": "Transportation safehouse gives white socket crafting. Extremely valuable — white sockets work with any skill gem color. High priority for endgame builds."
+    },
+    {
+      "name": "Vagan, Weaponmaster",
+      "factions": ["Intervention", "Fortification", "Transportation"],
+      "primary_faction": "Intervention",
+      "intel_reward": "Rare weapon with attack mods",
+      "safehouse_rewards": {
+        "Intervention": "Crafting bench recipe (attack speed, damage mods)",
+        "Fortification": "Rare weapon (high ilvl)",
+        "Transportation": "Currency"
+      },
+      "notes": "Intervention safehouse gives attack crafting recipes. Good for melee/attack build crafting."
+    }
+  ]
+}

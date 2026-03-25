@@ -12,6 +12,7 @@ import os
 
 from PyQt6.QtWidgets import (
     QWidget, QVBoxLayout, QLabel, QLineEdit, QScrollArea, QFrame, QHBoxLayout,
+    QPushButton,
 )
 from PyQt6.QtCore import Qt
 
@@ -76,6 +77,30 @@ class ExpeditionPanel(QWidget):
         self._search.textChanged.connect(self._on_search)
         layout.addWidget(self._search)
 
+        # Quick category filter buttons
+        self._active_category: str | None = None
+        filter_row = QHBoxLayout()
+        filter_row.setSpacing(6)
+        filter_lbl = QLabel("Filter:")
+        filter_lbl.setStyleSheet(f"color: {DIM}; font-size: 10px;")
+        filter_row.addWidget(filter_lbl)
+        self._filter_buttons: dict[str, QPushButton] = {}
+        for label in ("All", "Loot Bonuses", "Monster Buffs", "Area Modifiers"):
+            btn = QPushButton(label)
+            btn.setFixedHeight(22)
+            btn.setStyleSheet(
+                "QPushButton { background: #0f0f23; color: #8a7a65; border: 1px solid #2a2a4a; "
+                "border-radius: 3px; padding: 0 8px; font-size: 10px; }"
+                "QPushButton:hover { background: #1a1a3a; }"
+                "QPushButton[active='true'] { color: #e2b96f; border-color: #e2b96f; }"
+            )
+            btn.clicked.connect(lambda _, lbl=label: self._on_category_filter(lbl))
+            self._filter_buttons[label] = btn
+            filter_row.addWidget(btn)
+        filter_row.addStretch()
+        layout.addLayout(filter_row)
+        self._set_active_filter("All")
+
         # Danger legend
         legend_row = QHBoxLayout()
         legend_row.setSpacing(10)
@@ -104,14 +129,31 @@ class ExpeditionPanel(QWidget):
         note.setWordWrap(True)
         layout.addWidget(note)
 
+    def _on_category_filter(self, label: str):
+        self._set_active_filter(label)
+        self._on_search(self._search.text())
+
+    def _set_active_filter(self, label: str):
+        self._active_category = None if label == "All" else label
+        for btn_label, btn in self._filter_buttons.items():
+            btn.setProperty("active", "true" if btn_label == label else "false")
+            btn.style().unpolish(btn)
+            btn.style().polish(btn)
+
     def _on_search(self, text: str):
         query = text.strip().lower()
+        pool = self._all_remnants
+
+        # Apply category filter first
+        if self._active_category:
+            pool = [r for r in pool if r.get("category") == self._active_category]
+
         if not query:
-            self._render_remnants(self._all_remnants)
+            self._render_remnants(pool)
             return
 
         filtered = [
-            r for r in self._all_remnants
+            r for r in pool
             if query in r.get("keyword", "").lower()
             or query in r.get("effect", "").lower()
             or query in r.get("category", "").lower()
