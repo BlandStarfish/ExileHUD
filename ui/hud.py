@@ -40,6 +40,9 @@ from ui.widgets.scarab_panel import ScarabPanel
 from ui.widgets.breach_panel import BreachPanel
 from ui.widgets.delirium_panel import DeliriumPanel
 from ui.widgets.currency_ref_panel import CurrencyRefPanel
+from ui.widgets.incursion_panel import IncursionPanel
+from ui.widgets.fossil_panel import FossilPanel
+from ui.widgets.maven_panel import MavenPanel
 
 
 DARK_BG = "#1a1a2e"
@@ -82,7 +85,10 @@ _INFO_SCARABS         = 4
 _INFO_BREACH          = 5
 _INFO_DELIRIUM        = 6
 _INFO_CURRENCY_REF    = 7
-_INFO_SETTINGS        = 8
+_INFO_INCURSION       = 8
+_INFO_FOSSILS         = 9
+_INFO_MAVEN           = 10
+_INFO_SETTINGS        = 11
 
 
 class HUD(QMainWindow):
@@ -233,6 +239,9 @@ class HUD(QMainWindow):
         self._breach_panel           = BreachPanel()
         self._delirium_panel         = DeliriumPanel()
         self._currency_ref_panel     = CurrencyRefPanel()
+        self._incursion_panel        = IncursionPanel()
+        self._fossil_panel           = FossilPanel()
+        self._maven_panel            = MavenPanel()
         self._currency_flip_panel    = CurrencyFlipPanel(currency_flip) if currency_flip else QWidget()
         self._lab_panel              = LabPanel(lab_tracker) if lab_tracker else QWidget()
 
@@ -283,7 +292,7 @@ class HUD(QMainWindow):
         self._inner_tabs.append(end_tabs)
         outer_tabs.addTab(end_tabs, "Endgame")             # _GRP_ENDGAME   = 2
 
-        # Info group: Bestiary · Expedition · Syndicate · Vendor · Scarabs · Breach · Delirium · Currency · Settings
+        # Info group: Bestiary · Expedition · Syndicate · Vendor · Scarabs · Breach · Delirium · Currency · Incursion · Fossils · Maven · Settings
         info_tabs = _make_inner()
         info_tabs.addTab(self._bestiary_panel,       "Bestiary")   # _INFO_BESTIARY       = 0
         info_tabs.addTab(self._expedition_panel,     "Expedition") # _INFO_EXPEDITION     = 1
@@ -293,7 +302,10 @@ class HUD(QMainWindow):
         info_tabs.addTab(self._breach_panel,         "Breach")     # _INFO_BREACH         = 5
         info_tabs.addTab(self._delirium_panel,       "Delirium")   # _INFO_DELIRIUM       = 6
         info_tabs.addTab(self._currency_ref_panel,   "Currency")   # _INFO_CURRENCY_REF   = 7
-        info_tabs.addTab(self._settings_panel,       "Settings")   # _INFO_SETTINGS       = 8
+        info_tabs.addTab(self._incursion_panel,      "Incursion")  # _INFO_INCURSION      = 8
+        info_tabs.addTab(self._fossil_panel,         "Fossils")    # _INFO_FOSSILS        = 9
+        info_tabs.addTab(self._maven_panel,          "Maven")      # _INFO_MAVEN          = 10
+        info_tabs.addTab(self._settings_panel,       "Settings")   # _INFO_SETTINGS       = 11
         self._inner_tabs.append(info_tabs)
         outer_tabs.addTab(info_tabs, "Info")                       # _GRP_INFO            = 3
 

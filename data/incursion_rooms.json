@@ -1,0 +1,175 @@
+{
+  "_comment": "PoE Incursion Temple room reference. Each room has a 3-tier chain (T1/T2/T3). T3 is the max upgrade.",
+  "_note": "Priority: must_have = upgrade every time; high = upgrade when possible; medium = situational; low = generally skip",
+  "rooms": [
+    {
+      "t1": "Antechamber",
+      "t2": "Hall of Offerings",
+      "t3": "Apex of Ascension",
+      "category": "Boss",
+      "priority": "must_have",
+      "drops": "Omnitect boss fight (T3). Drops Sacred Vessels (used for Vessel of Vinktar), ilvl 83 Incursion-influenced items, and Incursion-exclusive uniques (Apep's Slumber, Coward's Legacy, etc.).",
+      "notes": "The boss room. Always the same layout slot. Sacred Vessels are required for Vessel of Vinktar crafting. Highest item level in the temple."
+    },
+    {
+      "t1": "Corruption Chamber",
+      "t2": "Catalyst of Corruption",
+      "t3": "Locus of Corruption",
+      "category": "Crafting",
+      "priority": "must_have",
+      "drops": "Double-corrupts items placed on the altar. Possible outcomes: two implicits, bricks item, changes base type, or adds a vaal implicit. Only source of double-vaaled implicits outside of Vaal Temple.",
+      "notes": "Top priority room. A double-corrupt can produce items with two powerful implicits worth hundreds of divines. Always upgrade to T3."
+    },
+    {
+      "t1": "Gemcutter's Workshop",
+      "t2": "Department of Thaumaturgy",
+      "t3": "Doryani's Institute",
+      "category": "Gems",
+      "priority": "high",
+      "drops": "Quality-modified gems (up to 23% quality), Vaal gems including rare Vaal skills, gem experience tomes. T3 improves both quantity and quality of gem drops.",
+      "notes": "Best source of Vaal gem variants. Useful for farming Vaal skills (Vaal Summon Skeletons, Vaal Haste, etc.) and high-quality gem templates."
+    },
+    {
+      "t1": "Explosives Room",
+      "t2": "Demolition Lab",
+      "t3": "Shrine of Unmaking",
+      "category": "Crafting",
+      "priority": "high",
+      "drops": "Orbs of Unmaking (remove charged sockets), Vaal Orbs, Orbs of Scouring, and other socket-manipulation currency. T3 reliably drops Orbs of Unmaking.",
+      "notes": "Orbs of Unmaking are valuable for removing linked sockets without bricking items. Good farming target for socket crafters."
+    },
+    {
+      "t1": "Vault",
+      "t2": "Jewellery Museum",
+      "t3": "Palace of Wealth",
+      "category": "Currency",
+      "priority": "high",
+      "drops": "Currency chests containing a range of orbs (Chaos, Exalted, Regal, etc.). T3 significantly improves currency quantity and rarity.",
+      "notes": "Consistent raw currency income. In a well-rolled temple, Palace of Wealth alone can cover the temple cost."
+    },
+    {
+      "t1": "Splinter Research Lab",
+      "t2": "Hybridisation Chamber",
+      "t3": "Breach Containment Chamber",
+      "category": "Breach",
+      "priority": "high",
+      "drops": "Vaal Breachstones guaranteed at T3. Also drops Breach Splinters and Breachstones of all types.",
+      "notes": "Only consistent source of Vaal Breachstones without farming Breach domains. Very valuable for Uber Breach farming."
+    },
+    {
+      "t1": "Surveyor's Study",
+      "t2": "Office of Cartography",
+      "t3": "Atlas of Worlds",
+      "category": "Maps",
+      "priority": "high",
+      "drops": "Map drops (T12–T16), Cartographer's Sextants, unique maps. T3 guarantees multiple high-tier map drops and extra sextants.",
+      "notes": "Best room for sustaining high-tier atlas progression. Sextants add up over many temple runs."
+    },
+    {
+      "t1": "Strongbox Chamber",
+      "t2": "Hall of Locks",
+      "t3": "Vault of the Surveyors",
+      "category": "Strongboxes",
+      "priority": "medium",
+      "drops": "Multiple strongboxes including unique strongboxes and Cartographer's Strongboxes. T3 includes additional rare/unique strongboxes.",
+      "notes": "Good for item farming runs. Cartographer's Strongboxes provide maps; unique strongboxes can drop high-value items. Less reliable than Palace of Wealth for raw currency."
+    },
+    {
+      "t1": "Armourer's Workshop",
+      "t2": "Armoury",
+      "t3": "Chamber of Iron",
+      "category": "Items",
+      "priority": "medium",
+      "drops": "Weapons and armour pieces (body armours, helmets, shields) with Incursion influence (Citaqualotl mods for physical damage/armor). ilvl 80+ at T3.",
+      "notes": "Good for farming physical damage weapon bases and armour bases with Incursion influence. Less universally useful than currency/crafting rooms."
+    },
+    {
+      "t1": "Jeweller's Workshop",
+      "t2": "Jewellery Forge",
+      "t3": "Glittering Halls",
+      "category": "Items",
+      "priority": "medium",
+      "drops": "Rings, amulets, and belts with Incursion influence (Matatl mods for resistances/life). Good bases for crafting jewellery with elemental resistances.",
+      "notes": "Useful when targeting life/resistance jewellery crafting bases. Less impactful compared to meta crafting rooms."
+    },
+    {
+      "t1": "Pools of Restoration",
+      "t2": "Sanctum of Vitality",
+      "t3": "Sanctum of Immortality",
+      "category": "Flask",
+      "priority": "low",
+      "drops": "Elixir of Immortality (instantly restores life, mana, and energy shield — works only inside the Temple). Also drops unique flasks.",
+      "notes": "Temple-specific flask has no value outside the Temple. Unique flask drops can occasionally be valuable but not a reliable target."
+    },
+    {
+      "t1": "Torment Cells",
+      "t2": "Torture Chamber",
+      "t3": "Sadist's Den",
+      "category": "Monsters",
+      "priority": "medium",
+      "drops": "Tormented Spirits are released, possessing monsters. Possessed monsters drop extra items and currency. T3 has multiple high-power spirits.",
+      "notes": "Excellent if you're clearing the temple efficiently. Tormented spirits significantly improve loot from monster kills. Synergises well with a currency-focused run."
+    },
+    {
+      "t1": "Flame Workshop",
+      "t2": "Omnitect Forge",
+      "t3": "Crucible of Flame",
+      "category": "Items",
+      "priority": "low",
+      "drops": "Items with fire damage or fire resistance modifiers. Drops weapons and armour with fire-related Incursion mods.",
+      "notes": "Niche — only useful for fire-specific builds. Generally skip in favour of Corruption or currency rooms."
+    },
+    {
+      "t1": "Lightning Workshop",
+      "t2": "Omnitect Heart",
+      "t3": "Conduit of Lightning",
+      "category": "Items",
+      "priority": "low",
+      "drops": "Items with lightning damage or lightning resistance mods. Drops weapons and armour with lightning-related Incursion mods.",
+      "notes": "Niche — only useful for lightning-specific builds. Generally skip."
+    },
+    {
+      "t1": "Frost Workshop",
+      "t2": "Omnitect Crystal",
+      "t3": "Glacier of Undying",
+      "category": "Items",
+      "priority": "low",
+      "drops": "Items with cold damage or cold resistance mods. Drops weapons and armour with cold-related Incursion mods.",
+      "notes": "Niche — only useful for cold-specific builds. Generally skip."
+    },
+    {
+      "t1": "Trap Workshop",
+      "t2": "Temple Defense Workshop",
+      "t3": "Defense Research Lab",
+      "category": "Defenses",
+      "priority": "low",
+      "drops": "Adds defensive mechanisms to the temple (traps, turrets). Slightly more monster density from triggered traps. Drops armour-focused gear.",
+      "notes": "Minimal loot value. Not worth upgrading unless no better option is available in that tile."
+    },
+    {
+      "t1": "Poison Garden",
+      "t2": "Cultivar Chamber",
+      "t3": "Toxic Grove",
+      "category": "Items",
+      "priority": "low",
+      "drops": "Chaos-damage and ailment-related items with Tacati mods (chaos damage, poison chance). Can drop Concoctions (hybrid life/mana flasks).",
+      "notes": "Only relevant for chaos or poison builds looking for specific bases. Otherwise low priority."
+    },
+    {
+      "t1": "Pits",
+      "t2": "Tunnels",
+      "t3": "Chasm",
+      "category": "Passage",
+      "priority": "low",
+      "drops": "Connects rooms and adds additional combat areas with basic monster drops. No unique drops at T3.",
+      "notes": "Passage room — useful only for connecting isolated rooms. No direct loot value."
+    }
+  ],
+  "tips": [
+    "Always upgrade the Apex of Ascension and Locus of Corruption — they are the highest-value rooms every run.",
+    "Architects in the same room compete: killing one locks the other out. Choose which chain to keep each encounter.",
+    "Two room slots of the same type can coexist on different floors — both can be upgraded independently.",
+    "The temple resets each league. You accumulate 11 Incursion encounters before the temple is complete.",
+    "Connected rooms are required to access the boss. Ensure a path to the Apex of Ascension exists."
+  ]
+}

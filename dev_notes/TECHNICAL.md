@@ -680,3 +680,43 @@ _INFO_SETTINGS shifted from 2 to 3 in hud.py.
   9 tabs in Info group after H1-H3 addition (Bestiary/Expedition/Syndicate/Vendor/Scarabs/
   Breach/Delirium/Currency/Settings). Qt scroll buttons (setUsesScrollButtons(True)) handle
   overflow. _INFO_SETTINGS is now index 8. Shifts by +1 each expansion round.
+
+## Session 28 Additions
+
+### New data files
+- data/incursion_rooms.json — 18 Incursion temple room chains
+  Schema: {t1, t2, t3, category, priority, drops, notes}
+  Valid priorities: must_have, high, medium, low
+  Also: tips[] array
+- data/fossils.json — 25 Delve fossils + resonator reference
+  Schema: {name, rarity, min_depth, adds_tags, blocks_tags, effect, crafting_use, notes}
+  Valid rarities: common, uncommon, rare, very_rare
+  Also: resonators{} dict (Primitive/Potent/Powerful/Prime Alchemical Resonator), tips[]
+- data/maven_invitations.json — 6 Maven invitations
+  Schema: {name, difficulty, witness_groups[], reward, notes}
+  witness_groups schema: {boss, found_in, notes}
+  Valid difficulties: Beginner, Intermediate, Advanced, Endgame (pinnacle)
+  Also: maven_fight{requirement, access, rewards, notes}, how_maven_works, tips[]
+
+### IncursionPanel priority filter (Session 28)
+  Same pattern as CurrencyRefPanel category filter. Button label -> key mapping via
+  lower() + replace(" ","_"). Priority color map:
+    must_have=RED (#e05050), high=ORANGE (#e8864a), medium=TEAL (#4ae8c8), low=DIM (#8a7a65)
+  Cards show T1->T2->T3 chain (T3 in ACCENT gold), priority badge, and category tag.
+
+### FossilPanel adds/blocks design (Session 28)
+  adds_tags and blocks_tags shown on a single QHBoxLayout row.
+  Row is omitted entirely if both lists are empty (Shuddering, Perfect, Fractured fossils
+  work via mod bias or special mechanics, not tag filtering).
+  Rarity border colors: common=TEAL, uncommon=ACCENT, rare=ORANGE, very_rare=RED.
+
+### MavenPanel nested search (Session 28)
+  Search checks top-level fields first, then iterates witness_groups[] on each invitation.
+  Uses break after first matching witness_group to avoid appending an invitation twice.
+  maven_fight footer label is placed after the scroll area (not inside it) so it is
+  always visible regardless of search state. Pattern parallels DeliriumPanel footer.
+
+### Info group tab count (Session 28)
+  12 tabs after I1-I3 addition (Bestiary/Expedition/Syndicate/Vendor/Scarabs/Breach/
+  Delirium/Currency/Incursion/Fossils/Maven/Settings).
+  _INFO_SETTINGS is now index 11.

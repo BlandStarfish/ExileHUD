@@ -209,6 +209,36 @@ These features were auto-approved after all F1–F3 items reached completion. Im
 
 ---
 
+## Expansion Roadmap Round 5 (Auto-Approved 2026-03-25)
+
+These features were auto-approved after all H1–H3 items reached 9+/10 completion. Implement in priority order listed.
+
+### I1. Incursion Temple Room Reference ✅ IMPLEMENTED (Session 28)
+- Static reference for all 18 Alva temple room chains (T1 → T2 → T3)
+- Each entry shows: full upgrade chain names, T3 drop summary, upgrade priority (must_have/high/medium/low), category, and notes
+- Priority filter: Must Have / High / Medium / Low + full-text search
+- Data source: data/incursion_rooms.json (18 room chains, curated)
+- ui/widgets/incursion_panel.py; added to Info group as "Incursion" tab
+- **Rationale:** Incursion is a permanent mechanic. During Incursion encounters, players must decide in real time which architect to kill (keeping one room chain, removing the other). A quick priority reference eliminates guesswork and maximises temple value.
+
+### I2. Delve Fossil Guide ✅ IMPLEMENTED (Session 28)
+- Static reference for all major Delve fossils (25 entries) with add tags, block tags, min depth, and crafting applications
+- Rarity filter: Common / Uncommon / Rare / Very Rare + full-text search (name, tag, crafting use)
+- Resonator slot reference (Primitive through Prime) shown as compact header row
+- Data source: data/fossils.json (25 fossils, resonators, tips)
+- ui/widgets/fossil_panel.py; added to Info group as "Fossils" tab
+- **Rationale:** Delve fossil crafting is a premier crafting method. The adds/blocks tag system is complex and not visible in-game. Having a searchable fossil reference in the overlay ("which fossil blocks chaos?") saves significant time vs wiki lookups.
+
+### I3. Maven Boss Witness Guide ✅ IMPLEMENTED (Session 28)
+- Static reference for all 6 Maven invitations: witness requirements, how to access each boss, reward summary
+- Full-text search across invitation names, boss names, and access locations
+- Maven fight unlock requirements shown as always-visible footer
+- Data source: data/maven_invitations.json (6 invitations, maven_fight, tips)
+- ui/widgets/maven_panel.py; added to Info group as "Maven" tab
+- **Rationale:** Maven progression requires completing specific sets of boss witnesses. Players frequently forget which invitation requires which bosses, or how to access fragment-gated bosses (Shaper, Elder, Breach Lords). An in-overlay reference replaces repeated wiki trips.
+
+---
+
 ## Expansion Roadmap Round 4 (Auto-Approved 2026-03-25)
 
 These features were auto-approved after all G1–G3 items reached 9+/10 completion. Implement in priority order listed.

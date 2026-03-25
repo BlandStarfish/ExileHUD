@@ -1,0 +1,256 @@
+{
+  "_comment": "PoE Delve Fossil reference. Each fossil adds certain mod tags and blocks others, shaping the outcome of fossil crafting.",
+  "_note": "adds_tags = mod categories this fossil makes more likely. blocks_tags = mod categories this fossil prevents entirely. min_depth = approximate minimum Delve depth to find this fossil.",
+  "fossils": [
+    {
+      "name": "Pristine Fossil",
+      "rarity": "common",
+      "min_depth": 1,
+      "adds_tags": ["life", "energy shield"],
+      "blocks_tags": ["attack"],
+      "effect": "More likely to roll life and energy shield modifiers. Cannot roll attack modifiers.",
+      "crafting_use": "Guarantee life or ES mods on any base. Best for: life bases (body armour, helm, boots), ES bases. Combine with Dense for pure life+defence.",
+      "notes": "One of the highest-value fossils. Pristine + Dense is a classic life/armour crafting combo."
+    },
+    {
+      "name": "Scorched Fossil",
+      "rarity": "common",
+      "min_depth": 1,
+      "adds_tags": ["fire"],
+      "blocks_tags": ["cold"],
+      "effect": "More likely to roll fire damage and fire resistance modifiers. Cannot roll cold modifiers.",
+      "crafting_use": "Stack fire damage on weapons or fire resistance on armour. Useful for fire-damage builds targeting +fire pen or high fire res."
+    },
+    {
+      "name": "Frigid Fossil",
+      "rarity": "common",
+      "min_depth": 1,
+      "adds_tags": ["cold"],
+      "blocks_tags": ["fire"],
+      "effect": "More likely to roll cold damage and cold resistance modifiers. Cannot roll fire modifiers.",
+      "crafting_use": "Stack cold damage on weapons or cold resistance on armour. Pairs with Metallic to block fire+chaos from jewellery."
+    },
+    {
+      "name": "Metallic Fossil",
+      "rarity": "common",
+      "min_depth": 1,
+      "adds_tags": ["lightning"],
+      "blocks_tags": ["chaos"],
+      "effect": "More likely to roll lightning damage and lightning resistance modifiers. Cannot roll chaos modifiers.",
+      "crafting_use": "Stack lightning damage on weapons. Blocking chaos mods is useful when chaos res on the base is undesirable for multimod crafting."
+    },
+    {
+      "name": "Jagged Fossil",
+      "rarity": "common",
+      "min_depth": 1,
+      "adds_tags": ["physical"],
+      "blocks_tags": ["lightning"],
+      "effect": "More likely to roll physical damage and physical defence modifiers. Cannot roll lightning modifiers.",
+      "crafting_use": "Best for stacking physical damage on weapons. Combine with Serrated for high physical-attack weapons. Common for BV/Lacerate builds."
+    },
+    {
+      "name": "Aberrant Fossil",
+      "rarity": "common",
+      "min_depth": 1,
+      "adds_tags": ["chaos"],
+      "blocks_tags": ["physical"],
+      "effect": "More likely to roll chaos damage and chaos resistance modifiers. Cannot roll physical modifiers.",
+      "crafting_use": "Stack chaos damage on weapons or chaos resistance on armour. Useful for Chaos builds (Volkuur's, Poison builds, BV poison variants)."
+    },
+    {
+      "name": "Serrated Fossil",
+      "rarity": "common",
+      "min_depth": 1,
+      "adds_tags": ["attack"],
+      "blocks_tags": ["life"],
+      "effect": "More likely to roll attack modifiers (attack speed, accuracy, on-hit effects). Cannot roll life modifiers.",
+      "crafting_use": "Stacking attack speed, accuracy, and on-hit effects on weapons. Note: blocks life, so avoid on items needing life mods.",
+      "notes": "Strong for pure DPS weapons where life is irrelevant (e.g., 2H weapons used with HP stacking elsewhere)."
+    },
+    {
+      "name": "Bound Fossil",
+      "rarity": "common",
+      "min_depth": 1,
+      "adds_tags": ["minion"],
+      "blocks_tags": ["elemental"],
+      "effect": "More likely to roll minion modifiers (minion damage, minion speed, minion life). Cannot roll elemental modifiers.",
+      "crafting_use": "Essential for Necromancer and minion build gear. Bound + Pristine for life + minion mods on wands/sceptres/helmets."
+    },
+    {
+      "name": "Lucent Fossil",
+      "rarity": "common",
+      "min_depth": 1,
+      "adds_tags": ["mana"],
+      "blocks_tags": ["physical"],
+      "effect": "More likely to roll mana modifiers (mana, mana regeneration, mana cost reduction). Cannot roll physical modifiers.",
+      "crafting_use": "For mana-stacking builds (Archmage, Hierophant). Combine with Pristine for life+mana on body armour."
+    },
+    {
+      "name": "Dense Fossil",
+      "rarity": "common",
+      "min_depth": 1,
+      "adds_tags": ["defense"],
+      "blocks_tags": ["elemental"],
+      "effect": "More likely to roll defence modifiers (armour, evasion, energy shield values). Cannot roll elemental modifiers.",
+      "crafting_use": "Stack pure defence values (armour, evasion, ES) on items. Dense + Pristine is the classic armour+life crafting combo.",
+      "notes": "Blocking elemental mods means no resistances — plan accordingly."
+    },
+    {
+      "name": "Corroded Fossil",
+      "rarity": "common",
+      "min_depth": 1,
+      "adds_tags": ["ailment"],
+      "blocks_tags": ["life"],
+      "effect": "More likely to roll ailment modifiers (chance to ignite/bleed/poison, ailment damage). Cannot roll life modifiers.",
+      "crafting_use": "Ailment builds (ignite Elementalist, bleed Gladiator, poison Pathfinder). Avoid when life is needed."
+    },
+    {
+      "name": "Aetheric Fossil",
+      "rarity": "common",
+      "min_depth": 1,
+      "adds_tags": ["aoe"],
+      "blocks_tags": ["physical"],
+      "effect": "More likely to roll AoE modifiers (AoE radius, AoE damage). Cannot roll physical modifiers.",
+      "crafting_use": "AoE spellcaster weapons and wands. Less commonly used; AoE mods are relatively narrow pool."
+    },
+    {
+      "name": "Shuddering Fossil",
+      "rarity": "uncommon",
+      "min_depth": 40,
+      "adds_tags": [],
+      "blocks_tags": [],
+      "effect": "Can roll mods that normally cannot appear together (conflicting tag rules ignored). Produces unusual mod combinations, some extremely powerful.",
+      "crafting_use": "Expensive crafting for unusual synergies. Used when targeting specific mod combos that normally cannot coexist. Very RNG.",
+      "notes": "Most valuable when seeking specific conflicting combinations. High variance — can produce mirror-tier items or complete bricks."
+    },
+    {
+      "name": "Perfect Fossil",
+      "rarity": "uncommon",
+      "min_depth": 40,
+      "adds_tags": [],
+      "blocks_tags": [],
+      "effect": "Sets item quality to exactly 30% (maximum possible quality without quality crafting). No other changes to modifiers.",
+      "crafting_use": "Pre-crafting step to maximise quality before rolling mods. Essential for weapons (higher physical DPS) and flasks.",
+      "notes": "Apply before any other crafting. Quality affects implicit calculations for some bases. Only use on a white (normal) item."
+    },
+    {
+      "name": "Gilded Fossil",
+      "rarity": "uncommon",
+      "min_depth": 40,
+      "adds_tags": ["quantity"],
+      "blocks_tags": [],
+      "effect": "More likely to roll item quantity and item rarity modifiers.",
+      "crafting_use": "Rolling IIQ/IIR on flasks (for MF characters) or MF gear bases. Niche but useful for dedicated MF builds."
+    },
+    {
+      "name": "Prismatic Fossil",
+      "rarity": "uncommon",
+      "min_depth": 40,
+      "adds_tags": ["resistance"],
+      "blocks_tags": [],
+      "effect": "More likely to roll elemental resistance modifiers (fire, cold, lightning, all resistances).",
+      "crafting_use": "Targeting high resistance rolls on rings, belts, and body armour. Useful for budget crafting or resistance-stacking builds.",
+      "notes": "One of the easier fossils for beginners — straightforward application and doesn't block anything."
+    },
+    {
+      "name": "Fundamental Fossil",
+      "rarity": "uncommon",
+      "min_depth": 40,
+      "adds_tags": ["elemental"],
+      "blocks_tags": ["physical"],
+      "effect": "More likely to roll elemental damage modifiers (added fire/cold/lightning damage). Cannot roll physical modifiers.",
+      "crafting_use": "Elemental wand or sceptre crafting for hybrid elemental spellcasters. Also useful for jewellery with multiple elemental damage mods."
+    },
+    {
+      "name": "Deft Fossil",
+      "rarity": "uncommon",
+      "min_depth": 40,
+      "adds_tags": ["speed"],
+      "blocks_tags": ["life"],
+      "effect": "More likely to roll speed modifiers (attack speed, cast speed, movement speed). Cannot roll life modifiers.",
+      "crafting_use": "Stacking cast speed on wands or attack speed on weapons. Combine with Serrated for maximum attack speed weapons."
+    },
+    {
+      "name": "Faceted Fossil",
+      "rarity": "rare",
+      "min_depth": 100,
+      "adds_tags": ["gem_level"],
+      "blocks_tags": ["speed"],
+      "effect": "More likely to roll gem level modifiers (+N to [gem name], +N to [skill type] gems). Cannot roll speed modifiers.",
+      "crafting_use": "Targeting +1 to specific skills or +2 to a gem type on wands, sceptres, staves. Essential for spellcaster wand crafting.",
+      "notes": "High depth required. Extremely valuable — Faceted + Pristine for +gems and ES on wands/sceptres is a top-tier combo."
+    },
+    {
+      "name": "Fractured Fossil",
+      "rarity": "rare",
+      "min_depth": 150,
+      "adds_tags": [],
+      "blocks_tags": [],
+      "effect": "Randomly fractures one modifier on the item, making it permanently fixed. The fractured mod cannot be removed by crafting.",
+      "crafting_use": "Lock in a perfect desired mod before multimodding. Extremely powerful — fracturing T1 life or a top DPS mod enables cost-effective crafting.",
+      "notes": "Applies to magic or rare items. The fractured mod is random — have multiple good mods on the item first for best results."
+    },
+    {
+      "name": "Bloodstained Fossil",
+      "rarity": "rare",
+      "min_depth": 150,
+      "adds_tags": ["drop_rate"],
+      "blocks_tags": [],
+      "effect": "More likely to roll item drop quantity/rarity modifiers and monster-drop-related effects.",
+      "crafting_use": "MF (magic find) gear crafting. Used for headhunter-adjacent setups or dedicated IIQ belt crafting."
+    },
+    {
+      "name": "Sanctified Fossil",
+      "rarity": "rare",
+      "min_depth": 150,
+      "adds_tags": [],
+      "blocks_tags": [],
+      "effect": "All numeric values on rolled modifiers are biased toward the higher end of their tier range. Does not change which mods appear — only the roll values.",
+      "crafting_use": "Maximising mod values on already-good items. Extremely valuable late in crafting to get top-roll values (e.g., T1 flat life rolling maximum 99 rather than 80).",
+      "notes": "Does not guarantee top-roll, but dramatically increases probability. Best used after locking desired mods via fracture or harvest."
+    },
+    {
+      "name": "Glyphic Fossil",
+      "rarity": "very_rare",
+      "min_depth": 200,
+      "adds_tags": ["inscription"],
+      "blocks_tags": [],
+      "effect": "Can roll enchantment-style modifiers that are normally only obtainable via the Labyrinth enchantment system.",
+      "crafting_use": "Targeting lab-style enchants (e.g., skill effect enchants) without running the Lab. Very rare and valuable.",
+      "notes": "Very deep delve required. Enchant pool is narrow; combine with targeted crafting for specific skills."
+    },
+    {
+      "name": "Hollow Fossil",
+      "rarity": "very_rare",
+      "min_depth": 250,
+      "adds_tags": [],
+      "blocks_tags": [],
+      "effect": "Creates an abyssal socket on the item (a special socket type that accepts Abyss Jewels). Item can have fewer regular sockets as a result.",
+      "crafting_use": "Adding abyssal sockets to gear for Abyss jewels builds (Darkness Enthroned, Abyss Jewel stacking).",
+      "notes": "Extremely rare. The only way to add an abyssal socket outside of Abyss items. Very deep delve required."
+    },
+    {
+      "name": "Tangled Fossil",
+      "rarity": "very_rare",
+      "min_depth": 200,
+      "adds_tags": [],
+      "blocks_tags": [],
+      "effect": "Can roll corrupted-implicit-style modifiers or combinations of mods from wildly different tag groups. May produce extremely powerful or nonsensical combinations.",
+      "crafting_use": "Ultra-high-end crafting to hit combinations impossible by other means. Very unpredictable.",
+      "notes": "Extremely rare and chaotic. Used by expert crafters chasing mirror-tier combinations. Not for beginners."
+    }
+  ],
+  "resonators": {
+    "Primitive Alchemical Resonator": {"slots": 1, "note": "1 fossil slot. Common, found at any depth."},
+    "Potent Alchemical Resonator": {"slots": 2, "note": "2 fossil slots. Found at moderate depths."},
+    "Powerful Alchemical Resonator": {"slots": 3, "note": "3 fossil slots. Found at deeper depths."},
+    "Prime Alchemical Resonator": {"slots": 4, "note": "4 fossil slots. Rare, requires deep delving."}
+  },
+  "tips": [
+    "Fossils work by re-rolling a rare item (like an Orb of Alchemy). The item must be white (normal rarity) or magic before applying.",
+    "Multiple fossils in a resonator stack their add/block effects. All blocks apply simultaneously.",
+    "Fractured Fossil is best used on an item that already has 1–2 excellent mods from other crafting methods.",
+    "Perfect Fossil should always be the first step — apply to a white item before any other crafting.",
+    "Sanctified Fossil is most valuable when you already have the right mods and want to maximize their numeric values."
+  ]
+}

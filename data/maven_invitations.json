@@ -1,0 +1,178 @@
+{
+  "_comment": "PoE Maven Boss Witness Guide. Maven watches you kill bosses and creates Invitations from grouped witnesses.",
+  "_note": "Each invitation requires 10 witnesses of each boss in its group. Killing a boss with Maven watching counts as 1 witness.",
+  "how_maven_works": "Unlock Maven by completing A8 story. Activate Maven's Beacon on a map device to invite her. She watches you kill bosses. After 10 witnesses for each boss in a group, she creates an Invitation. Defeat all invitation fights to unlock The Maven herself.",
+  "invitations": [
+    {
+      "name": "The Formed",
+      "difficulty": "Intermediate",
+      "witness_groups": [
+        {
+          "boss": "Drox, the Warlord",
+          "found_in": "Drox-influenced maps (Warlord influence, typically Haewark Hamlet / Tirn's End regions)",
+          "notes": "Warlord-influenced maps have yellow cracks on their icon. T11+ for reliable spawns."
+        },
+        {
+          "boss": "Veritania, the Redeemer",
+          "found_in": "Redeemer-influenced maps (Redeemer influence, typically Glennach Cairns / Lira Arthain regions)",
+          "notes": "Redeemer-influenced maps have blue snowflake patterns on their icon."
+        },
+        {
+          "boss": "Al-Hezmin, the Hunter",
+          "found_in": "Hunter-influenced maps (Hunter influence, typically Lex Ejoris / Lex Proxima regions)",
+          "notes": "Hunter-influenced maps have green vines on their icon."
+        },
+        {
+          "boss": "Baran, the Crusader",
+          "found_in": "Crusader-influenced maps (Crusader influence, typically New Vastir / Glennach Cairns regions)",
+          "notes": "Crusader-influenced maps have purple crosses on their icon."
+        }
+      ],
+      "reward": "Fighting The Formed gives a chance at Elderslayer unique items (e.g., Warlord's Mark ring mods) and Maven's Writ progress.",
+      "notes": "Requires completing all 4 Conqueror storyline defeats first to unlock regional influences."
+    },
+    {
+      "name": "The Twisted",
+      "difficulty": "Intermediate",
+      "witness_groups": [
+        {
+          "boss": "The Shaper",
+          "found_in": "Shaper Guardian maps (T16): Chimera, Hydra, Minotaur, Phoenix — then the Shaper himself (T17 equivalent via fragments)",
+          "notes": "Kill all 4 Shaper Guardians to unlock the Shaper fragment. Each guardian counts as a separate witness group."
+        },
+        {
+          "boss": "The Elder",
+          "found_in": "Elder Guardian maps (T16): Eradicator, Enslaver, Constrictor, Purifier — then the Elder (via fragments)",
+          "notes": "Elder Guardians are accessible via Synthesis fragments on the map device."
+        },
+        {
+          "boss": "Venarius, the Architect",
+          "found_in": "The Cortex (Synthesis map boss, T17 equivalent)",
+          "notes": "Access via 4 Synthesis Reliquary fragments on the map device."
+        }
+      ],
+      "reward": "Shaper/Elder/Synthesis unique items. Maven's Writ progress.",
+      "notes": "Requires Shaper and Elder storylines to be completed. Fragment sets must be assembled separately."
+    },
+    {
+      "name": "The Hidden",
+      "difficulty": "Advanced",
+      "witness_groups": [
+        {
+          "boss": "The Purifier (Elder Guardian)",
+          "found_in": "Elder Guardian map set (Synthesis fragments + map device)",
+          "notes": ""
+        },
+        {
+          "boss": "The Constrictor (Elder Guardian)",
+          "found_in": "Elder Guardian map set",
+          "notes": ""
+        },
+        {
+          "boss": "The Enslaver (Elder Guardian)",
+          "found_in": "Elder Guardian map set",
+          "notes": ""
+        },
+        {
+          "boss": "The Eradicator (Elder Guardian)",
+          "found_in": "Elder Guardian map set",
+          "notes": ""
+        }
+      ],
+      "reward": "Synthesis and Elder Guardian unique items. Maven's Writ progress.",
+      "notes": "All four Elder Guardians must each be witnessed 10 times."
+    },
+    {
+      "name": "The Forgotten",
+      "difficulty": "Advanced",
+      "witness_groups": [
+        {
+          "boss": "Xoph, Dark Embers (Breach Lord)",
+          "found_in": "Xoph's Breachstone (map device: 1× Xoph's Breachstone)",
+          "notes": "Requires Xoph's Breachstone or Charged/Enriched/Pure tier. Maven watches inside the Breachstone domain."
+        },
+        {
+          "boss": "Tul, Creeping Avalanche (Breach Lord)",
+          "found_in": "Tul's Breachstone",
+          "notes": ""
+        },
+        {
+          "boss": "Esh, Forked Thought (Breach Lord)",
+          "found_in": "Esh's Breachstone",
+          "notes": ""
+        },
+        {
+          "boss": "Uul-Netol, Unburdened Flesh (Breach Lord)",
+          "found_in": "Uul-Netol's Breachstone",
+          "notes": ""
+        },
+        {
+          "boss": "Chayula, Who Dreamt (Breach Lord)",
+          "found_in": "Chayula's Breachstone",
+          "notes": "Chayula is the hardest Breach Lord — tanky and chaotic damage. Prepare accordingly."
+        }
+      ],
+      "reward": "Breach unique items (Berek's rings, Xoph's unique items). Maven's Writ progress.",
+      "notes": "Each Breachstone run counts as 1 witness for that Breach Lord. Requires 50 Breachstone runs per lord (10 witnesses × 5 lords). Expensive to complete."
+    },
+    {
+      "name": "The Elderslayers",
+      "difficulty": "Advanced",
+      "witness_groups": [
+        {
+          "boss": "Sirus, Awakener of Worlds",
+          "found_in": "Complete all 4 Conqueror storyline cycles (A1-A8), then fight Sirus at the centre of the Atlas (costs 4 Conqueror sets)",
+          "notes": "Sirus is T17 difficulty. The highest difficulty regular boss. Requires all 4 Conquerors to be defeated in one cycle."
+        }
+      ],
+      "reward": "Sirus unique items (Bottled Faith, Watcher's Eye via Baran path). Maven's Writ progress.",
+      "notes": "Only Sirus is in this group. 10 Sirus kills required."
+    },
+    {
+      "name": "The Feared",
+      "difficulty": "Endgame (pinnacle)",
+      "witness_groups": [
+        {
+          "boss": "Uber Atziri",
+          "found_in": "Alluring Abyss (4× Sacrifice at Dusk/Midnight/Dawn/Noon)",
+          "notes": "Uber Atziri is a T16 pinnacle boss. Reflections are lethal — do not hit during split phase."
+        },
+        {
+          "boss": "Uber Elder",
+          "found_in": "The Shaper's Realm at T17 using fragments (4× Guardian fragments + Elder fragment)",
+          "notes": "Shaper and Elder fight together. Highly demanding mechanically."
+        },
+        {
+          "boss": "Uber Cortex",
+          "found_in": "The Cortex (4× Synthesis Reliquary Key fragments)",
+          "notes": ""
+        },
+        {
+          "boss": "Chayula, Who Dreamt",
+          "found_in": "Chayula's Pure Breachstone or Charged Breachstone",
+          "notes": ""
+        },
+        {
+          "boss": "Sirus, Awakener of Worlds",
+          "found_in": "Standard Sirus fight (4 Conqueror cycle)",
+          "notes": ""
+        }
+      ],
+      "reward": "Maven's Writ, rare invitation-exclusive drops, Maven currency items.",
+      "notes": "The Feared is the most difficult invitation. Fighting and defeating The Maven herself requires completing The Feared plus all other invitations. The Maven drops Elevated Modifiers and unique jewels."
+    }
+  ],
+  "maven_fight": {
+    "requirement": "Complete all invitations (The Formed, The Twisted, The Hidden, The Forgotten, The Elderslayers, The Feared) to unlock The Maven fight.",
+    "access": "10× Maven's Writ on the map device opens The Maven's Crucible.",
+    "rewards": "Maven's Writ (for future runs), Elevated Modifier items (the only source), unique jewels (The Shaper's Presence, Voices, etc.).",
+    "notes": "The Maven is one of the hardest pinnacle bosses. Her memory game phase requires memorizing and avoiding specific floor tiles. Highly rewarding."
+  },
+  "tips": [
+    "Maven's Beacon must be active on the map device when you enter a map for the kill to count as a witness.",
+    "Maven will occasionally invite herself mid-map to observe — this still counts as a witness even without the Beacon.",
+    "Invitation fights drop Maven's Writ shards (4 shards = 1 Writ). Collect Writs to fight The Maven.",
+    "You can witness the same boss multiple times in one session — run influenced maps in bulk for efficient witnessing.",
+    "The Feared invitation requires the highest investment. Consider completing easier invitations first to practice the fight format."
+  ]
+}

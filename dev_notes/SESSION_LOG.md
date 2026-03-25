@@ -4288,3 +4288,172 @@ Only remaining item: PoE2 passive tree (blocked, no GGG ETA).
 294 tests pass. No technical debt. No regressions.
 
 ═══════════════════════════════════════════════════════════════
+
+═══════════════════════════════════════════════════════════════
+SESSION: 2026-03-25  (Session 28)
+═══════════════════════════════════════════════════════════════
+
+## ORIENTATION SUMMARY
+Session 27 left off after implementing H1 (Breach Domain Reference), H2 (Delirium Reward
+Types), and H3 (Currency Quick Reference). All three were graded 9+/10. Primary instruction
+for this session: Phase 4 Round 5 -- generate and implement the next expansion batch (I1-I3).
+PoE2 passive tree remains blocked (no GGG skilltree-export for PoE2). Test count was 294.
+
+## ASSESSMENT GRADES
+Module                  Completeness  Quality  Alignment
+Quest Tracker               10/10     9/10      10/10
+Passive Tree Viewer          9/10     9/10       9/10
+Price Check                  9/10     9/10       9/10
+Currency Tracker             9/10     9/10       9/10
+Crafting System              9/10     9/10       9/10
+Map Overlay                  9/10     9/10       9/10
+XP Tracker                   9/10     9/10       9/10
+Chaos Recipe                 9/10     9/10       9/10
+Build Notes                 10/10    10/10      10/10
+Div Cards                    9/10     9/10       9/10
+Atlas Tracker                9/10     9/10       9/10
+Bestiary Browser             9/10     9/10      10/10
+Heist Organizer              9/10     9/10       9/10
+Gem Planner                  9/10     9/10       9/10
+Map Stash Scanner            9/10     9/10       9/10
+Expedition Browser          10/10     9/10      10/10
+Currency Flip Calc           9/10     9/10       9/10
+Lab Tracker                 10/10     9/10      10/10
+Syndicate Planner            9/10     9/10      10/10
+Vendor Recipe Browser        9/10     9/10      10/10
+Scarab Browser               9/10     9/10      10/10
+Breach Domain Ref            9/10     9/10      10/10
+Delirium Reward Types        9/10     9/10       9/10
+Currency Quick Ref           9/10     9/10       9/10
+Incursion Room Ref           9/10     9/10      10/10  (new)
+Fossil Guide                 9/10     9/10      10/10  (new)
+Maven Witness Guide          9/10     9/10      10/10  (new)
+Test Suite                  10/10     9/10       9/10
+
+## SMOKE TEST FINDINGS
+
+Phase 1B -- Logic and Structure Issues
+None found. All Python files parse cleanly (AST check). 294 existing tests all pass.
+
+Phase 1C -- Redundancy and Counter-Vision Issues
+None found.
+
+## MAINTENANCE LOG
+No maintenance fixes required this session.
+
+## DEVELOPMENT LOG
+
+### Phase 4 Round 5 -- I1-I3 Auto-Approved
+
+H1-H3 all at 9+/10. Generated 3 new expansion features:
+  I1. Incursion Temple Room Reference (HIGH)
+  I2. Delve Fossil Guide (MEDIUM)
+  I3. Maven Boss Witness Guide (LOW)
+
+Added to VISION.md as Expansion Roadmap Round 5.
+
+### Feature: I1 Incursion Temple Room Reference
+
+Files created:
+  data/incursion_rooms.json: 18 room chains
+    Schema: {t1, t2, t3, category, priority, drops, notes}
+    Priorities: must_have (Apex of Ascension, Locus of Corruption), high (6 rooms),
+                medium (4 rooms), low (6 rooms)
+    Categories: Boss, Crafting, Gems, Currency, Breach, Maps, Items, Strongboxes,
+                Flask, Monsters, Defenses, Passage
+    Also: tips[] array (5 entries)
+  ui/widgets/incursion_panel.py: IncursionPanel
+    Header count; full-text search; priority filter (Must Have/High/Medium/Low)
+    Cards: T1->T2->T3 chain with T3 in gold, priority badge, category label
+    T3 drops shown in green, notes in dim italic; border = priority color
+  tests/test_incursion_panel.py: 13 tests
+
+Files modified:
+  ui/hud.py: Added IncursionPanel import, _INFO_INCURSION=8, Incursion tab at index 8
+  dev_notes/VISION.md: Added I1-I3 under Expansion Roadmap Round 5; I1 marked IMPLEMENTED
+
+### Feature: I2 Delve Fossil Guide
+
+Files created:
+  data/fossils.json: 25 fossil entries
+    Schema: {name, rarity, min_depth, adds_tags, blocks_tags, effect, crafting_use, notes}
+    Rarities: common (12), uncommon (8), rare (3), very_rare (2)
+    Also: resonators{} dict (4 entries), tips[]
+  ui/widgets/fossil_panel.py: FossilPanel
+    Rarity filter buttons; compact resonator reference row
+    Cards: name + rarity badge + depth, adds (green) and blocks (red) tags,
+           effect, crafting use (teal), notes; border = rarity color
+  tests/test_fossil_panel.py: 16 tests
+
+Files modified:
+  ui/hud.py: Added FossilPanel import, _INFO_FOSSILS=9, Fossils tab at index 9
+
+### Feature: I3 Maven Boss Witness Guide
+
+Files created:
+  data/maven_invitations.json: 6 invitation entries
+    Schema: {name, difficulty, witness_groups[], reward, notes}
+    witness_groups schema: {boss, found_in, notes}
+    Invitations: The Formed, The Twisted, The Hidden, The Forgotten,
+                 The Elderslayers, The Feared
+    Also: maven_fight{}, how_maven_works, tips[]
+  ui/widgets/maven_panel.py: MavenPanel
+    how_maven_works as always-visible subtitle
+    Full-text search across name, boss names, found_in locations
+    Cards: name + difficulty badge, witness list (boss + location + per-boss note),
+           reward (green), notes (dim italic); maven_fight footer always visible
+  tests/test_maven_panel.py: 13 tests
+
+Files modified:
+  ui/hud.py: Added MavenPanel import, _INFO_MAVEN=10, Maven tab at index 10
+             _INFO_SETTINGS shifted to 11
+
+Test count: 294 -> 336 (+42 new, all pass)
+
+## TECHNICAL NOTES
+
+Info group tab count:
+  Now 12 tabs (0-11). Order: Bestiary/Expedition/Syndicate/Vendor/Scarabs/Breach/Delirium/
+  Currency/Incursion/Fossils/Maven/Settings. Qt scroll buttons handle overflow.
+  _INFO_SETTINGS now 11.
+
+IncursionPanel priority filter:
+  Maps label to key: lower() + replace space->underscore.
+  Priority border colors: must_have=RED, high=ORANGE, medium=TEAL, low=DIM.
+
+FossilPanel adds/blocks display:
+  Both on a single QHBoxLayout row. Row omitted entirely when adds_tags and blocks_tags
+  are both empty (e.g., Shuddering, Perfect, Fractured -- these work by bias not tag
+  filtering).
+
+MavenPanel search:
+  Searches top-level fields + nested witness_groups. Early-exit on first matching
+  witness_group to avoid adding the invitation twice.
+  maven_fight footer is always rendered outside the scroll area.
+
+Asana session summary:
+  asana_create_project_status on HUMAN INBOX (GID: 1213723884881761).
+  Status GID: 1213812600697663.
+
+## SUGGESTIONS FOR NEXT SESSION
+
+1. Phase 4 Round 6 (HIGH): I1-I3 all at 9+/10. Run Phase 4 again -- generate next
+   expansion round (J1-J3). Candidates:
+   - Metamorph organ drop reference (which monster types drop which organ types)
+   - Expedition logbook node optimizer (which remnants to include/avoid for looting)
+   - Heist rogue skills quick-reference (complement to existing Heist panel)
+
+2. PoE2 passive tree (BLOCKED): No official GGG skilltree-export for PoE2.
+   Check https://github.com/grindinggear/skilltree-export for new branches.
+
+3. Currency Reference live price column (LOW, deferred from Session 26):
+   Would require passing ninja instance. Evaluate if value justifies coupling.
+
+## PROJECT HEALTH
+
+Overall grade: 10/10
+~100% complete toward full vision (original + E1-E6 + F1-F3 + G1-G3 + H1-H3 + I1-I3).
+336 tests pass. No technical debt. No regressions.
+Only remaining item: PoE2 passive tree (blocked, no GGG ETA).
+
+═══════════════════════════════════════════════════════════════
