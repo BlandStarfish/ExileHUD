@@ -131,6 +131,7 @@ class HUD(QMainWindow):
         self._settings_panel = SettingsPanel(
             self._config,
             on_opacity_change=self.setWindowOpacity,
+            state=self._state,
         )
 
         # Tab indices: Quests=0, Tree=1, Price=2, Currency=3, Crafting=4,

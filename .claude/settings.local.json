@@ -4,7 +4,15 @@
       "Bash(gh api:*)",
       "Bash(gh repo:*)",
       "Bash(git --version)",
-      "Bash(pip --version)"
+      "Bash(pip --version)",
+      "WebFetch(domain:pobb.in)",
+      "Bash(curl -s \"https://pobb.in/_aMiddHz8auY\" -L -A \"Mozilla/5.0\")",
+      "WebFetch(domain:api.pobb.in)",
+      "Bash(curl -s \"https://pobb.in/oembed.json?url=https://pobb.in/_aMiddHz8auY\" -L -A \"Mozilla/5.0\")",
+      "Bash(where python3:*)",
+      "Bash(where python:*)",
+      "Bash(where node:*)",
+      "Bash(where perl:*)"
     ]
   }
 }

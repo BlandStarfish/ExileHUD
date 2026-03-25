@@ -9,7 +9,7 @@ Changes take effect on the next app restart (except opacity, applied immediately
 from PyQt6.QtWidgets import (
     QWidget, QVBoxLayout, QHBoxLayout, QFormLayout, QScrollArea,
     QLabel, QLineEdit, QPushButton, QDoubleSpinBox,
-    QGroupBox, QFileDialog, QFrame,
+    QGroupBox, QFileDialog, QFrame, QMessageBox,
 )
 from PyQt6.QtCore import Qt
 from typing import Callable, Optional
@@ -32,14 +32,17 @@ _HOTKEY_LABELS = {
 
 
 class SettingsPanel(QWidget):
-    def __init__(self, config: dict, on_opacity_change: Optional[Callable[[float], None]] = None):
+    def __init__(self, config: dict, on_opacity_change: Optional[Callable[[float], None]] = None,
+                 state=None):
         """
         config             — the live config dict (from config.load())
         on_opacity_change  — optional callback(opacity: float) applied immediately on save
+        state              — AppState instance (for New Character reset)
         """
         super().__init__()
         self._config = config
         self._on_opacity_change = on_opacity_change
+        self._state = state
         self._build_ui()
 
     def _build_ui(self):
@@ -79,6 +82,19 @@ class SettingsPanel(QWidget):
         self._league.setStyleSheet(_field_style())
         self._league.setPlaceholderText("e.g. Standard")
         game_form.addRow(_lbl("League:"), self._league)
+
+        # New Character reset button (only shown when state is available)
+        if self._state is not None:
+            new_char_btn = QPushButton("New Character")
+            new_char_btn.setToolTip(
+                "Resets quest tracker and XP session for a fresh character.\n"
+                "Currency history, crafting queue, and notes are kept."
+            )
+            new_char_btn.clicked.connect(self._new_character)
+            new_char_row = QHBoxLayout()
+            new_char_row.addWidget(new_char_btn)
+            new_char_row.addStretch()
+            game_form.addRow(_lbl("Character:"), new_char_row)
 
         layout.addWidget(game_group)
 
@@ -150,6 +166,23 @@ class SettingsPanel(QWidget):
     # ------------------------------------------------------------------
     # Actions
     # ------------------------------------------------------------------
+
+    def _new_character(self):
+        reply = QMessageBox.question(
+            self,
+            "New Character",
+            "Reset quest tracker and XP session for a new character?\n\n"
+            "This will clear:\n"
+            "  • All completed quests\n"
+            "  • Passive / ascendancy point counts\n"
+            "  • Current XP tracking session\n\n"
+            "Currency history, crafting queue, and notes will be kept.",
+            QMessageBox.StandardButton.Yes | QMessageBox.StandardButton.Cancel,
+        )
+        if reply == QMessageBox.StandardButton.Yes:
+            self._state.reset_character()
+            self._status.setStyleSheet(f"color: {GREEN}; font-size: 11px;")
+            self._status.setText("Character reset. Quest tracker and XP session cleared.")
 
     def _browse_log(self):
         path, _ = QFileDialog.getOpenFileName(

@@ -20,6 +20,15 @@ RED    = "#e05050"
 _AUTO_POLL_INTERVAL_MS = 5 * 60 * 1000   # 5 minutes
 
 
+def _fmt_duration(minutes: float) -> str:
+    """Format a duration in minutes as a human-readable string (e.g. '2h 15m', '45m')."""
+    if minutes >= 60:
+        hours = int(minutes // 60)
+        mins  = int(minutes % 60)
+        return f"{hours}h {mins}m" if mins else f"{hours}h"
+    return f"{int(minutes)}m"
+
+
 def _fmt_xp(xp: int) -> str:
     """Format an XP value with M/K suffix for readability."""
     if xp >= 1_000_000_000:
@@ -173,12 +182,13 @@ class XPPanel(QWidget):
             self._elapsed_label.setText("")
             return
 
-        char         = data.get("char_name", "")
-        level        = data.get("level", 0)
-        base_level   = data.get("baseline_level", 0)
-        xp_gained    = data.get("xp_this_session", 0)
-        xp_hr        = data.get("xp_per_hr", 0)
-        elapsed      = data.get("elapsed_minutes", 0)
+        char           = data.get("char_name", "")
+        level          = data.get("level", 0)
+        base_level     = data.get("baseline_level", 0)
+        xp_gained      = data.get("xp_this_session", 0)
+        xp_hr          = data.get("xp_per_hr", 0)
+        elapsed        = data.get("elapsed_minutes", 0)
+        time_to_level  = data.get("time_to_level")   # minutes or None
 
         self._char_label.setText(char)
         if level != base_level and base_level > 0:
@@ -197,7 +207,11 @@ class XPPanel(QWidget):
         else:
             self._rate_label.setText("Session active — click Refresh XP to update")
 
-        self._elapsed_label.setText(f"{elapsed:.0f} min elapsed")
+        if time_to_level is not None and level < 100:
+            ttl_str = _fmt_duration(time_to_level)
+            self._elapsed_label.setText(f"{elapsed:.0f} min elapsed  •  ~{ttl_str} to level {level + 1}")
+        else:
+            self._elapsed_label.setText(f"{elapsed:.0f} min elapsed")
         self._poll_btn.setEnabled(True)
 
     # ------------------------------------------------------------------

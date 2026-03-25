@@ -450,3 +450,23 @@ Defaults to True (identified) when absent, which is the safe assumption.
 A single identified item in any slot drops unid_sets to 0 for that potential set.
 chaos_panel.py: "Unid" column added (5th column, teal color). Summary shows
 "N fully-unid set(s) → 2× yield" when unid_sets > 0.
+
+
+### state.py: _XP_TABLE (Session 15)
+Module-level dict mapping level (1-100) to cumulative total XP required to reach that level.
+_XP_TABLE[N] = total XP from character creation to reach level N.
+GGG character API "experience" field = same unit (cumulative, not level-relative).
+time_to_level = (_XP_TABLE[level+1] - experience) / xp_per_hr * 60  (minutes)
+Source: PathOfBuilding community repo (ExpTable.lua).
+pathofexile.wiki.gg blocks automated access (401/403). Use PoB or RePoE as fallback.
+
+### settings_panel.py: optional state parameter (Session 15)
+SettingsPanel accepts optional state=None parameter. When state is provided, a "New
+Character" button is shown in the Game group. Calls state.reset_character() after
+QMessageBox.question() confirmation. Backward compatible: state=None hides the button.
+
+### state.py: reset_character() (Session 15)
+Clears all character-specific fields: completed_quests, passive_points_used,
+ascendancy_points_used, and all xp_* fields. Preserves currency, crafting, zone.
+Fires two notifications: completed_quests ([]) and xp_session (None).
+Quest panel updates immediately. XP panel updates on next 5-min timer tick (not instant).
