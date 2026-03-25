@@ -36,6 +36,32 @@ ACCENT   = "#e2b96f"   # PoE gold-ish
 TEXT     = "#d4c5a9"
 SUBTEXT  = "#8a7a65"
 
+# Outer tab group indices
+_GRP_CHARACTER = 0
+_GRP_LOOT      = 1
+_GRP_ENDGAME   = 2
+_GRP_INFO      = 3
+
+# Inner tab indices within each group
+_CHAR_QUESTS = 0
+_CHAR_TREE   = 1
+_CHAR_XP     = 2
+_CHAR_NOTES  = 3
+
+_LOOT_PRICE    = 0
+_LOOT_CURRENCY = 1
+_LOOT_RECIPE   = 2
+_LOOT_DIVS     = 3
+
+_END_MAP     = 0
+_END_ATLAS   = 1
+_END_CRAFT   = 2
+_END_HEIST   = 3
+_END_GEMS    = 4
+
+_INFO_BESTIARY = 0
+_INFO_SETTINGS = 1
+
 
 class HUD(QMainWindow):
     def __init__(self, state, quest_tracker, price_checker, currency_tracker, crafting,
@@ -109,11 +135,9 @@ class HUD(QMainWindow):
         title_bar = self._make_title_bar()
         layout.addWidget(title_bar)
 
-        # Tab widget — one tab per module
-        tabs = QTabWidget()
-        tabs.tabBar().setUsesScrollButtons(True)
-        tabs.tabBar().setExpanding(False)
-        self._tabs = tabs
+        # Build all panels first, then wire into grouped tab structure
+        league = self._config.get("league", "Standard")
+        auto_scan = self._config.get("auto_scan_minutes", 0)
 
         self._quest_panel    = QuestPanel(quest_tracker)
         self._price_panel    = PricePanel()
@@ -121,26 +145,27 @@ class HUD(QMainWindow):
             currency_tracker,
             oauth_manager=self._oauth_manager,
             stash_api=self._stash_api,
-            league=self._config.get("league", "Standard"),
+            league=league,
         )
         self._crafting_panel = CraftingPanel(crafting)
         self._tree_panel     = PassiveTreePanel(
             quest_tracker,
             oauth_manager=self._oauth_manager,
             character_api=self._character_api,
-            league=self._config.get("league", "Standard"),
+            league=league,
         )
         self._map_panel      = MapPanel(map_overlay)
         self._xp_panel       = XPPanel(
             xp_tracker,
             oauth_manager=self._oauth_manager,
-            league=self._config.get("league", "Standard"),
+            league=league,
         )
         self._chaos_panel    = ChaosPanel(
             chaos_recipe,
             oauth_manager=self._oauth_manager,
             stash_api=self._stash_api,
-            league=self._config.get("league", "Standard"),
+            league=league,
+            auto_scan_minutes=auto_scan,
         )
         self._notes_panel    = NotesPanel()
         self._settings_panel = SettingsPanel(
@@ -152,7 +177,8 @@ class HUD(QMainWindow):
             div_tracker,
             oauth_manager=self._oauth_manager,
             stash_api=self._stash_api,
-            league=self._config.get("league", "Standard"),
+            league=league,
+            auto_scan_minutes=auto_scan,
         ) if div_tracker else QWidget()
         self._atlas_panel    = AtlasPanel(atlas_tracker) if atlas_tracker else QWidget()
         self._bestiary_panel = BestiaryPanel()
@@ -160,35 +186,67 @@ class HUD(QMainWindow):
             heist_planner,
             oauth_manager=self._oauth_manager,
             stash_api=self._stash_api,
-            league=self._config.get("league", "Standard"),
+            league=league,
         ) if heist_planner else QWidget()
         self._gem_panel = GemPanel(
             gem_planner,
             character_api=self._character_api,
             oauth_manager=self._oauth_manager,
-            league=self._config.get("league", "Standard"),
+            league=league,
         ) if gem_planner else QWidget()
 
-        # Tab indices: Quests=0, Tree=1, Price=2, Currency=3, Crafting=4,
-        #              Map=5, XP=6, Recipe=7, Notes=8, Settings=9,
-        #              Divs=10, Atlas=11, Bestiary=12, Heist=13, Gems=14
-        tabs.addTab(self._quest_panel,    "Quests")
-        tabs.addTab(self._tree_panel,     "Tree")
-        tabs.addTab(self._price_panel,    "Price")
-        tabs.addTab(self._currency_panel, "Currency")
-        tabs.addTab(self._crafting_panel, "Crafting")
-        tabs.addTab(self._map_panel,      "Map")
-        tabs.addTab(self._xp_panel,       "XP")
-        tabs.addTab(self._chaos_panel,    "Recipe")
-        tabs.addTab(self._notes_panel,    "Notes")
-        tabs.addTab(self._settings_panel, "Settings")
-        tabs.addTab(self._div_panel,      "Divs")
-        tabs.addTab(self._atlas_panel,    "Atlas")
-        tabs.addTab(self._bestiary_panel, "Bestiary")
-        tabs.addTab(self._heist_panel,    "Heist")
-        tabs.addTab(self._gem_panel,      "Gems")
+        # ── Outer tab widget (4 categories, evenly spaced) ─────────────
+        outer_tabs = QTabWidget()
+        outer_tabs.tabBar().setExpanding(True)
+        outer_tabs.setStyleSheet(f"""
+            QTabBar::tab {{ font-size: 11px; font-weight: bold; padding: 6px 10px; }}
+            QTabBar::tab:selected {{ color: {ACCENT}; border-bottom: 2px solid {ACCENT}; }}
+        """)
+        self._tabs = outer_tabs
+        self._inner_tabs: list[QTabWidget] = []
 
-        layout.addWidget(tabs)
+        def _make_inner() -> QTabWidget:
+            t = QTabWidget()
+            t.tabBar().setUsesScrollButtons(True)
+            t.tabBar().setExpanding(False)
+            return t
+
+        # Character group: Quests · Tree · XP · Notes
+        char_tabs = _make_inner()
+        char_tabs.addTab(self._quest_panel, "Quests")    # _CHAR_QUESTS = 0
+        char_tabs.addTab(self._tree_panel,  "Tree")      # _CHAR_TREE   = 1
+        char_tabs.addTab(self._xp_panel,    "XP")        # _CHAR_XP     = 2
+        char_tabs.addTab(self._notes_panel, "Notes")     # _CHAR_NOTES  = 3
+        self._inner_tabs.append(char_tabs)
+        outer_tabs.addTab(char_tabs, "Character")        # _GRP_CHARACTER = 0
+
+        # Loot group: Price · Currency · Recipe · Divs
+        loot_tabs = _make_inner()
+        loot_tabs.addTab(self._price_panel,    "Price")    # _LOOT_PRICE    = 0
+        loot_tabs.addTab(self._currency_panel, "Currency") # _LOOT_CURRENCY = 1
+        loot_tabs.addTab(self._chaos_panel,    "Recipe")   # _LOOT_RECIPE   = 2
+        loot_tabs.addTab(self._div_panel,      "Divs")     # _LOOT_DIVS     = 3
+        self._inner_tabs.append(loot_tabs)
+        outer_tabs.addTab(loot_tabs, "Loot")               # _GRP_LOOT      = 1
+
+        # Endgame group: Map · Atlas · Crafting · Heist · Gems
+        end_tabs = _make_inner()
+        end_tabs.addTab(self._map_panel,      "Map")      # _END_MAP   = 0
+        end_tabs.addTab(self._atlas_panel,    "Atlas")    # _END_ATLAS = 1
+        end_tabs.addTab(self._crafting_panel, "Crafting") # _END_CRAFT = 2
+        end_tabs.addTab(self._heist_panel,    "Heist")    # _END_HEIST = 3
+        end_tabs.addTab(self._gem_panel,      "Gems")     # _END_GEMS  = 4
+        self._inner_tabs.append(end_tabs)
+        outer_tabs.addTab(end_tabs, "Endgame")             # _GRP_ENDGAME   = 2
+
+        # Info group: Bestiary · Settings
+        info_tabs = _make_inner()
+        info_tabs.addTab(self._bestiary_panel, "Bestiary") # _INFO_BESTIARY = 0
+        info_tabs.addTab(self._settings_panel, "Settings") # _INFO_SETTINGS = 1
+        self._inner_tabs.append(info_tabs)
+        outer_tabs.addTab(info_tabs, "Info")               # _GRP_INFO      = 3
+
+        layout.addWidget(outer_tabs)
         self.setCentralWidget(root)
 
     def _make_title_bar(self) -> QWidget:
@@ -235,17 +293,20 @@ class HUD(QMainWindow):
     def toggle(self):
         self.hide() if self.isVisible() else self.show()
 
-    def show_passive_tree(self):
+    def _show_tab(self, group: int, inner: int):
+        """Navigate to a specific panel by group and inner tab index."""
         self.show()
-        self._tabs.setCurrentIndex(1)  # Tree tab
+        self._tabs.setCurrentIndex(group)
+        self._inner_tabs[group].setCurrentIndex(inner)
+
+    def show_passive_tree(self):
+        self._show_tab(_GRP_CHARACTER, _CHAR_TREE)
 
     def show_crafting(self):
-        self.show()
-        self._tabs.setCurrentIndex(4)  # Crafting=4
+        self._show_tab(_GRP_ENDGAME, _END_CRAFT)
 
     def show_map(self):
-        self.show()
-        self._tabs.setCurrentIndex(5)  # Map=5
+        self._show_tab(_GRP_ENDGAME, _END_MAP)
 
     def on_currency_clipboard(self, currency_name: str, count: int):
         """Called when a currency stack is Ctrl+C'd in-game."""

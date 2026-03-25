@@ -22,7 +22,7 @@ HERE = os.path.dirname(os.path.abspath(__file__))
 
 # config.py uses only stdlib — safe to import before pip install runs
 sys.path.insert(0, HERE)
-from config import DEFAULTS as _CFG_DEFAULTS
+from config import DEFAULTS as _CFG_DEFAULTS, CLIENT_LOG_PATHS as _LOG_PATHS
 
 # ─────────────────────────────────────────────
 # 1. Python version check
@@ -70,17 +70,28 @@ def setup_state():
     # Make a mutable copy so auto-detection doesn't mutate the imported dict
     cfg = dict(_CFG_DEFAULTS)
 
-    # Try to auto-detect PoE log path
-    candidates = [
-        r"C:\Program Files (x86)\Grinding Gear Games\Path of Exile\logs\Client.txt",
-        r"C:\Program Files\Grinding Gear Games\Path of Exile\logs\Client.txt",
-        os.path.expanduser(r"~\AppData\Local\Path of Exile\Client.txt"),
-    ]
+    # Prompt for game version
+    print("\n[Setup] Which version of Path of Exile are you running?")
+    print("  1) Path of Exile 1  (default)")
+    print("  2) Path of Exile 2")
+    version_input = input("  Enter 1 or 2 (or press Enter for PoE 1): ").strip()
+    if version_input == "2":
+        cfg["poe_version"] = "poe2"
+        print("[OK]  Game version set to PoE 2")
+    else:
+        cfg["poe_version"] = "poe1"
+        print("[OK]  Game version set to PoE 1")
+
+    # Try to auto-detect Client.txt for the selected version
+    raw_candidates = _LOG_PATHS.get(cfg["poe_version"], _LOG_PATHS["poe1"])
+    candidates = [os.path.expanduser(p) for p in raw_candidates]
     found_log = next((p for p in candidates if os.path.exists(p)), None)
     if found_log:
         cfg["client_log_path"] = found_log
         print(f"[OK]  Auto-detected PoE log: {found_log}")
     else:
+        # Fall back to the first candidate path as a reasonable default
+        cfg["client_log_path"] = candidates[0]
         print("[WARN] Could not auto-detect Client.txt — edit state/config.json manually")
 
     # Prompt for league name

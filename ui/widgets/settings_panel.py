@@ -8,13 +8,14 @@ Changes take effect on the next app restart (except opacity, applied immediately
 
 from PyQt6.QtWidgets import (
     QWidget, QVBoxLayout, QHBoxLayout, QFormLayout, QScrollArea,
-    QLabel, QLineEdit, QPushButton, QDoubleSpinBox,
+    QLabel, QLineEdit, QPushButton, QDoubleSpinBox, QSpinBox,
     QGroupBox, QFileDialog, QFrame, QMessageBox,
 )
 from PyQt6.QtCore import Qt
 from typing import Callable, Optional
 
 import config as cfg
+from config import CLIENT_LOG_PATHS as _LOG_PATHS
 
 ACCENT = "#e2b96f"
 TEXT   = "#d4c5a9"
@@ -78,6 +79,21 @@ class SettingsPanel(QWidget):
         log_row.addWidget(browse_btn)
         game_form.addRow(_lbl("Client.txt path:"), log_row)
 
+        # Quick-fill preset buttons for PoE1 / PoE2 default paths
+        preset_row = QHBoxLayout()
+        poe1_btn = QPushButton("PoE 1 path")
+        poe1_btn.setFixedWidth(80)
+        poe1_btn.setToolTip(_LOG_PATHS["poe1"][0])
+        poe1_btn.clicked.connect(lambda: self._log_path.setText(_LOG_PATHS["poe1"][0]))
+        poe2_btn = QPushButton("PoE 2 path")
+        poe2_btn.setFixedWidth(80)
+        poe2_btn.setToolTip(_LOG_PATHS["poe2"][0])
+        poe2_btn.clicked.connect(lambda: self._log_path.setText(_LOG_PATHS["poe2"][0]))
+        preset_row.addWidget(poe1_btn)
+        preset_row.addWidget(poe2_btn)
+        preset_row.addStretch()
+        game_form.addRow(_lbl("Path preset:"), preset_row)
+
         self._league = QLineEdit(self._config.get("league", ""))
         self._league.setStyleSheet(_field_style())
         self._league.setPlaceholderText("e.g. Standard")
@@ -113,6 +129,18 @@ class SettingsPanel(QWidget):
         self._opacity.setStyleSheet(_field_style())
         self._opacity.setToolTip("Overlay transparency (0.10 = nearly invisible, 1.0 = fully opaque).\nApplied immediately when you save.")
         overlay_form.addRow(_lbl("Opacity:"), self._opacity)
+
+        self._auto_scan = QSpinBox()
+        self._auto_scan.setRange(0, 120)
+        self._auto_scan.setSingleStep(5)
+        self._auto_scan.setValue(self._config.get("auto_scan_minutes", 0))
+        self._auto_scan.setStyleSheet(_field_style())
+        self._auto_scan.setToolTip(
+            "Auto-scan interval for Div Card and Chaos Recipe panels (minutes).\n"
+            "0 = disabled. Scans fire automatically when your PoE account is connected.\n"
+            "Requires restart to take effect."
+        )
+        overlay_form.addRow(_lbl("Auto-scan (min):"), self._auto_scan)
 
         layout.addWidget(overlay_group)
 
@@ -200,10 +228,11 @@ class SettingsPanel(QWidget):
             if inp.text().strip()
         }
         updates = {
-            "client_log_path": self._log_path.text().strip(),
-            "league":          self._league.text().strip(),
-            "overlay_opacity": self._opacity.value(),
-            "hotkeys":         hotkeys,
+            "client_log_path":  self._log_path.text().strip(),
+            "league":           self._league.text().strip(),
+            "overlay_opacity":  self._opacity.value(),
+            "auto_scan_minutes": self._auto_scan.value(),
+            "hotkeys":          hotkeys,
         }
         try:
             cfg.save(updates)

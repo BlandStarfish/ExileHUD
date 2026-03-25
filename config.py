@@ -6,6 +6,20 @@ Edit state/config.json to override defaults without touching this file.
 import json
 import os
 
+# Known Client.txt paths by version (used by installer and settings presets)
+CLIENT_LOG_PATHS = {
+    "poe1": [
+        r"C:\Program Files (x86)\Grinding Gear Games\Path of Exile\logs\Client.txt",
+        r"C:\Program Files\Grinding Gear Games\Path of Exile\logs\Client.txt",
+        r"~\AppData\Local\Path of Exile\Client.txt",
+    ],
+    "poe2": [
+        r"C:\Program Files (x86)\Grinding Gear Games\Path of Exile 2\logs\Client.txt",
+        r"C:\Program Files\Grinding Gear Games\Path of Exile 2\logs\Client.txt",
+        r"~\AppData\Local\Path of Exile 2\Client.txt",
+    ],
+}
+
 DEFAULTS = {
     # PoE version: "poe1" or "poe2"
     "poe_version": "poe1",
@@ -36,6 +50,10 @@ DEFAULTS = {
 
     # Currency tracker reset hour (0–23, local time)
     "currency_reset_hour": 0,
+
+    # Auto-scan interval for Div Card and Chaos Recipe panels (minutes, 0 = disabled).
+    # Scans fire automatically when OAuth is connected and the interval elapses.
+    "auto_scan_minutes": 0,
 
     # GGG OAuth client_id for stash tab API access (auto-fill currency counts).
     # Register by emailing oauth@grindinggear.com.

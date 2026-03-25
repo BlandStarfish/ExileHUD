@@ -11,7 +11,7 @@ from PyQt6.QtWidgets import (
     QWidget, QVBoxLayout, QHBoxLayout, QLabel, QPushButton, QFrame,
     QScrollArea,
 )
-from PyQt6.QtCore import Qt, pyqtSignal, pyqtSlot
+from PyQt6.QtCore import Qt, QTimer, pyqtSignal, pyqtSlot
 
 ACCENT = "#e2b96f"
 TEXT   = "#d4c5a9"
@@ -25,7 +25,8 @@ class DivPanel(QWidget):
     _scan_done = pyqtSignal(bool, str)   # (success, error_msg)
     _updated   = pyqtSignal(object)      # list of card dicts
 
-    def __init__(self, div_tracker, oauth_manager=None, stash_api=None, league="Standard"):
+    def __init__(self, div_tracker, oauth_manager=None, stash_api=None, league="Standard",
+                 auto_scan_minutes: int = 0):
         super().__init__()
         self._tracker   = div_tracker
         self._oauth     = oauth_manager
@@ -36,6 +37,14 @@ class DivPanel(QWidget):
         self._scan_done.connect(self._on_scan_done)
         self._updated.connect(self._on_update)
         div_tracker.on_update(lambda cards: self._updated.emit(cards))
+
+        # Optional auto-refresh (0 = disabled)
+        if auto_scan_minutes > 0:
+            self._auto_timer = QTimer(self)
+            self._auto_timer.timeout.connect(self._auto_scan)
+            self._auto_timer.start(auto_scan_minutes * 60 * 1000)
+        else:
+            self._auto_timer = None
 
     def _build_ui(self):
         layout = QVBoxLayout(self)
@@ -98,6 +107,11 @@ class DivPanel(QWidget):
         layout.addWidget(self._status)
 
         self._refresh_auth_ui()
+
+    def _auto_scan(self):
+        """Triggered by auto-refresh timer; only scans when OAuth is connected."""
+        if self._oauth and self._oauth.is_authenticated and self._scan_btn.isEnabled():
+            self._start_scan()
 
     def _start_scan(self):
         self._scan_btn.setEnabled(False)
