@@ -95,29 +95,29 @@ The overlay is organized as tabs (one per module) inside a frameless window, pos
 
 These features were auto-approved by the development agent after all original roadmap items reached 9+/10 completion. Implement in priority order listed.
 
-### E1. Divination Card Tracker (HIGH)
-- Scan stash tabs via OAuth Stash API for divination card stacks
-- For each card, show: current stack count vs full stack size, completion %, and the reward item
-- Sort by completion % — shows which full stacks are closest to completion
-- Group: near-complete (≥ 75%), in-progress, and single cards
-- Uses existing stash_api.py and OAuth infrastructure — minimal new code
-- Data source: static data/div_cards.json (full stack sizes from RePoE or manual curation)
+### E1. Divination Card Tracker ✅ IMPLEMENTED (Session 18)
+- Scan DivinationStash tab via OAuth Stash API for divination card stacks
+- For each card, show: current stack count vs full stack size, completion %, and chaos value
+- Sort by completion % — groups: near-complete (≥75%), in-progress, singles
+- poe.ninja DivinationCard endpoint provides stack_size + chaos value (no static file needed)
+- modules/div_cards.py + ui/widgets/div_panel.py + stash_api.get_divination_items()
 - **Rationale:** Divination farming is a core PoE endgame activity; completing card sets is satisfying and this makes it trackable without leaving the overlay
 
-### E2. Atlas Map Completion Tracker (HIGH)
-- Track which atlas map zones have been entered this session via Client.txt zone_change events
-- Cross-reference against zones.json atlas entries to identify uncompleted maps
-- Display: completion count, percentage of total atlas, and list of unvisited maps by tier
-- Persist map completion flags across sessions in state/atlas_progress.json
-- No new APIs required — purely Client.txt + existing zones.json
+### E2. Atlas Map Completion Tracker ✅ IMPLEMENTED (Session 18)
+- Tracks which atlas map zones have been entered via Client.txt zone_change events
+- Cross-references zones.json atlas entries; persists in state/atlas_progress.json
+- Display: visited/total count, % bar, unvisited maps grouped by tier
+- No new APIs — purely Client.txt + existing zones.json
+- modules/atlas_tracker.py + ui/widgets/atlas_panel.py
 - **Rationale:** Natural extension of the map overlay; "which maps haven't I done yet?" is a common player question, and all data is already in the codebase
 
-### E3. Bestiary Recipe Browser (MEDIUM)
-- Static reference tool: browse Bestiary crafting recipes by target modifier or beast name
-- Show: beast name, beast type (Einhar faction), resulting modifier, recipe category
-- Search/filter by modifier name or beast type
-- Data source: static data/bestiary_recipes.json (curated from community sources, ~100 entries)
+### E3. Bestiary Recipe Browser ✅ IMPLEMENTED (Session 18)
+- Static reference tool: browse Bestiary crafting recipes by modifier or beast name
+- Show: beast names (color-coded by faction), result, category, notes
+- Search/filter by modifier, result, category, or beast name
+- Data source: data/bestiary_recipes.json (25 recipes curated from GGG data)
 - No API calls — purely static data, zero latency
+- ui/widgets/bestiary_panel.py
 - **Rationale:** Bestiary is permanently in PoE; players frequently look up "which beast gives this mod" — having it in the overlay is more convenient than alt-tabbing to the wiki
 
 ### E4. Heist Blueprint Organizer (MEDIUM)

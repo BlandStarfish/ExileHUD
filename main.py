@@ -42,6 +42,8 @@ from modules.crafting import CraftingModule
 from modules.map_overlay import MapOverlay
 from modules.xp_tracker import XPTracker
 from modules.chaos_recipe import ChaosRecipe
+from modules.div_cards import DivCardTracker
+from modules.atlas_tracker import AtlasTracker
 
 # Lazy UI import — avoids loading Qt before QApplication exists
 import ui.hud as hud_module
@@ -86,12 +88,15 @@ def main():
     map_overlay      = MapOverlay()
     xp_tracker       = XPTracker(state, character_api)
     chaos_recipe     = ChaosRecipe(stash_api)
+    div_tracker      = DivCardTracker(stash_api, ninja)
+    atlas_tracker    = AtlasTracker()
 
     # Client.txt watcher
     log_watcher = ClientLogWatcher(conf["client_log_path"])
     log_watcher.on("zone_change",    lambda d: state.set_zone(d["zone"]))
     log_watcher.on("zone_change",    map_overlay.handle_zone_change)
     log_watcher.on("zone_change",    xp_tracker.handle_zone_change)
+    log_watcher.on("zone_change",    atlas_tracker.handle_zone_change)
     log_watcher.on("quest_complete", quest_tracker.handle_quest_event)
     log_watcher.start()
 
@@ -108,6 +113,8 @@ def main():
         map_overlay=map_overlay,
         xp_tracker=xp_tracker,
         chaos_recipe=chaos_recipe,
+        div_tracker=div_tracker,
+        atlas_tracker=atlas_tracker,
         config=conf,
         oauth_manager=oauth_manager,
         stash_api=stash_api,

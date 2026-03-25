@@ -78,6 +78,32 @@ class PoeNinja:
                 prices[entry["name"]] = entry.get("chaosValue", 0)
         return prices
 
+    def get_divination_card_data(self) -> dict[str, dict]:
+        """
+        Returns rich data for all divination cards in the current league.
+        Dict format: {card_name: {"chaos": float, "stack_size": int}}
+        stack_size is the number of cards needed to complete a full set.
+        """
+        endpoint, type_name = ITEM_ENDPOINTS["DivinationCard"]
+        url = f"{BASE}/{endpoint}?league={self._league}&type={type_name}"
+        try:
+            r = requests.get(url, timeout=10)
+            r.raise_for_status()
+            data = r.json()
+        except Exception as e:
+            print(f"[poe.ninja] divination card fetch failed: {e}")
+            return {}
+
+        result = {}
+        for entry in data.get("lines", []):
+            name = entry.get("name", "")
+            if name:
+                result[name] = {
+                    "chaos":      entry.get("chaosValue", 0.0),
+                    "stack_size": entry.get("stackSize", 1),
+                }
+        return result
+
     def set_league(self, league: str):
         self._league = league
         self._cache.clear()

@@ -485,3 +485,41 @@ Added to __init__: state.on_change("xp_session", lambda _: self._fire_update())
 Propagates new-character resets to XP panel within one event cycle.
 Previously the panel waited up to 5 min for the auto-poll timer.
 Pattern mirrors quest_panel.py subscribing to "completed_quests".
+
+### poe_ninja.py: get_divination_card_data() (Session 18)
+Returns {name: {"chaos": float, "stack_size": int}} for all div cards in league.
+"stackSize" field in poe.ninja DivinationCard itemoverview response = full stack needed.
+Does NOT use the TTL cache — called once per user-triggered scan. Separate from get_all()
+to avoid polluting the price cache with the extra stack_size field.
+
+### stash_api.py: get_divination_items() (Session 18)
+Scans tabs where type == "DivinationStash" only. Returns {card_name: count}.
+"DivinationStash" was previously in _EQUIPMENT_SKIP_TYPES for the chaos recipe scan.
+The skip list remains unchanged — div scan uses this separate method instead.
+
+### atlas_tracker.py: persistence (Session 18)
+state/atlas_progress.json: {"visited": [sorted list], "saved_at": float timestamp}
+Saves only when a NEW map is added to visited set (not every zone_change).
+_load_progress() filters visited set against current atlas_zones to handle any
+future zone DB changes without stale entries. os.makedirs(exist_ok=True) guards
+against first-run (state/ dir exists already but guard is cheap).
+session_visited tracks maps entered this session specifically (a subset of visited).
+
+### Tab indices (Session 18)
+Quests=0, Tree=1, Price=2, Currency=3, Crafting=4, Map=5, XP=6, Recipe=7,
+Notes=8, Settings=9, Divs=10, Atlas=11, Bestiary=12
+
+### hud.py: fallback QWidget() for optional panels (Session 18)
+div_panel and atlas_panel accept None as first argument (for tests/fallback).
+hud.py uses `DivPanel(div_tracker, ...) if div_tracker else QWidget()` pattern.
+In production main.py these are always provided. The fallback is defensive only.
+
+### bestiary_panel.py: beast family colors (Session 18)
+Craicic=#e2b96f (gold), Fenumal=#c87be8 (purple), Eber=#4ae8c8 (teal),
+Farric=#e86b4a (orange), Unique=#aa9e6e (dim gold). Applied as badge labels on
+beast requirements. Consistent with PoE's in-game bestiary faction coloring.
+
+### zones.json _comment guard reminder (Session 18)
+The "zones" dict contains "_comment" key with string value.
+AtlasTracker._load_atlas_zones() uses `isinstance(info, dict)` guard.
+Any future code iterating zone_db.items() MUST use the same guard.

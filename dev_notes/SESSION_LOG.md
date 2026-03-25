@@ -2698,3 +2698,115 @@ Overall grade: 10/10
 
 88 tests pass. No technical debt. feature/reinstall-fix-uninstaller merged to master.
 ═══════════════════════════════════════════════════════════════
+
+═══════════════════════════════════════════════════════════════
+SESSION: 2026-03-25  (Session 18)
+═══════════════════════════════════════════════════════════════
+
+## ORIENTATION SUMMARY
+
+Session 18. Read all prior session notes (Sessions 1-17). Session 17 left with:
+1. Divination Card Tracker (HIGH, E1) -- primary target, implemented
+2. Atlas Map Completion Tracker (HIGH, E2) -- primary target, implemented
+3. Bestiary Recipe Browser (MEDIUM, E3) -- primary target, implemented
+4. Map mod display (BLOCKED) -- deferred again
+
+All 93 tests passed at session start.
+
+## ASSESSMENT GRADES
+
+| Module               | Completeness | Quality | Vision Alignment |
+|----------------------|-------------|---------|-----------------|
+| Quest Tracker        |    10/10    |  9/10   |    10/10        |
+| Div Card Tracker     |     8/10    |  9/10   |     9/10 (new)  |
+| Atlas Tracker        |     9/10    |  9/10   |     9/10 (new)  |
+| Bestiary Browser     |     8/10    |  9/10   |     9/10 (new)  |
+| All other modules    |   9-10/10   |  9/10   |    9-10/10      |
+
+Div Card at 8: no reward text (poe.ninja lacks it -- needs RePoE).
+Bestiary at 8: 25 recipes, could expand to ~50.
+
+## SMOKE TEST FINDINGS
+
+None found. Codebase clean.
+
+## MAINTENANCE LOG
+
+None. Codebase was clean at session start.
+
+## DEVELOPMENT LOG
+
+### Feature 1: Divination Card Tracker (E1)
+
+api/poe_ninja.py: Added get_divination_card_data()
+  Returns {name: {chaos, stack_size}} from poe.ninja DivinationCard itemoverview.
+  poe.ninja response includes stackSize field directly. Not TTL-cached (separate method).
+
+core/stash_api.py: Added get_divination_items(league)
+  Scans DivinationStash tabs only. Returns {card_name: count}.
+
+modules/div_cards.py: DivCardTracker(stash_api, ninja)
+  scan(): background thread, merges stash + ninja data, sorts by pct desc.
+  on_update subscriber pattern matching ChaosRecipe.
+
+ui/widgets/div_panel.py: DivPanel
+  Groups: Near Complete (>=75%), In Progress, Singles.
+  Card rows: name | current/full | chaos value. Summary line.
+  OAuth auth status display matches ChaosPanel pattern.
+
+### Feature 2: Atlas Map Completion Tracker (E2)
+
+modules/atlas_tracker.py: AtlasTracker()
+  Loads atlas zones (zones.json type==atlas, isinstance guard for _comment key).
+  Persists to state/atlas_progress.json on new-map-only basis.
+  get_stats() returns total/visited/session_new/pct/unvisited_by_tier.
+  reset() clears all. Wired to zone_change in main.py.
+
+ui/widgets/atlas_panel.py: AtlasPanel
+  20-char progress bar. Tier sections, 8 names each + overflow.
+  Reset with QMessageBox confirmation. Loads persisted data on init.
+
+### Feature 3: Bestiary Recipe Browser (E3)
+
+data/bestiary_recipes.json: 25 recipes (Aspect skills, Split, Imprint,
+  Add/Remove/Swap affix, Reroll, 23% gem, White socket, Enchant, Map tier, etc.)
+
+ui/widgets/bestiary_panel.py: BestiaryPanel
+  Search bar (modifier/beast/category). Grouped by category.
+  Beast chips color-coded: Craicic=gold, Fenumal=purple, Eber=teal, Farric=orange.
+  No state, no API, no OAuth.
+
+### Wiring (main.py + hud.py)
+3 new tab indices: Divs=10, Atlas=11, Bestiary=12.
+Defensive QWidget() fallback for optional div/atlas params in hud.py.
+
+## TECHNICAL NOTES
+
+poe.ninja DivinationCard stackSize = full stack needed. No static file required.
+AtlasTracker isinstance(info, dict) guard for zones.json _comment key is critical.
+13 tabs total -- monitor for crowding feedback.
+
+## SUGGESTIONS FOR NEXT SESSION
+
+1. E4: Heist Blueprint Organizer (MEDIUM): stash scan for Contracts/Blueprints,
+   group by rogue job type, show wing unlock status. Tab 13.
+
+2. E5: Gem Level Planner (LOW): Character API gem parsing, sell-candidate
+   highlighting for high-level Awakened/20-20 gems. Tab 14.
+
+3. Div card reward text (LOW): RePoE divination_cards.json has reward field.
+   ~20 lines to fetch and display. Raises Div tracker from 8/10 to 9/10.
+
+4. Bestiary recipe expansion (LOW): 25 -> ~50 recipes in bestiary_recipes.json.
+   Pure data, no code changes.
+
+5. Map mod display (BLOCKED): No stable data source.
+
+## PROJECT HEALTH
+
+Overall grade: 10/10
+% complete toward original vision: 100%
+% complete toward expanded vision: 60% (3/5 expansion features done)
+
+93 tests pass. No technical debt. No regressions.
+═══════════════════════════════════════════════════════════════

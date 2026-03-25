@@ -141,6 +141,36 @@ class StashAPI:
 
         return items
 
+    def get_divination_items(self, league: str) -> dict[str, int]:
+        """
+        Fetch all DivinationStash tabs and return {card_name: count}.
+
+        Only scans tabs with type "DivinationStash". Returns {} on error or
+        if no divination stash tab exists.
+        """
+        tabs = self.list_tabs(league)
+        if tabs is None:
+            return {}
+
+        div_tabs = [t for t in tabs if t.get("type") == "DivinationStash"]
+        if not div_tabs:
+            return {}
+
+        totals: dict[str, int] = {}
+        for tab in div_tabs:
+            tab_id = tab.get("id")
+            if not tab_id:
+                continue
+            tab_data = self.get_tab(league, tab_id)
+            if tab_data is None:
+                continue
+            for item in tab_data.get("stash", {}).get("items", []):
+                name = item.get("typeLine", "")
+                if name:
+                    totals[name] = totals.get(name, 0) + item.get("stackSize", 1)
+
+        return totals
+
     # ------------------------------------------------------------------
     # Internal
     # ------------------------------------------------------------------

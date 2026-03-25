@@ -1,0 +1,263 @@
+{
+  "_comment": "PoE Bestiary crafting recipes. Beast names match in-game Einhar capture names.",
+  "recipes": [
+    {
+      "category": "Aspect Skills",
+      "modifier": "Aspect of the Cat",
+      "result": "Adds Aspect of the Cat skill to item",
+      "beasts": [
+        {"name": "Craicic Savage Crab", "type": "Craicic", "notes": "Required beast"}
+      ],
+      "notes": "Adds Aspect of the Cat to any non-unique, non-corrupted item with an open suffix slot"
+    },
+    {
+      "category": "Aspect Skills",
+      "modifier": "Aspect of the Spider",
+      "result": "Adds Aspect of the Spider skill to item",
+      "beasts": [
+        {"name": "Fenumal Hybrid Arachnid", "type": "Fenumal", "notes": "Required beast"}
+      ],
+      "notes": "Adds Aspect of the Spider to any non-unique, non-corrupted item with an open suffix slot"
+    },
+    {
+      "category": "Aspect Skills",
+      "modifier": "Aspect of the Avian",
+      "result": "Adds Aspect of the Avian skill to item",
+      "beasts": [
+        {"name": "Saqawal, First of the Sky", "type": "Unique", "notes": "Unique beast required"}
+      ],
+      "notes": "Adds Aspect of the Avian to any non-unique, non-corrupted item with an open suffix slot"
+    },
+    {
+      "category": "Aspect Skills",
+      "modifier": "Aspect of the Crab",
+      "result": "Adds Aspect of the Crab skill to item",
+      "beasts": [
+        {"name": "Craicic Chimeral", "type": "Craicic", "notes": "Required beast"}
+      ],
+      "notes": "Adds Aspect of the Crab to any non-unique, non-corrupted item with an open suffix slot"
+    },
+    {
+      "category": "Split Item",
+      "modifier": "Split a Corrupted Item",
+      "result": "Creates two copies of a corrupted item with each modifier randomly distributed",
+      "beasts": [
+        {"name": "Craicic Chimeral",    "type": "Craicic",    "notes": "Required"},
+        {"name": "Fenumal Plagued Arachnid", "type": "Fenumal", "notes": "Required"},
+        {"name": "Eber's Unification",  "type": "Eber",       "notes": "Required"},
+        {"name": "Farric Wolf Alpha",   "type": "Farric",     "notes": "Required"}
+      ],
+      "notes": "Splits a corrupted item into two items. Each explicit modifier randomly goes to one copy. Very rare — requires 4 beasts."
+    },
+    {
+      "category": "Imprint",
+      "modifier": "Create an Imprint",
+      "result": "Creates an imprint of a magic item for one-time restoration",
+      "beasts": [
+        {"name": "Farric Lynx Alpha",   "type": "Farric",     "notes": "Required"},
+        {"name": "Craicic Watcher",     "type": "Craicic",    "notes": "Required"},
+        {"name": "Eber's Unification",  "type": "Eber",       "notes": "Required"},
+        {"name": "Fenumal Hybrid Arachnid", "type": "Fenumal", "notes": "Required"}
+      ],
+      "notes": "Only works on magic (blue) items. Restore the imprint to undo any crafting done since the imprint was made."
+    },
+    {
+      "category": "Remove Modifier",
+      "modifier": "Remove a Random Prefix",
+      "result": "Removes a random prefix from the target item",
+      "beasts": [
+        {"name": "Farric Goatman",      "type": "Farric",     "notes": "Any Farric Goatman"},
+        {"name": "Craicic Sand Spitter", "type": "Craicic",   "notes": "Required"}
+      ],
+      "notes": "Targets rare items. Cannot be used on items with only one modifier."
+    },
+    {
+      "category": "Remove Modifier",
+      "modifier": "Remove a Random Suffix",
+      "result": "Removes a random suffix from the target item",
+      "beasts": [
+        {"name": "Eber's Unification",  "type": "Eber",       "notes": "Required"},
+        {"name": "Fenumal Spider",      "type": "Fenumal",    "notes": "Any Fenumal Spider"}
+      ],
+      "notes": "Targets rare items. Cannot be used on items with only one modifier."
+    },
+    {
+      "category": "Add Modifier",
+      "modifier": "Add a Random Prefix",
+      "result": "Adds a random prefix to the target item",
+      "beasts": [
+        {"name": "Farric Chieftain",    "type": "Farric",     "notes": "Any Farric Chieftain"},
+        {"name": "Craicic Sand Spitter", "type": "Craicic",   "notes": "Required"}
+      ],
+      "notes": "Targets rare items. Item must have an open prefix slot."
+    },
+    {
+      "category": "Add Modifier",
+      "modifier": "Add a Random Suffix",
+      "result": "Adds a random suffix to the target item",
+      "beasts": [
+        {"name": "Eber's Unification",  "type": "Eber",       "notes": "Required"},
+        {"name": "Fenumal Plagued Arachnid", "type": "Fenumal", "notes": "Required"}
+      ],
+      "notes": "Targets rare items. Item must have an open suffix slot."
+    },
+    {
+      "category": "Remove/Add Modifier",
+      "modifier": "Remove Prefix, Add Prefix",
+      "result": "Removes a random prefix and adds a random new prefix",
+      "beasts": [
+        {"name": "Farric Lynx Alpha",   "type": "Farric",     "notes": "Required"},
+        {"name": "Craicic Chimeral",    "type": "Craicic",    "notes": "Required"}
+      ],
+      "notes": "Equivalent to a targeted annul + exalt for prefixes. Very efficient for crafting."
+    },
+    {
+      "category": "Remove/Add Modifier",
+      "modifier": "Remove Suffix, Add Suffix",
+      "result": "Removes a random suffix and adds a random new suffix",
+      "beasts": [
+        {"name": "Eber Thornback",      "type": "Eber",       "notes": "Required"},
+        {"name": "Fenumal Hybrid Arachnid", "type": "Fenumal", "notes": "Required"}
+      ],
+      "notes": "Equivalent to a targeted annul + exalt for suffixes."
+    },
+    {
+      "category": "Remove/Add Modifier",
+      "modifier": "Remove Prefix, Add Suffix",
+      "result": "Removes a random prefix and adds a random suffix",
+      "beasts": [
+        {"name": "Farric Goatman",      "type": "Farric",     "notes": "Any Farric Goatman"},
+        {"name": "Eber's Unification",  "type": "Eber",       "notes": "Required"}
+      ],
+      "notes": "Useful for converting prefixes to suffixes on items with no open suffix slots."
+    },
+    {
+      "category": "Remove/Add Modifier",
+      "modifier": "Remove Suffix, Add Prefix",
+      "result": "Removes a random suffix and adds a random prefix",
+      "beasts": [
+        {"name": "Craicic Sand Spitter", "type": "Craicic",   "notes": "Required"},
+        {"name": "Fenumal Spider",       "type": "Fenumal",   "notes": "Any Fenumal Spider"}
+      ],
+      "notes": "Useful for converting suffixes to prefixes on items with no open prefix slots."
+    },
+    {
+      "category": "Reroll Explicit",
+      "modifier": "Reroll a Magic Item",
+      "result": "Rerolls a magic item's modifiers (like Orb of Alteration)",
+      "beasts": [
+        {"name": "Farric Wolf",         "type": "Farric",     "notes": "Any Farric Wolf"},
+        {"name": "Craicic Watcher",     "type": "Craicic",    "notes": "Required"}
+      ],
+      "notes": "Only works on magic (blue) items."
+    },
+    {
+      "category": "Quality",
+      "modifier": "Corrupt a Gem to 23% Quality",
+      "result": "Corrupts a skill gem and sets quality to 23%",
+      "beasts": [
+        {"name": "Craicic Chimeral",    "type": "Craicic",    "notes": "Required"},
+        {"name": "Farric Flame Blood",  "type": "Farric",     "notes": "Required"},
+        {"name": "Eber Thornback",      "type": "Eber",       "notes": "Required"},
+        {"name": "Fenumal Spider",      "type": "Fenumal",    "notes": "Required"}
+      ],
+      "notes": "Result is 23% quality gem (corrupted). No other corruption effect applies."
+    },
+    {
+      "category": "Quality",
+      "modifier": "Add Quality to a Flaskwith Bonus",
+      "result": "Adds 1% quality to a flask (up to 30%)",
+      "beasts": [
+        {"name": "Farric Toad",         "type": "Farric",     "notes": "Any Farric Toad"},
+        {"name": "Craicic Sand Spitter", "type": "Craicic",   "notes": "Required"}
+      ],
+      "notes": "Raises quality of the target flask by 1 quality. Works up to 30% unlike Glassblower's Bauble cap."
+    },
+    {
+      "category": "Links",
+      "modifier": "Add a White Socket",
+      "result": "Adds a white socket to an item (replaces a random colored socket)",
+      "beasts": [
+        {"name": "Craicic Chimeral",    "type": "Craicic",    "notes": "Required"},
+        {"name": "Farric Lynx Alpha",   "type": "Farric",     "notes": "Required"},
+        {"name": "Eber's Unification",  "type": "Eber",       "notes": "Required"},
+        {"name": "Fenumal Hybrid Arachnid", "type": "Fenumal", "notes": "Required"}
+      ],
+      "notes": "White sockets accept any gem color. Very valuable for off-color socket needs."
+    },
+    {
+      "category": "Links",
+      "modifier": "Change Socket Colors to Match Class Requirements",
+      "result": "Sets the socket colors to match the strength/dex/int attribute requirements of the item",
+      "beasts": [
+        {"name": "Farric Goatman",      "type": "Farric",     "notes": "Any Farric Goatman"},
+        {"name": "Craicic Watcher",     "type": "Craicic",    "notes": "Required"}
+      ],
+      "notes": "Converts all sockets to the dominant attribute color of the item's requirements."
+    },
+    {
+      "category": "Enchant",
+      "modifier": "Enchant a Helmet",
+      "result": "Applies a random Labyrinth enchantment to a helmet",
+      "beasts": [
+        {"name": "Farric Flame Blood",  "type": "Farric",     "notes": "Required"},
+        {"name": "Craicic Sand Spitter", "type": "Craicic",   "notes": "Required"},
+        {"name": "Eber Thornback",      "type": "Eber",       "notes": "Required"},
+        {"name": "Fenumal Plagued Arachnid", "type": "Fenumal", "notes": "Required"}
+      ],
+      "notes": "Applies a random Merciless Lab–tier enchantment (like Uber Lab running but random). Can override existing enchant."
+    },
+    {
+      "category": "Map",
+      "modifier": "Upgrade a Map to a Higher Tier",
+      "result": "Upgrades a map by one tier",
+      "beasts": [
+        {"name": "Farric Chieftain",    "type": "Farric",     "notes": "Any Farric Chieftain"},
+        {"name": "Eber's Unification",  "type": "Eber",       "notes": "Required"}
+      ],
+      "notes": "Upgrades a map by 1 tier. Useful for upgrading abundant low-tier maps."
+    },
+    {
+      "category": "Map",
+      "modifier": "Add Quantity and Rarity to a Map",
+      "result": "Adds increased item quantity/rarity mods to a magic map",
+      "beasts": [
+        {"name": "Farric Wolf Alpha",   "type": "Farric",     "notes": "Required"},
+        {"name": "Craicic Savage Crab", "type": "Craicic",    "notes": "Required"}
+      ],
+      "notes": "Targets magic maps only. Adds or rerolls quantity/rarity modifiers."
+    },
+    {
+      "category": "Flask",
+      "modifier": "Change Flask Life Recovery to Hybrid",
+      "result": "Converts a life flask to a hybrid (life + mana) flask",
+      "beasts": [
+        {"name": "Farric Toad",         "type": "Farric",     "notes": "Any Farric Toad"},
+        {"name": "Fenumal Spider",      "type": "Fenumal",    "notes": "Any Fenumal Spider"}
+      ],
+      "notes": "Only works on life flasks."
+    },
+    {
+      "category": "Prophecy",
+      "modifier": "Fulfill a Prophecy",
+      "result": "Consumes a silver coin to trigger a random sealed prophecy",
+      "beasts": [
+        {"name": "Farric Wolf",         "type": "Farric",     "notes": "Any Farric Wolf"},
+        {"name": "Fenumal Plagued Arachnid", "type": "Fenumal", "notes": "Required"}
+      ],
+      "notes": "Legacy content — Prophecy was removed in PoE 3.17. Only available on standard/legacy leagues."
+    },
+    {
+      "category": "Unique",
+      "modifier": "Corrupt a Unique Item",
+      "result": "Corrupts a unique item, potentially adding a veiled mod or changing values",
+      "beasts": [
+        {"name": "Craicic Chimeral",    "type": "Craicic",    "notes": "Required"},
+        {"name": "Farric Flame Blood",  "type": "Farric",     "notes": "Required"},
+        {"name": "Eber's Unification",  "type": "Eber",       "notes": "Required"},
+        {"name": "Fenumal Hybrid Arachnid", "type": "Fenumal", "notes": "Required"}
+      ],
+      "notes": "Corrupts the unique item and applies a random corruption effect (like Vaal Orb). Can brick the item."
+    }
+  ]
+}
