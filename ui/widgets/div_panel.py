@@ -108,6 +108,16 @@ class DivPanel(QWidget):
 
         self._refresh_auth_ui()
 
+    def set_auto_scan_minutes(self, minutes: int):
+        """Update the auto-scan interval without restarting the app (0 = disable)."""
+        if self._auto_timer is not None:
+            self._auto_timer.stop()
+            self._auto_timer = None
+        if minutes > 0:
+            self._auto_timer = QTimer(self)
+            self._auto_timer.timeout.connect(self._auto_scan)
+            self._auto_timer.start(minutes * 60 * 1000)
+
     def _auto_scan(self):
         """Triggered by auto-refresh timer; only scans when OAuth is connected."""
         if self._oauth and self._oauth.is_authenticated and self._scan_btn.isEnabled():

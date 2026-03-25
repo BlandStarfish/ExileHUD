@@ -13,6 +13,8 @@ from PyQt6.QtCore import Qt, QTimer, pyqtSignal
 from PyQt6.QtGui import QColor, QPalette
 from PyQt6.QtWidgets import QTabBar
 
+import config as cfg
+
 from ui.widgets.quest_panel import QuestPanel
 from ui.widgets.price_panel import PricePanel
 from ui.widgets.currency_panel import CurrencyPanel
@@ -171,6 +173,7 @@ class HUD(QMainWindow):
         self._settings_panel = SettingsPanel(
             self._config,
             on_opacity_change=self.setWindowOpacity,
+            on_auto_scan_change=self._apply_auto_scan,
             state=self._state,
         )
         self._div_panel = DivPanel(
@@ -246,6 +249,16 @@ class HUD(QMainWindow):
         self._inner_tabs.append(info_tabs)
         outer_tabs.addTab(info_tabs, "Info")               # _GRP_INFO      = 3
 
+        # Restore last active tabs from config (saved on tab-change)
+        outer_tabs.setCurrentIndex(self._config.get("last_group", 0))
+        for i, inner in enumerate(self._inner_tabs):
+            inner.setCurrentIndex(self._config.get(f"last_inner_{i}", 0))
+
+        # Persist tab selection whenever user navigates
+        outer_tabs.currentChanged.connect(self._save_last_tab)
+        for inner in self._inner_tabs:
+            inner.currentChanged.connect(self._save_last_tab)
+
         layout.addWidget(outer_tabs)
         self.setCentralWidget(root)
 
@@ -311,6 +324,20 @@ class HUD(QMainWindow):
     def on_currency_clipboard(self, currency_name: str, count: int):
         """Called when a currency stack is Ctrl+C'd in-game."""
         self._currency_panel.update_from_clipboard_scan(currency_name, count)
+
+    def _apply_auto_scan(self, minutes: int):
+        """Apply a new auto-scan interval to both Div Card and Chaos Recipe panels immediately."""
+        if hasattr(self._chaos_panel, "set_auto_scan_minutes"):
+            self._chaos_panel.set_auto_scan_minutes(minutes)
+        if hasattr(self._div_panel, "set_auto_scan_minutes"):
+            self._div_panel.set_auto_scan_minutes(minutes)
+
+    def _save_last_tab(self):
+        """Persist current outer/inner tab selection to config so it survives restarts."""
+        updates = {"last_group": self._tabs.currentIndex()}
+        for i, inner in enumerate(self._inner_tabs):
+            updates[f"last_inner_{i}"] = inner.currentIndex()
+        cfg.save(updates)
 
     def _refresh_currency(self):
         self._currency_panel.refresh()

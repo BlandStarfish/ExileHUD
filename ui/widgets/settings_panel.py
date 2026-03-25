@@ -34,15 +34,18 @@ _HOTKEY_LABELS = {
 
 class SettingsPanel(QWidget):
     def __init__(self, config: dict, on_opacity_change: Optional[Callable[[float], None]] = None,
+                 on_auto_scan_change: Optional[Callable[[int], None]] = None,
                  state=None):
         """
-        config             — the live config dict (from config.load())
-        on_opacity_change  — optional callback(opacity: float) applied immediately on save
-        state              — AppState instance (for New Character reset)
+        config               — the live config dict (from config.load())
+        on_opacity_change    — optional callback(opacity: float) applied immediately on save
+        on_auto_scan_change  — optional callback(minutes: int) applied immediately on save
+        state                — AppState instance (for New Character reset)
         """
         super().__init__()
         self._config = config
         self._on_opacity_change = on_opacity_change
+        self._on_auto_scan_change = on_auto_scan_change
         self._state = state
         self._build_ui()
 
@@ -138,7 +141,7 @@ class SettingsPanel(QWidget):
         self._auto_scan.setToolTip(
             "Auto-scan interval for Div Card and Chaos Recipe panels (minutes).\n"
             "0 = disabled. Scans fire automatically when your PoE account is connected.\n"
-            "Requires restart to take effect."
+            "Applied immediately when you save."
         )
         overlay_form.addRow(_lbl("Auto-scan (min):"), self._auto_scan)
 
@@ -236,9 +239,12 @@ class SettingsPanel(QWidget):
         }
         try:
             cfg.save(updates)
-            # Apply opacity immediately (no restart needed for this one setting)
+            # Apply opacity immediately (no restart needed)
             if self._on_opacity_change:
                 self._on_opacity_change(self._opacity.value())
+            # Apply auto-scan interval immediately (no restart needed)
+            if self._on_auto_scan_change:
+                self._on_auto_scan_change(self._auto_scan.value())
             self._status.setStyleSheet(f"color: {GREEN}; font-size: 11px;")
             self._status.setText("Saved. Restart PoELens to apply hotkey and path changes.")
         except Exception as e:
