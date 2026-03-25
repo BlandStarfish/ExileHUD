@@ -26,3 +26,4 @@ state/oauth_tokens.json
 
 # keep the release zip
 !PoELens-Setup.zip
+screenshots/*.png
