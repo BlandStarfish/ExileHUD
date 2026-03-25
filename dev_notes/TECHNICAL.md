@@ -505,9 +505,9 @@ future zone DB changes without stale entries. os.makedirs(exist_ok=True) guards
 against first-run (state/ dir exists already but guard is cheap).
 session_visited tracks maps entered this session specifically (a subset of visited).
 
-### Tab indices (Session 18)
+### Tab indices (Session 19)
 Quests=0, Tree=1, Price=2, Currency=3, Crafting=4, Map=5, XP=6, Recipe=7,
-Notes=8, Settings=9, Divs=10, Atlas=11, Bestiary=12
+Notes=8, Settings=9, Divs=10, Atlas=11, Bestiary=12, Heist=13, Gems=14
 
 ### hud.py: fallback QWidget() for optional panels (Session 18)
 div_panel and atlas_panel accept None as first argument (for tests/fallback).
@@ -523,3 +523,39 @@ beast requirements. Consistent with PoE's in-game bestiary faction coloring.
 The "zones" dict contains "_comment" key with string value.
 AtlasTracker._load_atlas_zones() uses `isinstance(info, dict)` guard.
 Any future code iterating zone_db.items() MUST use the same guard.
+
+### poe_ninja.py: get_divination_card_data() reward field (Session 19)
+poe.ninja DivinationCard itemoverview response includes "explicitModifiers" array.
+First element's "text" field = card reward description (e.g. "Kirac's Choice").
+Added "reward" key to returned dict. Empty string when absent.
+DivPanel renders reward as DIM-colored text below card name/stack/value.
+
+### stash_api.py: get_heist_items() (Session 19)
+Scans ALL stash tabs (no type filtering — Heist items may be in any tab).
+Contracts identified by typeLine.startswith("Contract:").
+Blueprints identified by typeLine.startswith("Blueprint:").
+Job type extracted by _extract_heist_job(): scans requirements[] for non-Level entries
+matching _HEIST_JOBS frozenset. Returns ("Unknown", 0) when job not in requirements.
+Wing status from _extract_wing_status(): looks for additionalProperties[name=="Wings Unlocked"]
+with value like "2/4". Returns (0, 0) when absent.
+Both helpers are module-level functions (not methods) — clean to test independently.
+
+### character_api.py: get_character_items() (Session 19)
+Fetches /character/{name} (same endpoint as get_passive_hashes).
+Returns data.get("items", []) — equipped item list.
+Socketed gems appear as item["socketedItems"] within each equipment item.
+Gems: frameType == 4. Support gems: item["support"] == True.
+Level/quality parsed from item["properties"] array.
+
+### gem_planner.py: sell candidate criteria (Session 19)
+Awakened gems at level 4+: high trade value, should sell or level to 5.
+Any gem at level 20 + quality 20: 20/20 sell candidate.
+Any gem at level 20: eligible for Vaal Orb → 20/20 conversion.
+Level parsing: handles "20 (Max)" format from GGG API (.split()[0]).
+Quality parsing: strips leading "+" and trailing "%" from "+20%" format.
+
+### heist_planner.py: processing (Session 19)
+_process() groups contracts by job type, sorts each group by ilvl desc.
+Blueprints sorted by ilvl desc, wings_unlocked desc.
+ROGUE_JOBS list defines canonical display order in HeistPanel.
+Unknown job contracts (no matching requirement) grouped under "Unknown" at end.

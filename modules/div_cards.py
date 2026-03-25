@@ -39,6 +39,7 @@ class DivCardTracker:
                     ninja_entry = ninja_data.get(name, {})
                     full_stack  = ninja_entry.get("stack_size", 1)
                     chaos_value = ninja_entry.get("chaos", 0.0)
+                    reward      = ninja_entry.get("reward", "")
                     pct         = min(100.0, current / full_stack * 100) if full_stack > 0 else 0.0
                     cards.append({
                         "name":       name,
@@ -46,6 +47,7 @@ class DivCardTracker:
                         "full_stack": full_stack,
                         "pct":        pct,
                         "chaos":      chaos_value,
+                        "reward":     reward,
                     })
 
                 # Sort by completion % descending, then by name for stability

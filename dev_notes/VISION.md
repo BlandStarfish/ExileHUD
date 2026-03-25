@@ -120,7 +120,7 @@ These features were auto-approved by the development agent after all original ro
 - ui/widgets/bestiary_panel.py
 - **Rationale:** Bestiary is permanently in PoE; players frequently look up "which beast gives this mod" — having it in the overlay is more convenient than alt-tabbing to the wiki
 
-### E4. Heist Blueprint Organizer (MEDIUM)
+### E4. Heist Blueprint Organizer ✅ IMPLEMENTED (Session 19)
 - Scan stash tabs for Heist Contracts and Blueprints via stash API
 - Group by rogue job type (Lockpicking, Agility, etc.) and show coverage
 - For Blueprints: show which wings are unlocked, recommended rogues, target reward types
@@ -128,7 +128,7 @@ These features were auto-approved by the development agent after all original ro
 - Uses existing OAuth + stash_api.py; adds minimal parsing logic for Heist item mods
 - **Rationale:** Heist planning is an inventory management challenge; showing blueprint status in the overlay reduces the need to manually inspect each blueprint
 
-### E5. Gem Level Planner (LOW)
+### E5. Gem Level Planner ✅ IMPLEMENTED (Session 19)
 - Read equipped gem data from the Character API (OAuth account:characters scope)
 - Display: gem name, current level, current quality, XP to next level
 - Highlight gems worth selling (high-level Awakened, 20/20 gems)

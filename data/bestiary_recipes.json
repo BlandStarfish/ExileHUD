@@ -38,6 +38,24 @@
       "notes": "Adds Aspect of the Crab to any non-unique, non-corrupted item with an open suffix slot"
     },
     {
+      "category": "Aspect Skills",
+      "modifier": "Aspect of the Carnivore",
+      "result": "Adds Aspect of the Carnivore skill to item",
+      "beasts": [
+        {"name": "Farric Lynx Alpha", "type": "Farric", "notes": "Required beast"}
+      ],
+      "notes": "Adds Aspect of the Carnivore to any non-unique, non-corrupted item with an open suffix slot"
+    },
+    {
+      "category": "Aspect Skills",
+      "modifier": "Aspect of the Praying Mantis",
+      "result": "Adds Aspect of the Praying Mantis skill to item",
+      "beasts": [
+        {"name": "Fenumal Praying Mantis", "type": "Fenumal", "notes": "Required beast"}
+      ],
+      "notes": "Adds Aspect of the Praying Mantis to any non-unique, non-corrupted item with an open suffix slot"
+    },
+    {
       "category": "Split Item",
       "modifier": "Split a Corrupted Item",
       "result": "Creates two copies of a corrupted item with each modifier randomly distributed",
@@ -152,6 +170,18 @@
       "notes": "Only works on magic (blue) items."
     },
     {
+      "category": "Reroll Explicit",
+      "modifier": "Reroll a Rare Item",
+      "result": "Rerolls all modifiers on a rare item (like Chaos Orb)",
+      "beasts": [
+        {"name": "Farric Wolf Alpha",   "type": "Farric",     "notes": "Required"},
+        {"name": "Fenumal Plagued Arachnid", "type": "Fenumal", "notes": "Required"},
+        {"name": "Craicic Sand Spitter", "type": "Craicic",   "notes": "Required"},
+        {"name": "Eber Thornback",      "type": "Eber",       "notes": "Required"}
+      ],
+      "notes": "Rerolls all explicit modifiers on a rare item. 4-beast recipe. Cheaper than Chaos Orbs in some leagues."
+    },
+    {
       "category": "Quality",
       "modifier": "Corrupt a Gem to 23% Quality",
       "result": "Corrupts a skill gem and sets quality to 23%",
@@ -165,13 +195,33 @@
     },
     {
       "category": "Quality",
-      "modifier": "Add Quality to a Flaskwith Bonus",
+      "modifier": "Add Quality to a Flask with Bonus",
       "result": "Adds 1% quality to a flask (up to 30%)",
       "beasts": [
         {"name": "Farric Toad",         "type": "Farric",     "notes": "Any Farric Toad"},
         {"name": "Craicic Sand Spitter", "type": "Craicic",   "notes": "Required"}
       ],
       "notes": "Raises quality of the target flask by 1 quality. Works up to 30% unlike Glassblower's Bauble cap."
+    },
+    {
+      "category": "Quality",
+      "modifier": "Add Quality to a Map",
+      "result": "Adds 5% quality to a map",
+      "beasts": [
+        {"name": "Farric Wolf",         "type": "Farric",     "notes": "Any Farric Wolf"},
+        {"name": "Eber Thornback",      "type": "Eber",       "notes": "Required"}
+      ],
+      "notes": "Applies 5% quality to a map (like a Cartographer's Chisel). Works on rare, magic, or normal maps."
+    },
+    {
+      "category": "Quality",
+      "modifier": "Add Quality to Armour or Weapon",
+      "result": "Adds quality to an armour or weapon",
+      "beasts": [
+        {"name": "Farric Toad",         "type": "Farric",     "notes": "Any Farric Toad"},
+        {"name": "Fenumal Spider",      "type": "Fenumal",    "notes": "Any Fenumal Spider"}
+      ],
+      "notes": "Adds quality to the target gear piece. Normal items get more quality than magic/rare."
     },
     {
       "category": "Links",
@@ -196,6 +246,28 @@
       "notes": "Converts all sockets to the dominant attribute color of the item's requirements."
     },
     {
+      "category": "Links",
+      "modifier": "Upgrade Item to 6 Links",
+      "result": "Fully links all 6 sockets on an item",
+      "beasts": [
+        {"name": "Farric Wolf Alpha",   "type": "Farric",     "notes": "Required"},
+        {"name": "Craicic Chimeral",    "type": "Craicic",    "notes": "Required"},
+        {"name": "Eber's Unification",  "type": "Eber",       "notes": "Required"},
+        {"name": "Fenumal Hybrid Arachnid", "type": "Fenumal", "notes": "Required"}
+      ],
+      "notes": "Guarantees 6 links on a 6-socket item. Requires item to already have 6 sockets."
+    },
+    {
+      "category": "Links",
+      "modifier": "Unsocket Gems Without Destroying Them",
+      "result": "Returns all socketed gems to inventory without destroying them",
+      "beasts": [
+        {"name": "Craicic Watcher",     "type": "Craicic",    "notes": "Required"},
+        {"name": "Farric Goatman",      "type": "Farric",     "notes": "Any Farric Goatman"}
+      ],
+      "notes": "Removes all gems from sockets and returns them. Cheaper than using a Gemcutter's socket recipe."
+    },
+    {
       "category": "Enchant",
       "modifier": "Enchant a Helmet",
       "result": "Applies a random Labyrinth enchantment to a helmet",
@@ -206,6 +278,16 @@
         {"name": "Fenumal Plagued Arachnid", "type": "Fenumal", "notes": "Required"}
       ],
       "notes": "Applies a random Merciless Lab–tier enchantment (like Uber Lab running but random). Can override existing enchant."
+    },
+    {
+      "category": "Enchant",
+      "modifier": "Enchant Gloves or Boots",
+      "result": "Applies a random Labyrinth enchantment to gloves or boots",
+      "beasts": [
+        {"name": "Farric Flame Blood",  "type": "Farric",     "notes": "Required"},
+        {"name": "Fenumal Plagued Arachnid", "type": "Fenumal", "notes": "Required"}
+      ],
+      "notes": "Applies a random gloves/boots enchant (Uber Lab tier). Useful for Commandment enchants."
     },
     {
       "category": "Map",
@@ -228,6 +310,16 @@
       "notes": "Targets magic maps only. Adds or rerolls quantity/rarity modifiers."
     },
     {
+      "category": "Map",
+      "modifier": "Add Pack Size to a Map",
+      "result": "Adds an increased pack size modifier to a map",
+      "beasts": [
+        {"name": "Farric Chieftain",    "type": "Farric",     "notes": "Any Farric Chieftain"},
+        {"name": "Fenumal Hybrid Arachnid", "type": "Fenumal", "notes": "Required"}
+      ],
+      "notes": "Adds a pack size prefix to a magic or rare map. Excellent for juicing maps."
+    },
+    {
       "category": "Flask",
       "modifier": "Change Flask Life Recovery to Hybrid",
       "result": "Converts a life flask to a hybrid (life + mana) flask",
@@ -238,17 +330,27 @@
       "notes": "Only works on life flasks."
     },
     {
-      "category": "Prophecy",
-      "modifier": "Fulfill a Prophecy",
-      "result": "Consumes a silver coin to trigger a random sealed prophecy",
+      "category": "Flask",
+      "modifier": "Add Prefix to a Flask",
+      "result": "Adds a random prefix modifier to a flask",
       "beasts": [
-        {"name": "Farric Wolf",         "type": "Farric",     "notes": "Any Farric Wolf"},
-        {"name": "Fenumal Plagued Arachnid", "type": "Fenumal", "notes": "Required"}
+        {"name": "Farric Toad",         "type": "Farric",     "notes": "Any Farric Toad"},
+        {"name": "Craicic Watcher",     "type": "Craicic",    "notes": "Required"}
       ],
-      "notes": "Legacy content — Prophecy was removed in PoE 3.17. Only available on standard/legacy leagues."
+      "notes": "Adds a prefix to a normal or magic flask. Common prefixes: Seething, Bubbling, Surgeon's."
     },
     {
-      "category": "Unique",
+      "category": "Flask",
+      "modifier": "Add Suffix to a Flask",
+      "result": "Adds a random suffix modifier to a flask",
+      "beasts": [
+        {"name": "Farric Toad",         "type": "Farric",     "notes": "Any Farric Toad"},
+        {"name": "Eber Thornback",      "type": "Eber",       "notes": "Required"}
+      ],
+      "notes": "Adds a suffix to a normal or magic flask. Common suffixes: of Dousing, of Freezing, of Grounding."
+    },
+    {
+      "category": "Corrupt",
       "modifier": "Corrupt a Unique Item",
       "result": "Corrupts a unique item, potentially adding a veiled mod or changing values",
       "beasts": [
@@ -258,6 +360,133 @@
         {"name": "Fenumal Hybrid Arachnid", "type": "Fenumal", "notes": "Required"}
       ],
       "notes": "Corrupts the unique item and applies a random corruption effect (like Vaal Orb). Can brick the item."
+    },
+    {
+      "category": "Corrupt",
+      "modifier": "Add Implicit to an Item",
+      "result": "Adds a random implicit modifier to an item (Vaal-tier corruption)",
+      "beasts": [
+        {"name": "Farric Flame Blood",  "type": "Farric",     "notes": "Required"},
+        {"name": "Fenumal Plagued Arachnid", "type": "Fenumal", "notes": "Required"},
+        {"name": "Eber's Unification",  "type": "Eber",       "notes": "Required"}
+      ],
+      "notes": "Adds a random implicit to a non-corrupted item without corrupting it. Very useful for adding Vaal-tier implicits safely."
+    },
+    {
+      "category": "Corrupt",
+      "modifier": "Modify an Implicit on an Item",
+      "result": "Changes the existing implicit modifier on an item",
+      "beasts": [
+        {"name": "Farric Wolf Alpha",   "type": "Farric",     "notes": "Required"},
+        {"name": "Craicic Sand Spitter", "type": "Craicic",   "notes": "Required"},
+        {"name": "Eber Thornback",      "type": "Eber",       "notes": "Required"}
+      ],
+      "notes": "Rerolls the implicit modifier on an item. Does not corrupt the item."
+    },
+    {
+      "category": "Warbands",
+      "modifier": "Add a Warband Mod to a Rare Item",
+      "result": "Adds a Warbands modifier to a rare item",
+      "beasts": [
+        {"name": "Farric Chieftain",    "type": "Farric",     "notes": "Required"},
+        {"name": "Craicic Chimeral",    "type": "Craicic",    "notes": "Required"}
+      ],
+      "notes": "Adds a modifier from the Warbands mod pool. Only available in specific league/standard configurations."
+    },
+    {
+      "category": "Currency",
+      "modifier": "Transmute a Normal Item to Magic",
+      "result": "Applies an Orb of Transmutation effect to an item",
+      "beasts": [
+        {"name": "Farric Wolf",         "type": "Farric",     "notes": "Any Farric Wolf"},
+        {"name": "Fenumal Spider",      "type": "Fenumal",    "notes": "Any Fenumal Spider"}
+      ],
+      "notes": "Turns a normal (white) item into a magic (blue) item with one or two modifiers."
+    },
+    {
+      "category": "Currency",
+      "modifier": "Augment a Magic Item",
+      "result": "Adds a second modifier to a one-mod magic item (like Orb of Augmentation)",
+      "beasts": [
+        {"name": "Farric Wolf",         "type": "Farric",     "notes": "Any Farric Wolf"},
+        {"name": "Craicic Watcher",     "type": "Craicic",    "notes": "Required"}
+      ],
+      "notes": "Only works on magic items that have exactly one modifier. Adds the second modifier."
+    },
+    {
+      "category": "Currency",
+      "modifier": "Regal Orb Effect",
+      "result": "Upgrades a magic item to rare and adds a modifier (like Regal Orb)",
+      "beasts": [
+        {"name": "Farric Chieftain",    "type": "Farric",     "notes": "Required"},
+        {"name": "Eber Thornback",      "type": "Eber",       "notes": "Required"},
+        {"name": "Fenumal Hybrid Arachnid", "type": "Fenumal", "notes": "Required"}
+      ],
+      "notes": "Upgrades a magic (blue) item to rare and adds one additional modifier."
+    },
+    {
+      "category": "Currency",
+      "modifier": "Annul Effect (Remove One Modifier)",
+      "result": "Removes a random explicit modifier from a rare item (like Orb of Annulment)",
+      "beasts": [
+        {"name": "Craicic Chimeral",    "type": "Craicic",    "notes": "Required"},
+        {"name": "Farric Flame Blood",  "type": "Farric",     "notes": "Required"},
+        {"name": "Fenumal Plagued Arachnid", "type": "Fenumal", "notes": "Required"}
+      ],
+      "notes": "Removes exactly one random explicit modifier. Targets rare items with 2+ mods."
+    },
+    {
+      "category": "Gem",
+      "modifier": "Level Up a Gem",
+      "result": "Grants experience to a skill gem (equivalent to using a Gemcutter's Prism on experience)",
+      "beasts": [
+        {"name": "Craicic Watcher",     "type": "Craicic",    "notes": "Required"},
+        {"name": "Farric Toad",         "type": "Farric",     "notes": "Any Farric Toad"}
+      ],
+      "notes": "Increases the level of a skill gem by granting it experience. Limited effect on already high-level gems."
+    },
+    {
+      "category": "Gem",
+      "modifier": "Add Quality to a Gem",
+      "result": "Adds quality to a skill gem (like Gemcutter's Prism)",
+      "beasts": [
+        {"name": "Farric Toad",         "type": "Farric",     "notes": "Any Farric Toad"},
+        {"name": "Eber Thornback",      "type": "Eber",       "notes": "Required"}
+      ],
+      "notes": "Adds quality percentage to the target skill gem. Respects the 20% cap for non-corrupted gems."
+    },
+    {
+      "category": "Currency",
+      "modifier": "Exalt Effect (Add One Modifier)",
+      "result": "Adds one random modifier to a rare item (like Exalted Orb)",
+      "beasts": [
+        {"name": "Farric Wolf Alpha",   "type": "Farric",     "notes": "Required"},
+        {"name": "Craicic Chimeral",    "type": "Craicic",    "notes": "Required"},
+        {"name": "Eber's Unification",  "type": "Eber",       "notes": "Required"},
+        {"name": "Fenumal Hybrid Arachnid", "type": "Fenumal", "notes": "Required"}
+      ],
+      "notes": "Adds a random modifier to a rare item that has fewer than 6 modifiers. 4-beast recipe."
+    },
+    {
+      "category": "Scouring",
+      "modifier": "Scour a Rare Item to Normal",
+      "result": "Removes all modifiers from a rare item (like Orb of Scouring)",
+      "beasts": [
+        {"name": "Farric Chieftain",    "type": "Farric",     "notes": "Required"},
+        {"name": "Craicic Sand Spitter", "type": "Craicic",   "notes": "Required"},
+        {"name": "Eber Thornback",      "type": "Eber",       "notes": "Required"}
+      ],
+      "notes": "Strips a rare item of all explicit modifiers, returning it to a normal item."
+    },
+    {
+      "category": "Prophecy",
+      "modifier": "Fulfill a Prophecy",
+      "result": "Consumes a silver coin to trigger a random sealed prophecy",
+      "beasts": [
+        {"name": "Farric Wolf",         "type": "Farric",     "notes": "Any Farric Wolf"},
+        {"name": "Fenumal Plagued Arachnid", "type": "Fenumal", "notes": "Required"}
+      ],
+      "notes": "Legacy content — Prophecy was removed in PoE 3.17. Only available on standard/legacy leagues."
     }
   ]
 }

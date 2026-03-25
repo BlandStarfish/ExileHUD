@@ -25,6 +25,8 @@ from ui.widgets.notes_panel import NotesPanel
 from ui.widgets.div_panel import DivPanel
 from ui.widgets.atlas_panel import AtlasPanel
 from ui.widgets.bestiary_panel import BestiaryPanel
+from ui.widgets.heist_panel import HeistPanel
+from ui.widgets.gem_panel import GemPanel
 
 
 DARK_BG = "#1a1a2e"
@@ -38,6 +40,7 @@ class HUD(QMainWindow):
     def __init__(self, state, quest_tracker, price_checker, currency_tracker, crafting,
                  map_overlay, xp_tracker, chaos_recipe, config,
                  div_tracker=None, atlas_tracker=None,
+                 heist_planner=None, gem_planner=None,
                  oauth_manager=None, stash_api=None, character_api=None):
         super().__init__()
         self._state = state
@@ -48,7 +51,8 @@ class HUD(QMainWindow):
 
         self._setup_window()
         self._build_ui(quest_tracker, price_checker, currency_tracker, crafting,
-                       map_overlay, xp_tracker, chaos_recipe, div_tracker, atlas_tracker)
+                       map_overlay, xp_tracker, chaos_recipe,
+                       div_tracker, atlas_tracker, heist_planner, gem_planner)
 
         # Wire price checker results to price panel
         price_checker.on_result(self._price_panel.show_result)
@@ -80,7 +84,9 @@ class HUD(QMainWindow):
             self.setGeometry(1500, 40, 400, 700)
 
     def _build_ui(self, quest_tracker, price_checker, currency_tracker, crafting,
-                  map_overlay, xp_tracker, chaos_recipe, div_tracker=None, atlas_tracker=None):
+                  map_overlay, xp_tracker, chaos_recipe,
+                  div_tracker=None, atlas_tracker=None,
+                  heist_planner=None, gem_planner=None):
         root = QWidget()
         root.setStyleSheet(f"""
             QWidget {{ background-color: {DARK_BG}; color: {TEXT}; font-family: 'Segoe UI'; font-size: 12px; border-radius: 8px; }}
@@ -145,10 +151,22 @@ class HUD(QMainWindow):
         ) if div_tracker else QWidget()
         self._atlas_panel    = AtlasPanel(atlas_tracker) if atlas_tracker else QWidget()
         self._bestiary_panel = BestiaryPanel()
+        self._heist_panel = HeistPanel(
+            heist_planner,
+            oauth_manager=self._oauth_manager,
+            stash_api=self._stash_api,
+            league=self._config.get("league", "Standard"),
+        ) if heist_planner else QWidget()
+        self._gem_panel = GemPanel(
+            gem_planner,
+            character_api=self._character_api,
+            oauth_manager=self._oauth_manager,
+            league=self._config.get("league", "Standard"),
+        ) if gem_planner else QWidget()
 
         # Tab indices: Quests=0, Tree=1, Price=2, Currency=3, Crafting=4,
         #              Map=5, XP=6, Recipe=7, Notes=8, Settings=9,
-        #              Divs=10, Atlas=11, Bestiary=12
+        #              Divs=10, Atlas=11, Bestiary=12, Heist=13, Gems=14
         tabs.addTab(self._quest_panel,    "Quests")
         tabs.addTab(self._tree_panel,     "Tree")
         tabs.addTab(self._price_panel,    "Price")
@@ -162,6 +180,8 @@ class HUD(QMainWindow):
         tabs.addTab(self._div_panel,      "Divs")
         tabs.addTab(self._atlas_panel,    "Atlas")
         tabs.addTab(self._bestiary_panel, "Bestiary")
+        tabs.addTab(self._heist_panel,    "Heist")
+        tabs.addTab(self._gem_panel,      "Gems")
 
         layout.addWidget(tabs)
         self.setCentralWidget(root)

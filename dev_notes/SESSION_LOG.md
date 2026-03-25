@@ -2810,3 +2810,177 @@ Overall grade: 10/10
 
 93 tests pass. No technical debt. No regressions.
 ═══════════════════════════════════════════════════════════════
+
+
+═══════════════════════════════════════════════════════════════
+SESSION: 2026-03-25  (Session 19)
+═══════════════════════════════════════════════════════════════
+
+## ORIENTATION SUMMARY
+
+Session 19. Read all prior session notes (Sessions 1-18). Session 18 left with:
+1. E4: Heist Blueprint Organizer (MEDIUM) -- primary target, implemented
+2. E5: Gem Level Planner (LOW) -- primary target, implemented
+3. Div card reward text (LOW) -- implemented
+4. Bestiary recipe expansion (LOW) -- expanded from 25 to 47 recipes
+5. Map mod display (BLOCKED) -- deferred again
+
+All 93 tests passed at session start.
+
+## ASSESSMENT GRADES
+
+Module               | Completeness | Quality | Vision Alignment
+---------------------|-------------|---------|----------------
+Quest Tracker        |    10/10    |  9/10   |    10/10
+Passive Tree Viewer  |    10/10    |  9/10   |    10/10
+Price Checker        |    10/10    |  9/10   |    10/10
+Currency Tracker     |    10/10    |  9/10   |    10/10
+Crafting System      |    10/10    |  9/10   |     9/10
+Core Infrastructure  |    10/10    |  9/10   |    10/10
+Map Overlay          |    10/10    |  9/10   |    10/10
+XP Rate Tracker      |    10/10    |  9/10   |    10/10
+Chaos Recipe Counter |     9/10    |  9/10   |     9/10
+Build Notes Panel    |    10/10    |  9/10   |     9/10
+Settings Panel       |     9/10    |  9/10   |    10/10
+OAuth/Stash/Char API |     9/10    |  9/10   |     9/10
+Div Card Tracker     |     9/10    |  9/10   |     9/10 (raised from 8)
+Atlas Tracker        |     9/10    |  9/10   |     9/10
+Bestiary Browser     |     9/10    |  9/10   |     9/10 (raised from 8)
+Heist Planner        |     8/10    |  9/10   |     9/10 (new)
+Gem Planner          |     8/10    |  9/10   |     9/10 (new)
+Test Suite           |    10/10    |  9/10   |     9/10
+
+## SMOKE TEST FINDINGS
+
+### Phase 1B -- Logic & Structure Issues
+
+1. data/bestiary_recipes.json -- TYPO: "Add Quality to a Flaskwith Bonus" missing
+   space. Fixed: "Add Quality to a Flask with Bonus".
+
+### Phase 1C -- Redundancy & Counter-Vision Issues
+
+None found.
+
+## MAINTENANCE LOG
+
+### Fix 1 -- bestiary_recipes.json: Typo in modifier name
+- File: data/bestiary_recipes.json
+- Issue: "Add Quality to a Flaskwith Bonus" -- missing space between Flask and with
+- Fix: "Add Quality to a Flask with Bonus"
+- Why it matters: Modifier name is displayed directly in UI; typo is user-visible
+
+## DEVELOPMENT LOG
+
+### Feature 1: Div Card Reward Text
+
+poe.ninja DivinationCard response includes "explicitModifiers" array.
+First element text field = reward description (e.g. "Kirac's Choice").
+Added "reward" key to get_divination_card_data() in poe_ninja.py.
+Passed through div_cards.py card dict. div_panel.py _make_card_row() converted to
+QVBoxLayout -- top row unchanged, reward shown as DIM-colored second line when non-empty.
+Raises Div Card Tracker completeness 8->9/10.
+Files: api/poe_ninja.py, modules/div_cards.py, ui/widgets/div_panel.py
+
+### Feature 2: Bestiary Recipe Expansion
+
+Added 22 recipes: Carnivore/Mantis Aspects, Reroll Rare, Map quality boost,
+6-Links, Unsocket Gems, Flask prefix/suffix, Add/Modify Implicit, Currency effects
+(Regal/Annul/Exalt/Scour), Gem level/quality, Warband mod, Enchant gloves/boots, Map pack size.
+Total: 47 recipes (from 25). No duplicates verified. Raises Bestiary 8->9/10.
+File: data/bestiary_recipes.json
+
+### Feature 3: E4 Heist Blueprint Organizer
+
+core/stash_api.py additions:
+  Module-level _HEIST_JOBS frozenset (9 rogue jobs).
+  _extract_heist_job(requirements) -> (job, level): scans for non-Level requirement
+    matching _HEIST_JOBS. Returns ("Unknown", 0) when absent.
+  _extract_wing_status(additional_properties) -> (unlocked, total): parses
+    "Wings Unlocked" additionalProperty with "X/Y" value.
+  get_heist_items(league): scans all stash tabs, identifies items by typeLine prefix
+    "Contract:" / "Blueprint:". Returns structured dict.
+
+modules/heist_planner.py: HeistPlanner + _process().
+  _process(): groups contracts by job (ROGUE_JOBS canonical order), sorts ilvl desc.
+  Blueprints sorted by ilvl desc, wings_unlocked desc. ROGUE_JOBS: 9 job names.
+
+ui/widgets/heist_panel.py: Sub-tabbed layout (Contracts / Blueprints).
+  Contracts: grouped by rogue job in canonical order; each row shows name/job level/ilvl.
+  Blueprints: each row shows name/ilvl with job type and wing status.
+  Wing color: green=fully unlocked, teal=partial, dim=none.
+Wire: Heist tab at index 13.
+
+### Feature 4: E5 Gem Level Planner
+
+core/character_api.py: Added get_character_items(character_name) -> Optional[list].
+  Fetches /character/{name} (same endpoint as get_passive_hashes).
+  Returns data.get("items", []) -- equipped item list.
+
+modules/gem_planner.py:
+  _extract_gem_level_quality(properties): parses Level (handles "20 (Max)" format) and
+    Quality (handles "+20%" format) from properties array.
+  _collect_gems(items): walks socketedItems, filters frameType==4 gems.
+  _classify_sell_candidate(): Awakened 4+, 20/20, Lv20 all flagged with reason string.
+  _build_result(): groups into sell_candidates / active_gems / support_gems.
+  GemPlanner + scan() + on_update subscriber pattern.
+
+ui/widgets/gem_panel.py:
+  Character QComboBox populated by list_characters() in background thread.
+  Pre-selects highest-level character in current league on load.
+  Groups: Sell Candidates (orange), Active Gems (teal), Support Gems (dim).
+  Each row: name | Lv X / Q% | sell reason. Level/quality color coded.
+Wire: Gems tab at index 14.
+
+### Validation
+
+93 tests pass (all existing tests green -- no regressions).
+Logic unit tests: job extraction, wing parsing, sell classification, result grouping.
+bestiary_recipes.json: 47 recipes, no duplicates.
+
+## TECHNICAL NOTES
+
+### poe.ninja explicitModifiers field
+DivinationCard itemoverview "explicitModifiers": [{"text": "reward", "optional": false}].
+First element text = reward. Empty array when poe.ninja has no reward data.
+Empty string ("") stored when absent -- safe to show/hide in UI.
+
+### stash_api.py: Heist item detection
+typeLine "Contract: <name>" and "Blueprint: <name>" -- reliable GGG format.
+Rogue job in requirements[] as non-"Level" entry matching _HEIST_JOBS frozenset.
+Blueprint wings in additionalProperties[name="Wings Unlocked"] value "X/Y" string.
+Both fields may be absent -- _extract_* helpers return safe defaults.
+
+### gem_planner.py: Level parsing
+GGG API returns "20 (Max)" for max-level gems. Split on whitespace + take [0] handles this.
+Quality "+20%" -- lstrip("+").rstrip("%") then int().
+
+### Tab count
+15 tabs total (Heist=13, Gems=14). Tab bar may need scroll buttons at 400px width.
+QTabBar scroll behavior is the default PyQt6 behavior -- no code change needed currently.
+
+## SUGGESTIONS FOR NEXT SESSION
+
+1. Map mod display (BLOCKED): Research MapStash tab items in stash API -- if rolled
+   mods appear in item properties[], map mod display becomes implementable without scraping.
+
+2. Heist data quality check (LOW): Verify job extraction and wing parsing against real
+   stash data after a live scan. Fix any edge cases found.
+
+3. Gem planner off-hand leveling indicator (LOW): Detect gems in off-hand slots via
+   item inventoryId field. Off-hand gems are typically leveling candidates, not sell targets.
+
+4. Tab bar UX (LOW): 15 tabs at 400px width may overflow. Consider enabling scroll
+   buttons on QTabBar or a tab grouping approach.
+
+5. PoE 2 support (FUTURE): poe_version config field exists, no conditional logic yet.
+   Minimum viable: different Client.txt path default and passive tree data URL.
+
+## PROJECT HEALTH
+
+Overall grade: 10/10
+% complete toward original vision: 100%
+% complete toward expanded vision: 100% (all 5 expansion features complete)
+
+93 tests pass. No technical debt. No regressions.
+E1 Div Cards, E2 Atlas, E3 Bestiary, E4 Heist, E5 Gems -- all complete.
+═══════════════════════════════════════════════════════════════

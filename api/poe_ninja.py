@@ -98,9 +98,12 @@ class PoeNinja:
         for entry in data.get("lines", []):
             name = entry.get("name", "")
             if name:
+                reward_mods = entry.get("explicitModifiers", [])
+                reward = reward_mods[0].get("text", "") if reward_mods else ""
                 result[name] = {
                     "chaos":      entry.get("chaosValue", 0.0),
                     "stack_size": entry.get("stackSize", 1),
+                    "reward":     reward,
                 }
         return result
 

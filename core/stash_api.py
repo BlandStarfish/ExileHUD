@@ -50,6 +50,46 @@ def _ua(client_id: str) -> str:
 
 _TRACKED_SET: frozenset[str] = frozenset(TRACKED_CURRENCIES)
 
+# Rogue job names used in Heist contract/blueprint requirements
+_HEIST_JOBS = frozenset([
+    "Lockpicking", "Agility", "Brute Force", "Counter-Thaumaturgy",
+    "Deception", "Demolition", "Engineering", "Perception", "Trap Disarmament",
+])
+
+
+def _extract_heist_job(requirements: list) -> tuple[str, int]:
+    """
+    Extract rogue job name and required level from a Heist item's requirements array.
+    Returns ("Unknown", 0) if no job requirement is found.
+    """
+    for req in requirements:
+        name = req.get("name", "")
+        if name in _HEIST_JOBS:
+            values = req.get("values", [])
+            level  = int(values[0][0]) if values and values[0] else 0
+            return name, level
+    return "Unknown", 0
+
+
+def _extract_wing_status(additional_properties: list) -> tuple[int, int]:
+    """
+    Extract wings unlocked count from a Blueprint's additionalProperties array.
+    Looks for a "Wings Unlocked" property with value like "2/4".
+    Returns (unlocked, total) as ints; defaults to (0, 0) if not found.
+    """
+    for prop in additional_properties:
+        if prop.get("name") == "Wings Unlocked":
+            values = prop.get("values", [])
+            if values:
+                text = str(values[0][0]) if values[0] else "0/0"
+                parts = text.split("/")
+                if len(parts) == 2:
+                    try:
+                        return int(parts[0]), int(parts[1])
+                    except ValueError:
+                        pass
+    return 0, 0
+
 
 class StashAPI:
     def __init__(self, oauth_manager, realm: str = "pc"):
@@ -140,6 +180,61 @@ class StashAPI:
             items.extend(tab_items)
 
         return items
+
+    def get_heist_items(self, league: str) -> dict:
+        """
+        Scan all stash tabs for Heist Contracts and Blueprints.
+
+        Returns:
+          {
+            "contracts":  list of contract item dicts (with name, ilvl, job, job_level)
+            "blueprints": list of blueprint item dicts (with name, ilvl, wings_unlocked, wings_total)
+          }
+
+        Contract typeLine starts with "Contract:".
+        Blueprint typeLine starts with "Blueprint:".
+        Job type is extracted from the requirements array (non-Level entries).
+        Returns empty lists on error.
+        """
+        tabs = self.list_tabs(league)
+        if tabs is None:
+            return {"contracts": [], "blueprints": []}
+
+        contracts: list[dict] = []
+        blueprints: list[dict] = []
+
+        for tab in tabs:
+            tab_id = tab.get("id")
+            if not tab_id:
+                continue
+            tab_data = self.get_tab(league, tab_id)
+            if tab_data is None:
+                continue
+            for item in tab_data.get("stash", {}).get("items", []):
+                type_line = item.get("typeLine", "")
+                if type_line.startswith("Contract:"):
+                    name      = type_line[len("Contract:"):].strip()
+                    job, level = _extract_heist_job(item.get("requirements", []))
+                    contracts.append({
+                        "name":      name,
+                        "ilvl":      item.get("ilvl", 0),
+                        "job":       job,
+                        "job_level": level,
+                    })
+                elif type_line.startswith("Blueprint:"):
+                    name = type_line[len("Blueprint:"):].strip()
+                    unlocked, total = _extract_wing_status(item.get("additionalProperties", []))
+                    job, level      = _extract_heist_job(item.get("requirements", []))
+                    blueprints.append({
+                        "name":          name,
+                        "ilvl":          item.get("ilvl", 0),
+                        "job":           job,
+                        "job_level":     level,
+                        "wings_unlocked": unlocked,
+                        "wings_total":   total,
+                    })
+
+        return {"contracts": contracts, "blueprints": blueprints}
 
     def get_divination_items(self, league: str) -> dict[str, int]:
         """

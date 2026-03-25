@@ -166,8 +166,13 @@ class DivPanel(QWidget):
     def _make_card_row(self, card: dict) -> QWidget:
         row = QWidget()
         row.setStyleSheet("background: #0f0f23; border-radius: 3px;")
-        hl = QHBoxLayout(row)
-        hl.setContentsMargins(6, 3, 6, 3)
+        vl = QVBoxLayout(row)
+        vl.setContentsMargins(6, 4, 6, 4)
+        vl.setSpacing(2)
+
+        # Top row: name | stack | chaos value
+        hl = QHBoxLayout()
+        hl.setContentsMargins(0, 0, 0, 0)
         hl.setSpacing(6)
 
         name_lbl = QLabel(card["name"])
@@ -186,6 +191,16 @@ class DivPanel(QWidget):
             chaos_lbl.setStyleSheet(f"color: {ACCENT}; font-size: 10px;")
             chaos_lbl.setAlignment(Qt.AlignmentFlag.AlignRight | Qt.AlignmentFlag.AlignVCenter)
             hl.addWidget(chaos_lbl)
+
+        vl.addLayout(hl)
+
+        # Reward text (from poe.ninja explicitModifiers)
+        reward = card.get("reward", "")
+        if reward:
+            reward_lbl = QLabel(reward)
+            reward_lbl.setStyleSheet(f"color: {DIM}; font-size: 10px;")
+            reward_lbl.setWordWrap(True)
+            vl.addWidget(reward_lbl)
 
         return row
 

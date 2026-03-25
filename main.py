@@ -44,6 +44,8 @@ from modules.xp_tracker import XPTracker
 from modules.chaos_recipe import ChaosRecipe
 from modules.div_cards import DivCardTracker
 from modules.atlas_tracker import AtlasTracker
+from modules.heist_planner import HeistPlanner
+from modules.gem_planner import GemPlanner
 
 # Lazy UI import — avoids loading Qt before QApplication exists
 import ui.hud as hud_module
@@ -90,6 +92,8 @@ def main():
     chaos_recipe     = ChaosRecipe(stash_api)
     div_tracker      = DivCardTracker(stash_api, ninja)
     atlas_tracker    = AtlasTracker()
+    heist_planner    = HeistPlanner(stash_api)
+    gem_planner      = GemPlanner(character_api)
 
     # Client.txt watcher
     log_watcher = ClientLogWatcher(conf["client_log_path"])
@@ -115,6 +119,8 @@ def main():
         chaos_recipe=chaos_recipe,
         div_tracker=div_tracker,
         atlas_tracker=atlas_tracker,
+        heist_planner=heist_planner,
+        gem_planner=gem_planner,
         config=conf,
         oauth_manager=oauth_manager,
         stash_api=stash_api,

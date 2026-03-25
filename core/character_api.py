@@ -64,6 +64,19 @@ class CharacterAPI:
         hashes = data.get("passives", {}).get("hashes", [])
         return {str(h) for h in hashes}
 
+    def get_character_items(self, character_name: str) -> Optional[list]:
+        """
+        Returns the list of equipped item dicts for the named character, or None on error.
+
+        Each item dict is a GGG stash-style item object. Gems socketed in equipment
+        appear as socketedItems within each item. Gems have frameType == 4.
+        """
+        encoded = urllib.parse.quote(character_name, safe="")
+        data = self._get(f"/character/{encoded}")
+        if data is None:
+            return None
+        return data.get("items", [])
+
     def get_best_character(self, league: str) -> Optional[dict]:
         """
         Returns the highest-level character in the given league, or None if
