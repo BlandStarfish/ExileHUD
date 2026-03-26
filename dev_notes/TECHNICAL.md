@@ -82,9 +82,9 @@ install.py                   — CLI installer (Python users)
 
 ### Tab Index (hud.py)
 Outer tabs: Character=0, Loot=1, Endgame=2, Info=3.
-Info group inner tabs (Session 34): 0-25 unchanged from Session 33, then:
-  _INFO_LEAGUE_MECH=26 ("Leagues"), _INFO_BUILD_ARCH=27 ("Archetypes"),
-  _INFO_STATUS_AIL=28 ("Ailments"), _INFO_SETTINGS=29.
+Info group inner tabs (Session 35): 0-28 unchanged from Session 34, then:
+  _INFO_CRAFT_BENCH=29 ("Bench"), _INFO_DEFENSE_PRIMER=30 ("Defence"),
+  _INFO_END_CHECKLIST=31 ("Checklist"), _INFO_SETTINGS=32.
 Settings is always last in Info group. Shifts by +3 each expansion round.
 Map tab: _END_MAP=0 in Endgame group.
 

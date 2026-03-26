@@ -5274,3 +5274,167 @@ I1-I3 + J1-J3 + K1-K3 + L1-L3 + M1-M3 + N1-N3 + O1-O3). 685 tests pass, 1 skippe
 No technical debt. No regressions. Info group 30 tabs.
 Blockers: PoE2 passive tree (no GGG ETA), Asana create_task MCP (not in session config).
 ═══════════════════════════════════════════════════════════════
+
+
+═══════════════════════════════════════════════════════════════
+SESSION: 2026-03-26  (Session 35)
+═══════════════════════════════════════════════════════════════
+
+## ORIENTATION SUMMARY
+Session 34 left off after implementing O1-O3 (League Mechanic Primer, Build
+Archetype Primer, Status Ailment Reference). All at 9+/10. Test count 685.
+Info group 30 tabs. Primary suggestion: Phase 4 Round 12 -- generate and
+implement P1-P3. Candidates: Crafting Bench Quick Reference, Resistances &
+Defence Calculations Primer, Endgame Progression Checklist.
+
+Pre-session test status: 685 passed, 1 skipped.
+Post-session test status: 761 passed, 1 skipped (+76 new).
+
+## ASSESSMENT GRADES
+
+| Module                       | Completeness | Quality | Vision Alignment |
+|------------------------------|-------------|---------|-----------------|
+| Quest Tracker                |     9/10     |  9/10   |      9/10       |
+| Passive Tree Viewer          |     9/10     |  9/10   |      9/10       |
+| Price Checker                |     9/10     |  9/10   |      9/10       |
+| Currency Tracker             |     7/10     |  9/10   |      8/10       |
+| Crafting System              |     8/10     |  9/10   |      9/10       |
+| Core Infrastructure          |     9/10     |  9/10   |      9/10       |
+| Map Overlay                  |     9/10     |  9/10   |      9/10       |
+| Info Reference Panels        |    10/10     |  9/10   |     10/10       |
+| Test Suite                   |    10/10     |  9/10   |      9/10       |
+| Crafting Bench Reference     |     9/10     |  9/10   |     10/10       |
+| Defence Primer               |     9/10     |  9/10   |     10/10       |
+| Endgame Checklist            |     9/10     |  9/10   |     10/10       |
+
+## SMOKE TEST FINDINGS
+
+### Phase 1B -- Logic & Structure Issues
+None found. All modules clean.
+
+### Phase 1C -- Redundancy & Counter-Vision Issues
+None found.
+
+## MAINTENANCE LOG
+No maintenance fixes required this session. All existing code clean.
+
+## DEVELOPMENT LOG
+
+### Phase 4 Round 12 -- P1-P3 Auto-Approved and Implemented
+
+O1-O3 all at 9+/10. Generated 3 new expansion features matching suggestions
+from Session 34.
+
+### P1: Crafting Bench Quick Reference
+
+data/crafting_bench.json: 30 crafting bench modifier entries
+  Categories: Life & Mana (5), Resistances (5), Defence (6), Offence (8),
+              Utility (6)
+  Schema: {name, category, mod_type, best_tier, min_ilvl, slots, cost, notes}
+  Includes: Maximum Life, all resist mods, All Elemental Resistances,
+    Movement Speed, Energy Shield, Armour, Evasion, Attack/Cast Speed,
+    Crit Chance/Multi, attributes, Flask Charges, Attack types (fire/cold/
+    lightning/chaos/physical), Spell Suppression, Block
+
+ui/widgets/crafting_bench_panel.py: CraftingBenchPanel
+  Category filter: Life & Mana / Resistances / Defence / Offence / Utility
+  Colors: Life=GREEN, Resistances=BLUE, Defence=TEAL, Offence=ORANGE, Utility=PURPLE
+  Prefix/Suffix badge color-coded per mod type
+  Cards: best tier (gold, with min ilvl), slots (teal), cost (green), notes (dim)
+  Full-text search across name, slots, cost, and mod text
+
+tests/test_crafting_bench_panel.py: 25 tests
+hud.py: _INFO_CRAFT_BENCH=29, "Bench" tab added to Info group
+
+### P2: Defence & Resistance Primer
+
+data/defense_primer.json: 12 defence concept entries
+  Categories: Physical Defence (3), Elemental Defence (2), All Hits (1),
+              Spell Defence (1), Universal Defence (1), Recovery (1),
+              Active Defence (1), Foundation (1), Concept (1)
+  Schema: {name, category, formula, cap, key_facts[], how_to_stack,
+           active_skill, notes}
+  Concepts: Armour, Evasion, Energy Shield, Elemental Resistances, Chaos
+    Resistance, Physical Damage Reduction %, Spell Suppression, Block,
+    Life (as Defence), Guard Skills, Leech & Regeneration, EHP
+
+ui/widgets/defense_primer_panel.py: DefencePrimerPanel
+  Category filter: all 9 categories with color coding
+  Cards: formula (yellow italic), cap (orange), bullet key_facts (white),
+         how to stack (teal), active skill (green), notes (dim)
+  Full-text search across all fields including key_facts list
+
+tests/test_defense_primer_panel.py: 25 tests
+hud.py: _INFO_DEFENSE_PRIMER=30, "Defence" tab added to Info group
+
+### P3: Endgame Progression Checklist
+
+data/endgame_checklist.json: 6 progression stages
+  Categories: Foundation (1), Mapping (2), Endgame (1), Pinnacle (2)
+  Schema: {name, category, order, objectives[], gear_targets,
+           key_warnings[], unlock, next_step}
+  Stages (in order):
+    1. Campaign -- Acts 1-10 (Foundation)
+    2. Early Atlas -- White Maps T1-5 (Mapping)
+    3. Yellow Maps T6-10 & Conquerors (Mapping)
+    4. Red Maps T11-16 & Sirus (Endgame)
+    5. Pinnacle Content (Pinnacle)
+    6. Uber Pinnacle & Endgame Farming (Pinnacle)
+
+ui/widgets/endgame_checklist_panel.py: EndgameChecklistPanel
+  Category filter: Foundation / Mapping / Endgame / Pinnacle
+  Stages sorted by order field
+  Cards: [N] order badge, stage name, objectives with checkbox UI (☐),
+         gear targets (green), warnings (red header, orange text with ⚠),
+         unlock gate (purple), next step pointer (dim italic)
+  Full-text search across objectives, gear targets, warnings, unlock, next
+
+tests/test_endgame_checklist_panel.py: 26 tests
+hud.py: _INFO_END_CHECKLIST=31, "Checklist" tab added; _INFO_SETTINGS=32
+
+Test count: 685 -> 761 (+76 new, all pass. Total: 761 passed, 1 skipped)
+Info group now 33 tabs (0-32). _INFO_SETTINGS=32.
+
+## TECHNICAL NOTES
+
+Defence panel category "All Hits" (Energy Shield): Added to categories list
+  in defense_primer.json after test_valid_categories caught the omission.
+  Energy Shield absorbs all damage types so "All Hits" is accurate.
+
+Endgame checklist order field: stages are sorted by order (1-6) on load so
+  filter and search always return results in progression order regardless of
+  JSON file order.
+
+Asana create_task MCP: Still missing from this session config.
+  HUMAN INBOX (GID: 1213723884881761) summary not posted again.
+  This is now the second consecutive session without Asana reporting.
+
+Installer release: v35-2026-03-26 published to GitHub Releases.
+  PoELens-Setup.zip: 9.9 MB
+  URL: https://github.com/BlandStarfish/PoELens/releases/tag/v35-2026-03-26
+
+## SUGGESTIONS FOR NEXT SESSION
+
+1. Phase 4 Round 13 (MEDIUM): P1-P3 all at 9+/10. Run Phase 4 -- generate Q1-Q3.
+   Candidates (stable, version-independent, high practical value):
+   - Gem Quality & Awakened Gem Reference (which skills benefit from quality,
+     Awakened gem tiers and improvements vs base versions)
+   - Passive Tree Notable Cluster Reference (clusters of notables worth pathing
+     to, grouped by build type)
+   - Mapping Mod Reference (common map mods, what they mean, which to avoid)
+
+2. PoE2 passive tree (BLOCKED): No official GGG skilltree-export for PoE2.
+
+3. Asana create_task MCP (BLOCKED): Missing from session config for 2 sessions.
+   If available next session: post retroactive summaries for Sessions 34 and 35
+   plus the current session.
+
+4. Currency Reference live price column (LOW, deferred since Session 26).
+
+## PROJECT HEALTH
+Overall grade: 10/10. ~100% complete (original + E1-E6 + F1-F3 + G1-G3 +
+H1-H3 + I1-I3 + J1-J3 + K1-K3 + L1-L3 + M1-M3 + N1-N3 + O1-O3 + P1-P3).
+761 tests pass, 1 skipped. No technical debt. No regressions.
+Info group 33 tabs. Only blockers: PoE2 passive tree (no GGG ETA),
+Asana create_task MCP (missing from session config 2 sessions running).
+═══════════════════════════════════════════════════════════════
