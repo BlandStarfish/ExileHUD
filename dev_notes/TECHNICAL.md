@@ -744,3 +744,39 @@ _INFO_SETTINGS shifted from 2 to 3 in hud.py.
 ### Map boss category colors (Session 33)
   Shaper Guardian=BLUE (cold/ethereal), Elder Guardian=PURPLE (void/chaos), Conqueror=TEAL,
   Pinnacle=ACCENT (gold/prestige). Color choices reinforce the thematic identity of each group.
+
+## Session 38 Technical Notes (2026-03-26)
+
+### S1-S3 Schema Patterns
+
+S1: Compass Mod Reference (data/compass_mods.json)
+  Schema: {mod_name, category, effect, value_tier, best_for[], notes}
+  Categories: Beyond/Delirium/Ritual/Harvest/Expedition/Heist/Bestiary/Betrayal/Incursion/Delve/Monster/Item
+  20 mods. Value tiers: Extremely High (Beyond, Delirium Mirror), High (Ritual, Harvest, Expedition, Einhar),
+    Medium (Betrayal, Incursion, Delve, Blight, Essences, Harbinger), Low (Shrines, Strongboxes, Abyss)
+
+S2: Base Item Reference (data/base_items.json)
+  Schema: {name, slot, base_type, item_level_req, implicit, max_defense, why_valuable, best_for[], value_tier, notes}
+  Slots: Helmet/Body Armour/Gloves/Boots/Belt/Ring/Amulet/One-Handed Weapon/Two-Handed Weapon/Shield/Quiver
+  20 bases. Extremely High: Two-Toned Boots, Stygian Vise.
+  High: Hubris Circlet, Vaal Regalia, Astral Plate, Fingerless Silk Gloves, Opal Ring, Marble Amulet, Sacrifice Quiver.
+  Note: item_level_req=0 is not used (Cerulean/Two-Stone Rings have specific ilvl reqs). All numeric.
+
+  Test gotcha: base_type is "Energy Shield" (full string), not "ES". Test for "Energy Shield" substring.
+
+S3: Starting Area Guide (data/starting_areas.json)
+  Schema: {area, location, primary_stats[], ascendancies[], key_node_clusters[], recommended_for[],
+           avoid_for[], notable_keystones_nearby[], ascendancy_highlights, value_tier, notes}
+  Exactly 7 entries (one per class). All seven: Marauder/Duelist/Ranger/Shadow/Witch/Templar/Scion.
+  Value tiers: Marauder/Duelist/Ranger/Shadow/Witch=High, Templar/Scion=Medium.
+
+### Info Tab Index State After Session 38
+  _INFO_COMPASS_MODS   = 38
+  _INFO_BASE_ITEMS     = 39
+  _INFO_STARTING_AREAS = 40
+  _INFO_SETTINGS       = 41
+  Info group: 42 tabs (0-41). Next round (T1-T3): Settings will shift to 44.
+
+### Asana create_task MCP
+  Still missing from session config — 5th consecutive session without it.
+  No workaround found. asana_create_task_story and add_comment require an existing task_id.

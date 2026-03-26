@@ -1,0 +1,172 @@
+{
+  "how_it_works": "Compass mods (Charged Compasses) are applied to Watchstones to add modifiers to all maps in an Atlas region. Each compass holds 4 charges. High-value mods dramatically increase map profitability by adding rewarding league mechanics.",
+  "tips": [
+    "Stack multiple compass mods in the same region for compounding rewards",
+    "Beyond + Delirium is one of the highest-value combinations for most builds",
+    "Buy specific compasses in bulk from other players before running a target strategy",
+    "Check poe.ninja/economy for current compass prices — they fluctuate with league mechanics"
+  ],
+  "categories": ["Beyond", "Delirium", "Ritual", "Harvest", "Expedition", "Heist", "Bestiary", "Betrayal", "Incursion", "Delve", "Monster", "Item"],
+  "mods": [
+    {
+      "mod_name": "Area contains Beyond Demons",
+      "category": "Beyond",
+      "effect": "Spawns Beyond portals as you kill monsters. Completing a Beyond encounter can spawn a Beyond boss which drops valuable currency and has a chance to drop the Beyond Unique items.",
+      "value_tier": "Extremely High",
+      "best_for": ["All builds", "AoE builds", "Currency farming"],
+      "notes": "One of the highest-value compasses. Pairs extremely well with Delirium and high monster density maps."
+    },
+    {
+      "mod_name": "Area contains a Mirror of Delirium",
+      "category": "Delirium",
+      "effect": "Adds a Delirium Mirror at the start of the map. Running deeper into Delirium rewards Simulacrum Splinters and Cluster Jewels.",
+      "value_tier": "Extremely High",
+      "best_for": ["Fast-clearing builds", "AoE builds", "Cluster Jewel farming"],
+      "notes": "Exceptional value per compass charge. Stack with Delirium atlas passives for maximum Simulacrum Splinter yield."
+    },
+    {
+      "mod_name": "Area contains additional Delirium",
+      "category": "Delirium",
+      "effect": "Increases Delirium coverage across the map, adding more reward layers and monster modifications.",
+      "value_tier": "High",
+      "best_for": ["Fast-clearing builds", "Simulacrum farming"],
+      "notes": "Stacks multiplicatively with Mirror of Delirium if both are active."
+    },
+    {
+      "mod_name": "Area contains a Ritual Altar",
+      "category": "Ritual",
+      "effect": "Adds Ritual Altars to the map. Completing rituals awards Ritual currency (Omens, Ritual Splinters, Tattoos, and reroll tokens).",
+      "value_tier": "High",
+      "best_for": ["All builds", "Tattoo farming", "Omen farming"],
+      "notes": "Very consistent income. Prioritize Ritual atlas passives for Vessel of Chaos and Vessel of Fleeting upgrades."
+    },
+    {
+      "mod_name": "Area contains additional Ritual Altars",
+      "category": "Ritual",
+      "effect": "Increases the number of Ritual Altars in the map, multiplying the total tribute and rewards.",
+      "value_tier": "High",
+      "best_for": ["Ritual-focused farming", "High-tribute strats"],
+      "notes": "Each additional altar multiplies total tribute available, scaling deferral value significantly."
+    },
+    {
+      "mod_name": "Area contains a Sacred Grove",
+      "category": "Harvest",
+      "effect": "Adds a Sacred Grove with Harvest crafts. Life/Yellow seeds offer the most valuable crafts including targeted alterations and augments.",
+      "value_tier": "High",
+      "best_for": ["Crafting-focused players", "SSF", "Life/ES builds"],
+      "notes": "Value varies by what crafts spawn. Life (yellow) seeds are the most valuable. Less consistent than other mods."
+    },
+    {
+      "mod_name": "Area contains an Expedition",
+      "category": "Expedition",
+      "effect": "Adds Expedition remnants and Dannig, Rog, Gwennen, or Tujen vendor encounters.",
+      "value_tier": "High",
+      "best_for": ["All builds", "Logbook farming", "Expedition currency farming"],
+      "notes": "Gwennen is highly sought for Unique gambling. Tujen for bulk currency exchange. Pair with Expedition atlas passives."
+    },
+    {
+      "mod_name": "Area contains additional Expedition Remnants",
+      "category": "Expedition",
+      "effect": "Increases the number of Expedition remnants, expanding the explosive chain and reward potential.",
+      "value_tier": "Medium",
+      "best_for": ["Expedition-focused farming"],
+      "notes": "More remnants = more modifier stacking for explosive chains, increasing Artifact yields."
+    },
+    {
+      "mod_name": "Area contains Einhar's Memory",
+      "category": "Bestiary",
+      "effect": "Adds Einhar spawning throughout the map with increased Beast density. All Beasts caught are Rare quality.",
+      "value_tier": "High",
+      "best_for": ["All builds", "Bestiary crafting", "Red Beast farming"],
+      "notes": "Valuable for Red Beast farming (Craicic Chimeral, Farric Golem Alpha etc.). Best with Einhar atlas passives."
+    },
+    {
+      "mod_name": "Area is Patrolled by Betrayal Members",
+      "category": "Betrayal",
+      "effect": "Adds Immortal Syndicate encounters throughout the map, providing Intelligence and Safehouse rewards.",
+      "value_tier": "Medium",
+      "best_for": ["Currency crafting", "Div card farming via Safehouses"],
+      "notes": "Value depends on Syndicate board state. Catarina at rank 3 and intelligence-rich boards are most lucrative."
+    },
+    {
+      "mod_name": "Area has been Touched by the Alva Temple",
+      "category": "Incursion",
+      "effect": "Adds Alva and Incursion encounters in the map. Completing 12 Incursions builds toward a Temple of Atzoatl.",
+      "value_tier": "Medium",
+      "best_for": ["Temple farming", "Unique item hunting", "Chaos recipe crafting"],
+      "notes": "Omnitect room (Room of Reflection) and Corruption Chamber (Locus of Corruption) are highest value temple rooms."
+    },
+    {
+      "mod_name": "Area contains Niko's Memory",
+      "category": "Delve",
+      "effect": "Adds Niko and large Sulphite veins throughout the map. Generates massive amounts of Azurite Sulphite.",
+      "value_tier": "Medium",
+      "best_for": ["Delve builds", "Fossil farming", "Sulphite-hungry players"],
+      "notes": "Essential for players who delve deep. A single compass charge can fully refill Sulphite reserves."
+    },
+    {
+      "mod_name": "Area contains a Blight Encounter",
+      "category": "Item",
+      "effect": "Adds a Blight pump with lanes of monsters. Completing the Blight awards Blight-related currencies and Blighted/Blight-ravaged Maps.",
+      "value_tier": "Medium",
+      "best_for": ["Blight map strats", "Blighted map farming"],
+      "notes": "Most valuable when combined with Blight atlas passives and builds that can handle immobile defense."
+    },
+    {
+      "mod_name": "Area contains additional Rare Monsters",
+      "category": "Monster",
+      "effect": "Increases the number of Rare monsters in the map, each of which drops additional currency and has higher chance to drop maps.",
+      "value_tier": "Medium",
+      "best_for": ["IIQ/IIR builds", "General currency farming"],
+      "notes": "Consistent but not spectacular. Better when combined with Increased Item Quantity atlas passives."
+    },
+    {
+      "mod_name": "Area contains Tormented Spirits",
+      "category": "Monster",
+      "effect": "Adds Tormented Spirits which possess monsters, granting them increased rarity and quantity bonuses.",
+      "value_tier": "Medium",
+      "best_for": ["IIQ farming", "Div card farming"],
+      "notes": "Most valuable for builds farming specific div cards in target maps. Spirits that possess bosses are highly valuable."
+    },
+    {
+      "mod_name": "Area contains additional Shrines",
+      "category": "Monster",
+      "effect": "Adds extra shrines throughout the map, each granting a buff to the player when activated.",
+      "value_tier": "Low",
+      "best_for": ["Shrine-stacking builds", "Speed farming"],
+      "notes": "Mostly a quality-of-life mod. Divine Shrine can be very powerful for certain builds."
+    },
+    {
+      "mod_name": "Area contains additional Strongboxes",
+      "category": "Item",
+      "effect": "Adds extra Strongboxes (Arcanist, Cartographer, Armourers, etc.) to the map.",
+      "value_tier": "Low",
+      "best_for": ["Strongbox farming", "Div card fishing"],
+      "notes": "Low individual value but consistent. Arcanist Strongboxes can drop valuable currency. Pair with Strongbox atlas passives."
+    },
+    {
+      "mod_name": "Area contains additional Harbingers",
+      "category": "Monster",
+      "effect": "Adds extra Harbingers which drop Harbinger Shards (combinable into valuable currencies like Ancient Orbs).",
+      "value_tier": "Medium",
+      "best_for": ["Harbinger strats", "Ancient Orb farming"],
+      "notes": "Best with Harbinger atlas passives. Annulment and Binding Shard orbs are the most valuable Harbinger outputs."
+    },
+    {
+      "mod_name": "Area contains additional Essences",
+      "category": "Item",
+      "effect": "Adds extra Essence-corrupted monsters which drop Essences and Screaming/Shrieking/Deafening tier Essences.",
+      "value_tier": "Medium",
+      "best_for": ["Essence crafting", "Currency farming"],
+      "notes": "Shrieking/Deafening Essences are most valuable. Essence of Envy, Misery, Dread worth the most in bulk."
+    },
+    {
+      "mod_name": "Area contains additional Abysses",
+      "category": "Monster",
+      "effect": "Adds extra Abyss cracks. Following them spawns a Stygian Spire or Abyssal Trove with Abyss Jewels.",
+      "value_tier": "Low",
+      "best_for": ["Abyss Jewel farming", "Stygian Vise hunting"],
+      "notes": "Low value in most strategies. Best when combined with Abyss atlas passives in Abyss-focused farming."
+    }
+  ]
+}

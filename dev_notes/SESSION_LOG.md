@@ -5764,3 +5764,153 @@ Q1-Q3 + R1-R3).
 Info group 39 tabs. Only blockers: PoE2 passive tree (no GGG ETA),
 Asana create_task MCP (missing from session config 4 sessions running).
 ═══════════════════════════════════════════════════════════════
+
+═══════════════════════════════════════════════════════════════
+SESSION: 2026-03-26  (Session 38)
+═══════════════════════════════════════════════════════════════
+
+## ORIENTATION SUMMARY
+Session 37 left off after implementing R1-R3 (Influence Mods, Cluster Jewels, Lab Enchants).
+All at 9+/10. Test count 890. Info group 39 tabs (0-38). _INFO_SETTINGS=38.
+Primary suggestion: Phase 4 Round 15 -- generate and implement S1-S3.
+Note: Session 37 warned to verify candidates against existing data/ and ui/widgets/ before selection.
+
+## ASSESSMENT GRADES
+
+| Module                        | Completeness | Quality | Vision Alignment |
+|-------------------------------|-------------|---------|-----------------|
+| Quest Tracker                 |     9/10     |  9/10   |      9/10       |
+| Passive Tree Viewer           |     9/10     |  9/10   |      9/10       |
+| Price Checker                 |     9/10     |  9/10   |      9/10       |
+| Currency Tracker              |     7/10     |  9/10   |      8/10       |
+| Crafting System               |     8/10     |  9/10   |      9/10       |
+| Core Infrastructure           |     9/10     |  9/10   |      9/10       |
+| Map Overlay                   |     9/10     |  9/10   |      9/10       |
+| Info Reference Panels         |    10/10     |  9/10   |     10/10       |
+| Test Suite                    |    10/10     |  9/10   |      9/10       |
+| Compass Mod Reference (S1)    |     9/10     |  9/10   |     10/10       |
+| Base Item Reference (S2)      |     9/10     |  9/10   |     10/10       |
+| Starting Area Guide (S3)      |     9/10     |  9/10   |     10/10       |
+
+## SMOKE TEST FINDINGS
+
+### Phase 1B -- Logic & Structure Issues
+None found. All .py files clean. 890 pre-session tests pass.
+
+### Phase 1C -- Redundancy & Counter-Vision Issues
+None found. Verified S1-S3 candidates against data/ and ui/widgets/ listings before selection.
+All three confirmed as genuinely new (no existing sextant/compass, base_items, or starting_areas panels).
+
+## MAINTENANCE LOG
+No maintenance fixes required this session. Codebase remains clean.
+
+## DEVELOPMENT LOG
+
+### Phase 4 Round 15 -- S1-S3 Auto-Approved and Implemented
+
+R1-R3 all at 9+/10. Verified candidate availability against existing files before selection.
+All three confirmed as new features with no prior implementation.
+
+### S1: Compass/Sextant Mod Reference
+
+data/compass_mods.json: 20 compass mod entries
+  Categories: Beyond (1), Delirium (2), Ritual (2), Harvest (1), Expedition (2),
+              Bestiary (1), Betrayal (1), Incursion (1), Delve (1), Blight (1),
+              Monster (4), Item (2), Heist (listed in categories but no entries -- 
+              Heist as compass mechanic is niche, not added)
+  Schema: {mod_name, category, effect, value_tier, best_for[], notes}
+  Value tiers: Extremely High=2 (Beyond, Delirium Mirror), High=7, Medium=8, Low=3
+  Notable: Beyond+Delirium stack documented, Einhar Memory, Ritual Altars multiplicative scaling
+
+ui/widgets/compass_mods_panel.py: CompassModsPanel
+  Category filter: All + 12 categories with individual color coding
+  Full-text search across mod_name, category, effect, value_tier, best_for, notes
+
+tests/test_compass_mods_panel.py: 20 tests
+hud.py: _INFO_COMPASS_MODS=38, "Compass" tab added to Info group
+
+### S2: Base Item Type Reference
+
+data/base_items.json: 20 base item entries
+  Slots: Helmet (3), Body Armour (3), Gloves (3), Boots (2), Belt (1),
+         Ring (4), Amulet (2), Quiver (1)
+  Schema: {name, slot, base_type, item_level_req, implicit, max_defense,
+           why_valuable, best_for[], value_tier, notes}
+  Extremely High: Two-Toned Boots, Stygian Vise
+  High: Hubris Circlet, Vaal Regalia, Astral Plate, Fingerless Silk Gloves,
+        Opal Ring, Marble Amulet, Sacrifice Quiver, Two-Stone Ring, Crusader Gloves
+
+ui/widgets/base_items_panel.py: BaseItemsPanel
+  Slot filter: All + 11 slot types with color coding
+  Shows: implicit, defense values, why valuable, best-for, notes
+  Implicit display: skips "None" and "N/A" values cleanly
+
+tests/test_base_items_panel.py: 21 tests
+  Fixed test: "Energy Shield" substring check, not "ES" (base_type stores full string)
+hud.py: _INFO_BASE_ITEMS=39, "Bases" tab added to Info group
+
+### S3: Passive Tree Starting Area Guide
+
+data/starting_areas.json: 7 starting area entries (one per class)
+  Classes: Marauder/Duelist/Ranger/Shadow/Witch/Templar/Scion
+  Schema: {area, location, primary_stats[], ascendancies[], key_node_clusters[],
+           recommended_for[], avoid_for[], notable_keystones_nearby[],
+           ascendancy_highlights, value_tier, notes}
+  Value: Marauder/Duelist/Ranger/Shadow/Witch=High, Templar/Scion=Medium
+  Notable: Recommended/avoid build lists are practical and actionable
+  Ascendancy highlights give one-line summaries per sub-class
+
+ui/widgets/starting_areas_panel.py: StartingAreasPanel
+  Area filter: All + 7 class buttons (each class-colored)
+  Shows: stats, ascendancies, key clusters, recommended/avoid (green/red),
+         nearby keystones, ascendancy highlights, notes
+
+tests/test_starting_areas_panel.py: 22 tests
+hud.py: _INFO_STARTING_AREAS=40, "Start" tab added to Info group
+
+Test count: 890 -> 953 (+63 new, all pass. Total: 953 passed, 1 skipped)
+Info group now 42 tabs (0-41). _INFO_SETTINGS=41.
+
+## TECHNICAL NOTES
+
+Candidate verification protocol (from Session 37 warning) followed correctly:
+  Checked data/ and ui/widgets/ directory listings before selecting S1-S3.
+  All three confirmed genuinely new. No repeat of Session 36/37 error.
+
+Base item base_type values: Use full strings ("Energy Shield", not "ES").
+  Test must check for "Energy Shield" substring, not "ES".
+
+_INFO_SETTINGS index pattern: +3 each round.
+  After Session 37: Settings=38. After Session 38: Settings=41.
+  After next round (T1-T3): Settings=44.
+
+Asana create_task MCP: Still missing from session config (5th consecutive session).
+  No workaround -- add_comment and asana_create_task_story both require existing task_id.
+  Retroactive summaries for Sessions 34-38 remain outstanding.
+
+## SUGGESTIONS FOR NEXT SESSION
+
+1. Phase 4 Round 16 (MEDIUM): S1-S3 all at 9+/10. Run Phase 4 -- generate T1-T3.
+   IMPORTANT: Before selecting candidates, check existing data/ and ui/widgets/
+   directory listings to avoid re-suggesting already-implemented features.
+   Potential true candidates (verify before starting):
+   - Veiled Mod Crafting Reference (Jun veiled mods, how to unveil, best targets)
+   - Map Tier Progression Guide (red/yellow/white map tiers, atlas region structure, 
+     maven influence strategy)
+   - Unique Item Tier List (top-tier chase uniques by budget: Mirror-tier, High, Budget)
+
+2. PoE2 passive tree (BLOCKED): No official GGG skilltree-export for PoE2.
+
+3. Asana create_task MCP (BLOCKED): Missing 5 sessions. If available: post
+   retroactive summaries for Sessions 34-38 plus current session.
+
+4. Currency Reference live price column (LOW, deferred since Session 26).
+
+## PROJECT HEALTH
+Overall grade: 10/10. ~100% complete (original + E1-E6 + F1-F3 + G1-G3 +
+H1-H3 + I1-I3 + J1-J3 + K1-K3 + L1-L3 + M1-M3 + N1-N3 + O1-O3 + P1-P3 +
+Q1-Q3 + R1-R3 + S1-S3).
+953 tests pass, 1 skipped. No technical debt. No regressions.
+Info group 42 tabs. Only blockers: PoE2 passive tree (no GGG ETA),
+Asana create_task MCP (missing from session config 5 sessions running).
+═══════════════════════════════════════════════════════════════

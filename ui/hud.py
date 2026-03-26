@@ -71,6 +71,9 @@ from ui.widgets.map_mods_panel import MapModsPanel
 from ui.widgets.influence_mods_panel import InfluenceModsPanel
 from ui.widgets.cluster_jewels_panel import ClusterJewelsPanel
 from ui.widgets.lab_enchants_panel import LabEnchantsPanel
+from ui.widgets.compass_mods_panel import CompassModsPanel
+from ui.widgets.base_items_panel import BaseItemsPanel
+from ui.widgets.starting_areas_panel import StartingAreasPanel
 
 
 DARK_BG = "#1a1a2e"
@@ -325,6 +328,9 @@ class HUD(QMainWindow):
         self._influence_mods_panel    = InfluenceModsPanel()
         self._cluster_jewels_panel    = ClusterJewelsPanel()
         self._lab_enchants_panel      = LabEnchantsPanel()
+        self._compass_mods_panel      = CompassModsPanel()
+        self._base_items_panel        = BaseItemsPanel()
+        self._starting_areas_panel    = StartingAreasPanel()
         self._currency_flip_panel    = CurrencyFlipPanel(currency_flip) if currency_flip else QWidget()
         self._lab_panel              = LabPanel(lab_tracker) if lab_tracker else QWidget()
         self._atlas_tree_panel       = AtlasTreePanel()
@@ -417,7 +423,10 @@ class HUD(QMainWindow):
         info_tabs.addTab(self._influence_mods_panel,   "Influence") # _INFO_INFLUENCE_MODS  = 35
         info_tabs.addTab(self._cluster_jewels_panel,   "Clusters")  # _INFO_CLUSTER_JEWELS  = 36
         info_tabs.addTab(self._lab_enchants_panel,     "Lab Ench")  # _INFO_LAB_ENCHANTS    = 37
-        info_tabs.addTab(self._settings_panel,         "Settings")  # _INFO_SETTINGS        = 38
+        info_tabs.addTab(self._compass_mods_panel,     "Compass")   # _INFO_COMPASS_MODS    = 38
+        info_tabs.addTab(self._base_items_panel,       "Bases")     # _INFO_BASE_ITEMS      = 39
+        info_tabs.addTab(self._starting_areas_panel,   "Start")     # _INFO_STARTING_AREAS  = 40
+        info_tabs.addTab(self._settings_panel,         "Settings")  # _INFO_SETTINGS        = 41
         self._inner_tabs.append(info_tabs)
         outer_tabs.addTab(info_tabs, "Info")                       # _GRP_INFO            = 3
 

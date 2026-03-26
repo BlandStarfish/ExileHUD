@@ -1,0 +1,171 @@
+{
+  "how_it_works": "The PoE passive skill tree has 7 starting positions, one per character class. Each starting area clusters nodes matching that class's primary archetype, but all areas of the tree are reachable by any class — it just costs more passive points the further you travel. Choosing the right starting class (and by extension, starting area) is the most impactful decision when building a new character.",
+  "tips": [
+    "Distance on the passive tree costs passive points — start near your core cluster to maximize efficiency",
+    "Scion starts in the center and can efficiently reach any area, but sacrifices depth for breadth",
+    "Several powerful keystones are class-adjacent — e.g. Resolute Technique (Duelist), Mind Over Matter (Witch)",
+    "Ascendancy class choices within each starting area often matter more than the starting position itself",
+    "Efficiency matters most at high point investment — builds spending 90+ passives feel the travel cost sharply"
+  ],
+  "starting_areas": [
+    {
+      "area": "Marauder",
+      "location": "Top-left of tree",
+      "primary_stats": ["Strength"],
+      "ascendancies": ["Juggernaut", "Berserker", "Chieftain"],
+      "key_node_clusters": ["Life", "Melee Physical Damage", "Armour", "Stun", "Endurance Charges"],
+      "recommended_for": [
+        "Life-based melee builds",
+        "Armour-stacking builds",
+        "RF (Righteous Fire) with Chieftain",
+        "Cyclone and Lacerate builds",
+        "Juggernaut league starters"
+      ],
+      "avoid_for": [
+        "Spellcasters (too far from spell damage nodes)",
+        "Evasion builds (no evasion nodes nearby)",
+        "Energy Shield builds (no ES nodes nearby)"
+      ],
+      "notable_keystones_nearby": ["Resolute Technique (shared with Duelist)", "Iron Reflexes (mid-tree)"],
+      "ascendancy_highlights": "Juggernaut: best league starter and tankiest class; Chieftain: RF and fire builds; Berserker: maximum offence with risk.",
+      "value_tier": "High",
+      "notes": "One of the most beginner-friendly starting areas. Life and armour nodes are abundant and self-explanatory. Juggernaut Marauder is perennially the #1 league-starter recommendation."
+    },
+    {
+      "area": "Duelist",
+      "location": "Bottom-left of tree",
+      "primary_stats": ["Strength", "Dexterity"],
+      "ascendancies": ["Slayer", "Gladiator", "Champion"],
+      "key_node_clusters": ["Attack Speed", "Life", "Block", "Physical Damage", "Armour/Evasion Hybrid"],
+      "recommended_for": [
+        "Attack speed melee builds",
+        "Block-based builds (Gladiator)",
+        "Champion Herald of Agony/Purity",
+        "Bleed builds (Lacerate Gladiator)",
+        "Impale builds (Champion)"
+      ],
+      "avoid_for": [
+        "Pure spellcasters",
+        "Pure Energy Shield builds",
+        "Minion builds (better served from Witch/Templar)"
+      ],
+      "notable_keystones_nearby": ["Resolute Technique", "Acrobatics (mid-tree)", "Iron Reflexes"],
+      "ascendancy_highlights": "Gladiator: spell block and bleed immunity; Champion: permanent Fortify and impale; Slayer: culling strike and leech immunity.",
+      "value_tier": "High",
+      "notes": "Excellent for attack-based builds. Resolute Technique nearby removes the need to invest in accuracy. Gladiator's block mechanic is one of the best defences in the game."
+    },
+    {
+      "area": "Ranger",
+      "location": "Bottom-right of tree",
+      "primary_stats": ["Dexterity"],
+      "ascendancies": ["Pathfinder", "Raider", "Deadeye"],
+      "key_node_clusters": ["Evasion", "Attack Speed", "Bow Damage", "Critical Strike", "Flask Effect"],
+      "recommended_for": [
+        "Bow builds (Tornado Shot, Lightning Arrow, Explosive Arrow)",
+        "Poison builds (Pathfinder)",
+        "Evasion stacking builds",
+        "Fast mapping builds (Raider frenzy charges)",
+        "Flask-scaling builds"
+      ],
+      "avoid_for": [
+        "Life-heavy builds (few life nodes near Ranger start)",
+        "Shield-based builds",
+        "Heavy armour builds"
+      ],
+      "notable_keystones_nearby": ["Acrobatics", "Phase Acrobatics", "Point Blank", "Wind Dancer"],
+      "ascendancy_highlights": "Pathfinder: flask automation and poison; Raider: frenzy charges and phasing; Deadeye: projectile damage and Tailwind.",
+      "value_tier": "High",
+      "notes": "Best starting point for bow and evasion builds. Acrobatics nearby is a huge defensive option. Pathfinder is one of the strongest ascendancies in the game for poison/flask builds."
+    },
+    {
+      "area": "Shadow",
+      "location": "Bottom-center of tree",
+      "primary_stats": ["Dexterity", "Intelligence"],
+      "ascendancies": ["Assassin", "Saboteur", "Trickster"],
+      "key_node_clusters": ["Critical Strike", "Spell Damage", "Chaos Damage", "Trap/Mine", "Energy Shield/Evasion"],
+      "recommended_for": [
+        "Critical strike spellcasters",
+        "Trap/Mine builds (Saboteur)",
+        "Poison/Chaos attack builds (Assassin)",
+        "Giga-crit bow builds",
+        "Trickster ES/Evasion hybrid spellcasters"
+      ],
+      "avoid_for": [
+        "Life builds requiring heavy investment (fewer life nodes)",
+        "Pure armour builds",
+        "Strength-based melee builds"
+      ],
+      "notable_keystones_nearby": ["Acrobatics", "Phase Acrobatics", "Elusive (ascendancy)", "Chaos Inoculation (mid-tree)"],
+      "ascendancy_highlights": "Assassin: critical multiplier and poison; Saboteur: trap/mine damage and ignite prolif; Trickster: soul drinker and dodge.",
+      "value_tier": "High",
+      "notes": "The critical strike hub of the tree. Shadow has access to both spell and attack crit nodes, making it flexible. Saboteur is the go-to for trap/mine builds."
+    },
+    {
+      "area": "Witch",
+      "location": "Top-right of tree",
+      "primary_stats": ["Intelligence"],
+      "ascendancies": ["Necromancer", "Occultist", "Elementalist"],
+      "key_node_clusters": ["Energy Shield", "Spell Damage", "Cast Speed", "Minion Damage", "Chaos Damage"],
+      "recommended_for": [
+        "Minion builds (Necromancer SRS, Raise Spectre, Animate Weapon)",
+        "ES-based spellcasters",
+        "Chaos damage builds",
+        "Elemental overload builds (Elementalist)",
+        "CI (Chaos Inoculation) builds"
+      ],
+      "avoid_for": [
+        "Life-based melee builds (very far from life/melee nodes)",
+        "Bow builds",
+        "Attack-speed-dependent builds"
+      ],
+      "notable_keystones_nearby": ["Chaos Inoculation", "Eldritch Battery", "Mind Over Matter (adjacent area)"],
+      "ascendancy_highlights": "Necromancer: best minion ascendancy by far; Occultist: ES recovery and curses; Elementalist: elemental prolif and golems.",
+      "value_tier": "High",
+      "notes": "The caster and summoner hub. Necromancer is consistently the strongest summoner ascendancy. Occultist pairs well with CI for zero-cost Eldritch Battery setups."
+    },
+    {
+      "area": "Templar",
+      "location": "Top-center of tree",
+      "primary_stats": ["Strength", "Intelligence"],
+      "ascendancies": ["Inquisitor", "Hierophant", "Guardian"],
+      "key_node_clusters": ["Mana", "Aura Effectiveness", "Totem", "Life", "Spell Damage"],
+      "recommended_for": [
+        "Aura-stacking builds (Guardian)",
+        "Totem builds (Hierophant)",
+        "Inquisitor elemental ignite/freeze builds",
+        "Support characters (Guardian aura bot)",
+        "Archmage builds (high mana investment)"
+      ],
+      "avoid_for": [
+        "Pure evasion builds (no evasion nodes nearby)",
+        "Bow builds",
+        "Builds relying on pure chaos damage"
+      ],
+      "notable_keystones_nearby": ["Eldritch Battery", "Mind Over Matter", "Conduit (Templar ascendancy)"],
+      "ascendancy_highlights": "Inquisitor: consecrated ground and elemental crit; Hierophant: mana/totem; Guardian: auras and minion support.",
+      "value_tier": "Medium",
+      "notes": "The hybrid caster/support area. Guardian is the definitive aura-bot ascendancy in group play. Inquisitor is popular for elemental conversion builds due to its penetration."
+    },
+    {
+      "area": "Scion",
+      "location": "Center of tree",
+      "primary_stats": ["Strength", "Dexterity", "Intelligence"],
+      "ascendancies": ["Ascendant"],
+      "key_node_clusters": ["All stats (central position)", "Flexible pathing to any cluster"],
+      "recommended_for": [
+        "Builds requiring nodes from 3+ different class areas",
+        "Dual-ascendancy benefit builds (Ascendant picks two sub-ascendancies)",
+        "Juggernaut + Pathfinder hybrid farming builds",
+        "Advanced players building custom hybrids"
+      ],
+      "avoid_for": [
+        "New players (Ascendant is complex to optimize)",
+        "Builds that only need nodes in one class area (any other class is more efficient)"
+      ],
+      "notable_keystones_nearby": ["None specifically — equidistant to all keystones"],
+      "ascendancy_highlights": "Ascendant: choose any two class-ascendancy nodes from other classes. Powerful for hybrids like Jugg+Raider or Slayer+Pathfinder.",
+      "value_tier": "Medium",
+      "notes": "Scion's power comes from Ascendant's dual-subclass system. She is weaker than specialized classes in most meta builds, but uniquely flexible for hybrid strategies."
+    }
+  ]
+}
