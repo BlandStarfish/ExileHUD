@@ -1,0 +1,181 @@
+{
+    "how_it_works": "A Vaal Orb corrupts an item, making it impossible to modify with any other currency afterwards. The outcome is determined by item type. Corruption is permanent and cannot be undone. Mirrored items cannot be corrupted.",
+    "double_corruption": "Double corruption applies two corruption results simultaneously (using a Craicic Vassal beast in Bestiary or a Vaal Templed room in Incursion). Each result is rolled independently — two powerful implicits are rare but possible.",
+    "tips": [
+        "Never corrupt an item you cannot afford to lose — the outcome is random and may brick the item",
+        "White sockets from corruption are extremely valuable — they accept any gem colour",
+        "Corrupting a 6-linked item can add a white socket in place of one of the existing sockets",
+        "Double corruption using Atziri's Reflection (shield) can yield two different Corrupted Blood implicits",
+        "Strongboxes labelled 'Corrupted' have a higher chance to contain corrupted items",
+        "The Altar of Corruption in the Labyrinth applies a single corruption specifically to your helmet (for enchantment replacement)"
+    ],
+    "outcomes": [
+        {
+            "item_type": "Skill Gem",
+            "category": "Character",
+            "outcomes": [
+                {
+                    "result": "No effect (item becomes Corrupted)",
+                    "probability": "Medium",
+                    "notes": "The gem is simply flagged as corrupted. No stat change, but it now cannot be modified."
+                },
+                {
+                    "result": "+1 Gem Level (above maximum level)",
+                    "probability": "Low",
+                    "notes": "Pushes the gem to level 21 (from 20). A 21/20 gem is worth significantly more for most meta gems."
+                },
+                {
+                    "result": "-1 Gem Level",
+                    "probability": "Low",
+                    "notes": "Reduces gem level by 1. A 20/20 gem corrupted to 19/20 loses some power."
+                },
+                {
+                    "result": "+10% Quality (above maximum quality)",
+                    "probability": "Low",
+                    "notes": "Pushes gem quality to 23% (from 20%). A 20/23 gem is valuable for quality-scaling skills."
+                },
+                {
+                    "result": "-10% Quality",
+                    "probability": "Low",
+                    "notes": "Reduces gem quality. Less desirable but still a functional gem."
+                }
+            ]
+        },
+        {
+            "item_type": "Map",
+            "category": "Endgame",
+            "outcomes": [
+                {
+                    "result": "No effect (map becomes Corrupted)",
+                    "probability": "Medium",
+                    "notes": "Map gains the Corrupted tag but no other change. Corrupted maps can still be chiselled before corruption was applied, but not after."
+                },
+                {
+                    "result": "Reroll map modifiers (like Orb of Alteration or Chaos Orb)",
+                    "probability": "Medium",
+                    "notes": "Useful when a map has a bad roll. The new modifiers are random."
+                },
+                {
+                    "result": "Add one additional modifier",
+                    "probability": "Medium",
+                    "notes": "Adds a random map modifier on top of existing ones. Can make a good map even better — or add a dangerous mod."
+                },
+                {
+                    "result": "Downgrade map tier by one",
+                    "probability": "Low",
+                    "notes": "Reduces the map to the tier below. A T16 becomes a T15, etc. Avoidable by corrupting maps you can afford to lose."
+                },
+                {
+                    "result": "Upgrade map tier by one",
+                    "probability": "Low",
+                    "notes": "Increases the map to the tier above. Useful for pushing Tier 16 maps to T17 equivalent content."
+                }
+            ]
+        },
+        {
+            "item_type": "Equipment (Weapon, Armour, Jewellery)",
+            "category": "Items",
+            "outcomes": [
+                {
+                    "result": "No effect (item becomes Corrupted)",
+                    "probability": "Medium",
+                    "notes": "Item is simply flagged as Corrupted with no change. Frustrating but common."
+                },
+                {
+                    "result": "Change the implicit modifier to a Corrupted Implicit",
+                    "probability": "Medium",
+                    "notes": "Replaces the base implicit with a randomly selected Corrupted Implicit for that item base. Some Corrupted Implicits are extremely valuable (e.g. Atziri's Reflection variants, Vulnerability on hit)."
+                },
+                {
+                    "result": "Add a socket (turning one existing socket white)",
+                    "probability": "Low",
+                    "notes": "One random socket becomes a White socket, accepting gems of any colour. White sockets are very valuable on multicolour builds."
+                },
+                {
+                    "result": "Reroll socket count or links",
+                    "probability": "Low",
+                    "notes": "Randomly changes the number of sockets and their links. Can add a link or remove one. Do not corrupt a 6-link without accepting this risk."
+                }
+            ]
+        },
+        {
+            "item_type": "Flask",
+            "category": "Items",
+            "outcomes": [
+                {
+                    "result": "No effect (flask becomes Corrupted)",
+                    "probability": "Medium",
+                    "notes": "Flask is flagged as Corrupted with no change."
+                },
+                {
+                    "result": "Change the flask implicit to a Corrupted Flask Implicit",
+                    "probability": "High",
+                    "notes": "Adds or replaces a flask modifier with a special Corrupted Flask mod (e.g. 'Used when you take a critical strike', 'Used when an adjacent flask is used'). These cannot be obtained any other way."
+                },
+                {
+                    "result": "Reroll flask modifiers",
+                    "probability": "Medium",
+                    "notes": "Rerolls the prefix and/or suffix of the flask. Can improve or worsen the flask's rolls."
+                }
+            ]
+        },
+        {
+            "item_type": "Jewel",
+            "category": "Items",
+            "outcomes": [
+                {
+                    "result": "No effect (jewel becomes Corrupted)",
+                    "probability": "Medium",
+                    "notes": "Jewel is flagged as Corrupted with no change."
+                },
+                {
+                    "result": "Reroll jewel modifiers (like Orb of Alteration)",
+                    "probability": "Medium",
+                    "notes": "All current jewel modifiers are replaced with new random ones. Risk of losing a good roll."
+                },
+                {
+                    "result": "Add a Corrupted Implicit (Corrupted Blood, etc.)",
+                    "probability": "Low",
+                    "notes": "Adds a special Corrupted modifier to the jewel. Corrupted Blood immunity is a highly sought Corrupted Implicit for jewels."
+                }
+            ]
+        },
+        {
+            "item_type": "Strongbox",
+            "category": "Utility",
+            "outcomes": [
+                {
+                    "result": "Corrupted items inside have been re-corrupted",
+                    "probability": "Always",
+                    "notes": "Strongboxes marked as Corrupted produce only Corrupted items. Items with Corrupted Implicits or socket changes are more common from these strongboxes."
+                }
+            ]
+        }
+    ],
+    "notable_implicits": [
+        {
+            "implicit": "Corrupted Blood cannot be inflicted on you",
+            "source": "Jewel (Corrupted)",
+            "value": "Very High",
+            "notes": "Eliminates one of the most dangerous one-shot mechanics in the game. Essential for HC or mapping builds without another Corrupted Blood counter."
+        },
+        {
+            "implicit": "Enemies you Kill have a 10% chance to Explode, dealing a tenth of their Life as Physical Damage",
+            "source": "Chest Armour (Corrupted)",
+            "value": "Very High",
+            "notes": "A free pseudo-Haemophilia or Corrupted Fever effect on your chest. Extremely powerful for mapping and can enable 'Boom' builds without a specific unique."
+        },
+        {
+            "implicit": "Vulnerability on Hit",
+            "source": "Gloves (Corrupted)",
+            "value": "High",
+            "notes": "Free Vulnerability curse on hit — saves a ring prefix or gem socket for physical damage builds."
+        },
+        {
+            "implicit": "Curse Enemies with Elemental Weakness on Hit",
+            "source": "Gloves (Corrupted)",
+            "value": "High",
+            "notes": "Free Elemental Weakness on hit. Strong for elemental builds that cannot self-curse or do not have a Curse on Hit gem."
+        }
+    ]
+}

@@ -1,0 +1,214 @@
+{
+    "how_it_works": "Vaal skills require souls collected from killing monsters and bosses. Normal mode: base souls required. Merciless difficulty (maps, red maps, Uber zones): double the soul requirement. Souls are gained per monster kill based on its type. Vaal skills share a soul pool with all other Vaal skills socketed — you must choose which to use first.",
+    "soul_note": "Regular monsters grant 1 soul. Magic monsters grant 3 souls. Rare/unique monsters grant more souls. Bosses grant a large burst. Vaal skill gems can be corrupted for extra power.",
+    "tips": [
+        "Socket multiple Vaal skills to fill the soul pool faster — you only need to cap the one you want to use",
+        "Vaal Haste and Vaal Molten Shell are universally useful on almost any build",
+        "Vaal skills do not share cooldowns — once souls are gained, the skill is instantly ready",
+        "The Soul Gain Prevention debuff (after using a Vaal skill) briefly prevents new soul collection",
+        "Vaal Flicker Strike removes the need for Frenzy charges to sustain Flicker Strike",
+        "On Pinnacle bosses, use your Vaal burst during the opening phase before mechanics interrupt you"
+    ],
+    "skills": [
+        {
+            "name": "Vaal Arc",
+            "element": "Lightning",
+            "souls_normal": 30,
+            "souls_merciless": 60,
+            "effect": "Powerful arc of lightning chains between multiple enemies, hitting each enemy it passes through.",
+            "when_to_use": "Dense packs during mapping — chains through entire screens of enemies",
+            "best_builds": ["Arc builds", "Lightning spellcasters"],
+            "notes": "Unlike regular Arc, Vaal Arc hits enemies as it chains rather than skipping to chain targets only. Much higher total damage on packs."
+        },
+        {
+            "name": "Vaal Ball Lightning",
+            "element": "Lightning",
+            "souls_normal": 40,
+            "souls_merciless": 80,
+            "effect": "Fires slow-moving ball lightning projectiles that repeatedly hit enemies they pass through.",
+            "when_to_use": "Boss fights — position the slow ball on the boss for maximum repeated hits",
+            "best_builds": ["Ball Lightning builds", "Lightning spellcasters"],
+            "notes": "Extremely high total hit count makes it powerful with on-hit effects (Shock, Elemental Proliferation). Very effective on stationary or slow bosses."
+        },
+        {
+            "name": "Vaal Blade Flurry",
+            "element": "Physical",
+            "souls_normal": 40,
+            "souls_merciless": 80,
+            "effect": "Channeled skill that builds charges, releasing a massive burst of spinning blades when released.",
+            "when_to_use": "Boss burst windows — charge to maximum stacks then release for concentrated damage",
+            "best_builds": ["Blade Flurry builds", "Physical melee builds"],
+            "notes": "The Vaal version deals significantly more total damage than a single rotation of the base skill. Use for opening-burst on bosses."
+        },
+        {
+            "name": "Vaal Blight",
+            "element": "Chaos",
+            "souls_normal": 20,
+            "souls_merciless": 40,
+            "effect": "Large channeled AoE that applies massive Blight stacks (chaos DoT slowing enemies) in a wide area.",
+            "when_to_use": "Blight encounters or dense packs — slows and destroys groups quickly",
+            "best_builds": ["Blight builds", "Chaos DoT builds", "Trickster"],
+            "notes": "Very low soul cost makes it easy to recharge. The slow is substantial — enemies in the blast radius are nearly frozen in place."
+        },
+        {
+            "name": "Vaal Burning Arrow",
+            "element": "Fire",
+            "souls_normal": 30,
+            "souls_merciless": 60,
+            "effect": "Fires a massive burning arrow that explodes on impact, covering a large area in fire.",
+            "when_to_use": "Boss burst windows — the explosion radius and damage are significantly larger than the base skill",
+            "best_builds": ["Burning Arrow builds", "Fire bow builds"],
+            "notes": "Ignites from Vaal Burning Arrow are very large, scaling well with Ignite duration and spread. Strong for Elementalist ignite chains."
+        },
+        {
+            "name": "Vaal Caustic Arrow",
+            "element": "Chaos",
+            "souls_normal": 30,
+            "souls_merciless": 60,
+            "effect": "Fires an arrow that creates an enormous caustic ground area dealing heavy chaos DoT.",
+            "when_to_use": "Boss fights — stand inside the puddle with the boss for maximum DoT stacks",
+            "best_builds": ["Caustic Arrow builds", "Chaos bow DoT builds"],
+            "notes": "The Vaal version creates a substantially larger and more damaging puddle than the base skill. Essential burst for Caustic Arrow bosses."
+        },
+        {
+            "name": "Vaal Cyclone",
+            "element": "Physical",
+            "souls_normal": 40,
+            "souls_merciless": 80,
+            "effect": "Channeled whirlwind that greatly increases Cyclone AoE and deals bonus damage, stunning enemies repeatedly.",
+            "when_to_use": "Boss fights — the expanded AoE and bonus damage make bosses much faster",
+            "best_builds": ["Cyclone builds", "Physical melee builds", "Impale builds"],
+            "notes": "The Vaal version allows Cyclone to hit at full channel-speed immediately without ramping. Strong burst potential on bosses."
+        },
+        {
+            "name": "Vaal Double Strike",
+            "element": "Physical",
+            "souls_normal": 40,
+            "souls_merciless": 80,
+            "effect": "Performs two powerful strikes and creates twin illusory copies that repeat the strikes.",
+            "when_to_use": "Boss fights — summon copies for extra DPS during the encounter",
+            "best_builds": ["Double Strike builds", "Physical melee builds"],
+            "notes": "The copies deal significant damage and count as your hits for on-hit effects. Strong burst on stationary bosses."
+        },
+        {
+            "name": "Vaal Earthquake",
+            "element": "Physical",
+            "souls_normal": 40,
+            "souls_merciless": 80,
+            "effect": "Performs a massive slam that immediately triggers the aftershock, covering an enormous area.",
+            "when_to_use": "Boss fights or dense rare packs — the instant aftershock skips the delay of the base skill",
+            "best_builds": ["Earthquake builds", "Slam builds", "Juggernaut"],
+            "notes": "Eliminates the aftershock delay entirely, making it a pure burst skill. Very strong combined with Fortify and Endurance Charges for defensive Juggernauts."
+        },
+        {
+            "name": "Vaal Flicker Strike",
+            "element": "Physical",
+            "souls_normal": 30,
+            "souls_merciless": 60,
+            "effect": "Teleport to and strike a sequence of enemies rapidly, ignoring the Frenzy Charge requirement.",
+            "when_to_use": "Boss fights without reliable Frenzy sustain — provides sustained Flicker without charges",
+            "best_builds": ["Flicker Strike builds"],
+            "notes": "The Vaal version does not consume Frenzy Charges, making it self-sustaining for a limited window. Essential for Flicker builds facing charge-dry bosses."
+        },
+        {
+            "name": "Vaal Ground Slam",
+            "element": "Physical",
+            "souls_normal": 40,
+            "souls_merciless": 80,
+            "effect": "Massive slam that creates a huge shockwave cone, shattering the ground in a wide arc.",
+            "when_to_use": "Dense packs or boss positioning — the cone covers enormous ground",
+            "best_builds": ["Ground Slam builds", "Juggernaut", "Berserker"],
+            "notes": "The Vaal version has significantly more range and damage than the base skill. Pairs well with Endurance Charges for defensive stacking."
+        },
+        {
+            "name": "Vaal Haste",
+            "element": "Aura",
+            "souls_normal": 30,
+            "souls_merciless": 60,
+            "effect": "Aura that grants substantially increased Attack, Cast, and Movement Speed to you and nearby allies.",
+            "when_to_use": "Any boss fight or clear window — universally useful on every build",
+            "best_builds": ["All builds — universally useful"],
+            "notes": "One of the most broadly powerful Vaal skills in the game. The speed bonuses are significantly higher than the base Haste aura. Nearly every endgame build benefits."
+        },
+        {
+            "name": "Vaal Ice Nova",
+            "element": "Cold",
+            "souls_normal": 30,
+            "souls_merciless": 60,
+            "effect": "A massive ice nova that freezes and shatters nearby frozen enemies, spreading Freeze.",
+            "when_to_use": "Dense packs — the freeze explosion chain-detonates entire groups",
+            "best_builds": ["Ice Nova builds", "Cold spellcasters", "Occultist freeze builds"],
+            "notes": "On-frozen-ground explosion radius is very large. Combine with Hypothermia and Elemental Proliferation for screen-clearing freeze chains."
+        },
+        {
+            "name": "Vaal Impurity of Fire",
+            "element": "Aura",
+            "souls_normal": 20,
+            "souls_merciless": 40,
+            "effect": "Aura that causes nearby enemies to be unable to use Fire Ailment Immunity and removes their Fire Resistance reduction.",
+            "when_to_use": "Content where bosses have fire immunity — allows ailment application on otherwise immune targets",
+            "best_builds": ["Fire Ignite builds", "Elemental ailment builds"],
+            "notes": "Counters Fire Immunity on rare monsters and specific boss phases. Also available for Cold (Vaal Impurity of Ice) and Lightning (Vaal Impurity of Lightning). Very situational but essential when needed."
+        },
+        {
+            "name": "Vaal Molten Shell",
+            "element": "Armour",
+            "souls_normal": 30,
+            "souls_merciless": 60,
+            "effect": "Creates a massive shell of armour that absorbs a large portion of incoming damage before detonating.",
+            "when_to_use": "Before any large incoming hit — pop proactively before engaging dangerous content",
+            "best_builds": ["High-armour builds", "Juggernaut", "Chieftain", "Melee builds"],
+            "notes": "The absorption value is significantly higher than the base Molten Shell. Essential on armour-stacking builds. The explosion when it breaks deals fire damage to nearby enemies."
+        },
+        {
+            "name": "Vaal Righteous Fire",
+            "element": "Fire",
+            "souls_normal": 40,
+            "souls_merciless": 80,
+            "effect": "Instantly deals massive fire damage to all nearby enemies based on your total life and ES.",
+            "when_to_use": "Boss burst or dense rare packs — the instant hit scales with life pool",
+            "best_builds": ["Righteous Fire builds", "Life-stacking builds"],
+            "notes": "Does NOT grant the RF aura — it is a pure burst nuke. Deals enormous damage proportional to your total life+ES pool. Best on very tanky builds with 8000+ combined pool."
+        },
+        {
+            "name": "Vaal Spark",
+            "element": "Lightning",
+            "souls_normal": 30,
+            "souls_merciless": 60,
+            "effect": "Fires a massive storm of sparks that fill the screen, lasting for several seconds.",
+            "when_to_use": "Dense packs or stationary bosses — sparks saturate the area for continuous hits",
+            "best_builds": ["Spark builds", "Lightning spellcasters"],
+            "notes": "Extremely high total hit count — all sparks can hit the same enemy. Best combined with Volley or increased Projectile count support gems."
+        },
+        {
+            "name": "Vaal Storm Call",
+            "element": "Lightning",
+            "souls_normal": 30,
+            "souls_merciless": 60,
+            "effect": "Places multiple storm call markers on the ground that instantly erupt, dealing lightning damage in multiple areas.",
+            "when_to_use": "Dense packs — instantly detonates multiple screens of enemies",
+            "best_builds": ["Storm Call builds", "Lightning spellcasters"],
+            "notes": "Unlike the base skill's delay, Vaal Storm Call erupts immediately. Strong clear tool when positioned in a dense group of monsters."
+        },
+        {
+            "name": "Vaal Summon Skeletons",
+            "element": "Physical",
+            "souls_normal": 40,
+            "souls_merciless": 80,
+            "effect": "Instantly summons a large army of powerful skeletons that last for a limited duration.",
+            "when_to_use": "Boss fights — the powerful temporary skeletons burst down the first phase",
+            "best_builds": ["Skeleton summoner builds", "Necromancer"],
+            "notes": "The Vaal skeletons are significantly more powerful than base summons. They disappear after a duration rather than persisting. Use at start of boss fights."
+        },
+        {
+            "name": "Vaal Ancestral Warchief",
+            "element": "Physical",
+            "souls_normal": 40,
+            "souls_merciless": 80,
+            "effect": "Summons a powerful Warchief totem that grants a buff to Melee Physical Damage while active.",
+            "when_to_use": "Boss fights — the Warchief buff stacks with the base Ancestral Warchief for double totem damage",
+            "best_builds": ["Ancestral Warchief builds", "Melee physical builds"],
+            "notes": "Stacks with the non-Vaal version's buff for double the Melee Physical Damage bonus. Very powerful in duo-totem configurations."
+        }
+    ]
+}

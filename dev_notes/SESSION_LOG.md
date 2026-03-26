@@ -4822,3 +4822,146 @@ Overall grade: 10/10. ~100% complete (original + E1-E6 + F1-F3 + G1-G3 + H1-H3 +
 J1-J3 + K1-K3 + L1-L3). 501 tests pass. No technical debt. No regressions.
 Info group 21 tabs. Only blocker: PoE2 passive tree (no GGG ETA).
 ═══════════════════════════════════════════════════════════════
+
+
+═══════════════════════════════════════════════════════════════
+SESSION: 2026-03-25  (Session 32)
+═══════════════════════════════════════════════════════════════
+
+## ORIENTATION SUMMARY
+Session 31 left off after implementing L1-L3 (Essence Reference, Fragment Sets Reference, Pantheon Powers Reference). All at 9+/10. Test count 501. Info group 21 tabs. Primary suggestion: Phase 4 Round 9 -- generate and implement M1-M3. Candidates: Unique Flask Reference, Vaal Skill Reference, Atlas Passive Keystone Reference.
+
+Atlas Passive Keystone Reference was deferred again (version-specific data, high accuracy risk). Replaced with Item Corruption Reference (M3) -- well-defined, stable mechanics, practical reference for all players.
+
+## ASSESSMENT GRADES
+All prior modules unchanged from Session 31 (all 9-10/10 across axes).
+New modules:
+  Unique Flask Ref   9/10  9/10  10/10  (new M1)
+  Vaal Skill Ref     9/10  9/10  10/10  (new M2)
+  Corruption Ref     9/10  9/10  10/10  (new M3)
+  Test Suite        10/10  9/10   9/10
+
+## SMOKE TEST FINDINGS
+Phase 1B/1C: None found. All 501 pre-session tests pass.
+
+## MAINTENANCE LOG
+No maintenance fixes required this session.
+
+## DEVELOPMENT LOG
+
+### Phase 4 Round 9 -- M1-M3 Auto-Approved
+L1-L3 all at 9+/10. Generated 3 new expansion features.
+Atlas Passive Keystone Reference deferred (version-specific, accuracy risk).
+Replaced by Item Corruption Reference (M3) -- permanent mechanic, stable data.
+
+### M1: Unique Flask Reference
+
+data/unique_flasks.json: 18 unique flask entries
+  Categories: DPS (7 flasks), Defense (7 flasks), Utility (4 flasks)
+  Schema: {name, base, category, effect, best_builds[], when_to_use, value_tier, notes}
+  Value tiers: Very High (Taste of Hate, Progenesis, Wise Oak, Bottled Faith),
+               High (Dying Sun, Rumi, Forbidden Taste, Atziri Promise, Cinderswallow),
+               Medium (6 flasks), Low (Atziri Foible)
+  Root-level: how_it_works, craft_note (Surgeon's prefix), tips[], categories[]
+
+ui/widgets/unique_flask_panel.py: UniqueFlaskPanel
+  Category filter buttons: All / DPS / Defense / Utility (color: RED/BLUE/PURPLE)
+  Cards: name (gold) + base (dim italic) + value tier badge + category badge
+         effect, when to use (green), best builds (teal), notes (dim italic)
+  Left border color = category color
+  Full-text search across name, base, effect, builds, when_to_use, notes, category
+
+tests/test_unique_flask_panel.py: 18 tests
+hud.py: _INFO_UNIQUE_FLASKS=20, "Flasks" tab added to Info group
+
+### M2: Vaal Skill Reference
+
+data/vaal_skills.json: 20 Vaal skill entries
+  Schema: {name, element, souls_normal, souls_merciless, effect, when_to_use, best_builds[], notes}
+  Soul costs: 20 (Vaal Blight, Vaal Impurity), 30 (Vaal Arc, Vaal Flicker, Vaal Haste, etc.), 40 (most combat skills)
+  merciless_souls is always exactly 2x souls_normal (validated in tests)
+  Elements: Lightning (4), Physical (8), Fire (3), Cold (1), Chaos (1), Aura (2), Armour (1)
+  Root-level: how_it_works, soul_note, tips[]
+
+ui/widgets/vaal_skill_panel.py: VaalSkillPanel
+  Element filter buttons dynamically built from data (insertion-order dedup)
+  Cards: skill name + element badge + souls cost (normal/merciless)
+         effect, when to use (green), best builds (teal), notes (dim italic)
+  Left border color = element color
+  Full-text search across name, element, effect, builds, notes
+
+tests/test_vaal_skill_panel.py: 20 tests (includes merciless=2x validation)
+hud.py: _INFO_VAAL_SKILLS=21, "Vaal" tab added to Info group
+
+### M3: Item Corruption Reference
+
+data/corruption_reference.json: 6 outcome entries + 4 notable implicits
+  Outcome entries: Skill Gem, Map, Equipment, Flask, Jewel, Strongbox
+  Each entry: {item_type, category, outcomes[{result, probability, notes}]}
+  Probability tiers: Always / High / Medium / Low
+  Notable implicits: Corrupted Blood immunity (jewel), explode on kill (chest),
+                     Vulnerability on hit (gloves), Elemental Weakness on hit (gloves)
+  Root-level: how_it_works, double_corruption note, tips[]
+
+ui/widgets/corruption_panel.py: CorruptionPanel
+  Section toggle (Both / Outcomes / Implicits) with gold/purple color coding
+  Outcome cards: ORANGE left border, probability badge + result + note per row
+  Implicit cards: PURPLE left border, implicit mod (teal), source, value tier, notes
+  Full-text search across item_type, outcomes, implicit text, source
+
+tests/test_corruption_panel.py: 20 tests
+hud.py: _INFO_CORRUPTION=22, "Corrupt" tab added; _INFO_SETTINGS shifted to 23
+
+Test count: 501 -> 559 (+58 new, all pass)
+Info group now 24 tabs (0-23): [prior 20] + Flasks/Vaal/Corrupt/Settings
+
+## TECHNICAL NOTES
+
+unique_flask_panel.py category filter:
+  Categories read from data["categories"] key -- future category additions automatically
+  supported without code changes.
+
+vaal_skill_panel.py element filter:
+  Elements extracted dynamically (insertion-order dedup via seen set).
+  Adding new Vaal skills with new elements auto-adds filter buttons.
+
+Corruption outcome probability tiers:
+  GGG has never published exact Vaal Orb outcome probabilities.
+  Descriptors (Always/High/Medium/Low) communicate relative likelihood accurately
+  without implying false precision. Correct approach for this data type.
+
+Atlas Passive Keystones deferred (Sessions 29-32):
+  Repeatedly considered, repeatedly deferred. Root cause: Atlas tree changes
+  every few leagues and keystone wording is not stable enough for a curated reference.
+  Will only unblock if a stable, version-independent framing can be found.
+
+Phase 4 Round 10 -- N1-N3 queued:
+  N1. Ascendancy Class Reference (HIGH)
+  N2. Keystone Passive Reference (MEDIUM)
+  N3. Map Boss Quick Reference (LOW)
+  All three have stable, well-defined data. No accuracy risks.
+
+Asana session summary: Status GID 1213814010158225, HUMAN INBOX project 1213723884881761.
+
+## SUGGESTIONS FOR NEXT SESSION
+
+1. N1: Ascendancy Class Reference (HIGH): data/ascendancy_classes.json with all 19 Ascendancy
+   classes. Base class filter + full-text search. Cards: base class, playstyle, key notables,
+   defence layer, top builds. ui/widgets/ascendancy_panel.py. Add to Info group as "Ascend".
+
+2. N2: Keystone Passive Reference (MEDIUM): data/keystones.json with ~20 major keystones.
+   Trade-off display (positive + negative). Which builds need it / which builds it breaks.
+   ui/widgets/keystones_panel.py. Add to Info group as "Keystones".
+
+3. N3: Map Boss Quick Reference (LOW): data/map_bosses.json with key endgame bosses.
+   Mechanics overview, dangerous abilities, preparation tips.
+   ui/widgets/map_boss_panel.py. Add to Info group as "Bosses".
+
+4. PoE2 passive tree (BLOCKED): No official GGG skilltree-export for PoE2.
+   Check grindinggear/skilltree-export for new branches.
+
+## PROJECT HEALTH
+Overall grade: 10/10. ~100% complete (original + E1-E6 + F1-F3 + G1-G3 + H1-H3 + I1-I3 +
+J1-J3 + K1-K3 + L1-L3 + M1-M3). 559 tests pass. No technical debt. No regressions.
+Info group 24 tabs. Only blocker: PoE2 passive tree (no GGG ETA).
+═══════════════════════════════════════════════════════════════

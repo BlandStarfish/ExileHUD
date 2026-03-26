@@ -334,6 +334,67 @@ These features were auto-approved after all K1–K3 items reached 9+/10 completi
 
 ---
 
+## Expansion Roadmap Round 9 (Auto-Approved 2026-03-25)
+
+These features were auto-approved after all L1–L3 items reached 9+/10 completion. Implement in priority order listed.
+
+### M1. Unique Flask Reference ✅ IMPLEMENTED (Session 32)
+- Static reference for 18 important unique flasks — effect, best builds, when to use, and value tier
+- Category filter (DPS / Defense / Utility) + full-text search across name, base, effect, builds, notes
+- Cards show: flask name (gold), base type, category badge, value tier, effect, when to use (green), best builds (teal), notes (dim)
+- Data source: data/unique_flasks.json (18 flasks, curated)
+- ui/widgets/unique_flask_panel.py; added to Info group as "Flasks" tab
+- **Rationale:** Unique flask selection is one of the most impactful character optimisation decisions. Players frequently ask "what does Dying Sun do?" or "when should I use Progenesis vs Forbidden Taste?" Having it in the overlay prevents wiki lookups during build setup.
+
+### M2. Vaal Skill Reference ✅ IMPLEMENTED (Session 32)
+- Static reference for 20 Vaal skills — element, soul requirements (normal/merciless), effect, when to use, best builds, and notes
+- Element filter buttons (All / Lightning / Fire / Cold / Physical / Chaos / Aura / Armour) + full-text search
+- Cards show: skill name, element badge, soul cost, effect, when to use (green), best builds (teal), notes (dim)
+- Data source: data/vaal_skills.json (20 skills, curated)
+- ui/widgets/vaal_skill_panel.py; added to Info group as "Vaal" tab
+- **Rationale:** Vaal skills have unique soul requirements and usage windows that are easy to forget. "Which Vaal skill needs fewest souls?" and "when do I pop Vaal Haste vs Vaal Molten Shell?" are common questions during boss progression.
+
+### M3. Item Corruption Reference ✅ IMPLEMENTED (Session 32)
+- Static reference for what Vaal Orb corruption does to each item type (Gems, Maps, Equipment, Flasks, Jewels)
+- Each entry shows outcome possibilities with probability tiers (Always/High/Medium/Low) and explanatory notes
+- Notable Corrupted Implicits section: Corrupted Blood immunity, explode on kill, Vulnerability on hit, Elemental Weakness on hit
+- Section toggle (Both / Outcomes / Implicits) + full-text search
+- Data source: data/corruption_reference.json (6 item types, 4 notable implicits, curated)
+- ui/widgets/corruption_panel.py; added to Info group as "Corrupt" tab
+- **Rationale:** Corruption is one of the most consequential and irreversible actions in PoE. Players constantly ask "what can happen if I Vaal this gem/map/item?" Having an outcome reference in the overlay prevents costly mistakes and teaches players about valuable outcomes like white sockets and Corrupted Blood immunity jewels.
+
+---
+
+## Expansion Roadmap Round 10 (Auto-Approved 2026-03-25)
+
+These features were auto-approved after all M1–M3 items reached 9+/10 completion. Implement in priority order listed.
+
+### N1. Ascendancy Class Reference (HIGH)
+- Static reference for all 19 Ascendancy classes across 7 base classes (Marauder/Ranger/Witch/Duelist/Templar/Shadow/Scion)
+- Each entry shows: base class, playstyle description, key notable passives, primary defence layer, and top builds
+- Base class filter buttons + full-text search
+- Data source: data/ascendancy_classes.json (19 classes, curated)
+- ui/widgets/ascendancy_panel.py; added to Info group as "Ascend" tab
+- **Rationale:** Ascendancy choice is the most impactful character decision. New and returning players frequently ask "which Ascendancy for Summons?" or "is Elementalist or Occultist better for poison?" Having it in the overlay prevents wiki trips during character creation and league planning.
+
+### N2. Keystone Passive Reference (MEDIUM)
+- Static reference for all major Keystone passives on the main skill tree
+- Each entry shows: keystone name, effect (positive + trade-off), which builds require it, which builds are broken by it, and location on tree
+- Full-text search across name, effect, and build types
+- Data source: data/keystones.json (~20 keystones, curated)
+- ui/widgets/keystones_panel.py; added to Info group as "Keystones" tab
+- **Rationale:** Keystones fundamentally change how a build works. "What does Eldritch Battery do?" and "does Iron Reflexes work with evasion builds?" are common questions. An in-overlay reference makes keystones understandable without leaving the game.
+
+### N3. Map Boss Quick Reference (LOW)
+- Static reference for key endgame map bosses — Elder Guardians, Shaper Guardians, Conquerors, and notable T16 map bosses
+- Each entry shows: boss name, map, key mechanics, dangerous abilities, and recommended preparation
+- Full-text search across boss name, map, and mechanics
+- Data source: data/map_bosses.json (~16 bosses, curated)
+- ui/widgets/map_boss_panel.py; added to Info group as "Bosses" tab
+- **Rationale:** Many players are unfamiliar with mechanics for specific map bosses, especially after returning from a break. A quick "what does this boss do and how do I prepare?" reference reduces unnecessary deaths to mechanics that could have been anticipated.
+
+---
+
 ## Expansion Roadmap Round 4 (Auto-Approved 2026-03-25)
 
 These features were auto-approved after all G1–G3 items reached 9+/10 completion. Implement in priority order listed.

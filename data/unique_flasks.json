@@ -1,0 +1,194 @@
+{
+    "how_it_works": "Unique flasks have fixed notable effects beyond what magic flasks can roll. They still accept a prefix (Surgeon's, Seething, Chemist's, Catalysed) and a suffix (of Staunching, of Heat, of Warding, etc.). Combining a strong unique effect with the right craft is part of flask setup optimisation.",
+    "craft_note": "Surgeon's prefix (20% chance to gain a charge on critical strike) enables near-permanent uptime on crit builds. Seething prefix grants instant partial recovery on use.",
+    "tips": [
+        "Most builds use 1-2 unique flasks for damage/defence and fill the rest with magic utility flasks",
+        "The Wise Oak: balance all uncapped resistances equally to receive both penetration (for you) and resistance reduction (for monsters) on all elements",
+        "Progenesis delays damage — activate BEFORE taking a big hit, not after, for maximum value",
+        "Surgeon's prefix on Atziri's Promise or Vessel of Vinktar enables uptime on most crit builds",
+        "Dying Sun's AoE bonus is multiplicative with other AoE increases — very strong on builds already stacking AoE"
+    ],
+    "categories": ["DPS", "Defense", "Utility"],
+    "flasks": [
+        {
+            "name": "Atziri's Promise",
+            "base": "Amethyst Flask",
+            "category": "DPS",
+            "effect": "2% of Chaos Damage Leeched as Life. Gain 15% of Elemental Damage as Extra Chaos Damage during Effect.",
+            "best_builds": ["Chaos DoT builds", "Poison builds", "CI leech builds"],
+            "when_to_use": "Activate alongside main damage window — the leech provides minor sustain, the chaos bonus scales with elemental hits",
+            "value_tier": "High",
+            "notes": "Extremely accessible and broadly useful. One of the most commonly used DPS flasks in the game."
+        },
+        {
+            "name": "The Wise Oak",
+            "base": "Diamond Flask",
+            "category": "DPS",
+            "effect": "For each uncapped Elemental Resistance that is equal: Penetrates 15% of that Resistance / Enemies take 8% increased Damage of that type.",
+            "best_builds": ["Elemental builds with balanced resists", "Fire/Cold/Lightning spells"],
+            "when_to_use": "Active as long as you have charges — aim for full uptime",
+            "value_tier": "Very High",
+            "notes": "Max value when all three elements are at the same uncapped value (e.g. all at 75%). Gives both offensive penetration and a monster debuff."
+        },
+        {
+            "name": "Dying Sun",
+            "base": "Ruby Flask",
+            "category": "DPS",
+            "effect": "+2 to Projectiles during Effect. 20% increased Area of Effect during Effect.",
+            "best_builds": ["Projectile skills", "AoE clearing builds"],
+            "when_to_use": "Activate before engaging large packs or bosses with projectile skills",
+            "value_tier": "High",
+            "notes": "Strong on any projectile skill (Arc, Ball Lightning, Rain of Arrows). AoE bonus also benefits melee AoE skills."
+        },
+        {
+            "name": "Bottled Faith",
+            "base": "Sulphur Flask",
+            "category": "DPS",
+            "effect": "Creates Consecrated Ground on Use. Consecrated Ground from this Flask has Tripled Radius. Consecrated Ground from this Flask grants 2% Life Regeneration.",
+            "best_builds": ["DoT builds", "Righteous Fire", "Summoners", "Most endgame builds"],
+            "when_to_use": "Stand in the consecrated ground ring during boss fights — regeneration and damage bonus are significant",
+            "value_tier": "Very High",
+            "notes": "Consecrated ground grants +50% damage to enemies standing in it. Extremely valuable on most endgame builds. Expensive but widely used."
+        },
+        {
+            "name": "Cinderswallow Urn",
+            "base": "Silver Flask",
+            "category": "DPS",
+            "effect": "Recover 1% of Life per Enemy Ignited by you during Effect. Nearby enemies take 8% increased Damage while you are Igniting at least one enemy.",
+            "best_builds": ["Ignite builds", "Fire builds with ignite access"],
+            "when_to_use": "Keep active during mapping — the regen and damage bonus are passive while you ignite enemies",
+            "value_tier": "High",
+            "notes": "Best on builds that reliably ignite. Magnified Flask suffix can add a powerful extra modifier. Great synergy with Elementalist."
+        },
+        {
+            "name": "Vessel of Vinktar",
+            "base": "Topaz Flask",
+            "category": "DPS",
+            "effect": "Adds 1 to 40 Lightning Damage to Attacks during Effect (variants available for Spells, Attacks, or Attack Leeches Mana instead of Life).",
+            "best_builds": ["Lightning builds", "Discharge", "Shock-stacking builds"],
+            "when_to_use": "Activate for boss fights or dense packs — the added damage scales well with multipliers",
+            "value_tier": "Medium",
+            "notes": "Four variants exist (Attacks, Spells, Penetration, Mana). Pick the one matching your skill type. Penetration variant is most universally valued."
+        },
+        {
+            "name": "Witchfire Brew",
+            "base": "Sulphur Flask",
+            "category": "DPS",
+            "effect": "Grants Level 21 Despair Curse Aura during Effect.",
+            "best_builds": ["Chaos DoT builds", "Poison builds", "Cold chaos hybrid builds"],
+            "when_to_use": "Active during all boss fights — Despair reduces chaos resistance",
+            "value_tier": "Medium",
+            "notes": "Free Despair curse without needing to socket a curse gem. Excellent budget option for chaos builds that can't self-curse otherwise."
+        },
+        {
+            "name": "Taste of Hate",
+            "base": "Sapphire Flask",
+            "category": "Defense",
+            "effect": "30% of Physical Damage taken as Cold. 20% chance to Avoid being Chilled during Effect. 20% chance to Avoid being Frozen during Effect.",
+            "best_builds": ["Phys mitigation stacking", "Cold/Evasion builds", "HC builds"],
+            "when_to_use": "Always active in endgame — converts a portion of physical hits to manageable cold damage",
+            "value_tier": "Very High",
+            "notes": "One of the best physical damage mitigation tools in the game. Stacks with other phys-to-X conversion. Particularly strong on high-evasion builds where physical hits bypass your evasion."
+        },
+        {
+            "name": "Rumi's Concoction",
+            "base": "Granite Flask",
+            "category": "Defense",
+            "effect": "+3000 to Armour during Effect. 25% Chance to Block Attack Damage. 12% Chance to Block Spell Damage.",
+            "best_builds": ["Block builds", "Gladiator", "Shield builds"],
+            "when_to_use": "Active during boss fights or dangerous packs for the block layers",
+            "value_tier": "High",
+            "notes": "Provides both armour and a large flat block bonus. Essential for block-based builds. Pairs well with Rainbowstride or other block sources."
+        },
+        {
+            "name": "Lion's Roar",
+            "base": "Granite Flask",
+            "category": "Defense",
+            "effect": "+3000 to Armour during Effect. Knocks Back Enemies on Hit during Effect. 20% More Melee Physical Damage during Effect.",
+            "best_builds": ["Melee physical builds", "Slam builds", "Chieftain"],
+            "when_to_use": "Active during boss fights for the More multiplier — knockback disrupts some boss mechanics",
+            "value_tier": "Medium",
+            "notes": "The 'More Melee Physical' suffix makes this a strong DPS flask for melee builds. Knockback can interrupt some boss abilities — valuable or annoying depending on context."
+        },
+        {
+            "name": "Sin's Rebirth",
+            "base": "Stibnite Flask",
+            "category": "Defense",
+            "effect": "Gain Unholy Might during Effect. Creates a Smoke Cloud on Use. 10% chance to Blind Enemies on Hit during Effect.",
+            "best_builds": ["Chaos builds", "Evasion builds", "Smoke Mine users"],
+            "when_to_use": "Activate before engaging — smoke cloud creates a blind zone",
+            "value_tier": "Medium",
+            "notes": "Unholy Might adds 30% of Physical Damage as Extra Chaos Damage. Blind on hit is valuable for evasion builds. The smoke cloud blocks enemy projectiles."
+        },
+        {
+            "name": "Olroth's Resolve",
+            "base": "Granite Flask",
+            "category": "Defense",
+            "effect": "Grants Fortify during Effect. You are not slowed to below base movement speed during Effect. Fortification stacks above maximum Fortification during Effect.",
+            "best_builds": ["Tanky melée builds", "Marauder/Duelist builds that want Fortify uptime"],
+            "when_to_use": "Active during boss fights for the Fortify bonus — especially valuable if your build has no other Fortify source",
+            "value_tier": "Medium",
+            "notes": "Gives Fortify without needing a melee hit. Excellent for bow or spell builds that want the 20% less damage taken from Fortify. No movement penalty is a QoL bonus."
+        },
+        {
+            "name": "Forbidden Taste",
+            "base": "Quartz Flask",
+            "category": "Defense",
+            "effect": "Instant 100% Life Recovery. Lose 50% of your Life after Recovery over 4 seconds.",
+            "best_builds": ["Emergency recovery builds", "Builds with good life regen to offset the penalty"],
+            "when_to_use": "Emergency only — activate when about to die, NOT during normal combat",
+            "value_tier": "High",
+            "notes": "Full instant recovery is unmatched for emergencies but the 50% life loss over 4 seconds requires strong regen or instant resumption of combat to offset. Do not use proactively."
+        },
+        {
+            "name": "Progenesis",
+            "base": "Quicksilver Flask",
+            "category": "Defense",
+            "effect": "25% of Damage from Hits is taken from the Flask's remaining Charges first. Movement Speed bonus is not removed at Full Charges.",
+            "best_builds": ["HC builds", "Tankiness-focused builds", "Builds facing large one-shots"],
+            "when_to_use": "Pre-emptively before a dangerous boss hit — it only absorbs damage if charges remain",
+            "value_tier": "Very High",
+            "notes": "Revolutionised HC-adjacent play. The charge consumption acts as a second life buffer. Combine with charge-recovery mechanics (Surgeon's, Pathfinder) for sustained value."
+        },
+        {
+            "name": "Coruscating Elixir",
+            "base": "Ruby Flask",
+            "category": "Defense",
+            "effect": "During Effect, take no Chaos Damage. During Effect, all Chaos Damage you would take bypasses Energy Shield instead targeting your Life.",
+            "best_builds": ["Chaos resistance stackers", "CI alternatives", "Builds facing Sirus/Shaper chaos"],
+            "when_to_use": "Active during boss fights with chaos damage (Sirus, Shaper storms, Blight, Ritual)",
+            "value_tier": "Medium",
+            "notes": "Effectively grants chaos immunity during the flask window. Requires having life available (useless on pure CI). Very strong counter to Sirus storm damage."
+        },
+        {
+            "name": "Rotgut",
+            "base": "Quicksilver Flask",
+            "category": "Utility",
+            "effect": "Gain a Frenzy Charge on Use. Gain Onslaught for 4 seconds on Using a Flask. Gain Onslaught for 4 seconds when you Kill an Enemy.",
+            "best_builds": ["Frenzy charge builds", "Speed-farming builds"],
+            "when_to_use": "Active during mapping for the frenzy charge and Onslaught combo",
+            "value_tier": "Medium",
+            "notes": "Provides both a Frenzy charge and Onslaught without needing to kill — useful for bossing where frenzy uptime is otherwise hard to maintain."
+        },
+        {
+            "name": "Divination Distillate",
+            "base": "Gold Flask",
+            "category": "Utility",
+            "effect": "20% increased Rarity of Items found. 5% increased Quantity of Items found. Magic and Rare Monsters found have 3 additional drops during Effect.",
+            "best_builds": ["IIQ/IIR farming builds", "Nemesis/Beyond map farmers"],
+            "when_to_use": "Active while killing rare and unique monsters — the 'additional drops' effect scales with magic/rare count",
+            "value_tier": "Medium",
+            "notes": "Very useful for dedicated magic find builds. Most valuable in high-monster-density maps with Nemesis-style mods."
+        },
+        {
+            "name": "Atziri's Foible",
+            "base": "Mana Flask",
+            "category": "Utility",
+            "effect": "100% increased Mana Regeneration Rate. Regenerate 3% of Life per second during Effect. Item Attribute Requirements are 100% reduced.",
+            "best_builds": ["Low-attribute builds", "Attribute requirement bypass setups"],
+            "when_to_use": "Used primarily for the attribute requirement reduction — swap for gear that would otherwise require more Str/Dex/Int",
+            "value_tier": "Low",
+            "notes": "The attribute reduction allows equipping items 100% above your base attributes. Mainly a budget/flexibility tool rather than endgame power option."
+        }
+    ]
+}
