@@ -1,0 +1,198 @@
+{
+  "concepts": [
+    {
+      "name": "Armour",
+      "category": "Physical Defence",
+      "formula": "DR% = Armour ÷ (Armour + 10 × Hit Size)",
+      "cap": "No hard cap — diminishing returns apply naturally",
+      "key_facts": [
+        "10,000 armour gives 50% reduction vs a 1,000 damage hit",
+        "10,000 armour gives only 10% reduction vs a 100,000 damage hit",
+        "Most effective against many small hits (minions, ground effects, map mods)",
+        "Physical DoTs (Bleeds) are NOT mitigated by armour — use physical damage reduction % instead"
+      ],
+      "how_to_stack": "Armour % on gear + Determination aura + Iron Reflexes keystone (converts Evasion to Armour)",
+      "active_skill": "Molten Shell (guard skill that scales with armour for an absorb shield)",
+      "notes": "Armour alone is rarely enough for endgame — pair with flat % PDR or life leech."
+    },
+    {
+      "name": "Evasion",
+      "category": "Physical Defence",
+      "formula": "Evade% = 1 − (Accuracy ÷ (Accuracy + (Evasion ÷ 4)^0.8))",
+      "cap": "95% maximum evasion chance",
+      "key_facts": [
+        "Chance-based: each hit is independently rolled — unlucky streaks can kill you",
+        "Blind debuff on enemies halves their accuracy, greatly improving evasion",
+        "Evasion does not mitigate hits that land — one unlucky hit at full damage",
+        "Acrobatics/Phase Acrobatics doubles evasion effectiveness vs hits and spells"
+      ],
+      "how_to_stack": "Evasion % on gear + Grace aura + Acrobatics keystone + Haste for base evasion",
+      "active_skill": "Smoke Mine or Blind support to apply Blind consistently",
+      "notes": "Pair with a reliable life recovery method — evasion offers no recovery."
+    },
+    {
+      "name": "Energy Shield",
+      "category": "All Hits",
+      "formula": "ES absorbs all damage before life (except Chaos if not CI)",
+      "cap": "No cap on ES pool size",
+      "key_facts": [
+        "ES recharge begins 2 seconds after last taking a hit",
+        "ES recharges at ~33% of max ES per second once started",
+        "Chaos Injury bypasses ES unless using Chaos Inoculation keystone",
+        "ES gates at 1 life — at low life threshold builds can use Petrified Blood",
+        "Zealot's Oath makes life regeneration apply to ES instead of life"
+      ],
+      "how_to_stack": "ES % on gear + Discipline aura + Zealot's Oath + Chaos Inoculation keystone",
+      "active_skill": "Vaal Discipline for emergency ES refill in a pinch",
+      "notes": "Strong against burst but punished by chaos damage and degens. CI removes chaos weakness."
+    },
+    {
+      "name": "Elemental Resistances",
+      "category": "Elemental Defence",
+      "formula": "Damage taken × (1 − Resistance%)",
+      "cap": "75% default maximum; up to 90% with raised maximum resistance",
+      "key_facts": [
+        "Default cap: 75% for each of Fire, Cold, and Lightning",
+        "Act 5 Kitava kill: −30% to all resistances permanently",
+        "Act 10 Kitava kill: another −30% (total −60% without gear)",
+        "Purity of Fire/Ice/Lightning auras raise the cap for their element by up to +4%",
+        "Elemental Weakness curse reduces resistance by 50%; Flammability by 44%"
+      ],
+      "how_to_stack": "Resist mods on gear + Purity auras + Resist flasks (Topaz/Sapphire/Ruby)",
+      "active_skill": "Granite Flask (armour) or Quartz Flask (phasing) for physical layering",
+      "notes": "Always cap resistances (75%) before optimizing other defences."
+    },
+    {
+      "name": "Chaos Resistance",
+      "category": "Elemental Defence",
+      "formula": "Damage taken × (1 − Chaos Resistance%)",
+      "cap": "75% default maximum",
+      "key_facts": [
+        "Default is −60% chaos resistance at character creation",
+        "Chaos damage bypasses Energy Shield unless using Chaos Inoculation",
+        "Many endgame bosses (Sirus, Maven, Uber Elder) deal heavy chaos damage",
+        "Chaos Inoculation sets max life to 1 and grants immunity to chaos damage"
+      ],
+      "how_to_stack": "Chaos resistance on gear + Purity of Elements aura (raises all res caps)",
+      "active_skill": "Jade Flask with Seething/Bubbling prefix for emergency life recovery vs chaos",
+      "notes": "Aim for at least 0% chaos res for yellow maps; +20% for red maps/bosses."
+    },
+    {
+      "name": "Physical Damage Reduction %",
+      "category": "Physical Defence",
+      "formula": "Additive with itself; applied after armour reduction",
+      "cap": "90% combined physical damage reduction (from all sources)",
+      "key_facts": [
+        "Endurance Charges grant 4% PDR each (up to 16% at 4 charges)",
+        "Immortal Call consumes Endurance Charges for brief physical immunity",
+        "Basalt Flask grants 15% PDR while active",
+        "Fortify (from Melee Hits) grants 20% less damage from hits"
+      ],
+      "how_to_stack": "Endurance Charges + Immortal Call guard skill + Fortify support or mastery",
+      "active_skill": "Immortal Call — brief immunity to physical + elemental damage per Endurance Charge",
+      "notes": "PDR % is the most reliable physical defence against large one-shot hits."
+    },
+    {
+      "name": "Spell Suppression",
+      "category": "Spell Defence",
+      "formula": "When triggered, spell damage reduced by 50%",
+      "cap": "100% chance to suppress (suppression triggers on every spell hit)",
+      "key_facts": [
+        "Requires Evasion-based gear to roll Spell Suppression on items",
+        "At 100% suppression: every spell hit deals only 50% of its damage",
+        "Does not interact with Evasion — spells always hit if not blocked/dodged",
+        "Requires significant passive and gear investment to reach 100%"
+      ],
+      "how_to_stack": "Evasion gear with Suppression suffix + Passive tree clusters (Ranger/Shadow) + Ascendancy nodes",
+      "active_skill": "Jade Flask for Evasion scaling to complement suppression layers",
+      "notes": "At 100% suppression, spell damage is halved — very strong against spell-heavy bosses."
+    },
+    {
+      "name": "Block",
+      "category": "Universal Defence",
+      "formula": "Flat % chance to block — blocked hits deal 0 damage",
+      "cap": "75% attack block / 75% spell block (both have separate caps)",
+      "key_facts": [
+        "Shields provide base block chance; staves can block attacks",
+        "Blocked hits deal 0 damage (no partial mitigation)",
+        "Spell Block is separate from Attack Block and typically requires passives",
+        "Rumi's Concoction flask: +20% attack block and +10% spell block while active",
+        "Corrupted soul / The Anvil unique amulet can grant passive spell block"
+      ],
+      "how_to_stack": "Shield with high base block + passive block nodes + Rumi's Concoction",
+      "active_skill": "Bone Offering (summoners) for reliable block chance without a shield",
+      "notes": "Block is binary — 0 damage on a blocked hit. Extremely powerful if capped."
+    },
+    {
+      "name": "Life (as Defence)",
+      "category": "Foundation",
+      "formula": "EHP = Life × (1 ÷ (1 − Mitigation%))",
+      "cap": "No cap",
+      "key_facts": [
+        "More life = more ability to survive one-shots and recover",
+        "Target: 4,000+ life for yellow maps; 5,000+ for red maps; 6,000+ for endgame",
+        "Life regeneration and leech sustain life during combat",
+        "Low Life threshold (35%) enables mods from Pain Attunement / some uniques"
+      ],
+      "how_to_stack": "Life on all gear slots (except weapon/quiver) + %Life passives + Vitality aura",
+      "active_skill": "Steelskin guard skill for a flat absorb shield based on gem level",
+      "notes": "Life is the foundation all other defences build on. Never neglect it."
+    },
+    {
+      "name": "Guard Skills",
+      "category": "Active Defence",
+      "formula": "Absorb shield that blocks damage; consumed before life/ES",
+      "cap": "Varies by skill",
+      "key_facts": [
+        "Steelskin: 500–3,600 flat HP shield (scales with gem level); 3s base cooldown",
+        "Molten Shell: shield scales with your armour (up to 10,000+); 3s base cooldown",
+        "Immortal Call: brief (0.4–1.5s) physical immunity + 9% per Endurance Charge; 3s base cooldown",
+        "All three benefit from Arcanist Brand or CWDT for automation",
+        "Only one guard skill can be active at a time"
+      ],
+      "how_to_stack": "Use CWDT (Cast When Damage Taken) to trigger automatically",
+      "active_skill": "Choose based on build: Steelskin (any), Molten Shell (high armour), Immortal Call (tanky melee)",
+      "notes": "CWDT + Immortal Call is a classic setup. Molten Shell is best for 10k+ armour builds."
+    },
+    {
+      "name": "Leech & Regeneration",
+      "category": "Recovery",
+      "formula": "Leech: % of damage dealt returned as life over 1 second per instance",
+      "cap": "Maximum leech rate: 20% of max life per second (default)",
+      "key_facts": [
+        "Leech requires hitting enemies — useless in no-hit builds or DoT without hit component",
+        "Life Regeneration is passive and unconditional",
+        "Vitality aura provides flat life regen per second",
+        "Flasks provide burst recovery: Seething = instant 50%, Bubbling = 50% over 3s",
+        "Corrupted Blood flask immunity (mod or jewel) is essential in endgame"
+      ],
+      "how_to_stack": "Leech passives + Vitality aura + life flask with Seething prefix",
+      "active_skill": "Life flask with Seething prefix for instant emergency recovery",
+      "notes": "Against DoT damage, leech does not help. Use regen or instant life flasks instead."
+    },
+    {
+      "name": "Effective Hit Points (EHP)",
+      "category": "Concept",
+      "formula": "EHP = Life × (1 ÷ (1 − Blended Mitigation))",
+      "cap": "Theoretical only",
+      "key_facts": [
+        "EHP represents the raw damage input required to kill you, accounting for all mitigation",
+        "Example: 5,000 life + 75% resistance = 5,000 ÷ 0.25 = 20,000 EHP vs that element",
+        "Layering mitigation types multiplies EHP: armour × PDR% × resistance",
+        "Block and evasion are probabilistic — they increase average EHP but not reliable EHP",
+        "One-shot protection requires both high EHP and defences that work on large hits"
+      ],
+      "how_to_stack": "High life + capped resistances + PDR % + guard skills for burst",
+      "active_skill": "Any guard skill provides on-demand temporary EHP boost",
+      "notes": "A single 75% resist cap is already a 4× EHP multiplier vs that element. Cap resists first."
+    }
+  ],
+  "categories": ["Physical Defence", "Elemental Defence", "Spell Defence", "Universal Defence", "Recovery", "Active Defence", "Foundation", "Concept", "All Hits"],
+  "tips": [
+    "Priority order: Life (4k+) → Capped Resistances (75%) → Chaos Res (≥0%) → One-shot protection → Sustain.",
+    "The -60% resistance penalty from both Kitava kills means you need ~135% on gear to cap all resists.",
+    "Stacking two different defence types (e.g., armour + block) multiplies your effective survivability.",
+    "Use the PoB (Path of Building) EHP calculator to compare defence layers objectively.",
+    "Boss fights test burst defence; mapping tests sustain. Gear and gem setups often differ."
+  ]
+}

@@ -395,6 +395,36 @@ These features were auto-approved after all N1–N3 items reached 9+/10 completi
 
 ---
 
+## Expansion Roadmap Round 12 (Auto-Approved 2026-03-26)
+
+These features were auto-approved after all O1–O3 items reached 9+/10 completion. Implement in priority order listed.
+
+### P1. Crafting Bench Quick Reference ✅ IMPLEMENTED (Session 35)
+- Reference for 30 most-used crafting bench modifiers across 5 categories: Life & Mana, Resistances, Defence, Offence, Utility
+- Each entry shows: mod type (Prefix/Suffix), best tier, minimum ilvl, applicable slots, crafting cost, and strategic notes
+- Category filter buttons + full-text search across name, slot, cost, and mod text
+- Data source: data/crafting_bench.json (30 mods, curated)
+- ui/widgets/crafting_bench_panel.py; added to Info group as "Bench" tab
+- **Rationale:** The crafting bench is used every session for resistance fixes, movement speed, and late-game stat patches. A quick reference showing "what can I craft here and what does it cost?" reduces friction during active gear management.
+
+### P2. Resistances & Defence Calculations Primer ✅ IMPLEMENTED (Session 35)
+- Reference for 12 major PoE defence concepts: Armour, Evasion, Energy Shield, Elemental/Chaos Resistances, Physical Damage Reduction, Spell Suppression, Block, Life, Guard Skills, Leech/Regen, and EHP
+- Each entry shows: formula, cap, key facts (bullet list), how to stack, relevant active skill, and strategic notes
+- Category filter (Physical Defence / Elemental / Spell / Universal / Recovery / Active / Foundation / Concept) + full-text search
+- Data source: data/defense_primer.json (12 concepts, curated)
+- ui/widgets/defense_primer_panel.py; added to Info group as "Defence" tab
+- **Rationale:** Defence mechanics in PoE are notoriously opaque. "How much armour do I actually need?", "what's the difference between PDR and armour?", "does Evasion help against spells?" — these questions have precise answers that most players look up repeatedly. An in-overlay primer replaces repeated wiki lookups.
+
+### P3. Endgame Progression Checklist ✅ IMPLEMENTED (Session 35)
+- Step-by-step progression guide through 6 stages: Campaign, White Maps, Yellow Maps & Conquerors, Red Maps & Sirus, Pinnacle Content, Uber Pinnacle & Farming
+- Each stage shows: ordered objectives (with checkbox UI), gear targets, key warnings, unlock gate, and next step pointer
+- Category filter (Foundation / Mapping / Endgame / Pinnacle) + full-text search across all fields
+- Data source: data/endgame_checklist.json (6 stages, curated)
+- ui/widgets/endgame_checklist_panel.py; added to Info group as "Checklist" tab
+- **Rationale:** Returning players and league starters frequently get lost after the campaign. "What do I do after Maps?" and "when do I fight the Conquerors?" are extremely common questions. A clear progression checklist in the overlay replaces searching Reddit or YouTube between stages.
+
+---
+
 ## Expansion Roadmap Round 10 (Auto-Approved 2026-03-25)
 
 These features were auto-approved after all M1–M3 items reached 9+/10 completion. Implement in priority order listed.

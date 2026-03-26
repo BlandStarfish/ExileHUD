@@ -1,0 +1,129 @@
+{
+  "stages": [
+    {
+      "name": "Campaign — Acts 1–10",
+      "category": "Foundation",
+      "order": 1,
+      "objectives": [
+        "Complete Acts 1–10 and kill Act 10 Kitava",
+        "Collect all 24 passive skill points from quests (use the Quest Tracker tab)",
+        "Complete Normal Lab (Act 3) for first 2 Ascendancy points",
+        "Complete Cruel Lab (Act 6 or later) for 3rd and 4th Ascendancy points",
+        "Maintain 75%+ fire, cold, and lightning resistances throughout the campaign"
+      ],
+      "gear_targets": "~100 life per act; 75% all elemental resists by Act 6",
+      "key_warnings": [
+        "Act 5 Kitava kill: permanent −30% all elemental resistances",
+        "Act 10 Kitava kill: another permanent −30% (total −60% from both Kitavas)"
+      ],
+      "unlock": "Access to Maps and Atlas via The Templar Laboratory (after Act 10)",
+      "next_step": "Complete your first Atlas maps and unlock Atlas Passives"
+    },
+    {
+      "name": "Early Atlas — White Maps (Tier 1–5)",
+      "category": "Mapping",
+      "order": 2,
+      "objectives": [
+        "Run Tier 1–5 (white) maps to open the Atlas and unlock Atlas passive points",
+        "Complete Atlas bonus objectives to earn bonus points (shown on map completion)",
+        "Identify and run your first Strongboxes, Shrines, and league mechanics",
+        "Pick up your first Atlas Passive points from Kirac's missions"
+      ],
+      "gear_targets": "5,000+ life or equivalent ES; capped elemental resistances; any damage that clears white maps in under 60s",
+      "key_warnings": [
+        "Do not run maps with more than 6% IIQ until damage feels comfortable",
+        "Avoid 'Cannot Regenerate Life/Mana' map mod until sustain is established"
+      ],
+      "unlock": "Tier 6+ (yellow) maps after sufficient Tier 1–5 completions",
+      "next_step": "Progress into yellow maps and unlock Conqueror encounters"
+    },
+    {
+      "name": "Yellow Maps (Tier 6–10) & Conquerors",
+      "category": "Mapping",
+      "order": 3,
+      "objectives": [
+        "Complete Tier 6–10 maps to unlock Conqueror encounters (Baran, Veritania, Al-Hezmin, Drox)",
+        "Encounter and kill each Conqueror in their region to earn Conqueror Splinters",
+        "Sustain map supply by running 3 maps for each one you use",
+        "Spec into Atlas passives for your chosen farming strategy (scarab, map quantity, etc.)",
+        "Open a Zana mission each day for bonus maps and atlas completion"
+      ],
+      "gear_targets": "5,500–6,000 life; clear speed to run T8 maps in 2–3 minutes; at least one reliable defensive layer beyond resistances",
+      "key_warnings": [
+        "Conquerors can be killed if encountered before you are ready — losing the encounter resets the cycle",
+        "Each Conqueror must be fought in their respective Atlas region (shown by symbol on Atlas)"
+      ],
+      "unlock": "Tier 11+ (red) maps; Sirus encounter (after all 4 Conquerors killed once each)",
+      "next_step": "Push into red maps and complete the Conqueror cycle for the Watchstone system"
+    },
+    {
+      "name": "Red Maps (Tier 11–16) & Sirus",
+      "category": "Endgame",
+      "order": 4,
+      "objectives": [
+        "Complete Tier 11–16 red maps consistently",
+        "Kill all 4 Conquerors again to spawn Sirus (Awakener of Worlds) at the centre of the Atlas",
+        "Farm Atlas completion — aim for 100+ unique map completions for maximum Atlas passive points",
+        "Run Exarch and Eater of Worlds encounters for Maven Invitations and Orbs of Conflict",
+        "Begin collecting Maven Invitations from witnessed bosses (Maven follows you from T6+)"
+      ],
+      "gear_targets": "6,000+ life; damage clear in under 90s per T16; one-shot protection from a guard skill or Immortal Call",
+      "key_warnings": [
+        "Sirus deals heavy Chaos damage — 20%+ chaos resistance strongly recommended",
+        "Conquerors' Exarch and Eater spawn in Tier 14+ maps only",
+        "Maven's Crucible (multi-boss arena) requires all 3 witnesses to die simultaneously"
+      ],
+      "unlock": "Maven encounter; Shaper and Elder chains; Uber lab (ilvl 75+ area level requirement)",
+      "next_step": "Unlock and challenge the Pinnacle bosses: Shaper, Elder, Maven, and Uber pinnacles"
+    },
+    {
+      "name": "Pinnacle Content",
+      "category": "Pinnacle",
+      "order": 5,
+      "objectives": [
+        "Collect Shaper Guardian map fragments (4 maps) to open The Shaper's Realm",
+        "Collect Elder Guardian map fragments and Uber Elder fragments to fight the Uber Elder",
+        "Collect Maven's Writ from witnessed boss encounters for The Maven fight",
+        "Kill Sirus at Awakening Level 8 for the full loot table (including Watcher's Eye chance)",
+        "Run Eternal Labyrinth for the final two Ascendancy points and the best Enchantments",
+        "Complete Ultimatum encounters for Fragments and crafting currency"
+      ],
+      "gear_targets": "7,000+ life or 10,000+ ES; 200M+ DPS (PoB) for comfortable pinnacle kills; full ailment immunity or suppression",
+      "key_warnings": [
+        "The Maven fight has extremely punishing memory game mechanics — learn the fight before attempting",
+        "Uber Elder requires both Shaper and Elder to die at nearly the same time — bring high burst DPS",
+        "Sirus AL8 awakening beam is a one-shot; position away from blue fire storms at all times"
+      ],
+      "unlock": "Uber versions of pinnacle bosses (require special fragments from their non-uber versions)",
+      "next_step": "Farm pinnacles for mirror-tier drops, or push into Uber Shaper/Elder/Maven/Sirus"
+    },
+    {
+      "name": "Uber Pinnacle & Endgame Farming",
+      "category": "Pinnacle",
+      "order": 6,
+      "objectives": [
+        "Defeat Uber Shaper, Uber Elder, Uber Maven, Uber Sirus, Uber Exarch, and Uber Eater",
+        "Establish a consistent farming strategy: Ritual, Legion, Expedition, Delirium, or Blight",
+        "Target-farm specific unique items or mirror-tier bases for build completion",
+        "Run full Simulacrum (300 Delirium Splinters) for jewels and cluster jewels",
+        "Craft or purchase endgame gear upgrades: Awakened gems, Cluster Jewels, Watcher's Eye"
+      ],
+      "gear_targets": "8,000+ life or 15,000+ ES for Uber bosses; Awakened gems at level 5; damage to clear Uber pinnacles in 30–90 seconds",
+      "key_warnings": [
+        "Uber bosses hit significantly harder than their base versions — one failed defensive layer can be lethal",
+        "Delirium Simulacrum Wave 20 is a significant difficulty spike — build must be fully completed",
+        "Mirror-crafting requires hundreds of hours of currency farming to be realistic for most players"
+      ],
+      "unlock": "Mirrors of Kalandra, Mageblood, and other ultra-rare endgame drops",
+      "next_step": "Build is complete — try a new league or a different build archetype"
+    }
+  ],
+  "categories": ["Foundation", "Mapping", "Endgame", "Pinnacle"],
+  "tips": [
+    "Never skip lab — 4 Ascendancy points are your most powerful character upgrade.",
+    "Resistance capping (75% all) is the single most impactful gear requirement at every stage.",
+    "Run maps in bulk at whatever tier is efficient — 10 T14 maps > 1 T16 if clear speed is 3× faster.",
+    "The Atlas passive tree is permanent per league — spec into what you will actually run, not what sounds exciting.",
+    "Check the Quest Tracker tab to make sure you have all passive skill points before finishing the campaign."
+  ]
+}

@@ -1,0 +1,312 @@
+{
+  "bench_mods": [
+    {
+      "name": "Maximum Life",
+      "category": "Life & Mana",
+      "mod_type": "Prefix",
+      "best_tier": "+70-79 life",
+      "min_ilvl": 82,
+      "slots": "Body, Helm, Gloves, Boots, Belt",
+      "cost": "4 Orbs of Alteration",
+      "notes": "Most impactful life mod. Prioritize T1 on all armour slots."
+    },
+    {
+      "name": "Maximum Mana",
+      "category": "Life & Mana",
+      "mod_type": "Prefix",
+      "best_tier": "+60-79 mana",
+      "min_ilvl": 73,
+      "slots": "Body, Helm, Shield, Belt, Wand",
+      "cost": "2 Orbs of Alteration",
+      "notes": "Useful when mana reservation is tight or for low-life builds."
+    },
+    {
+      "name": "Life Regeneration per Second",
+      "category": "Life & Mana",
+      "mod_type": "Suffix",
+      "best_tier": "10.1-11 life/s",
+      "min_ilvl": 57,
+      "slots": "Body, Helm, Gloves, Boots, Belt",
+      "cost": "1 Orb of Alteration",
+      "notes": "Cheap and stackable passive sustain. Good on multiple slots."
+    },
+    {
+      "name": "Mana Regeneration Rate",
+      "category": "Life & Mana",
+      "mod_type": "Suffix",
+      "best_tier": "+85-99% mana regen rate",
+      "min_ilvl": 54,
+      "slots": "Helm, Shield",
+      "cost": "1 Orb of Alteration",
+      "notes": "Helps non-leech casters sustain mana without flasks."
+    },
+    {
+      "name": "Reduced Mana Cost of Skills",
+      "category": "Life & Mana",
+      "mod_type": "Suffix",
+      "best_tier": "-8 to total mana cost of skills",
+      "min_ilvl": 50,
+      "slots": "Ring, Amulet",
+      "cost": "2 Orbs of Alteration",
+      "notes": "Removes pressure from mana reservation, useful for trigger builds."
+    },
+    {
+      "name": "Fire Resistance",
+      "category": "Resistances",
+      "mod_type": "Suffix",
+      "best_tier": "+46-48% fire resistance",
+      "min_ilvl": 84,
+      "slots": "Any armour, Ring, Amulet, Belt",
+      "cost": "3 Orbs of Alteration",
+      "notes": "Bench-crafting a resist frees up an affix slot for a better mod."
+    },
+    {
+      "name": "Cold Resistance",
+      "category": "Resistances",
+      "mod_type": "Suffix",
+      "best_tier": "+46-48% cold resistance",
+      "min_ilvl": 84,
+      "slots": "Any armour, Ring, Amulet, Belt",
+      "cost": "3 Orbs of Alteration",
+      "notes": "Same cost and tier as Fire Resistance."
+    },
+    {
+      "name": "Lightning Resistance",
+      "category": "Resistances",
+      "mod_type": "Suffix",
+      "best_tier": "+46-48% lightning resistance",
+      "min_ilvl": 84,
+      "slots": "Any armour, Ring, Amulet, Belt",
+      "cost": "3 Orbs of Alteration",
+      "notes": "Same cost and tier as Fire and Cold Resistance."
+    },
+    {
+      "name": "All Elemental Resistances",
+      "category": "Resistances",
+      "mod_type": "Suffix",
+      "best_tier": "+28-30% to all elemental resistances",
+      "min_ilvl": 75,
+      "slots": "Any armour, Ring, Amulet, Belt",
+      "cost": "2 Orbs of Alchemy",
+      "notes": "Premium resist fix. Uses an Alchemy, but plugs all three resists at once."
+    },
+    {
+      "name": "Chaos Resistance",
+      "category": "Resistances",
+      "mod_type": "Suffix",
+      "best_tier": "+31-35% chaos resistance",
+      "min_ilvl": 81,
+      "slots": "Any armour, Ring, Amulet, Belt",
+      "cost": "3 Orbs of Alteration",
+      "notes": "Critical in maps with Vulnerability curse or chaos damage map mods."
+    },
+    {
+      "name": "Energy Shield",
+      "category": "Defence",
+      "mod_type": "Prefix",
+      "best_tier": "+55-59 to maximum energy shield",
+      "min_ilvl": 77,
+      "slots": "ES body, ES helm, ES gloves, ES boots, Shield",
+      "cost": "2 Orbs of Scouring",
+      "notes": "Primary defensive mod for ES builds. High-ilvl ES gear needed for T1."
+    },
+    {
+      "name": "Armour",
+      "category": "Defence",
+      "mod_type": "Prefix",
+      "best_tier": "+220-250 armour",
+      "min_ilvl": 77,
+      "slots": "Armour body, Armour helm, Armour gloves, Armour boots, Shield",
+      "cost": "1 Orb of Scouring",
+      "notes": "Flat armour adds reliably to armour pool; stack with Determination aura."
+    },
+    {
+      "name": "Evasion Rating",
+      "category": "Defence",
+      "mod_type": "Prefix",
+      "best_tier": "+220-250 evasion rating",
+      "min_ilvl": 77,
+      "slots": "Evasion body, Evasion helm, Evasion gloves, Evasion boots",
+      "cost": "1 Orb of Scouring",
+      "notes": "Stack with Grace aura. Less useful without Acrobatics or high base evasion."
+    },
+    {
+      "name": "Movement Speed",
+      "category": "Defence",
+      "mod_type": "Suffix",
+      "best_tier": "+25-27% movement speed",
+      "min_ilvl": 83,
+      "slots": "Boots",
+      "cost": "2 Orbs of Scouring",
+      "notes": "Almost always bench-crafted on boots. Highest-ilvl boots give T1."
+    },
+    {
+      "name": "Spell Suppression Chance",
+      "category": "Defence",
+      "mod_type": "Suffix",
+      "best_tier": "+11-14% chance to suppress spell damage",
+      "min_ilvl": 75,
+      "slots": "Evasion body, Evasion helm, Evasion gloves, Evasion boots, Shield",
+      "cost": "1 Regal Orb",
+      "notes": "Evasion builds aim for 100% suppression (50% spell damage reduction)."
+    },
+    {
+      "name": "Block Chance",
+      "category": "Defence",
+      "mod_type": "Suffix",
+      "best_tier": "+4-5% chance to block attack damage",
+      "min_ilvl": 60,
+      "slots": "Shield",
+      "cost": "2 Orbs of Alteration",
+      "notes": "Shields have a base block; craft pushes toward the 75% block cap."
+    },
+    {
+      "name": "Physical Damage % (local)",
+      "category": "Offence",
+      "mod_type": "Prefix",
+      "best_tier": "+60-64% increased physical damage",
+      "min_ilvl": 83,
+      "slots": "Melee weapons",
+      "cost": "2 Orbs of Scouring",
+      "notes": "Local mod — multiplies that weapon's physical damage only. Core DPS prefix."
+    },
+    {
+      "name": "Adds Fire Damage",
+      "category": "Offence",
+      "mod_type": "Prefix",
+      "best_tier": "20-28 to 35-50 fire damage",
+      "min_ilvl": 82,
+      "slots": "Weapons, Rings, Gloves",
+      "cost": "3 Orbs of Alteration",
+      "notes": "High average damage. Synergyises with ignite and fire damage scaling."
+    },
+    {
+      "name": "Adds Cold Damage",
+      "category": "Offence",
+      "mod_type": "Prefix",
+      "best_tier": "14-19 to 29-35 cold damage",
+      "min_ilvl": 82,
+      "slots": "Weapons, Rings, Gloves",
+      "cost": "3 Orbs of Alteration",
+      "notes": "Good for cold-conversion builds and freeze mechanics."
+    },
+    {
+      "name": "Adds Lightning Damage",
+      "category": "Offence",
+      "mod_type": "Prefix",
+      "best_tier": "3-50 lightning damage (wide range)",
+      "min_ilvl": 80,
+      "slots": "Weapons, Rings, Gloves",
+      "cost": "3 Orbs of Alteration",
+      "notes": "High top end but inconsistent. Excellent for shock-stacking builds."
+    },
+    {
+      "name": "Adds Chaos Damage",
+      "category": "Offence",
+      "mod_type": "Prefix",
+      "best_tier": "14-19 to 28-35 chaos damage",
+      "min_ilvl": 82,
+      "slots": "Weapons, Rings, Gloves",
+      "cost": "3 Orbs of Alteration",
+      "notes": "Bypasses elemental resistances. Essential for chaos conversion builds."
+    },
+    {
+      "name": "Attack Speed",
+      "category": "Offence",
+      "mod_type": "Suffix",
+      "best_tier": "+11-12% attack speed",
+      "min_ilvl": 75,
+      "slots": "Weapons, Gloves",
+      "cost": "1 Regal Orb",
+      "notes": "Multiplies all damage. Always worth craft-patching for attack builds."
+    },
+    {
+      "name": "Cast Speed",
+      "category": "Offence",
+      "mod_type": "Suffix",
+      "best_tier": "+11-12% cast speed",
+      "min_ilvl": 75,
+      "slots": "Weapons (Wands especially)",
+      "cost": "1 Regal Orb",
+      "notes": "DPS multiplier for all spell builds. Especially valuable on wands."
+    },
+    {
+      "name": "Critical Strike Chance",
+      "category": "Offence",
+      "mod_type": "Suffix",
+      "best_tier": "+35-38% critical strike chance",
+      "min_ilvl": 77,
+      "slots": "Weapons",
+      "cost": "1 Regal Orb",
+      "notes": "Local mod on weapons. Helps push global crit chance to cap."
+    },
+    {
+      "name": "Critical Strike Multiplier",
+      "category": "Offence",
+      "mod_type": "Suffix",
+      "best_tier": "+37-40% critical strike multiplier",
+      "min_ilvl": 77,
+      "slots": "Weapons, Rings, Amulets",
+      "cost": "1 Regal Orb",
+      "notes": "Huge DPS multiplier for crit builds. Always worth crafting on weapons."
+    },
+    {
+      "name": "Strength",
+      "category": "Utility",
+      "mod_type": "Suffix",
+      "best_tier": "+55-60 to strength",
+      "min_ilvl": 75,
+      "slots": "Any armour or jewellery",
+      "cost": "1 Regal Orb",
+      "notes": "Also grants 2 life per point. Craft when struggling to equip strength-req gear."
+    },
+    {
+      "name": "Dexterity",
+      "category": "Utility",
+      "mod_type": "Suffix",
+      "best_tier": "+55-60 to dexterity",
+      "min_ilvl": 75,
+      "slots": "Any armour or jewellery",
+      "cost": "1 Regal Orb",
+      "notes": "Dex also grants accuracy and evasion. Needed for Dex-requirement skills."
+    },
+    {
+      "name": "Intelligence",
+      "category": "Utility",
+      "mod_type": "Suffix",
+      "best_tier": "+55-60 to intelligence",
+      "min_ilvl": 75,
+      "slots": "Any armour or jewellery",
+      "cost": "1 Regal Orb",
+      "notes": "Int grants 2 mana per point. Needed for int-requirement skills and ES."
+    },
+    {
+      "name": "Reduced Flask Charges Used",
+      "category": "Utility",
+      "mod_type": "Suffix",
+      "best_tier": "20-25% reduced flask charges used",
+      "min_ilvl": 60,
+      "slots": "Belt",
+      "cost": "1 Regal Orb",
+      "notes": "Dramatically extends flask uptime. Near-mandatory for endgame belts."
+    },
+    {
+      "name": "Accuracy Rating",
+      "category": "Utility",
+      "mod_type": "Suffix",
+      "best_tier": "+250-299 accuracy rating",
+      "min_ilvl": 73,
+      "slots": "Weapons, Gloves, Ring",
+      "cost": "1 Orb of Alteration",
+      "notes": "Attack builds need ~95% hit chance. Craft accuracy before investing elsewhere."
+    }
+  ],
+  "categories": ["Life & Mana", "Resistances", "Defence", "Offence", "Utility"],
+  "tips": [
+    "Crafting overwrites any existing mod of the same type (prefix or suffix) — plan ahead.",
+    "Use 'Prefixes Cannot be Changed' before crafting a suffix to protect good prefixes.",
+    "A crafted mod can be removed with a single Orb of Scouring if the item is magic, or by opening the bench again.",
+    "Resistance crafts are the most common bench-craft — they plug cap gaps cheaply.",
+    "Movement Speed on boots is almost always bench-crafted — buy boots with good prefixes and craft the suffix."
+  ]
+}
