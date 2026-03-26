@@ -1,0 +1,99 @@
+{
+  "_comment": "PoE Harvest crafting reference. The Sacred Grove contains lifeforce seeds whose harvest powers crafts at the Horticrafting Station.",
+  "how_it_works": "Plant seeds in the Sacred Grove. When seeds grow, harvest them for Lifeforce and optionally trigger a craft. Crafts are random within a category each time you load the map. Save powerful crafts and use them from the Horticrafting Station.",
+  "lifeforce_types": {
+    "Vivid": {"color": "Yellow", "source": "Vivid seeds (yellow)", "craft_focus": "Attack, fire damage, dexterity"},
+    "Primal": {"color": "Blue", "source": "Primal seeds (blue)", "craft_focus": "Defence, cold damage, strength"},
+    "Wild": {"color": "Purple", "source": "Wild seeds (purple)", "craft_focus": "Life/mana/flask, chaos/lightning, intelligence"},
+    "Sacred": {"color": "White", "source": "All T4 seeds", "craft_focus": "Powerful reforges — any category, best crafts"}
+  },
+  "craft_categories": [
+    {
+      "category": "Reforge",
+      "lifeforce": "Any",
+      "description": "Reroll all modifiers (like Chaos Orb). Keeping variants are the best crafting options in Harvest.",
+      "crafts": [
+        {"name": "Reforge Keeping Prefixes", "effect": "Reroll all suffixes; keep all prefixes intact", "value": "Very High", "notes": "Best prefix-locking method in the game outside Veiled Chaos"},
+        {"name": "Reforge Keeping Suffixes", "effect": "Reroll all prefixes; keep all suffixes intact", "value": "Very High", "notes": "Essential for suffix-locking during meta-crafting"},
+        {"name": "Reforge with Chaos Modifier", "effect": "Reroll item; one modifier is guaranteed to be a chaos mod", "value": "High", "notes": "Great for chaos damage or chaos res items"},
+        {"name": "Reforge with Fire Modifier", "effect": "Reroll item; one modifier is guaranteed to be fire", "value": "Medium", "notes": "Use for fire builds or fire res rings"},
+        {"name": "Reforge with Cold Modifier", "effect": "Reroll item; one modifier is guaranteed to be cold", "value": "Medium", "notes": ""},
+        {"name": "Reforge with Lightning Modifier", "effect": "Reroll item; one modifier is guaranteed to be lightning", "value": "Medium", "notes": ""},
+        {"name": "Reforge with Physical Modifier", "effect": "Reroll item; one modifier is guaranteed to be physical", "value": "Medium", "notes": ""},
+        {"name": "Reforge with Life Modifier", "effect": "Reroll item; one modifier is guaranteed to be life", "value": "High", "notes": "Useful for seeding life on a rare item"},
+        {"name": "Reforge with Critical Modifier", "effect": "Reroll item; one modifier is guaranteed to be critical strike related", "value": "Medium", "notes": ""},
+        {"name": "Reforge Rare (Lucky)", "effect": "Reroll item with lucky modifier values — rolls twice, keeps better result", "value": "High", "notes": "Best for maximizing numeric values on already-good items"}
+      ]
+    },
+    {
+      "category": "Augment",
+      "lifeforce": "Any",
+      "description": "Add a new modifier to an item that doesn't have one of that type.",
+      "crafts": [
+        {"name": "Augment with Fire Modifier", "effect": "Add a fire modifier (requires open prefix or suffix slot)", "value": "Medium", "notes": "Must have an open prefix or suffix — use crafting bench to fill unwanted slots first"},
+        {"name": "Augment with Cold Modifier", "effect": "Add a cold modifier", "value": "Medium", "notes": ""},
+        {"name": "Augment with Lightning Modifier", "effect": "Add a lightning modifier", "value": "Medium", "notes": ""},
+        {"name": "Augment with Chaos Modifier", "effect": "Add a chaos modifier", "value": "High", "notes": "Chaos res is often a suffix — pair with prefix-locking"},
+        {"name": "Augment with Life Modifier", "effect": "Add a life modifier", "value": "High", "notes": "Great for adding life to a near-perfect item missing only life"},
+        {"name": "Augment with Critical Modifier", "effect": "Add a critical modifier", "value": "Medium", "notes": ""},
+        {"name": "Augment with Speed Modifier", "effect": "Add a speed modifier (attack, cast, or movement)", "value": "Medium", "notes": ""},
+        {"name": "Augment with Defence Modifier", "effect": "Add an armour/evasion/ES modifier", "value": "Medium", "notes": ""}
+      ]
+    },
+    {
+      "category": "Remove/Add",
+      "lifeforce": "Any",
+      "description": "Remove one modifier of a type and add a new one of the same type. Does not change item prefix/suffix count.",
+      "crafts": [
+        {"name": "Remove/Add Fire Modifier", "effect": "Remove a random fire modifier; add a new fire modifier", "value": "High", "notes": "Targeted reroll of one fire mod — much cheaper than full reforge"},
+        {"name": "Remove/Add Cold Modifier", "effect": "Remove a random cold modifier; add a new cold modifier", "value": "High", "notes": ""},
+        {"name": "Remove/Add Lightning Modifier", "effect": "Remove a random lightning modifier; add a new lightning modifier", "value": "High", "notes": ""},
+        {"name": "Remove/Add Chaos Modifier", "effect": "Remove a random chaos modifier; add a new chaos modifier", "value": "High", "notes": ""},
+        {"name": "Remove/Add Life Modifier", "effect": "Remove a random life modifier; add a new life modifier", "value": "Very High", "notes": "Best targeted life re-roll outside Divine Orb"},
+        {"name": "Remove/Add Critical Modifier", "effect": "Remove a random critical modifier; add a new critical one", "value": "High", "notes": ""},
+        {"name": "Remove/Add Physical Modifier", "effect": "Remove a random physical modifier; add a new physical one", "value": "High", "notes": ""},
+        {"name": "Remove/Add Defences Modifier", "effect": "Remove a random defence modifier; add a new one", "value": "Medium", "notes": ""}
+      ]
+    },
+    {
+      "category": "Set Numeric Value",
+      "lifeforce": "Sacred (White)",
+      "description": "Divine-equivalent effects for specific modifier types.",
+      "crafts": [
+        {"name": "Set Quality to 30%", "effect": "Item quality is set to 30% (above the normal 20% cap)", "value": "Very High", "notes": "Requires weapon or armour. Raises item quality beyond crafting bench maximum"},
+        {"name": "Randomise Numeric Values (Lucky)", "effect": "Re-randomise all numeric values on the item; rolls twice and keeps better", "value": "Very High", "notes": "Effectively a lucky Divine Orb on every modifier simultaneously — extremely valuable"},
+        {"name": "Randomise Numeric Values of a Fire Modifier", "effect": "Re-randomise values of one fire modifier (lucky roll)", "value": "High", "notes": "Targeted lucky Divine for fire mods"},
+        {"name": "Randomise Numeric Values of a Cold Modifier", "effect": "Re-randomise values of one cold modifier (lucky roll)", "value": "High", "notes": ""},
+        {"name": "Randomise Numeric Values of a Life Modifier", "effect": "Re-randomise values of one life modifier (lucky roll)", "value": "Very High", "notes": "Best way to push life to max roll"},
+        {"name": "Randomise Numeric Values of a Critical Modifier", "effect": "Re-randomise values of one critical modifier (lucky roll)", "value": "High", "notes": ""}
+      ]
+    },
+    {
+      "category": "Split / Duplicate",
+      "lifeforce": "Sacred (White)",
+      "description": "High-end crafting operations on near-perfect items.",
+      "crafts": [
+        {"name": "Split", "effect": "Split an item into two half-quality copies with shared modifiers. Both become split-flagged.", "value": "Very High", "notes": "Only usable on non-unique, non-split, non-mirrored items. Replaces the Mirror of Kalandra use case for many builds."},
+        {"name": "Duplicate", "effect": "Create a copy of the item. Original becomes mirrored; copy can be used normally.", "value": "Extremely High", "notes": "Effectively a mirror — the rarest Harvest craft. Extremely rare in practice. Original becomes mirror-flagged."}
+      ]
+    },
+    {
+      "category": "Enchant",
+      "lifeforce": "Any",
+      "description": "Add an enchantment to a specific item slot.",
+      "crafts": [
+        {"name": "Enchant a Flask", "effect": "Add a random enchantment to a magic or rare flask", "value": "Low", "notes": "Flask enchants are minor but occasionally useful"},
+        {"name": "Enchant a Piece of Armour", "effect": "Add a random enchantment to a helmet, gloves, or boots", "value": "Medium", "notes": "Can add enchants without running the Labyrinth — useful for budget gear"},
+        {"name": "Enchant a Weapon", "effect": "Add a random weapon enchantment", "value": "Low", "notes": ""}
+      ]
+    }
+  ],
+  "tips": [
+    "Reforge Keeping Prefixes and Reforge Keeping Suffixes are the highest-value common crafts. Always save these.",
+    "Lucky Randomise Values is effectively a free Divine Orb upgrade. Extremely valuable on near-perfect items.",
+    "Remove/Add crafts are targeted rerolls — much more efficient than full reforges when you only have one bad mod.",
+    "Augment crafts require an open modifier slot. Use crafting bench to block unwanted slots before augmenting.",
+    "Sacred Lifeforce is the rarest and comes from T4 seeds. Save it for Split, Duplicate, or Lucky Divines.",
+    "Harvest crops respawn each time you enter the Sacred Grove map. Run it repeatedly to accumulate high-value crafts."
+  ]
+}

@@ -4457,3 +4457,178 @@ Overall grade: 10/10
 Only remaining item: PoE2 passive tree (blocked, no GGG ETA).
 
 ═══════════════════════════════════════════════════════════════
+
+═══════════════════════════════════════════════════════════════
+SESSION: 2026-03-25  (Session 29)
+═══════════════════════════════════════════════════════════════
+
+## ORIENTATION SUMMARY
+Session 28 left off after implementing I1 (Incursion Temple Room Reference), I2 (Delve
+Fossil Guide), I3 (Maven Boss Witness Guide). All three at 9+/10. Test count was 336.
+Primary instruction for this session: Phase 4 Round 6 -- generate and implement J1-J3.
+
+Three data/panel files were found as untracked work from outside the session:
+  data/metamorph_catalysts.json + ui/widgets/metamorph_panel.py  -- J1, complete
+  data/harvest_crafts.json + ui/widgets/harvest_panel.py          -- J2, complete
+  data/heist_rogues.json                                           -- J3 data, panel missing
+
+Session work: verified pre-built files, created J3 panel, wired all three into hud.py,
+wrote tests for all three, updated VISION.md.
+
+## ASSESSMENT GRADES
+Module                  Completeness  Quality  Alignment
+Quest Tracker               10/10     9/10      10/10
+Passive Tree Viewer          9/10     9/10       9/10
+Price Check                  9/10     9/10       9/10
+Currency Tracker             9/10     9/10       9/10
+Crafting System              9/10     9/10       9/10
+Map Overlay                  9/10     9/10       9/10
+XP Tracker                   9/10     9/10       9/10
+Chaos Recipe                 9/10     9/10       9/10
+Build Notes                 10/10    10/10      10/10
+Div Cards                    9/10     9/10       9/10
+Atlas Tracker                9/10     9/10       9/10
+Bestiary Browser             9/10     9/10      10/10
+Heist Organizer              9/10     9/10       9/10
+Gem Planner                  9/10     9/10       9/10
+Map Stash Scanner            9/10     9/10       9/10
+Expedition Browser          10/10     9/10      10/10
+Currency Flip Calc           9/10     9/10       9/10
+Lab Tracker                 10/10     9/10      10/10
+Syndicate Planner            9/10     9/10      10/10
+Vendor Recipe Browser        9/10     9/10      10/10
+Scarab Browser               9/10     9/10      10/10
+Breach Domain Ref            9/10     9/10      10/10
+Delirium Reward Types        9/10     9/10       9/10
+Currency Quick Ref           9/10     9/10       9/10
+Incursion Room Ref           9/10     9/10      10/10
+Fossil Guide                 9/10     9/10      10/10
+Maven Witness Guide          9/10     9/10      10/10
+Metamorph Catalyst Ref       9/10     9/10      10/10  (new J1)
+Harvest Craft Ref            9/10     9/10      10/10  (new J2)
+Heist Rogue Quick Ref        9/10     9/10      10/10  (new J3)
+Test Suite                  10/10     9/10       9/10
+
+## SMOKE TEST FINDINGS
+
+Phase 1B -- Logic and Structure Issues
+None found. All pre-built files clean and consistent with project patterns.
+All 336 existing tests pass before session changes.
+
+Phase 1C -- Redundancy and Counter-Vision Issues
+None found.
+
+## MAINTENANCE LOG
+No maintenance fixes required this session.
+
+## DEVELOPMENT LOG
+
+### Phase 4 Round 6 -- J1-J3 Auto-Approved
+
+I1-I3 all at 9+/10. Generated 3 new expansion features:
+  J1. Metamorph Catalyst Reference (HIGH)
+  J2. Harvest Craft Reference (MEDIUM)
+  J3. Heist Rogue Skills Quick Reference (LOW)
+
+Pre-built data and panel files (J1, J2) were found as untracked work from outside the
+scheduled session. These were assessed, verified clean, and incorporated.
+
+### Feature: J1 Metamorph Catalyst Reference
+
+Files (pre-built, verified):
+  data/metamorph_catalysts.json: 12 catalyst entries
+    Schema: {name, improves, examples, best_for, organ_source}
+    Root-level: how_it_works, max_quality_note, applicable_items[], tips[]
+  ui/widgets/metamorph_panel.py: MetamorphPanel
+    Full-text search across all fields; cards with ORANGE border
+    improves (teal), examples (dim), best_for (green), organ_source (dim italic)
+  tests/test_metamorph_panel.py: 14 tests
+
+Files modified:
+  ui/hud.py: Added MetamorphPanel import, _INFO_METAMORPH=11, "Metamorph" tab at index 11
+  dev_notes/VISION.md: Added J1-J3 under Expansion Roadmap Round 6; J1 marked IMPLEMENTED
+
+### Feature: J2 Harvest Craft Reference
+
+Files (pre-built, verified):
+  data/harvest_crafts.json: 33 craft entries across 5 categories
+    Categories: Reforge (10), Augment (8), Remove/Add (8), Set Numeric Value (6),
+                Split/Duplicate (2), Enchant (3)
+    Lifeforce types dict: Vivid/Primal/Wild/Sacred
+    Value tiers: Extremely High, Very High, High, Medium, Low
+    Root-level: tips[]
+  ui/widgets/harvest_panel.py: HarvestPanel
+    Category filter buttons (color-coded per category type)
+    Value tier badges + lifeforce requirement shown per card
+    Full-text search across name, effect, notes, category, lifeforce
+  tests/test_harvest_panel.py: 18 tests
+
+Files modified:
+  ui/hud.py: Added HarvestPanel import, _INFO_HARVEST=12, "Harvest" tab at index 12
+
+### Feature: J3 Heist Rogue Skills Quick Reference
+
+Files created:
+  ui/widgets/heist_rogues_panel.py: HeistRoguesPanel
+    Job-type filter buttons (9 job types, each color-coded)
+    Cards: name (gold), primary job (colored badge + max level), secondary job if present,
+           specialty, reward type (green), notes (dim italic)
+    Border color = primary job color
+    Full-text search across name, primary_job, secondary_job, reward_type, specialty, notes
+  tests/test_heist_rogues_panel.py: 16 tests
+
+Files modified:
+  ui/hud.py: Added HeistRoguesPanel import, _INFO_HEIST_ROGUES=13, "Rogues" tab at index 13
+             _INFO_SETTINGS shifted to 14
+
+Test count: 336 -> 381 (+45 new, all pass)
+
+## TECHNICAL NOTES
+
+Info group tab count:
+  Now 15 tabs (0-14). Order: Bestiary/Expedition/Syndicate/Vendor/Scarabs/Breach/Delirium/
+  Currency/Incursion/Fossils/Maven/Metamorph/Harvest/Rogues/Settings.
+  _INFO_SETTINGS now 14.
+
+MetamorphPanel organ_source field:
+  Not every player knows which Metamorph organ family yields which catalyst type.
+  The organ_source field gives practical guidance ("spellcasting monsters", "fast/mobile
+  monsters") without requiring exact enemy identification. This is helpful for
+  target-farming specific catalysts.
+
+HarvestPanel value tiers:
+  "Extremely High" reserved for Duplicate only. "Very High" for Reforge Keeping
+  Prefixes/Suffixes and Lucky Randomise Values. These are the crafts players should
+  always save; the visual hierarchy makes this immediately clear.
+
+HeistRoguesPanel job filter vs heist_panel.py:
+  heist_panel.py scans stash for Blueprint/Contract items (OAuth required).
+  heist_rogues_panel.py is a static reference with zero dependencies.
+  The two are complementary: one tells you what contracts you have, the other
+  tells you which rogue to bring.
+
+Asana session summary:
+  Posted via asana_create_project_status on HUMAN INBOX (GID: 1213723884881761).
+
+## SUGGESTIONS FOR NEXT SESSION
+
+1. Phase 4 Round 7 (HIGH): J1-J3 all at 9+/10. Run Phase 4 again -- generate next
+   expansion round (K1-K3). Candidates:
+   - Expedition logbook node optimizer (which remnants to include/avoid per encounter type)
+   - Sanctum floor modifier reference (affliction effects + boon/bane interactions)
+   - Archnemesis/Rare mod reference (what each mod does, which combos to avoid)
+
+2. PoE2 passive tree (BLOCKED): No official GGG skilltree-export for PoE2.
+   Check https://github.com/grindinggear/skilltree-export for new branches.
+
+3. Currency Reference live price column (LOW, deferred from Session 26):
+   Would require passing ninja instance. Evaluate if value justifies coupling.
+
+## PROJECT HEALTH
+
+Overall grade: 10/10
+~100% complete toward full vision (original + E1-E6 + F1-F3 + G1-G3 + H1-H3 + I1-I3 + J1-J3).
+381 tests pass. No technical debt. No regressions.
+Only remaining item: PoE2 passive tree (blocked, no GGG ETA).
+
+═══════════════════════════════════════════════════════════════

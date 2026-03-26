@@ -1,0 +1,99 @@
+{
+  "_comment": "PoE Metamorph catalyst types. Catalysts add quality to specific modifier categories on jewellery and belts.",
+  "how_it_works": "Use a Catalyst on a ring, amulet, or belt. Quality adds up to 20% increased effect to matching modifier categories. Catalysts are harvested from Metamorph organs — collect 5 of the same type. Different organ families drop different catalyst types.",
+  "max_quality_note": "Quality caps at 20%. Higher quality increases numeric values on matching mods (e.g. +30 life with 20% quality becomes +36 life).",
+  "applicable_items": ["Rings", "Amulets", "Belts"],
+  "catalysts": [
+    {
+      "name": "Abrasive Catalyst",
+      "improves": "Attack skill modifiers",
+      "examples": "Attack speed, melee damage, attack damage, local attack modifiers",
+      "best_for": "Attack builds using rings/amulets with attack damage or speed",
+      "organ_source": "Monsters with strong physical attacks (e.g. Tora, Wolf packs, melee rares)"
+    },
+    {
+      "name": "Imbued Catalyst",
+      "improves": "Spell skill modifiers",
+      "examples": "Spell damage, cast speed, spell crit, minion damage",
+      "best_for": "Spellcaster and minion builds",
+      "organ_source": "Spellcasting monsters (e.g. Doedre, Maligaro, caster rares)"
+    },
+    {
+      "name": "Turbulent Catalyst",
+      "improves": "Elemental damage modifiers",
+      "examples": "Fire/cold/lightning damage, elemental damage with attacks",
+      "best_for": "Elemental attack or spell builds",
+      "organ_source": "Elemental monsters (e.g. Piety, Merveil, elemental rares)"
+    },
+    {
+      "name": "Prismatic Catalyst",
+      "improves": "Resistance modifiers",
+      "examples": "Fire res, cold res, lightning res, chaos res, all res",
+      "best_for": "Capping resistances on crafted jewellery",
+      "organ_source": "Resistant monsters (e.g. Shavronne, resist-aura rares)"
+    },
+    {
+      "name": "Fertile Catalyst",
+      "improves": "Life and mana modifiers",
+      "examples": "Maximum life, maximum mana, life regeneration, mana regeneration",
+      "best_for": "Life-stacking or mana builds",
+      "organ_source": "Tanky/life-heavy monsters (e.g. Brutus, Gravicius, life-regen rares)"
+    },
+    {
+      "name": "Tempering Catalyst",
+      "improves": "Armour and evasion modifiers",
+      "examples": "Armour, evasion rating, energy shield (local), hybrid defences",
+      "best_for": "Defence builds using rings with armour/evasion/ES",
+      "organ_source": "Armoured monsters (e.g. Goatmen, heavily armoured rares)"
+    },
+    {
+      "name": "Intrinsic Catalyst",
+      "improves": "Attribute modifiers",
+      "examples": "Strength, dexterity, intelligence, all attributes",
+      "best_for": "Meeting attribute requirements or attribute-stacking builds",
+      "organ_source": "Attribute-scaling monsters (e.g. Dominus, Oriath soldiers)"
+    },
+    {
+      "name": "Unstable Catalyst",
+      "improves": "Critical strike modifiers",
+      "examples": "Critical strike chance, critical strike multiplier",
+      "best_for": "Crit builds (great for amulet anointment + crit mods)",
+      "organ_source": "Crit-heavy monsters (e.g. assassin-type rares, sniper monsters)"
+    },
+    {
+      "name": "Noxious Catalyst",
+      "improves": "Physical and chaos damage modifiers",
+      "examples": "Physical damage, chaos damage, physical damage over time, bleed",
+      "best_for": "Physical or chaos damage builds",
+      "organ_source": "Chaos/poison monsters (e.g. Maraketh, poisonous rares)"
+    },
+    {
+      "name": "Accelerating Catalyst",
+      "improves": "Speed modifiers",
+      "examples": "Attack speed, cast speed, movement speed, cooldown recovery",
+      "best_for": "Speed-focused builds — movement speed belt is the classic use",
+      "organ_source": "Fast/mobile monsters (e.g. Quill Rain mobs, speedy rares)"
+    },
+    {
+      "name": "Catalytic Catalyst",
+      "improves": "Elemental ailment chance modifiers",
+      "examples": "Chance to ignite, freeze, shock; elemental ailment duration; ailment damage",
+      "best_for": "Ignite, freeze, or shock prolif builds",
+      "organ_source": "Ailment-inflicting monsters (e.g. burning/freezing/shocking rares)"
+    },
+    {
+      "name": "Veiled Catalyst",
+      "improves": "Caster modifiers (veiled/unveiled)",
+      "examples": "Spell damage, cooldown recovery rate, mana cost reduction",
+      "best_for": "Builds using unveiled ring/amulet mods from Jun crafting",
+      "organ_source": "Syndicate encounter organs (Betrayal mechanics required)"
+    }
+  ],
+  "tips": [
+    "Catalysts apply to the item's base quality budget — a 20-quality item uses up all quality. Always apply catalysts before other quality sources.",
+    "Catalysts only affect explicit modifiers of the matching type. Implicits, enchantments, and anointments are never improved.",
+    "Switching catalyst type resets quality to 0. Choose carefully before applying.",
+    "The 5-organ threshold to get one catalyst is fixed — collect 5 matching organs from Metamorph encounters.",
+    "Accelerating Catalyst on a Stygian Vise with movement speed is one of the most traded catalyst uses in the game."
+  ]
+}

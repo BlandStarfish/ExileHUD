@@ -1,0 +1,135 @@
+{
+  "_comment": "PoE Heist rogue quick reference. Each rogue has a primary and optionally secondary job skill. Primary = better performance (higher level cap) for that job type.",
+  "how_it_works": "Each Heist contract requires a specific job type at a minimum skill level. Higher skill level = lower alert generation during the heist. Rogues level up by completing contracts — prioritize levelling your most-used rogues first.",
+  "job_types": [
+    "Lockpicking",
+    "Agility",
+    "Brute Force",
+    "Counter-Thaumaturgy",
+    "Deception",
+    "Demolition",
+    "Engineering",
+    "Perception",
+    "Trap Disarmament"
+  ],
+  "rogues": [
+    {
+      "name": "Niles, the Interrogator",
+      "primary_job": "Perception",
+      "secondary_job": "Deception",
+      "max_primary_level": 5,
+      "max_secondary_level": 3,
+      "specialty": "Best Perception rogue. Valuable for finding hidden items in contracts.",
+      "reward_type": "Divination Cards",
+      "notes": "Run Niles for Div Card reward contracts — his Perception keeps alert low in rooms full of tripwires."
+    },
+    {
+      "name": "Karst, the Lockpicking Artisan",
+      "primary_job": "Lockpicking",
+      "secondary_job": "Agility",
+      "max_primary_level": 5,
+      "max_secondary_level": 3,
+      "specialty": "Best Lockpicking rogue. Essential for vault-type contracts.",
+      "reward_type": "Currency",
+      "notes": "The go-to rogue for currency contracts. Level Karst first."
+    },
+    {
+      "name": "Tibbs, the Giant",
+      "primary_job": "Brute Force",
+      "secondary_job": null,
+      "max_primary_level": 5,
+      "max_secondary_level": null,
+      "specialty": "Only true Brute Force specialist. No secondary job.",
+      "reward_type": "Uniques",
+      "notes": "Irreplaceable for Brute Force contracts. His reward type (Uniques) makes him a good choice for unique-hunting runs."
+    },
+    {
+      "name": "Huck, the Soldier",
+      "primary_job": "Brute Force",
+      "secondary_job": "Agility",
+      "max_primary_level": 4,
+      "max_secondary_level": 3,
+      "specialty": "Backup Brute Force rogue with Agility flexibility.",
+      "reward_type": "Armour",
+      "notes": "Good all-rounder when Tibbs is busy or you need Agility coverage."
+    },
+    {
+      "name": "Isla, the Engineer",
+      "primary_job": "Engineering",
+      "secondary_job": "Trap Disarmament",
+      "max_primary_level": 5,
+      "max_secondary_level": 3,
+      "specialty": "Best Engineering rogue. Also handles Trap Disarmament as backup.",
+      "reward_type": "Weapons",
+      "notes": "Engineering contracts are among the most valuable. Prioritise levelling Isla."
+    },
+    {
+      "name": "Tullina, the Catburglar",
+      "primary_job": "Agility",
+      "secondary_job": "Trap Disarmament",
+      "max_primary_level": 5,
+      "max_secondary_level": 4,
+      "specialty": "Best Agility rogue. High secondary Trap Disarmament makes her extremely versatile.",
+      "reward_type": "Gems",
+      "notes": "Most versatile rogue in the game. Handles Agility and Trap Disarmament contracts well. Level her second after Karst."
+    },
+    {
+      "name": "Nenet, the Scout",
+      "primary_job": "Perception",
+      "secondary_job": "Counter-Thaumaturgy",
+      "max_primary_level": 4,
+      "max_secondary_level": 5,
+      "specialty": "Best Counter-Thaumaturgy rogue. Handles magic wards and caster traps.",
+      "reward_type": "Maps",
+      "notes": "The only rogue with strong Counter-Thaumaturgy. Required for high-level Thaumaturgy contracts. Also useful for Map reward contracts."
+    },
+    {
+      "name": "Vinderi, the Dismantler",
+      "primary_job": "Trap Disarmament",
+      "secondary_job": "Demolition",
+      "max_primary_level": 5,
+      "max_secondary_level": 3,
+      "specialty": "Best Trap Disarmament rogue. Doubles as Demolition backup.",
+      "reward_type": "Heist Target (generic)",
+      "notes": "Run Vinderi when Tullina is busy. Good for blueprint wing pairs requiring Trap + Demolition."
+    },
+    {
+      "name": "Gianna, the Master of Disguise",
+      "primary_job": "Deception",
+      "secondary_job": null,
+      "max_primary_level": 5,
+      "max_secondary_level": null,
+      "specialty": "Best Deception rogue. Sole Deception specialist — irreplaceable.",
+      "reward_type": "Currency",
+      "notes": "Required for Deception contracts. Deception lowers alert accumulation in guard-heavy areas."
+    },
+    {
+      "name": "Adiyah, the Wayfinder",
+      "primary_job": "Demolition",
+      "secondary_job": "Agility",
+      "max_primary_level": 5,
+      "max_secondary_level": 3,
+      "specialty": "Best Demolition rogue. Useful for explosive-locked vaults.",
+      "reward_type": "Scarabs",
+      "notes": "Primary choice for Demolition contracts. Scarab reward type makes her valuable for atlas content."
+    },
+    {
+      "name": "Vagan, the Bounty Hunter",
+      "primary_job": "Agility",
+      "secondary_job": "Brute Force",
+      "max_primary_level": 3,
+      "max_secondary_level": 3,
+      "specialty": "Backup Agility and Brute Force rogue. Less specialised than Tullina or Tibbs.",
+      "reward_type": "Weapons",
+      "notes": "Useful for lower-level contracts when primary specialists are on cooldown. Not worth prioritising for levelling."
+    }
+  ],
+  "tips": [
+    "Level Karst and Tullina first — Lockpicking and Agility are the most common contract types.",
+    "Nenet is the only Counter-Thaumaturgy rogue — you cannot skip her for high-tier contracts.",
+    "Rogues go on 'cooldown' after each contract run. Rotate rogues so you always have the right specialist available.",
+    "Blueprint wings require two rogues simultaneously — plan skill coverage before attempting Grand Heist runs.",
+    "Rogue gear (Equipment slot) reduces alert per action. Prioritise upgrading equipment for your most-used rogues.",
+    "Completion bonuses are awarded per rogue per unique contract. Run each contract once per rogue for maximum XP."
+  ]
+}

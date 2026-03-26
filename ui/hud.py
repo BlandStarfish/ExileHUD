@@ -43,6 +43,9 @@ from ui.widgets.currency_ref_panel import CurrencyRefPanel
 from ui.widgets.incursion_panel import IncursionPanel
 from ui.widgets.fossil_panel import FossilPanel
 from ui.widgets.maven_panel import MavenPanel
+from ui.widgets.metamorph_panel import MetamorphPanel
+from ui.widgets.harvest_panel import HarvestPanel
+from ui.widgets.heist_rogues_panel import HeistRoguesPanel
 
 
 DARK_BG = "#1a1a2e"
@@ -88,7 +91,10 @@ _INFO_CURRENCY_REF    = 7
 _INFO_INCURSION       = 8
 _INFO_FOSSILS         = 9
 _INFO_MAVEN           = 10
-_INFO_SETTINGS        = 11
+_INFO_METAMORPH       = 11
+_INFO_HARVEST         = 12
+_INFO_HEIST_ROGUES    = 13
+_INFO_SETTINGS        = 14
 
 
 class HUD(QMainWindow):
@@ -242,6 +248,9 @@ class HUD(QMainWindow):
         self._incursion_panel        = IncursionPanel()
         self._fossil_panel           = FossilPanel()
         self._maven_panel            = MavenPanel()
+        self._metamorph_panel        = MetamorphPanel()
+        self._harvest_panel          = HarvestPanel()
+        self._heist_rogues_panel     = HeistRoguesPanel()
         self._currency_flip_panel    = CurrencyFlipPanel(currency_flip) if currency_flip else QWidget()
         self._lab_panel              = LabPanel(lab_tracker) if lab_tracker else QWidget()
 
@@ -292,7 +301,7 @@ class HUD(QMainWindow):
         self._inner_tabs.append(end_tabs)
         outer_tabs.addTab(end_tabs, "Endgame")             # _GRP_ENDGAME   = 2
 
-        # Info group: Bestiary · Expedition · Syndicate · Vendor · Scarabs · Breach · Delirium · Currency · Incursion · Fossils · Maven · Settings
+        # Info group: Bestiary · Expedition · Syndicate · Vendor · Scarabs · Breach · Delirium · Currency · Incursion · Fossils · Maven · Metamorph · Harvest · Rogues · Settings
         info_tabs = _make_inner()
         info_tabs.addTab(self._bestiary_panel,       "Bestiary")   # _INFO_BESTIARY       = 0
         info_tabs.addTab(self._expedition_panel,     "Expedition") # _INFO_EXPEDITION     = 1
@@ -305,7 +314,10 @@ class HUD(QMainWindow):
         info_tabs.addTab(self._incursion_panel,      "Incursion")  # _INFO_INCURSION      = 8
         info_tabs.addTab(self._fossil_panel,         "Fossils")    # _INFO_FOSSILS        = 9
         info_tabs.addTab(self._maven_panel,          "Maven")      # _INFO_MAVEN          = 10
-        info_tabs.addTab(self._settings_panel,       "Settings")   # _INFO_SETTINGS       = 11
+        info_tabs.addTab(self._metamorph_panel,      "Metamorph")  # _INFO_METAMORPH      = 11
+        info_tabs.addTab(self._harvest_panel,        "Harvest")    # _INFO_HARVEST        = 12
+        info_tabs.addTab(self._heist_rogues_panel,   "Rogues")     # _INFO_HEIST_ROGUES   = 13
+        info_tabs.addTab(self._settings_panel,       "Settings")   # _INFO_SETTINGS       = 14
         self._inner_tabs.append(info_tabs)
         outer_tabs.addTab(info_tabs, "Info")                       # _GRP_INFO            = 3
 

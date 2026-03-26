@@ -239,6 +239,36 @@ These features were auto-approved after all H1–H3 items reached 9+/10 completi
 
 ---
 
+## Expansion Roadmap Round 6 (Auto-Approved 2026-03-25)
+
+These features were auto-approved after all I1–I3 items reached 9+/10 completion. Implement in priority order listed.
+
+### J1. Metamorph Catalyst Reference ✅ IMPLEMENTED (Session 29)
+- Static reference for all 12 Metamorph catalyst types
+- Each entry shows: which modifier category the catalyst improves, example mods affected, best build use case, and which organ family to target for drops
+- Full-text search across catalyst name, improves, examples, best_for, organ_source
+- Data source: data/metamorph_catalysts.json (12 catalysts, curated)
+- ui/widgets/metamorph_panel.py; added to Info group as "Metamorph" tab
+- **Rationale:** Catalysts add quality to specific mod categories on jewellery. Players frequently need "which catalyst improves life?" or "which organ gives Fertile Catalyst?" without leaving the game window.
+
+### J2. Harvest Craft Reference ✅ IMPLEMENTED (Session 29)
+- Static reference for all major Harvest craft operations: Reforge, Augment, Remove/Add, Set Numeric Value, Split/Duplicate, Enchant
+- Each craft shows: effect, category badge, value tier (Extremely High → Low), lifeforce requirement, and notes
+- Category filter buttons + full-text search
+- Data source: data/harvest_crafts.json (33 crafts across 5 categories, curated)
+- ui/widgets/harvest_panel.py; added to Info group as "Harvest" tab
+- **Rationale:** Harvest crafting is a premier crafting method with complex semantics. Players need to quickly recall "what does Reforge Keeping Prefixes do?" and "which crafts need Sacred Lifeforce?" during active crafting sessions.
+
+### J3. Heist Rogue Skills Quick Reference ✅ IMPLEMENTED (Session 29)
+- Static reference for all 11 Heist rogues: primary/secondary job, max level caps, specialty description, reward type, and usage notes
+- Job-type filter buttons (one per job skill) + full-text search
+- Complements the existing Heist Blueprint Organizer with rogue-level guidance
+- Data source: data/heist_rogues.json (11 rogues, curated)
+- ui/widgets/heist_rogues_panel.py; added to Info group as "Rogues" tab
+- **Rationale:** Heist planning requires knowing which rogue has which job skill and at what level. Players forget which rogues are interchangeable (Tullina vs Vinderi for Trap Disarmament) and which are unique specialists (Tibbs, Gianna, Nenet). An in-overlay reference replaces repeated wiki trips.
+
+---
+
 ## Expansion Roadmap Round 4 (Auto-Approved 2026-03-25)
 
 These features were auto-approved after all G1–G3 items reached 9+/10 completion. Implement in priority order listed.
