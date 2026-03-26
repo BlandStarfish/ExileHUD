@@ -1,0 +1,231 @@
+{
+  "how_it_works": "Cluster Jewels slot into the outer jewel sockets on the passive tree, adding a new branch of passives. Large Cluster Jewels add 8-12 passive points including 2-3 notable passives and 1 jewel socket. Medium Cluster Jewels add 4-6 passives including 2 notables. Small Cluster Jewels add 2-4 passives including 1 notable. The enchant on the jewel determines which notables are available.",
+  "tips": [
+    "Voices (Large, 2 jewel sockets) is the most powerful large cluster for aura stacking — it adds medium cluster sockets instead of notables",
+    "Always check the number of passives on a cluster jewel — fewer passives means less points spent pathing to notables",
+    "Medium clusters can be chained from Large cluster jewel sockets, enabling deep cluster configurations"
+  ],
+  "categories": ["Large", "Medium", "Small"],
+  "jewels": [
+    {
+      "name": "Voices",
+      "size": "Large",
+      "enchant": "Adds 2 Passive Skills to Jewel Sockets",
+      "key_notables": [],
+      "notable_count": "0 notables (2 jewel sockets only)",
+      "optimal_passive_count": "2",
+      "best_for": ["Aura stacking", "Any build needing 3+ medium cluster notables"],
+      "value_tier": "Extremely High",
+      "notes": "The most powerful large cluster. Enables stacking multiple medium cluster jewels. Sought by aura stackers and many meta builds."
+    },
+    {
+      "name": "Battle-Hardened",
+      "size": "Large",
+      "enchant": "Added Small Passive Skills have 12% increased Physical Damage",
+      "key_notables": ["Calamitous", "Martial Prowess", "Devastator"],
+      "notable_count": "2-3 notables",
+      "optimal_passive_count": "8",
+      "best_for": ["Physical attack builds", "Melee builds", "Bleed builds"],
+      "value_tier": "High",
+      "notes": "Martial Prowess is top-tier (+3 maximum of each charge type). Calamitous adds 40% more damage if you've warcried recently."
+    },
+    {
+      "name": "Towering Threat",
+      "size": "Large",
+      "enchant": "Added Small Passive Skills have 12% increased Attack Damage",
+      "key_notables": ["Overwhelming Force", "Martial Prowess", "Fuel the Fight"],
+      "notable_count": "2-3 notables",
+      "optimal_passive_count": "8",
+      "best_for": ["Attack builds", "Warcry builds"],
+      "value_tier": "High",
+      "notes": "Fuel the Fight restores rage on warcry. Pair with Warchief or Stampede."
+    },
+    {
+      "name": "Cremator",
+      "size": "Large",
+      "enchant": "Added Small Passive Skills have 12% increased Fire Damage",
+      "key_notables": ["Prismatic Heart", "Burning Bright", "From the Ashes"],
+      "notable_count": "2-3 notables",
+      "optimal_passive_count": "8",
+      "best_for": ["Fire builds", "Ignite builds"],
+      "value_tier": "Medium",
+      "notes": "Prismatic Heart adds all-res. Burning Bright and From the Ashes scale ignite proliferation."
+    },
+    {
+      "name": "Cold to the Core",
+      "size": "Large",
+      "enchant": "Added Small Passive Skills have 12% increased Cold Damage",
+      "key_notables": ["Blanketed Snow", "Widespread Destruction", "Winter Prowler"],
+      "notable_count": "2-3 notables",
+      "optimal_passive_count": "8",
+      "best_for": ["Cold builds", "Freeze builds", "Cold DoT"],
+      "value_tier": "Medium",
+      "notes": "Widespread Destruction adds AoE radius. Blanketed Snow scales chill effect."
+    },
+    {
+      "name": "Surging Vitality",
+      "size": "Large",
+      "enchant": "Added Small Passive Skills have 12% increased Life",
+      "key_notables": ["Vivid Hues", "Staff and Lyre", "Fuel the Fight"],
+      "notable_count": "2-3 notables",
+      "optimal_passive_count": "8",
+      "best_for": ["Life-stacking builds", "Juggernaut", "Tanky builds"],
+      "value_tier": "Medium",
+      "notes": "Vivid Hues provides status effect immunity during flasks. Good defensive cluster."
+    },
+    {
+      "name": "Empowered Elements",
+      "size": "Large",
+      "enchant": "Added Small Passive Skills have 12% increased Elemental Damage",
+      "key_notables": ["Prismatic Heart", "Widespread Destruction", "Disorienting Display"],
+      "notable_count": "2-3 notables",
+      "optimal_passive_count": "8",
+      "best_for": ["Elemental builds", "Conversion builds"],
+      "value_tier": "High",
+      "notes": "Prismatic Heart adds all-resistances. Disorienting Display Dazes enemies on elemental hit."
+    },
+    {
+      "name": "Minion Instability Path",
+      "size": "Large",
+      "enchant": "Added Small Passive Skills have 12% increased Minion Damage",
+      "key_notables": ["Feasting Fiends", "Renewal", "Hulking Corpses"],
+      "notable_count": "2-3 notables",
+      "optimal_passive_count": "8",
+      "best_for": ["Minion builds", "Necromancer"],
+      "value_tier": "Medium",
+      "notes": "Renewal is key for minion regeneration. Hulking Corpses improves Raise Spectre HP."
+    },
+    {
+      "name": "Flow of Life",
+      "size": "Medium",
+      "enchant": "Added Small Passive Skills have 10% increased Life Regeneration Rate",
+      "key_notables": ["Blessed Rebirth", "Life from Death"],
+      "notable_count": "2 notables",
+      "optimal_passive_count": "4",
+      "best_for": ["Life regen builds", "Juggernaut", "RF builds"],
+      "value_tier": "High",
+      "notes": "Blessed Rebirth: minions revive with 20% life. Life from Death: recover life on enemy death. Core for RF builds."
+    },
+    {
+      "name": "Storm Drinker",
+      "size": "Medium",
+      "enchant": "Added Small Passive Skills have 10% increased Lightning Damage",
+      "key_notables": ["Scintillating Idea", "Lightning Rod"],
+      "notable_count": "2 notables",
+      "optimal_passive_count": "4",
+      "best_for": ["Lightning builds", "Shock builds"],
+      "value_tier": "Medium",
+      "notes": "Scintillating Idea: gain mana as energy shield. Lightning Rod: 50% chance to gain power charge on shock."
+    },
+    {
+      "name": "Wish for Death",
+      "size": "Medium",
+      "enchant": "Added Small Passive Skills have 10% increased Chaos Damage",
+      "key_notables": ["Vile Reinvigoration", "Dark Ideation"],
+      "notable_count": "2 notables",
+      "optimal_passive_count": "4",
+      "best_for": ["Chaos builds", "Poison builds"],
+      "value_tier": "High",
+      "notes": "Vile Reinvigoration: recover ES on chaos kill. Dark Ideation: chaos resist and chaos skill speed."
+    },
+    {
+      "name": "Precise Commander",
+      "size": "Medium",
+      "enchant": "Added Small Passive Skills grant: 12% increased Aura Effect",
+      "key_notables": ["Precise Commander", "Purposeful Harbinger"],
+      "notable_count": "2 notables",
+      "optimal_passive_count": "4",
+      "best_for": ["Aura stacking", "Auramancer builds", "Support builds"],
+      "value_tier": "Extremely High",
+      "notes": "Purposeful Harbinger is the core notable for aura stacking — adds Herald reservation efficiency and flat stats per aura. Essential for the archetype."
+    },
+    {
+      "name": "Grand Design",
+      "size": "Medium",
+      "enchant": "Added Small Passive Skills grant: 10% reduced Mana Reservation",
+      "key_notables": ["Replenishing Presence", "Grand Design"],
+      "notable_count": "2 notables",
+      "optimal_passive_count": "4",
+      "best_for": ["Aura builds", "Reservation builds"],
+      "value_tier": "High",
+      "notes": "Grand Design notable: 15% reduced reservation for non-channelling skills if you have 5+ auras. Core for high-aura-count builds."
+    },
+    {
+      "name": "One With Nothing",
+      "size": "Small",
+      "enchant": "Adds 2 Passive Skills (Hollow Palm Technique)",
+      "key_notables": ["Hollow Palm Technique"],
+      "notable_count": "1 notable",
+      "optimal_passive_count": "2",
+      "best_for": ["Hollow Palm builds", "Barefist builds"],
+      "value_tier": "High",
+      "notes": "The keystone notable that enables Hollow Palm Technique — massive attack rating and damage when unarmoured and unarmed. Enables an entire build archetype."
+    },
+    {
+      "name": "Fettle",
+      "size": "Small",
+      "enchant": "Added Small Passive Skills have 8% increased Life",
+      "key_notables": ["Fettle"],
+      "notable_count": "1 notable",
+      "optimal_passive_count": "2",
+      "best_for": ["Life builds", "All builds needing flat life%"],
+      "value_tier": "High",
+      "notes": "Fettle: 10% increased maximum life. One of the best small cluster notables for pure life-stacking."
+    },
+    {
+      "name": "Unnatural Calm",
+      "size": "Small",
+      "enchant": "Added Small Passive Skills have 8% increased Energy Shield",
+      "key_notables": ["Unnatural Calm"],
+      "notable_count": "1 notable",
+      "optimal_passive_count": "2",
+      "best_for": ["ES builds", "Aura stacking"],
+      "value_tier": "High",
+      "notes": "Unnatural Calm: 30% increased energy shield. Core small cluster for ES builds."
+    },
+    {
+      "name": "Self-Control",
+      "size": "Small",
+      "enchant": "Added Small Passive Skills grant: 8% reduced Mana Reservation",
+      "key_notables": ["Self-Control"],
+      "notable_count": "1 notable",
+      "optimal_passive_count": "2",
+      "best_for": ["Aura builds", "Reservation reduction builds"],
+      "value_tier": "High",
+      "notes": "Self-Control: 10% reduced reservation efficiency for skills. Key for fitting all desired auras."
+    },
+    {
+      "name": "Cauldron of Horne",
+      "size": "Small",
+      "enchant": "Added Small Passive Skills have 8% increased Physical Damage",
+      "key_notables": ["Cauldron of Horne"],
+      "notable_count": "1 notable",
+      "optimal_passive_count": "2",
+      "best_for": ["Bleed builds", "Physical DoT builds"],
+      "value_tier": "Medium",
+      "notes": "Cauldron of Horne: 30% more Bleed damage if enemy is already Bleeding. Core for Bleed builds."
+    },
+    {
+      "name": "Brewed for Potency",
+      "size": "Small",
+      "enchant": "Added Small Passive Skills grant: 10% increased Flask Effect Duration",
+      "key_notables": ["Brewed for Potency"],
+      "notable_count": "1 notable",
+      "optimal_passive_count": "2",
+      "best_for": ["Flask builds", "Perma-flask builds"],
+      "value_tier": "Medium",
+      "notes": "Brewed for Potency: 20% increased flask effect duration. Useful for builds requiring permanent flask uptime."
+    },
+    {
+      "name": "Blessed",
+      "size": "Small",
+      "enchant": "Added Small Passive Skills have 8% increased Damage over Time",
+      "key_notables": ["Blessed"],
+      "notable_count": "1 notable",
+      "optimal_passive_count": "2",
+      "best_for": ["DoT builds", "Poison builds", "Bleed builds", "Ignite builds"],
+      "value_tier": "Medium",
+      "notes": "Blessed: 10% increased damage over time. Generic DoT scaler — applies to all DoT types."
+    }
+  ]
+}

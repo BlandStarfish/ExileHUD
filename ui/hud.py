@@ -68,6 +68,9 @@ from ui.widgets.endgame_checklist_panel import EndgameChecklistPanel
 from ui.widgets.gem_quality_panel import GemQualityPanel
 from ui.widgets.notable_clusters_panel import NotableClustersPanel
 from ui.widgets.map_mods_panel import MapModsPanel
+from ui.widgets.influence_mods_panel import InfluenceModsPanel
+from ui.widgets.cluster_jewels_panel import ClusterJewelsPanel
+from ui.widgets.lab_enchants_panel import LabEnchantsPanel
 
 
 DARK_BG = "#1a1a2e"
@@ -138,7 +141,10 @@ _INFO_END_CHECKLIST   = 31
 _INFO_GEM_QUALITY     = 32
 _INFO_NOTABLES        = 33
 _INFO_MAP_MODS        = 34
-_INFO_SETTINGS        = 35
+_INFO_INFLUENCE_MODS  = 35
+_INFO_CLUSTER_JEWELS  = 36
+_INFO_LAB_ENCHANTS    = 37
+_INFO_SETTINGS        = 38
 
 
 class HUD(QMainWindow):
@@ -316,6 +322,9 @@ class HUD(QMainWindow):
         self._gem_quality_panel       = GemQualityPanel()
         self._notable_clusters_panel  = NotableClustersPanel()
         self._map_mods_panel          = MapModsPanel()
+        self._influence_mods_panel    = InfluenceModsPanel()
+        self._cluster_jewels_panel    = ClusterJewelsPanel()
+        self._lab_enchants_panel      = LabEnchantsPanel()
         self._currency_flip_panel    = CurrencyFlipPanel(currency_flip) if currency_flip else QWidget()
         self._lab_panel              = LabPanel(lab_tracker) if lab_tracker else QWidget()
         self._atlas_tree_panel       = AtlasTreePanel()
@@ -368,7 +377,7 @@ class HUD(QMainWindow):
         self._inner_tabs.append(end_tabs)
         outer_tabs.addTab(end_tabs, "Endgame")             # _GRP_ENDGAME   = 2
 
-        # Info group: Bestiary · Expedition · Syndicate · Vendor · Scarabs · Breach · Delirium · Currency · Incursion · Fossils · Maven · Metamorph · Harvest · Rogues · Sanctum · Rare Mods · Blight · Essences · Fragments · Pantheon · Flasks · Vaal · Corrupt · Ascend · Keystones · Bosses · Leagues · Archetypes · Ailments · Bench · Defence · Checklist · Gem Qual · Notables · Map Mods · Settings
+        # Info group: Bestiary · Expedition · Syndicate · Vendor · Scarabs · Breach · Delirium · Currency · Incursion · Fossils · Maven · Metamorph · Harvest · Rogues · Sanctum · Rare Mods · Blight · Essences · Fragments · Pantheon · Flasks · Vaal · Corrupt · Ascend · Keystones · Bosses · Leagues · Archetypes · Ailments · Bench · Defence · Checklist · Gem Qual · Notables · Map Mods · Influence · Clusters · Lab Ench · Settings
         info_tabs = _make_inner()
         info_tabs.addTab(self._bestiary_panel,       "Bestiary")   # _INFO_BESTIARY       = 0
         info_tabs.addTab(self._expedition_panel,     "Expedition") # _INFO_EXPEDITION     = 1
@@ -404,8 +413,11 @@ class HUD(QMainWindow):
         info_tabs.addTab(self._endgame_checklist_panel,"Checklist") # _INFO_END_CHECKLIST  = 31
         info_tabs.addTab(self._gem_quality_panel,      "Gem Qual")  # _INFO_GEM_QUALITY    = 32
         info_tabs.addTab(self._notable_clusters_panel, "Notables")  # _INFO_NOTABLES       = 33
-        info_tabs.addTab(self._map_mods_panel,         "Map Mods")  # _INFO_MAP_MODS       = 34
-        info_tabs.addTab(self._settings_panel,         "Settings")  # _INFO_SETTINGS       = 35
+        info_tabs.addTab(self._map_mods_panel,         "Map Mods")  # _INFO_MAP_MODS        = 34
+        info_tabs.addTab(self._influence_mods_panel,   "Influence") # _INFO_INFLUENCE_MODS  = 35
+        info_tabs.addTab(self._cluster_jewels_panel,   "Clusters")  # _INFO_CLUSTER_JEWELS  = 36
+        info_tabs.addTab(self._lab_enchants_panel,     "Lab Ench")  # _INFO_LAB_ENCHANTS    = 37
+        info_tabs.addTab(self._settings_panel,         "Settings")  # _INFO_SETTINGS        = 38
         self._inner_tabs.append(info_tabs)
         outer_tabs.addTab(info_tabs, "Info")                       # _GRP_INFO            = 3
 

@@ -5596,3 +5596,171 @@ H1-H3 + I1-I3 + J1-J3 + K1-K3 + L1-L3 + M1-M3 + N1-N3 + O1-O3 + P1-P3 + Q1-Q3).
 Info group 36 tabs. Only blockers: PoE2 passive tree (no GGG ETA),
 Asana create_task MCP (missing from session config 3 sessions running).
 ═══════════════════════════════════════════════════════════════
+
+
+═══════════════════════════════════════════════════════════════
+SESSION: 2026-03-26  (Session 37)
+═══════════════════════════════════════════════════════════════
+
+## ORIENTATION SUMMARY
+Session 36 left off after implementing Q1-Q3 (Gem Quality Reference, Notable
+Clusters Reference, Mapping Mod Reference). All at 9+/10. Test count 833.
+Info group 36 tabs (0-35), _INFO_SETTINGS=35.
+Primary suggestion: Phase 4 Round 14 -- generate and implement R1-R3.
+
+Note: Session 36 candidate suggestions for R1-R3 (Heist Rogue Specialization,
+Pantheon Powers Reference, Harvest Craft Tier Reference) were all already
+implemented in Sessions 29 and 31. Replaced with genuinely new features:
+Influence Modifier Reference, Cluster Jewel Reference, Lab Enchantment Reference.
+
+Pre-session test status: 833 passed, 1 skipped.
+Post-session test status: 890 passed, 1 skipped (+57 new).
+
+## ASSESSMENT GRADES
+
+| Module                        | Completeness | Quality | Vision Alignment |
+|-------------------------------|-------------|---------|-----------------|
+| Quest Tracker                 |     9/10     |  9/10   |      9/10       |
+| Passive Tree Viewer           |     9/10     |  9/10   |      9/10       |
+| Price Checker                 |     9/10     |  9/10   |      9/10       |
+| Currency Tracker              |     7/10     |  9/10   |      8/10       |
+| Crafting System               |     8/10     |  9/10   |      9/10       |
+| Core Infrastructure           |     9/10     |  9/10   |      9/10       |
+| Map Overlay                   |     9/10     |  9/10   |      9/10       |
+| Info Reference Panels         |    10/10     |  9/10   |     10/10       |
+| Test Suite                    |    10/10     |  9/10   |      9/10       |
+| Influence Mod Reference (R1)  |     9/10     |  9/10   |     10/10       |
+| Cluster Jewel Reference (R2)  |     9/10     |  9/10   |     10/10       |
+| Lab Enchant Reference (R3)    |     9/10     |  9/10   |     10/10       |
+
+## SMOKE TEST FINDINGS
+
+### Phase 1B -- Logic & Structure Issues
+None found. All .py files clean. 833 pre-session tests pass.
+
+### Phase 1C -- Redundancy & Counter-Vision Issues
+None found. Session 36 R1-R3 candidate suggestions were already-implemented
+features -- noted and fresh candidates selected for this session.
+
+## MAINTENANCE LOG
+No maintenance fixes required this session. Codebase remains clean.
+
+## DEVELOPMENT LOG
+
+### Phase 4 Round 14 -- R1-R3 Auto-Approved and Implemented
+
+Q1-Q3 all at 9+/10. Generated 3 genuinely new expansion features.
+Session 36 suggestions were erroneous (all already implemented). Selected
+fresh candidates with no duplication.
+
+### R1: Influence Modifier Reference
+
+data/influence_mods.json: 31 influence mod entries
+  Influences: Shaper (8), Elder (5), Warlord (4), Crusader (4), Redeemer (4),
+              Hunter (4) -- all 6 represented
+  Slots covered: Helmet, Belt, Ring, Amulet, Gloves, Boots, Body Armour
+  Schema: {influence, slot, mod_name, value_range, value_tier, best_for[], notes}
+  Notable entries: Shaper belt (-% flask charges), Elder body armour (extra curse),
+    Hunter gloves (flat chaos damage), Redeemer/Crusader body armour (exposure),
+    Elder gloves (% phys taken as chaos for CI), Warlord body armour (ele->phys)
+
+ui/widgets/influence_mods_panel.py: InfluenceModsPanel
+  Influence filter: All/Shaper/Elder/Warlord/Crusader/Redeemer/Hunter
+  Color coding per influence: Blue/Purple/Red/Orange/Teal/Green
+  Full-text search across influence, slot, mod name, value range, best_for, notes
+
+tests/test_influence_mods_panel.py: 19 tests
+  Fixed test: mod_names_unique replaced with influence_slot_pairs_unique
+  (same effect name legitimately appears on different influence+slot combos)
+hud.py: _INFO_INFLUENCE_MODS=35, "Influence" tab added to Info group
+
+### R2: Cluster Jewel Reference
+
+data/cluster_jewels.json: 20 cluster jewel entries
+  Sizes: Large (8), Medium (5), Small (7)
+  Schema: {name, size, enchant, key_notables[], notable_count,
+           optimal_passive_count, best_for[], value_tier, notes}
+  Notable entries: Voices (Extremely High, 2 jewel sockets, aura stacking),
+    Precise Commander/Purposeful Harbinger (Medium, core aura stacking),
+    Grand Design (Medium, 15% reduced reservation for 5+ aura builds),
+    Hollow Palm (Small, keystone for unarmed builds),
+    Fettle/Unnatural Calm/Self-Control (Small, core stacking notables)
+
+ui/widgets/cluster_jewels_panel.py: ClusterJewelsPanel
+  Size filter: All/Large/Medium/Small (Orange/Teal/Blue)
+  Shows: name + [Size] badge + value tier; enchant; notables in gold;
+  notable count + target passive count; best-for in teal; notes italic
+
+tests/test_cluster_jewels_panel.py: 22 tests
+hud.py: _INFO_CLUSTER_JEWELS=36, "Clusters" tab added to Info group
+
+### R3: Lab Enchantment Reference
+
+data/lab_enchants.json: 26 enchant entries
+  Slots: Helmet (13), Boots (5), Gloves (8)
+  Difficulties: Merciless (4), Eternal (22)
+  Schema: {slot, skill_name, enchant_effect, lab_difficulty, value_tier,
+           best_for[], notes}
+  Notable helmet entries: Explosive Arrow, Toxic Rain, RF, Tornado Shot,
+    Summon Skeletons, SRS, Cyclone, Raise Spectre, Lightning Arrow, BV, Arc
+  Notable boots: 16% Move Speed on Hit (Merciless, best universal boots enchant),
+    Regen vs Rare/Unique (Eternal, strong bossing)
+  Notable gloves: Commandment of Force (trigger spell on attack), of Spite
+    (TC on block), of Winter (Frost Bomb auto-trigger)
+
+ui/widgets/lab_enchants_panel.py: LabEnchantsPanel
+  Slot filter: All/Helmet/Boots/Gloves (Orange/Teal/Purple)
+  Difficulty badge: Merciless=Orange, Eternal=Gold
+
+tests/test_lab_enchants_panel.py: 16 tests
+hud.py: _INFO_LAB_ENCHANTS=37, "Lab Ench" tab; _INFO_SETTINGS=38
+
+Test count: 833 -> 890 (+57 new, all pass. Total: 890 passed, 1 skipped)
+Info group now 39 tabs (0-38). _INFO_SETTINGS=38.
+
+## TECHNICAL NOTES
+
+Influence mod uniqueness: (influence, slot, mod_name) is the correct uniqueness
+  key -- same effect name can appear on different influence+slot combos.
+  Test updated accordingly.
+
+Session 36 R1-R3 candidates were all already-implemented features:
+  - Heist Rogue Specialization Guide --> J3 (Session 29)
+  - Pantheon God Powers Reference --> L3 (Session 31)
+  - Harvest Craft Tier Reference --> J2 (Session 29)
+  Rule for future sessions: Before selecting R/S/T-series candidates, verify
+  against ui/widgets/ and data/ directory listings.
+
+_INFO_SETTINGS index pattern: Shifts by +3 each round.
+  After Session 36: Settings=35. After Session 37: Settings=38.
+  After next round (S1-S3): Settings=41.
+
+Asana create_task MCP: Still missing from session config (4th consecutive session).
+  HUMAN INBOX (GID: 1213723884881761) summary not posted again.
+  Retroactive summaries for Sessions 34-37 remain outstanding.
+
+## SUGGESTIONS FOR NEXT SESSION
+
+1. Phase 4 Round 15 (MEDIUM): R1-R3 all at 9+/10. Run Phase 4 -- generate S1-S3.
+   IMPORTANT: Before selecting candidates, check existing data/ and ui/widgets/
+   directory listings to avoid re-suggesting already-implemented features.
+   Potential true candidates (verify before starting):
+   - Sextant/Compass Mod Reference (atlas compass modifiers and their value)
+   - Base Item Type Reference (important crafting bases, implicits, why valuable)
+   - Passive Tree Starting Area Guide (which starting area for which build archetype)
+
+2. PoE2 passive tree (BLOCKED): No official GGG skilltree-export for PoE2.
+
+3. Asana create_task MCP (BLOCKED): Missing 4 sessions. If available: post
+   retroactive summaries for Sessions 34-37 plus current session.
+
+4. Currency Reference live price column (LOW, deferred since Session 26).
+
+## PROJECT HEALTH
+Overall grade: 10/10. ~100% complete (original + E1-E6 + F1-F3 + G1-G3 +
+H1-H3 + I1-I3 + J1-J3 + K1-K3 + L1-L3 + M1-M3 + N1-N3 + O1-O3 + P1-P3 +
+Q1-Q3 + R1-R3).
+890 tests pass, 1 skipped. No technical debt. No regressions.
+Info group 39 tabs. Only blockers: PoE2 passive tree (no GGG ETA),
+Asana create_task MCP (missing from session config 4 sessions running).
+═══════════════════════════════════════════════════════════════

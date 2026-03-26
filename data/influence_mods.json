@@ -1,0 +1,291 @@
+{
+  "how_it_works": "Influenced bases (Shaper, Elder, or one of four Conqueror influences) can roll exclusive mods not available on normal items. Use Orbs of Alteration, Essences, or Fossils to roll influenced items. Two different Conqueror-influenced items can be merged with an Awakener's Orb, transferring both influences to the target base.",
+  "tips": [
+    "Awakener's Orb combines two Conqueror-influenced items — both influences transfer to the target base",
+    "Shaper and Elder are mutually exclusive. Conqueror influences (Warlord/Crusader/Redeemer/Hunter) can pair with each other via Awakener's Orb",
+    "Influenced mods are prefixes or suffixes like normal mods — check whether the slot you need is prefix or suffix before rolling"
+  ],
+  "categories": ["Shaper", "Elder", "Warlord", "Crusader", "Redeemer", "Hunter"],
+  "slots": ["Helmet", "Gloves", "Boots", "Belt", "Ring", "Amulet", "Body Armour", "Weapon"],
+  "mods": [
+    {
+      "influence": "Shaper",
+      "slot": "Helmet",
+      "mod_name": "Nearby Enemies have -X% to Elemental Resistances",
+      "value_range": "-9% to -15%",
+      "value_tier": "High",
+      "best_for": ["Elemental builds", "Spellcasters", "Elemental attack builds"],
+      "notes": "Stacks additively with curses (Flammability, etc.) and exposure. Best-in-slot support mod for any elemental damage build."
+    },
+    {
+      "influence": "Shaper",
+      "slot": "Helmet",
+      "mod_name": "Socketed Gems are Supported by Level X Concentrated Effect / Slower Projectiles",
+      "value_range": "Level 18-20",
+      "value_tier": "High",
+      "best_for": ["Incinerate", "Blade Flurry", "Shaped helmets with specific skill links"],
+      "notes": "Free support gem link — significant DPS increase if the skill benefits from the specific support."
+    },
+    {
+      "influence": "Shaper",
+      "slot": "Belt",
+      "mod_name": "X% reduced Flask Charges used",
+      "value_range": "10%-16%",
+      "value_tier": "High",
+      "best_for": ["Flask-dependent builds", "All builds"],
+      "notes": "Reduces how quickly flasks drain. Enables more defensive or offensive flask cycling."
+    },
+    {
+      "influence": "Shaper",
+      "slot": "Ring",
+      "mod_name": "Gain X Mana on Kill",
+      "value_range": "3-5 mana per kill",
+      "value_tier": "Medium",
+      "best_for": ["High-clear builds", "Mana-hungry builds"],
+      "notes": "Provides passive mana sustain without Clarity. Effective in map clear, less so for bossing."
+    },
+    {
+      "influence": "Shaper",
+      "slot": "Amulet",
+      "mod_name": "Gain X% of Maximum Mana as Extra Maximum Energy Shield",
+      "value_range": "8%-12%",
+      "value_tier": "Medium",
+      "best_for": ["Hybrid ES/Mana builds", "MoM builds"],
+      "notes": "Synergises with Mind Over Matter and large mana pools."
+    },
+    {
+      "influence": "Shaper",
+      "slot": "Gloves",
+      "mod_name": "Adds X-Y Lightning Damage to Attacks",
+      "value_range": "1-11 to 1-22",
+      "value_tier": "Medium",
+      "best_for": ["Lightning attack builds", "Elemental attack builds"],
+      "notes": "Flat damage addition applies before any multipliers. Useful on high-APS builds."
+    },
+    {
+      "influence": "Shaper",
+      "slot": "Boots",
+      "mod_name": "Gain Onslaught for 4 seconds on Kill",
+      "value_range": "N/A",
+      "value_tier": "Medium",
+      "best_for": ["Attack builds", "Clear speed builds"],
+      "notes": "Free Onslaught (20% more attack/cast/move speed) during map clear. Less useful for bossing."
+    },
+    {
+      "influence": "Shaper",
+      "slot": "Body Armour",
+      "mod_name": "Socketed Gems are Supported by Level X Greater Multiple Projectiles",
+      "value_range": "Level 18-20",
+      "value_tier": "High",
+      "best_for": ["Projectile builds", "Tornado Shot", "Lightning Arrow"],
+      "notes": "Free GMP link. Near-mandatory for many projectile builds. Costs a support gem slot."
+    },
+    {
+      "influence": "Elder",
+      "slot": "Ring",
+      "mod_name": "Curse Enemies with Vulnerability/Temporal Chains/Despair on Hit",
+      "value_range": "Level 8-12",
+      "value_tier": "High",
+      "best_for": ["Curse-on-hit builds", "DoT builds (Vulnerability)", "Bossing (Temporal Chains)"],
+      "notes": "Auto-curses on hit without needing Hextouch or a curse skill. Very slot-efficient."
+    },
+    {
+      "influence": "Elder",
+      "slot": "Gloves",
+      "mod_name": "X% of Physical Damage taken from Hits as Chaos Damage",
+      "value_range": "5%-8%",
+      "value_tier": "High",
+      "best_for": ["CI builds", "Chaos Inoculation"],
+      "notes": "With CI, chaos damage taken is zero — effectively converts a portion of physical hits to no damage."
+    },
+    {
+      "influence": "Elder",
+      "slot": "Boots",
+      "mod_name": "Gain Fortify on Melee Hit",
+      "value_range": "N/A",
+      "value_tier": "High",
+      "best_for": ["Melee builds without Fortify support"],
+      "notes": "Provides Fortify (20% reduced damage taken) passively without dedicating a support gem slot."
+    },
+    {
+      "influence": "Elder",
+      "slot": "Body Armour",
+      "mod_name": "You can apply an additional Curse",
+      "value_range": "N/A",
+      "value_tier": "High",
+      "best_for": ["Curse builds", "Hexblast", "Bossing with multiple curses"],
+      "notes": "Allows 2 curses simultaneously without the Whispers of Doom keystone. Very powerful for curse-stacking."
+    },
+    {
+      "influence": "Elder",
+      "slot": "Body Armour",
+      "mod_name": "Corrupted Blood cannot be inflicted on you",
+      "value_range": "N/A",
+      "value_tier": "High",
+      "best_for": ["All builds", "HC/SSF"],
+      "notes": "Immunity to Corrupted Blood (from Corrupted Essence and some map bosses). Can also be a corrupted implicit."
+    },
+    {
+      "influence": "Elder",
+      "slot": "Amulet",
+      "mod_name": "X% of Damage Leeched as Life and Mana",
+      "value_range": "0.4%-0.6% each",
+      "value_tier": "Medium",
+      "best_for": ["Leech builds", "Attack builds"],
+      "notes": "Combined life and mana leech on one suffix. Efficient for builds that need both."
+    },
+    {
+      "influence": "Elder",
+      "slot": "Belt",
+      "mod_name": "X% increased Damage during any Flask Effect",
+      "value_range": "10%-15%",
+      "value_tier": "Medium",
+      "best_for": ["Flask builds", "Any high-damage build"],
+      "notes": "Global damage increase during flasks. Pairs well with perma-flask uptime builds."
+    },
+    {
+      "influence": "Warlord",
+      "slot": "Body Armour",
+      "mod_name": "X% of Elemental Damage taken as Physical Damage",
+      "value_range": "5%-8%",
+      "value_tier": "High",
+      "best_for": ["High-armour builds", "Transcendence Aegis builds"],
+      "notes": "Converts elemental hits to physical, where armour and Endurance Charges provide mitigation."
+    },
+    {
+      "influence": "Warlord",
+      "slot": "Gloves",
+      "mod_name": "Adds X-Y Physical Damage to Attacks",
+      "value_range": "7-11 to 14-22",
+      "value_tier": "Medium",
+      "best_for": ["Physical attack builds", "High-APS melee builds"],
+      "notes": "Flat physical damage. Scales well with high attack speed."
+    },
+    {
+      "influence": "Warlord",
+      "slot": "Helmet",
+      "mod_name": "X% increased Endurance, Frenzy and Power Charge Duration",
+      "value_range": "26%-36%",
+      "value_tier": "Medium",
+      "best_for": ["Charge-stacking builds", "Berserker", "Champion"],
+      "notes": "Extends all charge types simultaneously. Useful for builds with multiple charge types."
+    },
+    {
+      "influence": "Warlord",
+      "slot": "Belt",
+      "mod_name": "X% increased Life Regeneration Rate",
+      "value_range": "20%-30%",
+      "value_tier": "Medium",
+      "best_for": ["Life regen builds", "Juggernaut", "Minion builds"],
+      "notes": "Multiplies existing regen. More valuable the higher your base regen is."
+    },
+    {
+      "influence": "Crusader",
+      "slot": "Body Armour",
+      "mod_name": "Enemies you Kill have X% chance to Explode, dealing 3% of their Life as Physical Damage",
+      "value_range": "20%-25%",
+      "value_tier": "High",
+      "best_for": ["Clear speed builds", "Elemental hit builds", "Any phys conversion"],
+      "notes": "Free explosions scale with enemy HP. Synergises with Shaper of Flames for fire conversion."
+    },
+    {
+      "influence": "Crusader",
+      "slot": "Gloves",
+      "mod_name": "Adds X-Y Fire Damage to Attacks",
+      "value_range": "10-14 to 18-28",
+      "value_tier": "Medium",
+      "best_for": ["Fire attack builds", "Elemental attack builds"],
+      "notes": "Flat fire damage. Can trigger Combust or support Ignite builds."
+    },
+    {
+      "influence": "Crusader",
+      "slot": "Belt",
+      "mod_name": "X% of Physical Damage converted to Fire Damage",
+      "value_range": "25%-40%",
+      "value_tier": "Medium",
+      "best_for": ["Phys-to-fire conversion builds", "Oro's Sacrifice builds"],
+      "notes": "High conversion %. Stacks with other phys-to-fire conversion sources."
+    },
+    {
+      "influence": "Crusader",
+      "slot": "Boots",
+      "mod_name": "Debuffs on you expire X% faster",
+      "value_range": "20%-30%",
+      "value_tier": "Medium",
+      "best_for": ["Bleed-prone builds", "HC builds", "Debuff-sensitive encounters"],
+      "notes": "Reduces duration of Bleeding, Ignite, Poison, and other debuffs on you."
+    },
+    {
+      "influence": "Redeemer",
+      "slot": "Body Armour",
+      "mod_name": "Attacks have X% chance to inflict Cold Exposure on Hit",
+      "value_range": "15%-20%",
+      "value_tier": "High",
+      "best_for": ["Cold attack builds", "Cold Snap builds"],
+      "notes": "Cold Exposure applies -10% to enemy cold res. Automatic on hit — no skill needed."
+    },
+    {
+      "influence": "Redeemer",
+      "slot": "Belt",
+      "mod_name": "X% of Physical Damage converted to Cold Damage",
+      "value_range": "25%-40%",
+      "value_tier": "Medium",
+      "best_for": ["Phys-to-cold conversion builds", "Ice Shot", "Glacial Hammer"],
+      "notes": "Enables phys-to-cold conversion for attack builds without needing specific weapons."
+    },
+    {
+      "influence": "Redeemer",
+      "slot": "Helmet",
+      "mod_name": "Gain X% of Maximum Mana as Extra Maximum Energy Shield",
+      "value_range": "10%-15%",
+      "value_tier": "Medium",
+      "best_for": ["Hybrid builds", "Mana-heavy spellcasters"],
+      "notes": "Converts mana pool to ES — useful for builds with large mana investment."
+    },
+    {
+      "influence": "Redeemer",
+      "slot": "Weapon",
+      "mod_name": "X% chance to generate a Power Charge on Critical Strike",
+      "value_range": "10%-15%",
+      "value_tier": "Medium",
+      "best_for": ["Crit builds", "Spellcasters"],
+      "notes": "Passive power charge generation on crit. Frees up other charge-generation slots."
+    },
+    {
+      "influence": "Hunter",
+      "slot": "Body Armour",
+      "mod_name": "Attacks have X% chance to inflict Chaos Exposure on Hit",
+      "value_range": "15%-20%",
+      "value_tier": "High",
+      "best_for": ["Chaos attack builds", "Viper Strike", "Toxic Rain"],
+      "notes": "Chaos Exposure applies -10% enemy chaos res. Scales chaos DoT and hit builds."
+    },
+    {
+      "influence": "Hunter",
+      "slot": "Belt",
+      "mod_name": "X% of Physical Damage converted to Chaos Damage",
+      "value_range": "25%-40%",
+      "value_tier": "High",
+      "best_for": ["Phys-to-chaos builds", "Chaos builds using phys skills"],
+      "notes": "Enables phys skills to deal chaos damage. Combined with Bane or Toxic Rain for high chaos scaling."
+    },
+    {
+      "influence": "Hunter",
+      "slot": "Gloves",
+      "mod_name": "Adds X-Y Chaos Damage to Attacks",
+      "value_range": "7-11 to 13-20",
+      "value_tier": "High",
+      "best_for": ["Chaos attack builds", "Poison builds"],
+      "notes": "One of the few sources of flat chaos damage to attacks. Very powerful for poison builds."
+    },
+    {
+      "influence": "Hunter",
+      "slot": "Amulet",
+      "mod_name": "X% increased Chaos Damage",
+      "value_range": "18%-24%",
+      "value_tier": "High",
+      "best_for": ["Chaos damage builds", "Poison builds"],
+      "notes": "Global chaos damage multiplier. Best-in-slot amulet mod for pure chaos builds."
+    }
+  ]
+}

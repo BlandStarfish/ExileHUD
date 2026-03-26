@@ -1,0 +1,247 @@
+{
+  "how_it_works": "Lab enchantments are applied to items at the Enchanting Font at the end of each Labyrinth run. Each run applies one random enchantment from a pool determined by the slot and lab difficulty. Eternal Lab has the largest pool. You cannot choose which enchantment you receive — repeat runs until you get the desired enchant.",
+  "tips": [
+    "Enchanting boots: prioritise Movement Speed or resistances depending on your deficiencies",
+    "Enchanting helmets: target the enchant for your main skill — it usually increases damage or reduces mana cost significantly",
+    "Eternal Lab has 3x more helmet enchant options than Merciless — always use Eternal for helmets if possible",
+    "Enchants cannot be applied to corrupted items"
+  ],
+  "categories": ["Helmet", "Boots", "Gloves"],
+  "difficulties": ["Merciless", "Eternal"],
+  "enchants": [
+    {
+      "slot": "Helmet",
+      "skill_name": "Blade Vortex",
+      "enchant_effect": "Blade Vortex has 40% increased Critical Strike Chance per blade",
+      "lab_difficulty": "Eternal",
+      "value_tier": "High",
+      "best_for": ["Blade Vortex builds", "Crit BV"],
+      "notes": "Significant crit boost for BV. The main alternative is the hit damage enchant."
+    },
+    {
+      "slot": "Helmet",
+      "skill_name": "Cyclone",
+      "enchant_effect": "Cyclone has 12% increased Area of Effect",
+      "lab_difficulty": "Eternal",
+      "value_tier": "High",
+      "best_for": ["Cyclone builds"],
+      "notes": "Larger Cyclone radius clears more efficiently. Often preferred over attack speed for clear."
+    },
+    {
+      "slot": "Helmet",
+      "skill_name": "Tornado Shot",
+      "enchant_effect": "Tornado Shot fires an additional Secondary Projectile",
+      "lab_difficulty": "Eternal",
+      "value_tier": "High",
+      "best_for": ["Tornado Shot builds"],
+      "notes": "Additional secondary projectile significantly increases clear. Best-in-slot TS enchant."
+    },
+    {
+      "slot": "Helmet",
+      "skill_name": "Summon Skeletons",
+      "enchant_effect": "Summon Skeletons can Summon up to 2 additional Skeleton Warriors",
+      "lab_difficulty": "Eternal",
+      "value_tier": "High",
+      "best_for": ["Skeleton builds", "Necromancer"],
+      "notes": "More skeletons = more DPS and meatshields. Essential for skeleton summoner."
+    },
+    {
+      "slot": "Helmet",
+      "skill_name": "Raise Spectre",
+      "enchant_effect": "Raise Spectre Spectres have X% increased maximum Life",
+      "lab_difficulty": "Eternal",
+      "value_tier": "High",
+      "best_for": ["Spectre builds", "Necromancer"],
+      "notes": "Keeps Spectres alive longer in endgame content. Essential for Spectre builds."
+    },
+    {
+      "slot": "Helmet",
+      "skill_name": "Summon Raging Spirits",
+      "enchant_effect": "Summon Raging Spirit Spirits have X% increased Movement Speed",
+      "lab_difficulty": "Eternal",
+      "value_tier": "High",
+      "best_for": ["SRS builds", "Necromancer"],
+      "notes": "Faster SRS deal damage more effectively. Key enchant for the build."
+    },
+    {
+      "slot": "Helmet",
+      "skill_name": "Explosive Arrow",
+      "enchant_effect": "Explosive Arrow has X% reduced Fuse Duration",
+      "lab_difficulty": "Eternal",
+      "value_tier": "High",
+      "best_for": ["Explosive Arrow builds"],
+      "notes": "Reduced fuse duration = faster explosions = more DPS and better mapping feel."
+    },
+    {
+      "slot": "Helmet",
+      "skill_name": "Lightning Arrow",
+      "enchant_effect": "Lightning Arrow has X% increased damage",
+      "lab_difficulty": "Eternal",
+      "value_tier": "High",
+      "best_for": ["Lightning Arrow builds"],
+      "notes": "Generic damage increase. Typically the best LA enchant."
+    },
+    {
+      "slot": "Helmet",
+      "skill_name": "Toxic Rain",
+      "enchant_effect": "Toxic Rain has X% increased Debuff Effect",
+      "lab_difficulty": "Eternal",
+      "value_tier": "High",
+      "best_for": ["Toxic Rain builds"],
+      "notes": "Increased debuff effect scales the chaos DoT from pods. Core enchant."
+    },
+    {
+      "slot": "Helmet",
+      "skill_name": "Hexblast",
+      "enchant_effect": "Hexblast deals X% increased Damage",
+      "lab_difficulty": "Eternal",
+      "value_tier": "High",
+      "best_for": ["Hexblast builds"],
+      "notes": "Generic damage enchant is the standard choice for Hexblast."
+    },
+    {
+      "slot": "Helmet",
+      "skill_name": "Arc",
+      "enchant_effect": "Arc has X% increased Chaining Range",
+      "lab_difficulty": "Eternal",
+      "value_tier": "Medium",
+      "best_for": ["Arc builds"],
+      "notes": "Longer chain range improves clear by reaching distant enemies more reliably."
+    },
+    {
+      "slot": "Helmet",
+      "skill_name": "Righteous Fire",
+      "enchant_effect": "Righteous Fire deals X% increased Spell Damage",
+      "lab_difficulty": "Eternal",
+      "value_tier": "High",
+      "best_for": ["RF builds"],
+      "notes": "Core RF helmet enchant. Applies to all spell damage linked to RF."
+    },
+    {
+      "slot": "Helmet",
+      "skill_name": "Whispering Ice / Ice Spear",
+      "enchant_effect": "Ice Spear has an additional Second Form at 25% reduced Distance",
+      "lab_difficulty": "Eternal",
+      "value_tier": "Medium",
+      "best_for": ["Ice Spear builds", "Whispering Ice builds"],
+      "notes": "The second form of Ice Spear has much higher crit. Lower distance threshold means more hits in second form."
+    },
+    {
+      "slot": "Boots",
+      "skill_name": "Movement Speed",
+      "enchant_effect": "16% increased Movement Speed if you have been Hit Recently",
+      "lab_difficulty": "Merciless",
+      "value_tier": "High",
+      "best_for": ["All builds", "Especially tanky/slow builds"],
+      "notes": "Most universally useful boots enchant. Near-permanent uptime in maps. Available from Merciless Lab."
+    },
+    {
+      "slot": "Boots",
+      "skill_name": "Mana Regeneration",
+      "enchant_effect": "Regenerate X Mana per second if you were Hit Recently",
+      "lab_difficulty": "Merciless",
+      "value_tier": "Medium",
+      "best_for": ["Mana-hungry builds", "Casters"],
+      "notes": "Passive mana regen during combat. Available from Merciless Lab."
+    },
+    {
+      "slot": "Boots",
+      "skill_name": "Life Regeneration",
+      "enchant_effect": "Regenerate X Life per second if you have killed Recently",
+      "lab_difficulty": "Merciless",
+      "value_tier": "Medium",
+      "best_for": ["Life builds", "Clear-speed builds"],
+      "notes": "Free life regen during clear. Less useful for single-target/bossing."
+    },
+    {
+      "slot": "Boots",
+      "skill_name": "Elemental Resistances",
+      "enchant_effect": "Regenerate X% of Life and Mana per second if you were Hit by a Rare or Unique Enemy Recently",
+      "lab_difficulty": "Eternal",
+      "value_tier": "High",
+      "best_for": ["Bossing builds", "Tanky builds"],
+      "notes": "Significant regen during boss fights. Very strong for sustaining against Pinnacle bosses."
+    },
+    {
+      "slot": "Boots",
+      "skill_name": "Phased Movement",
+      "enchant_effect": "You have Phasing if you have Killed Recently",
+      "lab_difficulty": "Eternal",
+      "value_tier": "Medium",
+      "best_for": ["Clear speed builds", "Builds that need to path through enemies"],
+      "notes": "Phasing lets you move through enemies. Useful in dense packs."
+    },
+    {
+      "slot": "Gloves",
+      "skill_name": "Socketed Gems have Level 16 Trigger",
+      "enchant_effect": "Socketed Gems are Supported by Level 16 Awakened Elemental Damage with Attacks",
+      "lab_difficulty": "Eternal",
+      "value_tier": "Medium",
+      "best_for": ["Builds using specific support gem setups"],
+      "notes": "Only applies to socketed gems. Frees up a support gem slot."
+    },
+    {
+      "slot": "Gloves",
+      "skill_name": "Adds Damage",
+      "enchant_effect": "Commandment of Reflection: Create a Clone of yourself when you are Hit by a Melee Attack",
+      "lab_difficulty": "Eternal",
+      "value_tier": "Medium",
+      "best_for": ["Melee-focused encounters", "HC builds"],
+      "notes": "Clone draws enemy aggro briefly. Situationally useful as a survival tool in melee range."
+    },
+    {
+      "slot": "Gloves",
+      "skill_name": "Commandment of Spite",
+      "enchant_effect": "Commandment of Spite: When you block, inflict Temporal Chains on nearby enemies",
+      "lab_difficulty": "Eternal",
+      "value_tier": "Medium",
+      "best_for": ["Block builds", "Gladiator", "Champion"],
+      "notes": "Automatic Temporal Chains on block — useful for builds with high block chance."
+    },
+    {
+      "slot": "Gloves",
+      "skill_name": "Commandment of Force",
+      "enchant_effect": "Commandment of Force: Trigger a Socketed Spell when you Attack",
+      "lab_difficulty": "Eternal",
+      "value_tier": "High",
+      "best_for": ["Trigger builds", "CWSA builds", "Attack builds with spell triggers"],
+      "notes": "Enables Cast on Attack setups. Powerful for builds that want to trigger AoE spells alongside their attacks."
+    },
+    {
+      "slot": "Gloves",
+      "skill_name": "Commandment of Ire",
+      "enchant_effect": "Commandment of Ire: Trigger Level 20 Wrath of the Cosmos when you die",
+      "lab_difficulty": "Eternal",
+      "value_tier": "Low",
+      "best_for": ["Deathwish builds", "Speculative"],
+      "notes": "Death trigger — rarely useful in serious builds."
+    },
+    {
+      "slot": "Gloves",
+      "skill_name": "Commandment of Flames",
+      "enchant_effect": "Commandment of Flames: Trigger a Firestorm on Crit",
+      "lab_difficulty": "Eternal",
+      "value_tier": "Low",
+      "best_for": ["Crit fire builds"],
+      "notes": "Triggers Firestorm on crit. Low base damage, rarely worth pursuing specifically."
+    },
+    {
+      "slot": "Gloves",
+      "skill_name": "Commandment of Winter",
+      "enchant_effect": "Commandment of Winter: Trigger a Frost Bomb when you use a Skill",
+      "lab_difficulty": "Eternal",
+      "value_tier": "Medium",
+      "best_for": ["Cold builds", "Builds that want auto-applied cold exposure"],
+      "notes": "Frost Bomb reduces life recovery and lowers cold res. Auto-triggered support skill."
+    },
+    {
+      "slot": "Gloves",
+      "skill_name": "Commandment of Blades",
+      "enchant_effect": "Commandment of Blades: Trigger Ethereal Knives on Crit",
+      "lab_difficulty": "Eternal",
+      "value_tier": "Medium",
+      "best_for": ["Crit builds", "EK builds"],
+      "notes": "Auto-triggers Ethereal Knives on crit. Provides additional projectile coverage."
+    }
+  ]
+}

@@ -455,6 +455,37 @@ These features were auto-approved after all P1–P3 items reached 9+/10 completi
 
 ---
 
+## Expansion Roadmap Round 14 (Auto-Approved 2026-03-26)
+
+These features were auto-approved after all Q1–Q3 items reached 9+/10 completion. Implement in priority order listed.
+
+### R1. Influence Modifier Reference ✅ IMPLEMENTED (Session 37)
+- Static reference for 31 key Shaper/Elder/Conqueror (Warlord/Crusader/Redeemer/Hunter) influence-exclusive item modifiers
+- Each entry shows: influence type (color-coded), item slot, mod name, value range, value tier, best-for builds, and strategic notes
+- Influence filter buttons (All / Shaper / Elder / Warlord / Crusader / Redeemer / Hunter) + full-text search
+- Includes how Awakener's Orb works for combining Conqueror influences
+- Data source: data/influence_mods.json (31 mods across 6 influences, curated)
+- ui/widgets/influence_mods_panel.py; added to Info group as "Influence" tab
+- **Rationale:** Influenced bases are a core crafting resource. Players routinely need "what mods can a Hunter gloves have?" or "which Shaper belt mod reduces flask charges?" Having it in the overlay replaces wiki lookups during gear crafting sessions.
+
+### R2. Cluster Jewel Reference ✅ IMPLEMENTED (Session 37)
+- Static reference for 20 key Large/Medium/Small cluster jewel enchants and their notable passives
+- Each entry shows: size (Large/Medium/Small, color-coded), enchant, key notables, notable count, optimal passive count to minimize path cost, best-for builds, value tier, and notes
+- Size filter buttons + full-text search across name, enchant, notables, and build types
+- Data source: data/cluster_jewels.json (20 jewels, curated)
+- ui/widgets/cluster_jewels_panel.py; added to Info group as "Clusters" tab
+- **Rationale:** The cluster jewel system has dozens of enchant options across three jewel sizes. Players frequently need "which medium cluster gives Purposeful Harbinger?" or "what's the best small cluster for life stacking?" An in-overlay reference replaces repeated poedb/wiki lookups when building or modifying passive setups.
+
+### R3. Lab Enchantment Reference ✅ IMPLEMENTED (Session 37)
+- Static reference for 26 key helmet, boots, and gloves lab enchantments
+- Each entry shows: item slot (color-coded), skill name, full enchant effect, lab difficulty (Merciless/Eternal), value tier, best-for builds, and notes
+- Slot filter buttons (Helmet / Boots / Gloves) + full-text search
+- Data source: data/lab_enchants.json (26 enchants, curated)
+- ui/widgets/lab_enchants_panel.py; added to Info group as "Lab Ench" tab
+- **Rationale:** Lab enchanting is done every league, but the pools are large and players frequently ask "what's the best helmet enchant for Toxic Rain?" or "which boots enchant should I use?" Having a curated reference in the overlay speeds up decision-making during lab runs.
+
+---
+
 ## Expansion Roadmap Round 10 (Auto-Approved 2026-03-25)
 
 These features were auto-approved after all M1–M3 items reached 9+/10 completion. Implement in priority order listed.
