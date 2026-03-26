@@ -1,0 +1,231 @@
+{
+  "how_it_works": "Unique items have fixed mods and are either found as drops, crafted from divination card sets, or obtained from specific boss kills. They range from leveling tools to mirror-tier endgame gear. Value is driven by build-enabling power, drop rate, and demand.",
+  "tips": [
+    "Budget builds revolve around a single chase unique — plan the rest of the gear around enabling that item.",
+    "Mirror-tier uniques (Headhunter, Mageblood) are not required for most content — they enhance already-functional builds.",
+    "Many high-value uniques are league-specific or have limited drop sources — check trade site prices before farming for them."
+  ],
+  "budget_tiers": ["Mirror-Tier", "High Budget", "Mid Budget", "League Starter", "Leveling"],
+  "items": [
+    {
+      "name": "Headhunter",
+      "slot": "Belt",
+      "budget_tier": "Mirror-Tier",
+      "source": "Drop from rare monsters in T14+ maps; Maelström of Chaos (unique map) has increased chance",
+      "key_effect": "When you kill a Rare monster, gain its mods for 20 seconds. Stacks up to 20 buffs simultaneously.",
+      "best_for": ["Mapping builds", "Juiced map farming", "Speed clearing"],
+      "why_valuable": "The best mapping belt in the game. Each rare kill snowballs into exponentially more power. Makes any build faster at map clearing.",
+      "value_tier": "Extremely High",
+      "notes": "Price varies 60–200+ Divines per league depending on demand. Functionally strongest in dense maps with many rare monsters."
+    },
+    {
+      "name": "Mageblood",
+      "slot": "Belt",
+      "budget_tier": "Mirror-Tier",
+      "source": "Drop from Uber Pinnacle bosses (Uber Sirus, Uber Maven, Uber Eater, Uber Exarch)",
+      "key_effect": "Grants permanent uptime on all magic flasks without needing to press them. Effectively provides 4 always-active flask effects.",
+      "best_for": ["Any build that benefits from permanent flask effects", "Bossing", "Mapping"],
+      "why_valuable": "Completely removes flask piano management. Provides immunity to all ailments, movement speed, and other flask bonuses permanently.",
+      "value_tier": "Extremely High",
+      "notes": "Often the most expensive item in the game. Enables a completely different playstyle — flask effects become passive bonuses."
+    },
+    {
+      "name": "Melding of the Flesh",
+      "slot": "Jewel",
+      "budget_tier": "Mirror-Tier",
+      "source": "Drop from Uber Pinnacle bosses",
+      "key_effect": "Maximum Resistances cap at 90% (normally 75%). While all max resists are equal, you also gain +5 to all maximum resistances.",
+      "best_for": ["Tanky builds", "Hardcore", "All-res stacking builds"],
+      "why_valuable": "Allows 90%+ elemental resistances, dramatically reducing elemental damage taken. Build-defining for Elemental Aegis or max-res-stacking builds.",
+      "value_tier": "Extremely High",
+      "notes": "Build-defining jewel. Requires all max resistances to be equal to get the bonus — constraining but extremely powerful when achieved."
+    },
+    {
+      "name": "Forbidden Flame / Forbidden Flesh",
+      "slot": "Jewel (pair)",
+      "budget_tier": "High Budget",
+      "source": "Drop from Uber Pinnacle bosses; pair must match (same ascendancy)",
+      "key_effect": "Together grant the keystone from a specific ascendancy class (one jewel for each ascendancy). Effectively lets you take an ascendancy keystone without using your ascendancy points.",
+      "best_for": ["Builds that want a second ascendancy's keystone", "Optimized endgame builds"],
+      "why_valuable": "Lets you 'borrow' powerful ascendancy keystones like Vaal Pact, Mistwalker, or Avatar of Fire without committing your ascendancy.",
+      "value_tier": "High",
+      "notes": "Price depends heavily on which ascendancy is paired. Hinekora (Necro) and Chieftain pairs are most expensive. Requires both jewels to match."
+    },
+    {
+      "name": "The Squire",
+      "slot": "Shield",
+      "budget_tier": "High Budget",
+      "source": "Drop from Heist targets; relatively rare",
+      "key_effect": "Linked support gems in your off-hand also apply to your main hand weapon's gems. Effectively doubles the number of support gems for main skill.",
+      "best_for": ["6-link builds that want more supports", "Melee builds", "Attack builds"],
+      "why_valuable": "Functionally gives your main skill up to 12 support gems. Massive DPS increase for builds with many support options.",
+      "value_tier": "High",
+      "notes": "Most effective with builds that can fill the shield links with high-value supports. Less useful for builds with few strong support options."
+    },
+    {
+      "name": "Skin of the Lords",
+      "slot": "Body Armour",
+      "budget_tier": "High Budget",
+      "source": "Drop from Corrupted Strongbox or any corrupted source",
+      "key_effect": "6-linked with a random colour combination. Grants a random keystone (which can be build-enabling or detrimental). No requirements to equip.",
+      "best_for": ["Builds that want specific keystones for free", "Minion builds (Unnatural Strength version)"],
+      "why_valuable": "The keystone it grants determines the value. 'Unnatural Strength' version is BiS for minion builds. Free 6-link base is also a budget alternative.",
+      "value_tier": "High",
+      "notes": "Price varies enormously based on keystone. Corrupted to desired keystone. Unnatural Strength, Avatar of Fire, and Iron Reflexes versions are most sought."
+    },
+    {
+      "name": "The Annihilating Light",
+      "slot": "Staff",
+      "budget_tier": "High Budget",
+      "source": "Drop from maps and bosses",
+      "key_effect": "Grants +3 to all Spell Skill Gems. Hits deal 40% less damage. Spells deal 100% more damage.",
+      "best_for": ["Spellcasters with many spell gem levels", "Aurabot support builds"],
+      "why_valuable": "Massive spell gem level bonus and damage multiplier. The 40% less hit damage only matters for attack hit damage — pure spells get the full benefit.",
+      "value_tier": "High",
+      "notes": "BiS weapon for many spellcaster archetypes. The 100% more damage makes it a top-tier damage weapon despite the downside."
+    },
+    {
+      "name": "Progenesis",
+      "slot": "Flask",
+      "budget_tier": "High Budget",
+      "source": "Drop from Pinnacle bosses and high-tier maps",
+      "key_effect": "25% of Life loss from Hits is prevented and lost over 4 seconds instead. Substantial incoming damage mitigation.",
+      "best_for": ["Tanky life builds", "Bossing", "Hardcore"],
+      "why_valuable": "Converts burst damage to DOT — lets you survive one-shot scenarios that would otherwise kill you. Extremely powerful defensive flask.",
+      "value_tier": "High",
+      "notes": "The best defensive flask for life builds. Synergizes with high HP and regeneration to absorb burst hits that would otherwise be lethal."
+    },
+    {
+      "name": "Indigon",
+      "slot": "Helmet",
+      "budget_tier": "Mid Budget",
+      "source": "Drop from maps",
+      "key_effect": "Spending mana increases spell damage. Caps at +200% increased spell damage for 4 seconds. Triggers at different spending thresholds.",
+      "best_for": ["High-mana spellcasters", "Archmage builds", "Manacaster builds"],
+      "why_valuable": "Core item for Archmage and mana-stacking builds. The damage bonus can be enormous with high mana expenditure per second.",
+      "value_tier": "Medium",
+      "notes": "Requires careful mana management. Most effective with Mana Flask for burst windows or high-sustain Archmage builds."
+    },
+    {
+      "name": "Clusters of Jewels (Megalomaniac / Large)",
+      "slot": "Jewel (Cluster)",
+      "budget_tier": "Mid Budget",
+      "source": "Drops from maps (all tiers for different sizes)",
+      "key_effect": "3-notable Megalomaniacs can combine specific notables inaccessible elsewhere (e.g. Unnatural Preservation + Renewal + Feasting Fiends for minions).",
+      "best_for": ["Minion builds", "Aura-stacking builds", "Any build seeking specific notable combos"],
+      "why_valuable": "Access to unique combinations of notables. Some triplet combos are best-in-slot for entire build archetypes.",
+      "value_tier": "Medium",
+      "notes": "Price depends entirely on which notables are on the jewel. Rolling for specific notables requires many attempts or trade search."
+    },
+    {
+      "name": "Xoph's Blood",
+      "slot": "Amulet",
+      "budget_tier": "Mid Budget",
+      "source": "Drop from maps and bosses",
+      "key_effect": "Avatar of Fire — converts 50% of physical/cold/lightning to fire. All damage converted to fire. Fire Penetration aura.",
+      "best_for": ["Fire builds", "Conversion builds", "Ele hit builds"],
+      "why_valuable": "Build-enabling. Automatically converts all damage to fire, enabling full fire penetration without passive tree investment.",
+      "value_tier": "Medium",
+      "notes": "Core item for Burning Arrow, Elemental Hit (fire), and any build wanting Avatar of Fire without taking the keystone."
+    },
+    {
+      "name": "Thread of Hope",
+      "slot": "Jewel",
+      "budget_tier": "Mid Budget",
+      "source": "Drop from maps and bosses",
+      "key_effect": "Passives in a radius can be allocated without traveling the path to them. Radius size (small/medium/large/very large) determines reach.",
+      "best_for": ["Builds needing isolated passive clusters", "Optimized builds reaching difficult keystone locations"],
+      "why_valuable": "Allows reaching isolated passive islands (Acrobatics, Unwavering Stance, remote keystones) without wasting 5–8 points on travel nodes.",
+      "value_tier": "Medium",
+      "notes": "Value depends on the radius — very large radius enables the most efficient pathing. Often provides 5+ 'free' points on optimized builds."
+    },
+    {
+      "name": "Shaper's Touch",
+      "slot": "Gloves",
+      "budget_tier": "Mid Budget",
+      "source": "Drop from Shaper and maps",
+      "key_effect": "Grants Armour and ES equal to Evasion Rating. Accuracy Rating = Life. Used in specific ES-stacking builds.",
+      "best_for": ["Life-to-accuracy builds", "Evasion/ES hybrid builds"],
+      "why_valuable": "Enables a unique defensive profile where life directly increases accuracy — allowing high DPS through accuracy without accuracy investment elsewhere.",
+      "value_tier": "Medium",
+      "notes": "Niche but powerful for specific builds. Requires the right defensive setup to benefit fully."
+    },
+    {
+      "name": "Kaom's Heart",
+      "slot": "Body Armour",
+      "budget_tier": "League Starter",
+      "source": "Drop from maps and bosses",
+      "key_effect": "+500 maximum Life. No linked sockets — body armour has 0 sockets. Massive flat life bonus.",
+      "best_for": ["Life builds", "Totems/minions (don't need body armour links)", "League start"],
+      "why_valuable": "Best flat life body armour in the game. The 0-socket downside only matters for skills that need body armour links.",
+      "value_tier": "Medium",
+      "notes": "Price varies 10–40c typically. Excellent for RF, totems, and any life build that runs main skill from weapons or helm."
+    },
+    {
+      "name": "Tabula Rasa",
+      "slot": "Body Armour",
+      "budget_tier": "League Starter",
+      "source": "Widely available from vendors and drops",
+      "key_effect": "6 white linked sockets. No stats. Allows any 6-link gem setup with any colours.",
+      "best_for": ["Leveling", "League start", "Any build needing flexible 6-link"],
+      "why_valuable": "Cheap access to a 6-link at any point in the game. Removes the requirement to 6-link an armour piece.",
+      "value_tier": "Low",
+      "notes": "Standard league-start purchase. Usually 5–15c. Replaced once a real 6-link body armour is available."
+    },
+    {
+      "name": "Goldrim",
+      "slot": "Helmet",
+      "budget_tier": "Leveling",
+      "source": "Drop from any source; Vendor recipe: 3× Thaumetic Sulphite",
+      "key_effect": "+36–40% to all Elemental Resistances. Massive resistance boost for leveling.",
+      "best_for": ["Leveling any class", "Resistance capping while leveling"],
+      "why_valuable": "Eliminates resistance problems for all of leveling and early mapping. Allows using any armour in other slots.",
+      "value_tier": "Low",
+      "notes": "Usually 1–3c. Best-in-slot helmet for the first 50+ hours of every character if using item level restricted gear."
+    },
+    {
+      "name": "Oni-Goroshi",
+      "slot": "Sword (One-Handed)",
+      "budget_tier": "Leveling",
+      "source": "Drop from Hillock (Act 1) only — low drop rate",
+      "key_effect": "Her Embrace — permanently take burning debuff but gain huge damage buff (20% more damage per second burning). Build-enabling for melee.",
+      "best_for": ["Cyclone", "Melee attack builds", "Leveling to mapping"],
+      "why_valuable": "One of the best leveling weapons in the game if obtained. The damage bonus outweighs the self-burn at all levels until mapping.",
+      "value_tier": "Medium",
+      "notes": "Getting the drop can take many Hillock resets. Once obtained, trivialises leveling for melee builds."
+    },
+    {
+      "name": "Pledge of Hands",
+      "slot": "Staff",
+      "budget_tier": "League Starter",
+      "source": "Drop from maps",
+      "key_effect": "+3 to Spell Skill Gems socketed in this staff. Free Spell Echo support linked to all socketed spells.",
+      "best_for": ["Spellcasters", "Firestorm", "SRS (Summon Raging Spirits)", "Any spell that benefits from Spell Echo"],
+      "why_valuable": "Free Spell Echo is extremely powerful. Also provides +3 gem levels for spell skill gems in the staff itself.",
+      "value_tier": "Low",
+      "notes": "Budget league-starter weapon. Usually 5–20c. Outclassed by wand pairs or endgame staves later, but strong for early red maps."
+    },
+    {
+      "name": "Cherrubim's Maleficence",
+      "slot": "Body Armour",
+      "budget_tier": "League Starter",
+      "source": "Drop from maps and bosses",
+      "key_effect": "300–400 maximum Life. 100–150 maximum ES. 80–100% increased Chaos Damage. Significant chaos damage and defences.",
+      "best_for": ["Chaos builds", "Bane occultist", "Caustic Arrow"],
+      "why_valuable": "Enables chaos-scaling damage with solid life and ES. Core item for budget chaos damage builds.",
+      "value_tier": "Low",
+      "notes": "Usually very affordable (1–5c). Excellent value for the stats provided for chaos builds in the first few weeks of a league."
+    },
+    {
+      "name": "Watcher's Eye",
+      "slot": "Jewel",
+      "budget_tier": "High Budget",
+      "source": "Drop from The Elder (Atlas boss encounter)",
+      "key_effect": "Has 2–3 mods that enhance specific auras (Determination, Hatred, Haste, etc.) while those auras are active.",
+      "best_for": ["Aura-dependent builds", "Any build running Hatred, Determination, or Grace"],
+      "why_valuable": "Can provide up to 3 powerful aura-specific bonuses in one jewel slot. Hatred variants (crit/cold pen) are most sought-after for DPS builds.",
+      "value_tier": "High",
+      "notes": "Price varies enormously by mod combinations. Single-notable (budget) vs double or triple notable versions can differ 10× in price."
+    }
+  ]
+}

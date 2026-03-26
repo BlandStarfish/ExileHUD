@@ -486,6 +486,66 @@ These features were auto-approved after all Q1–Q3 items reached 9+/10 completi
 
 ---
 
+## Expansion Roadmap Round 15 (Auto-Approved 2026-03-26)
+
+These features were auto-approved after all R1–R3 items reached 9+/10 completion. Implement in priority order listed.
+
+### S1. Compass/Sextant Mod Reference ✅ IMPLEMENTED (Session 38)
+- Reference for Atlas compass modifiers applied via Charged Compasses to Watchstones
+- Covers all major league mechanic and utility compass mods with value tier and usage tips
+- Category filter (All + 12 categories) + full-text search across name, category, effect, best-for, notes
+- Data source: data/compass_mods.json (20 mods, curated)
+- ui/widgets/compass_mods_panel.py; added to Info group as "Compass" tab
+- **Rationale:** Compass mods are a core Atlas investment. Players frequently need "which compass is worth buying?" or "what's the best compass for Delirium farming?" Having a value-tier reference prevents overpaying or misallocating Atlas currency.
+
+### S2. Base Item Type Reference ✅ IMPLEMENTED (Session 38)
+- Reference for important crafting base items across all equipment slots
+- Shows: base type, item level requirement, implicit mod, defence values, why valuable, best-for builds, value tier
+- Slot filter (All + 11 slots) + full-text search
+- Data source: data/base_items.json (20 bases, curated)
+- ui/widgets/base_items_panel.py; added to Info group as "Bases" tab
+- **Rationale:** Knowing which base to target-farm or buy for crafting is non-obvious. Players frequently ask "what's the best helmet base for an ES build?" or "why is Two-Toned Boots so expensive?" An in-overlay base reference prevents wiki lookups when planning craft purchases.
+
+### S3. Passive Tree Starting Area Guide ✅ IMPLEMENTED (Session 38)
+- Reference for all 7 class starting areas on the passive tree
+- Shows: primary stats, ascendancies, key node clusters, recommended/avoided build types, nearby keystones, ascendancy highlights, notes
+- Class filter (All + 7 class buttons, each class-colored) + full-text search
+- Data source: data/starting_areas.json (7 classes, curated)
+- ui/widgets/starting_areas_panel.py; added to Info group as "Start" tab
+- **Rationale:** New players and players trying new archetypes frequently don't know which starting area to use for a given build. The recommended/avoid lists provide immediate, actionable guidance that would otherwise require reading a full build guide.
+
+---
+
+## Expansion Roadmap Round 16 (Auto-Approved 2026-03-26)
+
+These features were auto-approved after all S1–S3 items reached 9+/10 completion. Implement in priority order listed.
+
+### T1. Veiled Mod Crafting Reference ✅ IMPLEMENTED (Session 39)
+- Reference for Betrayal veiled modifiers craftable via Jun Ortoi after unveiling
+- Shows: mod name, item slot, prefix/suffix, all tiers with best tier highlighted, value tier, best-for builds, and crafting notes
+- Slot filter (All + 9 item slots, color-coded) + full-text search across name, slot, tiers, best-for, and notes
+- Data source: data/veiled_mods.json (20 mods, curated)
+- ui/widgets/veiled_mods_panel.py; added to Info group as "Veiled" tab
+- **Rationale:** Jun's veiled mods include some of the most powerful affixes in the game (Tailwind, Culling Strike, Movement Speed, Chaos Resistance). Players crafting or buying veiled items benefit from a quick reference on which mods are worth targeting and how many unveils are needed for the best tier.
+
+### T2. Map Tier Progression Guide ✅ IMPLEMENTED (Session 39)
+- Reference for Atlas map tier structure: white (T1–5), yellow (T6–10), red (T11–16), pinnacle boss access, and Atlas region strategy
+- Shows: tier name, tier group, area level, Voidstone requirement, map count, recommended strategy (rarity/investment), key mechanics, atlas objective, notable maps, and notes
+- Tier group filter (All / White / Yellow / Red) + full-text search
+- Data source: data/map_tiers.json (7 entries covering all progression stages, curated)
+- ui/widgets/map_tiers_panel.py; added to Info group as "Map Tiers" tab
+- **Rationale:** Atlas progression is the core endgame activity and new/returning players frequently don't know the tier system, when to start using Sextants, or how Voidstones work. A structured overview from white maps to pinnacle bosses covers the full progression arc in one reference.
+
+### T3. Unique Item Tier List ✅ IMPLEMENTED (Session 39)
+- Reference for top-tier unique items sorted by budget tier (Mirror-Tier / High Budget / Mid Budget / League Starter / Leveling)
+- Shows: item name, slot, budget tier badge, value tier, key effect, why it's valuable, drop source, best-for builds, and notes
+- Budget tier filter buttons + full-text search across name, slot, effect, source, and build types
+- Data source: data/unique_items.json (20 items spanning all budget tiers, curated)
+- ui/widgets/unique_items_panel.py; added to Info group as "Uniques" tab
+- **Rationale:** Knowing which uniques are worth farming or buying is one of the most common questions in PoE. A tiered list (from leveling basics to mirror-tier chase items) helps players at every budget plan their gear progression without leaving the overlay.
+
+---
+
 ## Expansion Roadmap Round 10 (Auto-Approved 2026-03-25)
 
 These features were auto-approved after all M1–M3 items reached 9+/10 completion. Implement in priority order listed.

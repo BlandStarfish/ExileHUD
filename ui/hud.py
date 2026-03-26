@@ -74,6 +74,9 @@ from ui.widgets.lab_enchants_panel import LabEnchantsPanel
 from ui.widgets.compass_mods_panel import CompassModsPanel
 from ui.widgets.base_items_panel import BaseItemsPanel
 from ui.widgets.starting_areas_panel import StartingAreasPanel
+from ui.widgets.veiled_mods_panel import VeiledModsPanel
+from ui.widgets.map_tiers_panel import MapTiersPanel
+from ui.widgets.unique_items_panel import UniqueItemsPanel
 
 
 DARK_BG = "#1a1a2e"
@@ -147,7 +150,13 @@ _INFO_MAP_MODS        = 34
 _INFO_INFLUENCE_MODS  = 35
 _INFO_CLUSTER_JEWELS  = 36
 _INFO_LAB_ENCHANTS    = 37
-_INFO_SETTINGS        = 38
+_INFO_COMPASS_MODS    = 38
+_INFO_BASE_ITEMS      = 39
+_INFO_STARTING_AREAS  = 40
+_INFO_VEILED_MODS     = 41
+_INFO_MAP_TIERS       = 42
+_INFO_UNIQUE_ITEMS    = 43
+_INFO_SETTINGS        = 44
 
 
 class HUD(QMainWindow):
@@ -331,6 +340,9 @@ class HUD(QMainWindow):
         self._compass_mods_panel      = CompassModsPanel()
         self._base_items_panel        = BaseItemsPanel()
         self._starting_areas_panel    = StartingAreasPanel()
+        self._veiled_mods_panel       = VeiledModsPanel()
+        self._map_tiers_panel         = MapTiersPanel()
+        self._unique_items_panel      = UniqueItemsPanel()
         self._currency_flip_panel    = CurrencyFlipPanel(currency_flip) if currency_flip else QWidget()
         self._lab_panel              = LabPanel(lab_tracker) if lab_tracker else QWidget()
         self._atlas_tree_panel       = AtlasTreePanel()
@@ -426,7 +438,10 @@ class HUD(QMainWindow):
         info_tabs.addTab(self._compass_mods_panel,     "Compass")   # _INFO_COMPASS_MODS    = 38
         info_tabs.addTab(self._base_items_panel,       "Bases")     # _INFO_BASE_ITEMS      = 39
         info_tabs.addTab(self._starting_areas_panel,   "Start")     # _INFO_STARTING_AREAS  = 40
-        info_tabs.addTab(self._settings_panel,         "Settings")  # _INFO_SETTINGS        = 41
+        info_tabs.addTab(self._veiled_mods_panel,      "Veiled")    # _INFO_VEILED_MODS     = 41
+        info_tabs.addTab(self._map_tiers_panel,        "Map Tiers") # _INFO_MAP_TIERS       = 42
+        info_tabs.addTab(self._unique_items_panel,     "Uniques")   # _INFO_UNIQUE_ITEMS    = 43
+        info_tabs.addTab(self._settings_panel,         "Settings")  # _INFO_SETTINGS        = 44
         self._inner_tabs.append(info_tabs)
         outer_tabs.addTab(info_tabs, "Info")                       # _GRP_INFO            = 3
 

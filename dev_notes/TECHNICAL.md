@@ -770,12 +770,34 @@ S3: Starting Area Guide (data/starting_areas.json)
   Exactly 7 entries (one per class). All seven: Marauder/Duelist/Ranger/Shadow/Witch/Templar/Scion.
   Value tiers: Marauder/Duelist/Ranger/Shadow/Witch=High, Templar/Scion=Medium.
 
-### Info Tab Index State After Session 38
+### Info Tab Index State After Session 39
   _INFO_COMPASS_MODS   = 38
   _INFO_BASE_ITEMS     = 39
   _INFO_STARTING_AREAS = 40
-  _INFO_SETTINGS       = 41
-  Info group: 42 tabs (0-41). Next round (T1-T3): Settings will shift to 44.
+  _INFO_VEILED_MODS    = 41
+  _INFO_MAP_TIERS      = 42
+  _INFO_UNIQUE_ITEMS   = 43
+  _INFO_SETTINGS       = 44
+  Info group: 45 tabs (0-44). Next round (U1-U3): Settings will shift to 47.
+
+### Veiled Mods Data (data/veiled_mods.json)
+  Schema: {mod_name, item_slot, mod_type, tiers, best_tier, value_tier, best_for, notes}
+  mod_type values: "Prefix" or "Suffix"
+  best_tier MUST be an exact match of one of the strings in the tiers list.
+  20 mods covering Boots (2), Helmet (3), Gloves (3), Belt (2), Ring (2), Amulet (1), Weapon (2), Body Armour (2), Shield (1), plus a few cross-slot entries.
+
+### Map Tiers Data (data/map_tiers.json)
+  Schema: {tier_name, tier_group, map_count, typical_area_level, rarity_requirement,
+           key_mechanics, atlas_objective, notable_maps, voidstone_requirement, value_tier, notes}
+  tier_group values: "White (T1–5)", "Yellow (T6–10)", "Red (T11–16)"
+  7 entries covering the full progression arc from white maps to pinnacle bosses + atlas region strategy.
+  voidstone_requirement is an integer (0-4) or null for N/A entries.
+
+### Unique Items Data (data/unique_items.json)
+  Schema: {name, slot, budget_tier, source, key_effect, best_for, why_valuable, value_tier, notes}
+  budget_tier values: "Mirror-Tier", "High Budget", "Mid Budget", "League Starter", "Leveling"
+  20 items. Item names must be unique (enforced by test).
+  Source field should be specific (drop location, vendor recipe, etc.) — not just "drops".
 
 ### Asana create_task MCP
   Still missing from session config — 5th consecutive session without it.

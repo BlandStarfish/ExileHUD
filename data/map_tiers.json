@@ -1,0 +1,102 @@
+{
+  "how_it_works": "Atlas maps are tiered 1–16. Tiers 1–5 are white (normal), 6–10 are yellow (magic/rare), and 11–16 are red. Higher tiers give more experience, better item quantity/rarity, and access to endgame mechanics. The Atlas Passive Tree lets you specialize regions to amplify specific league mechanics or boss encounters.",
+  "tips": [
+    "Sustain red maps by targeting maps you can reliably complete with high pack size — don't spread too thin across all tiers.",
+    "Voidstone from Pinnacle bosses (Sirus, Maven, Uber Pinnacles) raises your Atlas level, shifting all maps to higher base tiers.",
+    "Run Sextants (Charged Compasses) on Watchstones for highest-value encounters; prioritize Beyond, Delirium, and Ritual."
+  ],
+  "tier_groups": ["White (T1–5)", "Yellow (T6–10)", "Red (T11–16)"],
+  "tiers": [
+    {
+      "tier_name": "White Maps (T1–5)",
+      "tier_group": "White (T1–5)",
+      "map_count": "~40 unique maps",
+      "typical_area_level": 68,
+      "rarity_requirement": "Normal maps can be cleared as-is; magic/rare for bonus objectives",
+      "key_mechanics": ["Reaching yellow maps", "Practicing layouts", "Passive point farming early"],
+      "atlas_objective": "Complete white map bonus objectives for Atlas passive points",
+      "notable_maps": ["Strand (linear, good for leveling)", "Dungeon (simple layout)", "Beach (open, fast clear)"],
+      "voidstone_requirement": 0,
+      "value_tier": "Low",
+      "notes": "White maps provide minimal drops but are required to unlock yellow maps. Focus on completing them quickly rather than farming them."
+    },
+    {
+      "tier_name": "Yellow Maps (T6–10)",
+      "tier_group": "Yellow (T6–10)",
+      "map_count": "~50 unique maps",
+      "typical_area_level": "73–77",
+      "rarity_requirement": "Run as magic or rare for best yield; alch and go is standard",
+      "key_mechanics": ["Alch-and-go strategy", "Starting league mechanics (Delirium mirrors, Ritual altars)", "First Sextant use"],
+      "atlas_objective": "Complete yellow map bonus objectives; unlock red map access",
+      "notable_maps": ["Burial Chambers (Uber Elder fragment)", "Cemetery (open, fast)", "Jungle Valley (Einhar Bestiary good here)"],
+      "voidstone_requirement": 0,
+      "value_tier": "Medium",
+      "notes": "The first real farming tier. Alch-and-go T8–10 maps is the standard progression entry point. Prioritize completing all map types for atlas points."
+    },
+    {
+      "tier_name": "Red Maps (T11–14) — Entry Red",
+      "tier_group": "Red (T11–16)",
+      "map_count": "~40 unique maps",
+      "typical_area_level": "80–83",
+      "rarity_requirement": "Always run as rare; Sextants recommended; Scarabs add significant value",
+      "key_mechanics": ["Chiselling for 20% quality", "Full Sextant rotation", "Map device recipes (sacrifice frags, Zana mods)"],
+      "atlas_objective": "Progress toward Shaper/Elder guardians; unlock T15–16",
+      "notable_maps": ["Mesa (bossable)", "Colonnade (wide-open, Delirium-friendly)", "Maze (dense packs, strong for AOE)"],
+      "voidstone_requirement": 1,
+      "value_tier": "High",
+      "notes": "Entry point for serious farming. Chisel + alch + vaal is standard. Sextants become cost-effective at this tier."
+    },
+    {
+      "tier_name": "Red Maps (T15–16) — Endgame Red",
+      "tier_group": "Red (T11–16)",
+      "map_count": "~20 unique maps (incl. Awakened variants)",
+      "typical_area_level": "84–85",
+      "rarity_requirement": "Chisel + alch + vaal; Sextants; Scarabs; Prophecies (if active)",
+      "key_mechanics": ["Maven invitations", "Conqueror encounters", "Pinnacle boss farming", "Grand Design / Full Atlas passive synergies"],
+      "atlas_objective": "Farm Voidstones from Sirus, Maven, and 4 Pinnacle bosses; maximum atlas completion",
+      "notable_maps": ["Shaper's Realm (exclusive endgame boss)", "Cortex (memory boss)", "Synthesis maps", "Blighted maps"],
+      "voidstone_requirement": 4,
+      "value_tier": "Extremely High",
+      "notes": "Full 4-Voidstone setup enables T16 as baseline. The highest farming tier. Max Sextants, Scarabs, and Atlas passives stack multiplicatively here."
+    },
+    {
+      "tier_name": "Unique Maps",
+      "tier_group": "Red (T11–16)",
+      "map_count": "~30 unique maps (various tiers)",
+      "typical_area_level": "Varies (T5–T17 equivalent)",
+      "rarity_requirement": "Run as-is (unique maps cannot be corrupted for quality normally)",
+      "key_mechanics": ["Exclusive bosses", "Specific layout gimmicks", "Chase uniques (Headhunter from Maelström of Chaos, etc.)"],
+      "atlas_objective": "Atlas completion bonus; chase specific unique drops",
+      "notable_maps": ["Maelström of Chaos (Headhunter/Mageblood source)", "Hall of Grandmasters (PvP challenge)", "Poorjoy's Asylum (T5 but profitable)"],
+      "voidstone_requirement": 0,
+      "value_tier": "High",
+      "notes": "Some unique maps (Poorjoy's, Maelström) are specifically farmed for their chase uniques. Run them when the target item is worth the investment."
+    },
+    {
+      "tier_name": "Pinnacle Boss Access",
+      "tier_group": "Red (T11–16)",
+      "map_count": "5 pinnacle bosses",
+      "typical_area_level": 85,
+      "rarity_requirement": "N/A — specific invitation/fragment required",
+      "key_mechanics": ["Uber Elder (Elder + Shaper fragments)", "The Maven (Maven's Writ)", "Sirus (Watchstone completion)", "Uber Pinnacles (Uber fragments from Sanctum, Expedition, Ritual)"],
+      "atlas_objective": "Kill all pinnacle bosses; collect Voidstones; target exclusive drop tables",
+      "notable_maps": ["The Shaper's Realm", "The Elder's Map", "The Maven's Crucible", "The Searing Exarch / Eater of Worlds (Uber versions)"],
+      "voidstone_requirement": 4,
+      "value_tier": "Extremely High",
+      "notes": "Pinnacle bosses drop mirror-tier uniques (Mageblood, Headhunter) and Voidstones. Required for full atlas completion and T16 baseline."
+    },
+    {
+      "tier_name": "Atlas Region Strategy",
+      "tier_group": "Red (T11–16)",
+      "map_count": "8 regions",
+      "typical_area_level": "N/A",
+      "rarity_requirement": "N/A — region passive allocation",
+      "key_mechanics": ["Specialize one region's atlas passives for dominant strategy", "Stack Delirium, Beyond, Harvest, or Ritual depending on build/league", "Sextant value multiplied in your chosen region"],
+      "atlas_objective": "Maximize the value of a single farming strategy rather than spreading passives thin",
+      "notable_maps": ["Haewark Hamlet (Harvest)", "Lira Arthain (Ritual + Legion)", "Glennach Cairns (Blight)", "Lex Proxima (Harbinger)"],
+      "voidstone_requirement": 0,
+      "value_tier": "High",
+      "notes": "The Atlas Passive Tree has ~600 points. Focus one region first, complete all maps in it for points, then branch out. Generalist tree is weaker than a focused strategy."
+    }
+  ]
+}

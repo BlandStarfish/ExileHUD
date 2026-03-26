@@ -1,0 +1,221 @@
+{
+  "how_it_works": "Veiled items drop with hidden modifiers in the Betrayal league mechanic. Kill or capture Syndicate members with the 'Research' division reward to unveil mods. Each unveil adds a veiled mod to Jun's crafting bench (max 3 unveils per mod to unlock all tiers).",
+  "tips": [
+    "Prioritize unveiling mods with multiple valuable tiers — each unveil unlocks the next tier at the bench.",
+    "Jun's division in Betrayal determines which mods she can offer: always keep Jun in Research for max unlock rate.",
+    "Some veiled mods are build-defining (movement speed on boots, prefixes on weapons) — target Syndicate members who guard specific item slots."
+  ],
+  "categories": ["Helmet", "Body Armour", "Gloves", "Boots", "Belt", "Ring", "Amulet", "Weapon", "Shield"],
+  "mods": [
+    {
+      "mod_name": "Veiled Suffix — Movement Speed (Boots)",
+      "item_slot": "Boots",
+      "mod_type": "Suffix",
+      "tiers": ["8–10% increased Movement Speed", "11–12% increased Movement Speed", "13–15% increased Movement Speed"],
+      "best_tier": "13–15% increased Movement Speed",
+      "value_tier": "Extremely High",
+      "best_for": ["All builds", "Endgame mapping"],
+      "notes": "The premier boot suffix. Best-in-slot for nearly every build. Three unveils required to unlock tier 3."
+    },
+    {
+      "mod_name": "Veiled Prefix — # to Maximum Life (Body Armour)",
+      "item_slot": "Body Armour",
+      "mod_type": "Prefix",
+      "tiers": ["40–49 to maximum Life", "50–59 to maximum Life", "60–69 to maximum Life"],
+      "best_tier": "60–69 to maximum Life",
+      "value_tier": "High",
+      "best_for": ["Life builds", "Any tanky character"],
+      "notes": "Strong flat life prefix. Competes with influenced mods but accessible via unveiling."
+    },
+    {
+      "mod_name": "Veiled Suffix — Recover Life on Kill (Helmet)",
+      "item_slot": "Helmet",
+      "mod_type": "Suffix",
+      "tiers": ["Recover 1% of Life on Kill", "Recover 1.5% of Life on Kill", "Recover 2% of Life on Kill"],
+      "best_tier": "Recover 2% of Life on Kill",
+      "value_tier": "Medium",
+      "best_for": ["Life builds", "Mapping (high kill speed)"],
+      "notes": "Sustain-oriented. Best value on helmets with dense pack farming."
+    },
+    {
+      "mod_name": "Veiled Prefix — # to Attributes (Amulet)",
+      "item_slot": "Amulet",
+      "mod_type": "Prefix",
+      "tiers": ["8–10 to all Attributes", "11–14 to all Attributes", "15–18 to all Attributes"],
+      "best_tier": "15–18 to all Attributes",
+      "value_tier": "Medium",
+      "best_for": ["Stat-starved builds", "Hybrid needs"],
+      "notes": "Solves attribute requirements while freeing up other item slots."
+    },
+    {
+      "mod_name": "Veiled Suffix — Onslaught on Kill (Gloves)",
+      "item_slot": "Gloves",
+      "mod_type": "Suffix",
+      "tiers": ["15% chance to gain Onslaught for 3 sec on Kill", "20% chance to gain Onslaught for 4 sec on Kill", "25% chance to gain Onslaught for 5 sec on Kill"],
+      "best_tier": "25% chance to gain Onslaught for 5 sec on Kill",
+      "value_tier": "Medium",
+      "best_for": ["Attack builds", "Mapping"],
+      "notes": "Free Onslaught uptime without needing flasks or passive nodes. Useful for fast-mapping builds."
+    },
+    {
+      "mod_name": "Veiled Suffix — Mana Regeneration Rate (Ring)",
+      "item_slot": "Ring",
+      "mod_type": "Suffix",
+      "tiers": ["15–25% increased Mana Regeneration Rate", "26–40% increased Mana Regeneration Rate", "41–55% increased Mana Regeneration Rate"],
+      "best_tier": "41–55% increased Mana Regeneration Rate",
+      "value_tier": "Low",
+      "best_for": ["Mana-heavy spellcasters", "Non-Eldritch battery builds"],
+      "notes": "Niche value. Outclassed by mana-on-hit or other sustain mechanics in most builds."
+    },
+    {
+      "mod_name": "Veiled Prefix — #% increased Spell Damage (Sceptre/Staff)",
+      "item_slot": "Weapon",
+      "mod_type": "Prefix",
+      "tiers": ["20–24% increased Spell Damage", "25–29% increased Spell Damage", "30–34% increased Spell Damage"],
+      "best_tier": "30–34% increased Spell Damage",
+      "value_tier": "Medium",
+      "best_for": ["Spellcasters"],
+      "notes": "Competes with other prefixes but useful for off-hand caster weapons where attack speed doesn't matter."
+    },
+    {
+      "mod_name": "Veiled Suffix — Recover Mana on Kill (Belt)",
+      "item_slot": "Belt",
+      "mod_type": "Suffix",
+      "tiers": ["Recover 0.3% of Mana on Kill", "Recover 0.5% of Mana on Kill", "Recover 0.8% of Mana on Kill"],
+      "best_tier": "Recover 0.8% of Mana on Kill",
+      "value_tier": "Low",
+      "best_for": ["Mana builds without leech"],
+      "notes": "Situational. Only relevant if mana sustain is the build's only pressure point."
+    },
+    {
+      "mod_name": "Veiled Prefix — # to Maximum Energy Shield (Body Armour)",
+      "item_slot": "Body Armour",
+      "mod_type": "Prefix",
+      "tiers": ["40–49 to maximum Energy Shield", "50–59 to maximum Energy Shield", "60–69 to maximum Energy Shield"],
+      "best_tier": "60–69 to maximum Energy Shield",
+      "value_tier": "High",
+      "best_for": ["ES builds", "Hybrid ES/Life builds"],
+      "notes": "Flat ES prefix. Strong on CI and hybrid builds. Rivals influenced body armour prefixes."
+    },
+    {
+      "mod_name": "Veiled Suffix — Chaos Resistance (Ring/Amulet)",
+      "item_slot": "Ring",
+      "mod_type": "Suffix",
+      "tiers": ["+10–14% to Chaos Resistance", "+15–19% to Chaos Resistance", "+20–24% to Chaos Resistance"],
+      "best_tier": "+20–24% to Chaos Resistance",
+      "value_tier": "High",
+      "best_for": ["All builds", "Endgame (chaos-heavy content)"],
+      "notes": "Chaos res is the hardest resistance to cap. A veiled chaos res suffix can solve the problem on one item."
+    },
+    {
+      "mod_name": "Veiled Prefix — #% increased Attack Speed (Gloves)",
+      "item_slot": "Gloves",
+      "mod_type": "Prefix",
+      "tiers": ["6–8% increased Attack Speed", "9–11% increased Attack Speed", "12–14% increased Attack Speed"],
+      "best_tier": "12–14% increased Attack Speed",
+      "value_tier": "High",
+      "best_for": ["Attack builds", "CoC builds", "Fast-hitting builds"],
+      "notes": "Attack speed prefix on gloves is relatively rare — veiled mod provides a reliable source."
+    },
+    {
+      "mod_name": "Veiled Prefix — #% increased Critical Strike Chance (Weapon)",
+      "item_slot": "Weapon",
+      "mod_type": "Prefix",
+      "tiers": ["15–19% increased Critical Strike Chance", "20–24% increased Critical Strike Chance", "25–30% increased Critical Strike Chance"],
+      "best_tier": "25–30% increased Critical Strike Chance",
+      "value_tier": "Medium",
+      "best_for": ["Crit builds"],
+      "notes": "Useful on weapons that lack built-in crit. Competes with damage prefixes so slot planning matters."
+    },
+    {
+      "mod_name": "Veiled Suffix — Flask Charges on Hit (Belt)",
+      "item_slot": "Belt",
+      "mod_type": "Suffix",
+      "tiers": ["4% chance to gain a Flask Charge when you are Hit", "5% chance to gain a Flask Charge when you are Hit", "6% chance to gain a Flask Charge when you are Hit"],
+      "best_tier": "6% chance to gain a Flask Charge when you are Hit",
+      "value_tier": "Low",
+      "best_for": ["Tanky builds in high-density content"],
+      "notes": "Getting hit is required. Mostly for builds that take lots of small hits (block builds, ES recharge builds)."
+    },
+    {
+      "mod_name": "Veiled Suffix — Elemental Resistance (Body Armour)",
+      "item_slot": "Body Armour",
+      "mod_type": "Suffix",
+      "tiers": ["+10–15% to one Elemental Resistance", "+16–20% to one Elemental Resistance", "+21–25% to one Elemental Resistance"],
+      "best_tier": "+21–25% to one Elemental Resistance",
+      "value_tier": "Medium",
+      "best_for": ["Resistance-starved builds"],
+      "notes": "Single element only. Less impactful than Shaper/Elder influenced all-res rolls, but still useful for targeted res capping."
+    },
+    {
+      "mod_name": "Veiled Prefix — Culling Strike on Hit (Gloves)",
+      "item_slot": "Gloves",
+      "mod_type": "Prefix",
+      "tiers": ["Culling Strike"],
+      "best_tier": "Culling Strike",
+      "value_tier": "High",
+      "best_for": ["Bossers", "Uber content", "Any build that struggles with last ~10% boss HP"],
+      "notes": "Instant kill at 10% HP. Single tier — three unveils all unlock the same effect. Extremely powerful for boss farming."
+    },
+    {
+      "mod_name": "Veiled Suffix — Cannot be Poisoned (Helmet/Boots/Gloves)",
+      "item_slot": "Helmet",
+      "mod_type": "Suffix",
+      "tiers": ["Cannot be Poisoned"],
+      "best_tier": "Cannot be Poisoned",
+      "value_tier": "Medium",
+      "best_for": ["Builds without ailment immunity", "Hardcore"],
+      "notes": "Useful in content with heavy poison sources. Single tier. Frees up a flask slot."
+    },
+    {
+      "mod_name": "Veiled Suffix — Nearby Enemies take Increased Elemental Damage (Weapon)",
+      "item_slot": "Weapon",
+      "mod_type": "Suffix",
+      "tiers": ["Nearby Enemies take 8–10% increased Elemental Damage", "Nearby Enemies take 11–13% increased Elemental Damage", "Nearby Enemies take 14–16% increased Elemental Damage"],
+      "best_tier": "Nearby Enemies take 14–16% increased Elemental Damage",
+      "value_tier": "High",
+      "best_for": ["Elemental spellcasters", "Melee elemental builds"],
+      "notes": "More multiplier on nearby enemies — significant DPS gain. 'Nearby' is roughly melee range."
+    },
+    {
+      "mod_name": "Veiled Prefix — # to Maximum Life (Helmet)",
+      "item_slot": "Helmet",
+      "mod_type": "Prefix",
+      "tiers": ["25–35 to maximum Life", "36–45 to maximum Life", "46–55 to maximum Life"],
+      "best_tier": "46–55 to maximum Life",
+      "value_tier": "High",
+      "best_for": ["Life builds"],
+      "notes": "Flat life prefix on helmets is valuable since helmets prefer suffix slots for elemental/chaos res and life on kill."
+    },
+    {
+      "mod_name": "Veiled Suffix — Tailwind on Critical Strike (Boots)",
+      "item_slot": "Boots",
+      "mod_type": "Suffix",
+      "tiers": ["You have Tailwind if you have dealt a Critical Strike Recently"],
+      "best_tier": "You have Tailwind if you have dealt a Critical Strike Recently",
+      "value_tier": "Extremely High",
+      "best_for": ["Crit builds (attack or spell)", "All endgame content"],
+      "notes": "Tailwind provides 10% increased Action Speed — equivalent to ~10% more DPS and movement speed. Best-in-slot boot suffix for crit builds."
+    },
+    {
+      "mod_name": "Veiled Suffix — Elusive on Critical Strike (Boots)",
+      "item_slot": "Boots",
+      "mod_type": "Suffix",
+      "tiers": ["Elusive on Critical Strike (rare version)"],
+      "best_tier": "Elusive on Critical Strike (rare version)",
+      "value_tier": "High",
+      "best_for": ["Crit builds needing dodge", "Evasion-based crit builds"],
+      "notes": "Elusive provides 15% less damage taken and 30% increased Movement/Action Speed for its duration. Strong defensive option."
+    },
+    {
+      "mod_name": "Veiled Prefix — # to Armour and Evasion Rating (Shield)",
+      "item_slot": "Shield",
+      "mod_type": "Prefix",
+      "tiers": ["60–80 to Armour and Evasion Rating", "81–100 to Armour and Evasion Rating", "101–130 to Armour and Evasion Rating"],
+      "best_tier": "101–130 to Armour and Evasion Rating",
+      "value_tier": "Low",
+      "best_for": ["Hybrid defence builds"],
+      "notes": "Niche. Most shield builds prefer raw life, block, or ES — this dual-defence flat roll rarely competes."
+    }
+  ]
+}
