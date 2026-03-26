@@ -1,0 +1,175 @@
+{
+  "version": 1,
+  "intro": "Optimal stash setup reduces time spent sorting and lets you find items instantly. Premium tabs and specific tab types pay for themselves in time saved.",
+  "tabs": [
+    {
+      "id": "currency_tab",
+      "name": "Currency",
+      "tab_type": "Currency",
+      "priority": "Essential",
+      "what_to_store": "All currency orbs — Chaos, Divine, Exalted, Orbs of Alteration, Transmutation, Augmentation, Annulment, etc.",
+      "naming_tip": "Name it 'Currency' — auto-identified by trade sites",
+      "notes": "The Currency stash tab auto-stacks all currency. Essential for every character. Trade sites index it automatically if set to public.",
+      "value_tier": "Essential"
+    },
+    {
+      "id": "map_tab",
+      "name": "Map",
+      "tab_type": "Map",
+      "priority": "Essential",
+      "what_to_store": "All maps T1–T16, unique maps, blighted maps, boss fragments",
+      "naming_tip": "Name it 'Maps' — matches trade site conventions",
+      "notes": "The Map stash tab organises maps by tier automatically. Essential for endgame. Shows completion indicators per map.",
+      "value_tier": "Essential"
+    },
+    {
+      "id": "essence_tab",
+      "name": "Essences",
+      "tab_type": "Premium",
+      "priority": "High",
+      "what_to_store": "All essences — Weeping through Deafening, plus Delirium essences (Horror/Hysteria/Insanity/Delirium)",
+      "naming_tip": "Name it 'Essence' for trade site indexing",
+      "notes": "One or two quad tabs work well. Sort essences by tier — Deafening at top, Weeping at bottom. Delirium essences are bulk trade items.",
+      "value_tier": "High"
+    },
+    {
+      "id": "div_card_tab",
+      "name": "Div Cards",
+      "tab_type": "Divination",
+      "priority": "High",
+      "what_to_store": "All divination cards — complete sets for turning in, partial sets for bulk trade",
+      "naming_tip": "Name it 'Div Cards'",
+      "notes": "The Divination stash tab auto-stacks cards. Separate high-value cards (The Doctor, Brother's Gift) into their own section if desired.",
+      "value_tier": "High"
+    },
+    {
+      "id": "fragment_tab",
+      "name": "Fragments",
+      "tab_type": "Fragment",
+      "priority": "High",
+      "what_to_store": "Scarabs, offerings, breach splinters, legion emblems, invitations, vaal fragments, Maven's Writ",
+      "naming_tip": "Name it 'Frags' or 'Fragments'",
+      "notes": "Fragment tab auto-organises by type. Keeps your main stash clear of the small stackable items that accumulate fastest.",
+      "value_tier": "High"
+    },
+    {
+      "id": "gem_tab",
+      "name": "Gems",
+      "tab_type": "Premium or Normal",
+      "priority": "Medium",
+      "what_to_store": "Gems being levelled, high-value Awakened gems, 20/20 gems ready to sell, corrupted gems",
+      "naming_tip": "Name it 'Gems' — split into 'Gems: Level' and 'Gems: Sell' if using two tabs",
+      "notes": "Keep gems being levelled in off-hand slots on every character. Move to stash when 20+. Awakened gems and 20/20 are bulk trade items.",
+      "value_tier": "Medium"
+    },
+    {
+      "id": "flask_tab",
+      "name": "Flasks",
+      "tab_type": "Premium or Normal",
+      "priority": "Medium",
+      "what_to_store": "Rolled magic flasks, unique flasks, silver/quicksilver for levelling alts",
+      "naming_tip": "Name it 'Flasks'",
+      "notes": "Keep a set of rolled flasks per build archetype. Label flask tabs by build if using multiple characters.",
+      "value_tier": "Medium"
+    },
+    {
+      "id": "crafting_tab",
+      "name": "Crafting Bases",
+      "tab_type": "Quad",
+      "priority": "Medium",
+      "what_to_store": "High-ilvl bases (ilvl 82–86) for crafting — helmets, chests, boots, gloves, weapons, jewellery",
+      "naming_tip": "Name it 'Craft Bases' or 'ilvl 86'",
+      "notes": "A quad tab gives room to keep bases by slot. Only keep ilvl 82+ for meaningful crafting. Vendor anything below ilvl 80 unless it has a special implicit.",
+      "value_tier": "Medium"
+    },
+    {
+      "id": "unique_tab",
+      "name": "Unique Items",
+      "tab_type": "Premium or Quad",
+      "priority": "Medium",
+      "what_to_store": "Useful unique equipment and jewels — keep per build, vendor/sell low-value duplicates",
+      "naming_tip": "Name it 'Uniques' or split by category ('Uniq: Equip', 'Uniq: Jewel')",
+      "notes": "Only keep uniques you will use. Vendor useless uniques (Orb of Chance recipe: 1 unique = 1 Chaos for full sets). Check poe.ninja for values before vendoring.",
+      "value_tier": "Medium"
+    },
+    {
+      "id": "dump_tab",
+      "name": "Dump Tab",
+      "tab_type": "Quad",
+      "priority": "Medium",
+      "what_to_store": "Items from a mapping session before sorting — rares, uniques, chaos recipe pieces",
+      "naming_tip": "Name it 'DUMP' in all caps — easy to identify after a session",
+      "notes": "The quad dump tab is where items land first. Sort it after each session. Keep chaos recipe rares (ilvl 60–74 unidentified) in a separate 'Chaos' quad tab.",
+      "value_tier": "Medium"
+    },
+    {
+      "id": "chaos_recipe_tab",
+      "name": "Chaos Recipe",
+      "tab_type": "Quad",
+      "priority": "Low",
+      "what_to_store": "Unidentified rare items ilvl 60–74 for Chaos recipe, and ilvl 75+ for Regal recipe",
+      "naming_tip": "Name it 'Chaos' and make it public — trade sites can index unidentified rares for recipe tracking tools",
+      "notes": "Keep one quad tab per recipe tier if you run chaos recipe actively. Helmet/ring slots fill fastest. Boots/gloves slowest.",
+      "value_tier": "Low"
+    },
+    {
+      "id": "heist_tab",
+      "name": "Heist",
+      "tab_type": "Scourge/Normal",
+      "priority": "Low",
+      "what_to_store": "Heist contracts, blueprints, trinkets, Rogue's Markers",
+      "naming_tip": "Name it 'Heist'",
+      "notes": "Keep contracts by rogue level or job type if doing targeted Heist. Bulk-sell low-level contracts to rogues for markers if not actively running Heist.",
+      "value_tier": "Low"
+    },
+    {
+      "id": "expedition_tab",
+      "name": "Expedition",
+      "tab_type": "Normal or Quad",
+      "priority": "Low",
+      "what_to_store": "Expedition logbooks — group by faction if doing targeted logbook farming",
+      "naming_tip": "Name it 'Expedition' or 'Logbooks'",
+      "notes": "Logbooks are bulky. Stack by faction: Kalguuran (currency), Druids (life/mana), Black Scythe (physical), Order (jewellery). Sell unwanted factions in bulk.",
+      "value_tier": "Low"
+    }
+  ],
+  "principles": [
+    "Set high-value tabs (Currency, Fragments, Div Cards) to public for trade site indexing",
+    "A quad tab holds 4× the items of a normal tab — use them for bulk storage",
+    "Name tabs consistently: trade sites auto-detect tabs named 'Currency', 'Maps', 'Essence'",
+    "Vendor chaos recipe rares immediately after a session — don't let them pile up",
+    "The Fragment tab pays for itself — scarabs, emblems, and splinters add up fast"
+  ],
+  "tab_types": [
+    {
+      "type": "Currency",
+      "description": "Auto-stacks all currency. Essential.",
+      "cost": "40 points"
+    },
+    {
+      "type": "Map",
+      "description": "Organises maps by tier with completion indicators.",
+      "cost": "40 points"
+    },
+    {
+      "type": "Fragment",
+      "description": "Auto-organises scarabs, splinters, fragments, emblems.",
+      "cost": "40 points"
+    },
+    {
+      "type": "Divination",
+      "description": "Auto-stacks divination cards.",
+      "cost": "40 points"
+    },
+    {
+      "type": "Quad",
+      "description": "4× capacity of a normal tab. Best for bulk storage.",
+      "cost": "40 points"
+    },
+    {
+      "type": "Premium",
+      "description": "Can be renamed, coloured, and set public for trade indexing.",
+      "cost": "20 points"
+    }
+  ]
+}

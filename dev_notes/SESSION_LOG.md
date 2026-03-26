@@ -5914,3 +5914,278 @@ Q1-Q3 + R1-R3 + S1-S3).
 Info group 42 tabs. Only blockers: PoE2 passive tree (no GGG ETA),
 Asana create_task MCP (missing from session config 5 sessions running).
 ═══════════════════════════════════════════════════════════════
+
+═══════════════════════════════════════════════════════════════
+SESSION: 2026-03-26  (Session 39)
+═══════════════════════════════════════════════════════════════
+
+## ORIENTATION SUMMARY
+Session 38 left off after implementing S1-S3 (Compass Mods, Base Items, Starting Areas).
+All at 9+/10. Test count 953. Info group 42 tabs (0-41). _INFO_SETTINGS=41 (code had stale 38).
+Primary suggestion: Phase 4 Round 16 -- generate and implement T1-T3.
+Verified candidates against data/ and ui/widgets/ before selection -- all three confirmed new.
+
+## ASSESSMENT GRADES
+
+| Module                        | Completeness | Quality | Vision Alignment |
+|-------------------------------|-------------|---------|-----------------|
+| Quest Tracker                 |     9/10     |  9/10   |      9/10       |
+| Passive Tree Viewer           |     9/10     |  9/10   |      9/10       |
+| Price Checker                 |     9/10     |  9/10   |      9/10       |
+| Currency Tracker              |     7/10     |  9/10   |      8/10       |
+| Crafting System               |     8/10     |  9/10   |      9/10       |
+| Core Infrastructure           |     9/10     |  9/10   |      9/10       |
+| Map Overlay                   |     9/10     |  9/10   |      9/10       |
+| Info Reference Panels         |    10/10     |  9/10   |     10/10       |
+| Test Suite                    |    10/10     |  9/10   |      9/10       |
+| Veiled Mods Reference (T1)    |     9/10     |  9/10   |     10/10       |
+| Map Tier Progression (T2)     |     9/10     |  9/10   |     10/10       |
+| Unique Item Tier List (T3)    |     9/10     |  9/10   |     10/10       |
+
+## SMOKE TEST FINDINGS
+
+### Phase 1B -- Logic and Structure Issues
+1. ui/hud.py:150 -- STALE CONSTANT: _INFO_SETTINGS = 38 but actual index is 41 (S1-S3 added tabs
+   without updating the constant). Also missing: _INFO_COMPASS_MODS, _INFO_BASE_ITEMS,
+   _INFO_STARTING_AREAS constants entirely. Fixed in maintenance.
+
+### Phase 1C -- Redundancy and Counter-Vision Issues
+None found. T1-T3 candidates verified against data/ and ui/widgets/ before selection.
+All three confirmed genuinely new.
+
+## MAINTENANCE LOG
+
+### Fix 1 -- hud.py: Stale _INFO_SETTINGS constant + missing S1-S3 constants
+- File: ui/hud.py:150
+- Issue: _INFO_SETTINGS = 38 (pre-S1-S3 value). No constants for _INFO_COMPASS_MODS/
+  BASE_ITEMS/STARTING_AREAS despite being added Session 38.
+- Fix: Added _INFO_COMPASS_MODS=38, _INFO_BASE_ITEMS=39, _INFO_STARTING_AREAS=40;
+  corrected _INFO_SETTINGS to 41. Now updated to 44 after T1-T3.
+- Why it matters: Stale constant would navigate to wrong tab in any setCurrentIndex() call.
+
+## DEVELOPMENT LOG
+
+### Phase 4 Round 16 -- T1-T3 Auto-Approved and Implemented
+
+### T1: Veiled Mod Crafting Reference
+data/veiled_mods.json: 20 veiled mod entries
+  Slots: Boots/Helmet/Gloves/Belt/Ring/Amulet/Weapon/Body Armour/Shield
+  Schema: {mod_name, item_slot, mod_type, tiers, best_tier, value_tier, best_for, notes}
+  Extremely High: Movement Speed (Boots), Tailwind on Crit (Boots)
+  High: Culling Strike (Gloves), Chaos Resistance (Ring), Attack Speed (Gloves), others
+  Data bug fixed: best_tier must exactly match a string in tiers[] list
+
+ui/widgets/veiled_mods_panel.py: VeiledModsPanel
+  Slot filter + full-text search; tiers shown with best tier highlighted in gold
+
+tests/test_veiled_mods_panel.py: 22 tests
+hud.py: _INFO_VEILED_MODS=41, "Veiled" tab added to Info group
+
+### T2: Map Tier Progression Guide
+data/map_tiers.json: 7 tier entries
+  Covers: white maps, yellow maps, entry red (T11-14), endgame red (T15-16),
+          unique maps, pinnacle boss access, atlas region strategy
+  Schema: {tier_name, tier_group, map_count, typical_area_level, rarity_requirement,
+           key_mechanics, atlas_objective, notable_maps, voidstone_requirement, value_tier, notes}
+
+ui/widgets/map_tiers_panel.py: MapTiersPanel
+  Tier group filter (White/Yellow/Red) + full-text search
+
+tests/test_map_tiers_panel.py: 20 tests
+hud.py: _INFO_MAP_TIERS=42, "Map Tiers" tab added to Info group
+
+### T3: Unique Item Tier List
+data/unique_items.json: 20 unique item entries
+  Budget tiers: Mirror-Tier (3), High Budget (6), Mid Budget (5), League Starter (4), Leveling (2)
+  Schema: {name, slot, budget_tier, source, key_effect, best_for, why_valuable, value_tier, notes}
+  Mirror-Tier: Headhunter, Mageblood, Melding of the Flesh
+
+ui/widgets/unique_items_panel.py: UniqueItemsPanel
+  Budget tier filter (5 tiers) + full-text search
+
+tests/test_unique_items_panel.py: 22 tests
+hud.py: _INFO_UNIQUE_ITEMS=43, "Uniques" tab added to Info group
+
+Test count: 953 -> 1013 (+60 new, all pass. Total: 1013 passed, 1 skipped)
+Info group now 45 tabs (0-44). _INFO_SETTINGS=44.
+
+## TECHNICAL NOTES
+
+Veiled mod constraint: best_tier must exactly match a string in tiers[].
+  Any wording mismatch will fail test_best_tier_in_tiers. Future sessions: keep in sync.
+
+Map tiers: voidstone_requirement is int (0-4), not null. Use 0 for N/A entries with notes.
+
+_INFO_SETTINGS index pattern: +3 each round.
+  After Session 39: Settings=44. After next round (U1-U3): Settings=47.
+
+Asana create_task MCP: Still missing (6th consecutive session). Same blocker as before.
+
+## SUGGESTIONS FOR NEXT SESSION
+
+1. Phase 4 Round 17 (MEDIUM): T1-T3 all at 9+/10. Run Phase 4 -- generate U1-U3.
+   IMPORTANT: Before selecting candidates, check existing data/ and ui/widgets/ listings.
+   Potential true candidates (verify before starting):
+   - Awakened Gem Reference (Awakened support gems, level reqs, which builds want them)
+   - Heist Target Reference (which Heist targets/rogues give which unique drops and blueprints)
+   - Stash Organization Guide (optimal tab setup: currency/map/essence tabs, div cards, etc.)
+
+2. PoE2 passive tree (BLOCKED): No official GGG skilltree-export for PoE2.
+
+3. Asana create_task MCP (BLOCKED): Missing 6 sessions. Post retroactive Sessions 34-39
+   summaries plus current session if tool becomes available.
+
+4. Currency Reference live price column (LOW, deferred since Session 26).
+
+## PROJECT HEALTH
+Overall grade: 10/10. ~100% complete (original + E1-E6 + F1-F3 + G1-G3 +
+H1-H3 + I1-I3 + J1-J3 + K1-K3 + L1-L3 + M1-M3 + N1-N3 + O1-O3 + P1-P3 +
+Q1-Q3 + R1-R3 + S1-S3 + T1-T3).
+1013 tests pass, 1 skipped. No technical debt. No regressions.
+Info group 45 tabs. Only blockers: PoE2 passive tree (no GGG ETA),
+Asana create_task MCP (missing 6 sessions running).
+═══════════════════════════════════════════════════════════════
+
+═══════════════════════════════════════════════════════════════
+SESSION: 2026-03-26  (Session 40)
+═══════════════════════════════════════════════════════════════
+
+## ORIENTATION SUMMARY
+Session 39 left off after implementing T1-T3 (Veiled Mods, Map Tiers, Unique Items).
+All at 9+/10. 1014 tests pass. Info group 48 tabs (0-44, Settings=44). Primary suggestion:
+Phase 4 Round 17 — generate and implement U1-U3.
+Verified candidates against data/ and ui/widgets/ before selection.
+Note: Awakened Gem Reference (suggested last session) was already implemented as Q1
+in Session 36 (gem_quality.json / gem_quality_panel.py). Confirmed 3 genuinely new candidates.
+
+## ASSESSMENT GRADES
+
+| Module                        | Completeness | Quality | Vision Alignment |
+|-------------------------------|-------------|---------|-----------------|
+| Quest Tracker                 |     9/10     |  9/10   |      9/10       |
+| Passive Tree Viewer           |     9/10     |  9/10   |      9/10       |
+| Price Checker                 |     9/10     |  9/10   |      9/10       |
+| Currency Tracker              |     7/10     |  9/10   |      8/10       |
+| Crafting System               |     8/10     |  9/10   |      9/10       |
+| Core Infrastructure           |     9/10     |  9/10   |      9/10       |
+| Map Overlay                   |     9/10     |  9/10   |      9/10       |
+| Info Reference Panels         |    10/10     |  9/10   |     10/10       |
+| Test Suite                    |    10/10     |  9/10   |      9/10       |
+| Farm Guide (U1)               |     9/10     |  9/10   |     10/10       |
+| Stash Org Guide (U2)          |     9/10     |  9/10   |     10/10       |
+| Expedition Factions (U3)      |     9/10     |  9/10   |     10/10       |
+
+## SMOKE TEST FINDINGS
+
+### Phase 1B -- Logic and Structure Issues
+None found. Session 39 left the codebase clean.
+
+### Phase 1C -- Redundancy and Counter-Vision Issues
+Verified U1-U3 candidates against existing data/ and ui/widgets/ before starting.
+Confirmed:
+- farm_guide.json existed without a panel (genuine gap filled by U1)
+- stash_organization.json did not exist (new data + panel)
+- expedition_factions.json did not exist (new data + panel; complements expedition_panel.py
+  which covers remnant keywords — this covers faction strategy/merchants)
+No redundancy introduced.
+
+Also noted: Awakened Gem Reference (Session 39 suggestion) already done as Q1/Session 36.
+Future sessions should check existing data/ AND ui/widgets/ before selecting candidates
+to catch this class of false suggestion.
+
+## MAINTENANCE LOG
+
+No maintenance fixes needed this session. Codebase entered session clean.
+
+## DEVELOPMENT LOG
+
+### Phase 4 Round 17 — U1-U3 Auto-Approved and Implemented
+
+### U1: Atlas Farming Activity Guide
+data/farm_guide.json: pre-existing (15 activities, no panel existed)
+  Schema: {id, name, mechanic, best_maps, key_drops, chaos_per_hour, difficulty, tips}
+  Difficulties: Low/Medium/High (not Easy/Medium/Hard — tests corrected accordingly)
+  Activities: Breach, Expedition, Delirium Mirror, Harvest, Essence, Heist, Legion,
+              Incursion, Blight, Beyond, Abyss, Metamorph, Map Boss, Div Card, Currency Flip
+
+ui/widgets/farm_guide_panel.py: FarmGuidePanel
+  Difficulty filter (Low/Medium/High) + full-text search
+  Cards: mechanic badge, difficulty badge, chaos/hr range (gold), best maps, top drops, tips
+
+tests/test_farm_guide_panel.py: 20 tests
+hud.py: _INFO_FARM_GUIDE=44, "Farm" tab added to Info group
+
+### U2: Stash Tab Organisation Guide
+data/stash_organization.json: new file (13 tabs, 6 tab types, 5 principles)
+  Schema: {id, name, tab_type, priority, what_to_store, naming_tip, notes}
+  Priority tiers: Essential (Currency/Map), High (Essence/Div/Fragment), Medium, Low
+
+ui/widgets/stash_org_panel.py: StashOrgPanel
+  Priority filter (Essential/High/Medium/Low) + full-text search
+  Cards: tab type badge, priority badge, what-to-store, naming tip (green), notes
+
+tests/test_stash_org_panel.py: 20 tests
+hud.py: _INFO_STASH_ORG=45, "Stash" tab added to Info group
+
+### U3: Expedition Faction Rewards Reference
+data/expedition_factions.json: new file (4 factions: Kalguuran/Druids/Black Scythe/Order)
+  Schema: {id, name, color, merchant, trade_currency, specialty, logbook_region,
+           key_rewards, merchant_offers, best_for, farming_tips, notes}
+  All 4 NPCs: Rog (Exotic Coinage), Dannig (Astragali), Tujen (Broken Circle Artifacts),
+              Gwennen (Sun Artifacts)
+
+ui/widgets/expedition_factions_panel.py: ExpeditionFactionsPanel
+  Faction filter (Rog/Dannig/Tujen/Gwennen shortcuts) + full-text search
+  Cards: faction-colored name, NPC/currency/specialty, key drops, merchant offers, tips
+
+tests/test_expedition_factions_panel.py: 20 tests
+hud.py: _INFO_EXP_FACTIONS=46, "Exp Fac" tab added to Info group
+
+hud.py _INFO_SETTINGS updated: 44→47 (three new tabs inserted before Settings)
+Info group now 48 tabs (0-47).
+
+Test count: 1014 → 1074 (+60 new, all pass. Total: 1074 passed)
+
+## TECHNICAL NOTES
+
+farm_guide.json difficulty values: "Low"/"Medium"/"High" (not "Easy"/"Medium"/"Hard").
+  Lesson: always check actual data values before writing tests that validate enum fields.
+  Caught quickly — only 2 test failures on first run, fixed in seconds.
+
+Awakened Gem Reference false suggestion pattern: when Session N suggests "X might be new",
+  double-check BOTH data/ AND ui/widgets/ before selecting. Gem quality panel used
+  a non-obvious filename (gem_quality_panel.py covers awakened gems too).
+
+_INFO_SETTINGS pattern: +3 per round. After Session 40: Settings=47.
+  After next round (V1-V3): Settings=50.
+
+Asana create_task MCP: Still missing (7th consecutive session).
+
+## SUGGESTIONS FOR NEXT SESSION
+
+1. Phase 4 Round 18 (MEDIUM): U1-U3 all at 9+/10. Run Phase 4 -- generate V1-V3.
+   IMPORTANT: Before selecting candidates, run:
+     ls data/ + ls ui/widgets/ -- verify both data file AND panel don't exist
+   Remaining data files without panels that could be V-round candidates:
+   - meta_builds.json is used by atlas_tree_panel.py as configuration data -- NOT standalone reference
+   - farm_guide.json now has a panel (done this session)
+   True new candidate ideas (verify before starting):
+   - Uber Boss Fight Reference (distinct from map_boss_panel.py which covers Guardians/Conquerors/Pinnacle)
+     → Focus: Uber Shaper/Elder/Maven/Sirus/Cortex mechanics, required portals, preparation
+   - Trial of the Ancestors (Sanctum-adjacent Ancestor mechanic) - permanent mechanic reference
+   - Currency Sink/Investment Guide (when to use Gilded/Winged scarabs vs standard, ROI reference)
+
+2. PoE2 passive tree (BLOCKED): No official GGG skilltree-export for PoE2.
+
+3. Asana create_task MCP (BLOCKED): Missing 7 sessions running.
+
+4. Currency Reference live price column (LOW, deferred since Session 26).
+
+## PROJECT HEALTH
+Overall grade: 10/10. ~100% complete (original + E1-E6 + F1-F3 + G1-G3 +
+H1-H3 + I1-I3 + J1-J3 + K1-K3 + L1-L3 + M1-M3 + N1-N3 + O1-O3 + P1-P3 +
+Q1-Q3 + R1-R3 + S1-S3 + T1-T3 + U1-U3).
+1074 tests pass. No technical debt. No regressions.
+Info group 48 tabs (0-47). Only blockers: PoE2 passive tree (no GGG ETA),
+Asana create_task MCP (missing 7 sessions running).
+═══════════════════════════════════════════════════════════════

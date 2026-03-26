@@ -546,6 +546,37 @@ These features were auto-approved after all S1–S3 items reached 9+/10 completi
 
 ---
 
+## Expansion Roadmap Round 17 (Auto-Approved 2026-03-26)
+
+These features were auto-approved after all T1–T3 items reached 9+/10 completion. Implement in priority order listed.
+
+### U1. Atlas Farming Activity Guide ✅ IMPLEMENTED (Session 40)
+- Reference for 15 major farming strategies with expected chaos/hr range, difficulty, best maps, key drops, and practical tips
+- Difficulty filter (All / Low / Medium / High) + full-text search across mechanic, maps, drops, and tips
+- Cards show: activity name, mechanic badge, difficulty badge, chaos/hr range (gold), best maps, top key drops with drop rates and values, top farming tips
+- Data source: data/farm_guide.json (15 activities, curated)
+- ui/widgets/farm_guide_panel.py; added to Info group as "Farm" tab
+- **Rationale:** "What should I farm this league?" is the single most common endgame question. A reference showing expected chaos/hr ranges, the best maps to use, and practical setup tips for each mechanic helps players make informed farming decisions without leaving the overlay.
+
+### U2. Stash Tab Organisation Guide ✅ IMPLEMENTED (Session 40)
+- Reference for 13 recommended stash tab setups: tab type, what to store, naming conventions for trade site indexing, and priority
+- Priority filter (All / Essential / High / Medium / Low) + full-text search
+- Cards show: tab name, tab type badge, priority badge, what to store, naming tip (green), and notes
+- Includes: tab type reference (Currency/Map/Fragment/Divination/Quad/Premium) with descriptions and costs
+- Data source: data/stash_organization.json (13 tabs, 6 tab types, 5 principles, curated)
+- ui/widgets/stash_org_panel.py; added to Info group as "Stash" tab
+- **Rationale:** New and returning players consistently ask "how should I set up my stash?" An in-overlay reference showing which tabs to buy first (Essential: Currency/Map/Fragment), what to name them for trade site indexing, and what belongs in each tab reduces friction at league start.
+
+### U3. Expedition Faction Rewards Reference ✅ IMPLEMENTED (Session 40)
+- Reference for all 4 Expedition factions (Kalguuran/Druids/Black Scythe/Order) — merchants, trade currencies, reward specialties, key drops, merchant offers, and farming tips
+- Faction filter buttons (All / Rog / Dannig / Tujen / Gwennen) + full-text search
+- Cards show: faction name (faction-colored), NPC merchant, trade currency, specialty, key drops, top merchant offers, best-for use cases, farming tips (green), and notes
+- Data source: data/expedition_factions.json (4 factions, expedition mechanics, tips, curated)
+- ui/widgets/expedition_factions_panel.py; added to Info group as "Exp Fac" tab
+- **Rationale:** Expedition has 4 distinct factions with different merchants and rewards. The existing expedition_panel.py covers remnant keywords; this complements it with faction-level strategy: "which faction should I prioritise for currency/crafting/uniques?" Having it in the overlay replaces wiki lookups during Expedition planning.
+
+---
+
 ## Expansion Roadmap Round 10 (Auto-Approved 2026-03-25)
 
 These features were auto-approved after all M1–M3 items reached 9+/10 completion. Implement in priority order listed.

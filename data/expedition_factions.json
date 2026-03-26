@@ -1,0 +1,140 @@
+{
+  "version": 1,
+  "intro": "Expedition encounters involve 4 ancient factions. Each faction has a Logbook faction, a merchant NPC, a unique trade currency, and specialised rewards. Knowing which faction to prioritise dramatically increases your return on Expedition investment.",
+  "factions": [
+    {
+      "id": "kalguuran",
+      "name": "Kalguuran Expedition",
+      "color": "#e8a030",
+      "merchant": "Rog",
+      "trade_currency": "Exotic Coinage",
+      "specialty": "Currency crafting",
+      "logbook_region": "Kalguur",
+      "key_rewards": [
+        "Chaos Orbs",
+        "Divine Orbs",
+        "Exalted Orbs",
+        "Wild Crystallised Lifeforce",
+        "Vivid Crystallised Lifeforce",
+        "Primal Crystallised Lifeforce"
+      ],
+      "merchant_offers": [
+        "Rog: reforges items using currency orbs — costs Exotic Coinage + the orbs",
+        "Can reforge rare items with Orbs of Alteration, Chaos, Exalted, and more",
+        "High-ilvl item reforge is one of the strongest crafting options in the game",
+        "Upgrades quality and links via Rog for cost savings vs orb spam"
+      ],
+      "best_for": ["Currency generation", "Crafting bases", "Reforging gear"],
+      "farming_tips": [
+        "Stack Kalguuran remnant keywords on Atlas passives for more Exotic Coinage",
+        "Target detonation paths through Kalguuran soldier graves (yellow outlines)",
+        "Rog reforging scales with item level — always use ilvl 82+ bases",
+        "Save Exotic Coinage for Rog crafting rather than trading bulk — better value"
+      ],
+      "notes": "Most popular Expedition faction for endgame currency. Rog crafting can produce mirror-tier items."
+    },
+    {
+      "id": "druids",
+      "name": "Druids of the Broken Circle",
+      "color": "#5cba6e",
+      "merchant": "Dannig",
+      "trade_currency": "Astragali",
+      "specialty": "Atlas passives + league currency",
+      "logbook_region": "Druids / Wraeclast",
+      "key_rewards": [
+        "Orbs of Unmaking",
+        "Grand Architect's Seal",
+        "Orb of Conflict",
+        "Ritual Splinters",
+        "Harbinger currency pieces"
+      ],
+      "merchant_offers": [
+        "Dannig: exchanges Astragali for Atlas passive respec orbs and league-specific currencies",
+        "Grand Architect's Seal: used to upgrade Atlas regions",
+        "Orb of Conflict: upgrades one influence mod while downgrading another",
+        "Bulk Orbs of Unmaking for Atlas respec without spending Regret Orbs"
+      ],
+      "best_for": ["Atlas investment", "Influence crafting", "League currency exchange"],
+      "farming_tips": [
+        "Orbs of Unmaking are most consistent currency gain per logbook",
+        "Target druid ritual circle relics (blue glowing circles) for Astragali bonuses",
+        "Druid logbooks often appear in Acts 1–2 area levels — easy to complete",
+        "Use Orbs of Conflict on influenced items when one mod tier is already maxed"
+      ],
+      "notes": "Best faction for Atlas respec flexibility. Orbs of Unmaking have reliable bulk trade value."
+    },
+    {
+      "id": "black_scythe",
+      "name": "Black Scythe Mercenaries",
+      "color": "#e05050",
+      "merchant": "Tujen",
+      "trade_currency": "Broken Circle Artifacts",
+      "specialty": "Currency exchange (chaos:div ratio)",
+      "logbook_region": "Black Scythe / Kalguur",
+      "key_rewards": [
+        "Divine Orbs",
+        "Exalted Orbs",
+        "Orbs of Annulment",
+        "Mirrors of Kalandra (ultra-rare)",
+        "High-value currency stacks"
+      ],
+      "merchant_offers": [
+        "Tujen: blind haggling — offer artifacts for mystery currency, haggle down for profit",
+        "Top-tier offers include Divine Orbs, Exalted Orbs, Annulments",
+        "Haggling down 2–3 times typically still yields profit — don't over-haggle",
+        "Tujen can offer mirror-tier currency at ultra-rare rates"
+      ],
+      "best_for": ["High-tier currency", "Gambling for Mirrors", "Bulk currency rolling"],
+      "farming_tips": [
+        "Black Scythe Artifacts are the primary Tujen currency — stack them before trading",
+        "Haggle offers with 'I'll take this for less' — accept when 20–30% below ask",
+        "Clicking 'No' ends all offers — only decline if the offer is clearly bad",
+        "Stack at least 100+ Artifacts before visiting Tujen for best session value"
+      ],
+      "notes": "Highest variance faction — can yield Mirror-tier currency. Tujen haggling requires practice to maximise. Most exciting faction to farm."
+    },
+    {
+      "id": "order",
+      "name": "Order of the Chalice",
+      "color": "#6090e8",
+      "merchant": "Gwennen",
+      "trade_currency": "Sun Artifacts",
+      "specialty": "Unique item gambling",
+      "logbook_region": "Order / Wraeclast",
+      "key_rewards": [
+        "Unique equipment (any slot)",
+        "Unique jewels",
+        "Unique flasks",
+        "Rare gambling outcomes"
+      ],
+      "merchant_offers": [
+        "Gwennen: gamble Sun Artifacts for unique items — slot is shown, specific unique is random",
+        "Can produce chase uniques (Headhunter, Mageblood, Voices) from their respective slots",
+        "Helmet slot: chance at Mageblood and other meta helmets",
+        "Belt slot: chance at Headhunter",
+        "Weapon slot: chance at Paradoxica, Cospri's Malice, etc."
+      ],
+      "best_for": ["Unique item hunting", "Chase unique gambling", "Budget-friendly unique farming"],
+      "farming_tips": [
+        "Save Sun Artifacts until you have 200+ before gambling — larger samples reduce variance",
+        "Focus gambling on high-value slots: Belt (Headhunter), Helmet (Mageblood), Amulet (Voices)",
+        "Order logbooks often appear in Act 4–6 areas — harder but more rewards per detonation",
+        "Gwennen has no minimum ilvl requirement — always gamble on the desired slot"
+      ],
+      "notes": "Highest risk, highest reward faction for item hunting. Mageblood and Headhunter can drop from Gwennen. Most popular for league start unique hunting."
+    }
+  ],
+  "expedition_mechanics": [
+    "Place explosives along detonation chain — each charge affects adjacent relics",
+    "Runic Monsters (with remnant keywords active) drop faction artifacts on death",
+    "Remnant keywords modify encounter rules — some add bonuses, some add dangers",
+    "Logbook difficulty scales with area level — use high-ilvl maps for better rewards",
+    "Artifact quantity scales with number of relics detonated per run — maximise chain length"
+  ],
+  "tips": [
+    "Each faction's logbook drops in specific atlas regions — check the map device filter",
+    "Remnant keywords can stack — multiple 'Runic Monsters drop extra artifacts' keywords multiply yield",
+    "All 4 merchants reset inventory each time you enter the Expedition encounter area",
+    "You can run multiple logbooks in sequence — merchants persist between encounters in the same session"
+  ]
+}

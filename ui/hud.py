@@ -77,6 +77,9 @@ from ui.widgets.starting_areas_panel import StartingAreasPanel
 from ui.widgets.veiled_mods_panel import VeiledModsPanel
 from ui.widgets.map_tiers_panel import MapTiersPanel
 from ui.widgets.unique_items_panel import UniqueItemsPanel
+from ui.widgets.farm_guide_panel import FarmGuidePanel
+from ui.widgets.stash_org_panel import StashOrgPanel
+from ui.widgets.expedition_factions_panel import ExpeditionFactionsPanel
 
 
 DARK_BG = "#1a1a2e"
@@ -156,7 +159,10 @@ _INFO_STARTING_AREAS  = 40
 _INFO_VEILED_MODS     = 41
 _INFO_MAP_TIERS       = 42
 _INFO_UNIQUE_ITEMS    = 43
-_INFO_SETTINGS        = 44
+_INFO_FARM_GUIDE      = 44
+_INFO_STASH_ORG       = 45
+_INFO_EXP_FACTIONS    = 46
+_INFO_SETTINGS        = 47
 
 
 class HUD(QMainWindow):
@@ -343,6 +349,9 @@ class HUD(QMainWindow):
         self._veiled_mods_panel       = VeiledModsPanel()
         self._map_tiers_panel         = MapTiersPanel()
         self._unique_items_panel      = UniqueItemsPanel()
+        self._farm_guide_panel        = FarmGuidePanel()
+        self._stash_org_panel         = StashOrgPanel()
+        self._exp_factions_panel      = ExpeditionFactionsPanel()
         self._currency_flip_panel    = CurrencyFlipPanel(currency_flip) if currency_flip else QWidget()
         self._lab_panel              = LabPanel(lab_tracker) if lab_tracker else QWidget()
         self._atlas_tree_panel       = AtlasTreePanel()
@@ -441,7 +450,10 @@ class HUD(QMainWindow):
         info_tabs.addTab(self._veiled_mods_panel,      "Veiled")    # _INFO_VEILED_MODS     = 41
         info_tabs.addTab(self._map_tiers_panel,        "Map Tiers") # _INFO_MAP_TIERS       = 42
         info_tabs.addTab(self._unique_items_panel,     "Uniques")   # _INFO_UNIQUE_ITEMS    = 43
-        info_tabs.addTab(self._settings_panel,         "Settings")  # _INFO_SETTINGS        = 44
+        info_tabs.addTab(self._farm_guide_panel,       "Farm")      # _INFO_FARM_GUIDE      = 44
+        info_tabs.addTab(self._stash_org_panel,        "Stash")     # _INFO_STASH_ORG       = 45
+        info_tabs.addTab(self._exp_factions_panel,     "Exp Fac")   # _INFO_EXP_FACTIONS    = 46
+        info_tabs.addTab(self._settings_panel,         "Settings")  # _INFO_SETTINGS        = 47
         self._inner_tabs.append(info_tabs)
         outer_tabs.addTab(info_tabs, "Info")                       # _GRP_INFO            = 3
 
