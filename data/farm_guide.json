@@ -1,0 +1,320 @@
+{
+  "version": 1,
+  "activities": [
+    {
+      "id": "breach_farming",
+      "name": "Breach Farming",
+      "mechanic": "Breach",
+      "best_maps": ["Burial Chambers", "Crimson Township", "Shore"],
+      "key_drops": [
+        {"item": "Breachstone (Chayula)", "drop_rate": "~1 per 300 breaches", "value_chaos": 200},
+        {"item": "Breach Splinters", "drop_rate": "30-80 per map", "value_chaos": 0.5},
+        {"item": "Uniques from Breach", "drop_rate": "~1 per 25 breaches", "value_chaos": 15}
+      ],
+      "chaos_per_hour": {"low": 80, "high": 200},
+      "hours_to_goal": {"goal": "1 Chayula Breachstone", "hours": 3.5},
+      "difficulty": "Medium",
+      "tips": [
+        "Stack breach quantity passives on atlas",
+        "Use Zana breach map device mod if available",
+        "Prioritise maps with open layouts for breach coverage",
+        "Bulk sell splinters in stacks of 100 to breach vendors"
+      ]
+    },
+    {
+      "id": "expedition_currency",
+      "name": "Expedition Currency Exchange",
+      "mechanic": "Expedition",
+      "best_maps": ["Racecourse", "Dunes", "Strand"],
+      "key_drops": [
+        {"item": "Exotic Coinage (Tujen reroll)", "drop_rate": "40-120 per map", "value_chaos": 0.3},
+        {"item": "Astragali (Dannig currency)", "drop_rate": "20-60 per map", "value_chaos": 0.4},
+        {"item": "Burial Medallion", "drop_rate": "10-40 per map", "value_chaos": 0.5},
+        {"item": "Chaos Orb (Tujen trade)", "drop_rate": "variable", "value_chaos": 1.0}
+      ],
+      "chaos_per_hour": {"low": 100, "high": 250},
+      "hours_to_goal": {"goal": "100 Chaos Orbs via Tujen", "hours": 0.8},
+      "difficulty": "Low",
+      "tips": [
+        "Always reroll Tujen's stock when Chaos Orbs or Divines are offered",
+        "Take Remnants that grant more Expedition Logbooks",
+        "Dannig's currency exchange gives bulk chaos — prioritise early",
+        "Use Expedition scarabs to increase logbook density"
+      ]
+    },
+    {
+      "id": "delirium_mirror",
+      "name": "Delirium Mirror Farming",
+      "mechanic": "Delirium",
+      "best_maps": ["Crimson Township", "Strand", "Cemetery"],
+      "key_drops": [
+        {"item": "Simulacrum Splinter", "drop_rate": "30-60 per mirror map", "value_chaos": 1.0},
+        {"item": "Delirium Orb", "drop_rate": "~2-5 per hour", "value_chaos": 25},
+        {"item": "Cluster Jewel (Large)", "drop_rate": "~1 per 8 maps", "value_chaos": 40},
+        {"item": "Simulacrum", "drop_rate": "1 per ~5 hours", "value_chaos": 180}
+      ],
+      "chaos_per_hour": {"low": 120, "high": 350},
+      "hours_to_goal": {"goal": "1 Full Simulacrum", "hours": 5.0},
+      "difficulty": "High",
+      "tips": [
+        "Stack Delirium atlas passives for more splinters",
+        "Use Delirium Orbs on maps before entering for extra depth",
+        "Run full-clear layouts — Strand and Cemetery are ideal linear maps",
+        "Simulacrum splinters worth bulk-selling when not self-running Sim"
+      ]
+    },
+    {
+      "id": "harvest_sacred_orb",
+      "name": "Harvest Sacred Orb Farming",
+      "mechanic": "Harvest",
+      "best_maps": ["Jungle Valley", "Overgrown Ruin", "Tropical Island"],
+      "key_drops": [
+        {"item": "Sacred Orb", "drop_rate": "~1 per 40 harvests", "value_chaos": 120},
+        {"item": "Wild Crystallised Lifeforce", "drop_rate": "200-500 per map", "value_chaos": 0.15},
+        {"item": "Primal Crystallised Lifeforce", "drop_rate": "100-300 per map", "value_chaos": 0.2},
+        {"item": "Vivid Crystallised Lifeforce", "drop_rate": "150-400 per map", "value_chaos": 0.1}
+      ],
+      "chaos_per_hour": {"low": 60, "high": 160},
+      "hours_to_goal": {"goal": "5 Sacred Orbs", "hours": 8.0},
+      "difficulty": "Low",
+      "tips": [
+        "Max out Harvest atlas passives — all 8 nodes significantly increase yield",
+        "Sell surplus lifeforce in bulk via trade whispers",
+        "Reforge crafts with lifeforce are most efficient for self-use",
+        "Use Harvest scarabs to guarantee spawns"
+      ]
+    },
+    {
+      "id": "essence_farming",
+      "name": "Essence Farming",
+      "mechanic": "Essence",
+      "best_maps": ["Dunes", "Desert", "Strand"],
+      "key_drops": [
+        {"item": "Deafening Essence of Woe", "drop_rate": "~1 per 15 maps", "value_chaos": 20},
+        {"item": "Deafening Essence of Torment", "drop_rate": "~1 per 15 maps", "value_chaos": 18},
+        {"item": "Remnant of Corruption", "drop_rate": "~1 per 20 maps", "value_chaos": 12},
+        {"item": "Deafening Essence of Scorn", "drop_rate": "~1 per 12 maps", "value_chaos": 35}
+      ],
+      "chaos_per_hour": {"low": 70, "high": 170},
+      "hours_to_goal": {"goal": "20 Deafening Essences (mixed)", "hours": 2.5},
+      "difficulty": "Low",
+      "tips": [
+        "Use Remnant of Corruption to upgrade shrieking to deafening",
+        "Bulk-sell lower tiers in stacks of 9 to recipe vendors",
+        "Open layouts maximise number of essence nodes encountered",
+        "Atlas passives that spawn extra essences are must-haves"
+      ]
+    },
+    {
+      "id": "heist_rogue_marker",
+      "name": "Heist Rogue Marker Farming",
+      "mechanic": "Heist",
+      "best_maps": ["N/A — Heist district"],
+      "key_drops": [
+        {"item": "Rogue Marker", "drop_rate": "500-1500 per contract", "value_chaos": 0.001},
+        {"item": "Replica Unique", "drop_rate": "~1 per 50 grand heists", "value_chaos": 30},
+        {"item": "Alternate Quality Gem", "drop_rate": "~2-5 per grand heist", "value_chaos": 8},
+        {"item": "Blueprint (Underbelly)", "drop_rate": "~1 per 20 contracts", "value_chaos": 15}
+      ],
+      "chaos_per_hour": {"low": 50, "high": 140},
+      "hours_to_goal": {"goal": "1 Grand Heist run (full wings)", "hours": 2.0},
+      "difficulty": "Medium",
+      "tips": [
+        "Level all rogues to max — especially Karst and Tibbs for speed",
+        "Prioritise Curio Display rooms for the best loot",
+        "Underbelly and Prohibited Library blueprints are highest value",
+        "Agility and Brute Force skill levels reduce alert generation"
+      ]
+    },
+    {
+      "id": "legion_farming",
+      "name": "Legion Farming",
+      "mechanic": "Legion",
+      "best_maps": ["Burial Chambers", "Cells", "Estuary"],
+      "key_drops": [
+        {"item": "Timeless Splinter (Eternal)", "drop_rate": "20-50 per legion", "value_chaos": 0.8},
+        {"item": "Timeless Emblem", "drop_rate": "~1 per 200 legions", "value_chaos": 80},
+        {"item": "Incubator (high tier)", "drop_rate": "~1-2 per 5 legions", "value_chaos": 10},
+        {"item": "Legion Unique (Kaom's Roots etc)", "drop_rate": "~1 per 300 legions", "value_chaos": 50}
+      ],
+      "chaos_per_hour": {"low": 75, "high": 180},
+      "hours_to_goal": {"goal": "1 Timeless Emblem", "hours": 6.0},
+      "difficulty": "Medium",
+      "tips": [
+        "Prioritise Eternal Empire for Eternal Splinters (highest value)",
+        "Freeze the legion then clear frozen enemies for maximum loot",
+        "Use Ambush scarab + Legion for amplified monster packs",
+        "Timeless Jewel div cards from dedicated farming are bonus income"
+      ]
+    },
+    {
+      "id": "incursion_farming",
+      "name": "Incursion Farming",
+      "mechanic": "Incursion",
+      "best_maps": ["Alleyways", "Bazaar", "Toxic Sewer"],
+      "key_drops": [
+        {"item": "Vial of Dominance", "drop_rate": "~1 per 20 temples", "value_chaos": 90},
+        {"item": "Vial of Transcendence", "drop_rate": "~1 per 30 temples", "value_chaos": 120},
+        {"item": "Covetous Shrine Room items", "drop_rate": "~2-4 per temple", "value_chaos": 15},
+        {"item": "Omni-T3 Room corrupted item", "drop_rate": "~1 per 5 temples", "value_chaos": 25}
+      ],
+      "chaos_per_hour": {"low": 80, "high": 200},
+      "hours_to_goal": {"goal": "5 Vials of Dominance", "hours": 5.0},
+      "difficulty": "Medium",
+      "tips": [
+        "Always prioritise upgrading Corruption Chamber to T3",
+        "Locus of Corruption (double corrupt) is the highest value room",
+        "Kill the architect of the room you DON'T want to swap them out",
+        "Packed with Energy scarabs increase incursion density"
+      ]
+    },
+    {
+      "id": "blight_farming",
+      "name": "Blight Farming",
+      "mechanic": "Blight",
+      "best_maps": ["Toxic Sewer", "Bog", "Overgrown Shrine"],
+      "key_drops": [
+        {"item": "Amber Oil", "drop_rate": "2-5 per blight", "value_chaos": 3},
+        {"item": "Verdant Oil", "drop_rate": "1-3 per blight", "value_chaos": 5},
+        {"item": "Teal Oil", "drop_rate": "1-2 per blight", "value_chaos": 8},
+        {"item": "Blighted Map", "drop_rate": "~1 per 8 blights", "value_chaos": 20}
+      ],
+      "chaos_per_hour": {"low": 60, "high": 150},
+      "hours_to_goal": {"goal": "10 Blighted Maps", "hours": 5.5},
+      "difficulty": "Low",
+      "tips": [
+        "Use Cassia's price guide — buy from her before anointing rings",
+        "Tower placement: Meteor towers with Minchans do most damage",
+        "Blight atlas nodes that grant extra oils are top priority",
+        "Sell high-tier oils (Silver, Golden) to crafters for good value"
+      ]
+    },
+    {
+      "id": "beyond_farming",
+      "name": "Beyond Map Farming",
+      "mechanic": "Beyond",
+      "best_maps": ["Shore", "Strand", "Cemetery"],
+      "key_drops": [
+        {"item": "Headhunter (Div Card: The Doctor)", "drop_rate": "extremely rare", "value_chaos": 1200},
+        {"item": "Mao Kun Unique Map", "drop_rate": "~1 per 200 beyond maps", "value_chaos": 30},
+        {"item": "Beyond Unique Flasks", "drop_rate": "~1 per 50 demons", "value_chaos": 8},
+        {"item": "Rare Currency from Beyond Demons", "drop_rate": "variable", "value_chaos": 2}
+      ],
+      "chaos_per_hour": {"low": 50, "high": 130},
+      "hours_to_goal": {"goal": "1 Beyond Unique (any)", "hours": 4.0},
+      "difficulty": "High",
+      "tips": [
+        "Stack Beyond-spawning atlas passives for frequent demon portals",
+        "Use Beyond scarabs for guaranteed demon boss invocations",
+        "Headhunter div card farming requires extreme luck — treat as bonus",
+        "High monster density maps maximise beyond portal spawning"
+      ]
+    },
+    {
+      "id": "abyss_farming",
+      "name": "Abyss Farming",
+      "mechanic": "Abyss",
+      "best_maps": ["Dungeon", "Grotto", "Pit of the Chimera"],
+      "key_drops": [
+        {"item": "Stygian Vise", "drop_rate": "~1 per 15 abyssal depths", "value_chaos": 12},
+        {"item": "Abyss Jewel (Searching Eye)", "drop_rate": "~2-4 per depths", "value_chaos": 5},
+        {"item": "Abyss Jewel (Murderous Eye)", "drop_rate": "~1-2 per depths", "value_chaos": 8},
+        {"item": "Voltaxic Sulphite (bonus)", "drop_rate": "occasional", "value_chaos": 0}
+      ],
+      "chaos_per_hour": {"low": 55, "high": 130},
+      "hours_to_goal": {"goal": "5 Stygian Vises", "hours": 3.5},
+      "difficulty": "Low",
+      "tips": [
+        "Always chase cracks to the Abyssal Depths for the jewel cache",
+        "High iLvl maps for better jewel mods — T14+ preferred",
+        "Abyss atlas passives that guarantee Depths are essential",
+        "Searching Eye Jewels with flat life sell well for builds"
+      ]
+    },
+    {
+      "id": "metamorph_farming",
+      "name": "Metamorph Farming",
+      "mechanic": "Metamorph",
+      "best_maps": ["Atoll", "Pier", "Shore"],
+      "key_drops": [
+        {"item": "Catalyst (Intrinsic)", "drop_rate": "3-8 per metamorph", "value_chaos": 4},
+        {"item": "Catalyst (Turbulent)", "drop_rate": "2-6 per metamorph", "value_chaos": 6},
+        {"item": "Metamorph Unique (Malachai's Loop)", "drop_rate": "~1 per 60 kills", "value_chaos": 20},
+        {"item": "Organ sample (scarce)", "drop_rate": "always", "value_chaos": 0.5}
+      ],
+      "chaos_per_hour": {"low": 65, "high": 140},
+      "hours_to_goal": {"goal": "50 Catalysts (mixed)", "hours": 2.0},
+      "difficulty": "Medium",
+      "tips": [
+        "Collect all 5 organs per map for guaranteed metamorph spawn",
+        "Catalyst type is based on monster tags — check atlas for target catalysts",
+        "High open-layout maps let you find all 5 organs quickly",
+        "Metamorph atlas nodes that add bonus organs are worth taking"
+      ]
+    },
+    {
+      "id": "map_boss_farming",
+      "name": "Map Boss Farming",
+      "mechanic": "Boss Killing",
+      "best_maps": ["Burial Chambers", "Vaults of Atziri", "Uber Elder Fragments"],
+      "key_drops": [
+        {"item": "Shaper Fragment", "drop_rate": "1 per guardian kill", "value_chaos": 30},
+        {"item": "Elder Fragment", "drop_rate": "1 per elder guardian kill", "value_chaos": 20},
+        {"item": "Maven's Writ", "drop_rate": "~1 per 10 Maven invitations", "value_chaos": 80},
+        {"item": "Cortex Unique Drop", "drop_rate": "~1 per 20 cortex runs", "value_chaos": 150}
+      ],
+      "chaos_per_hour": {"low": 90, "high": 280},
+      "hours_to_goal": {"goal": "Full Shaper set (4 fragments)", "hours": 2.5},
+      "difficulty": "High",
+      "tips": [
+        "Watch Maven for easy bonus Writ drops during boss witness events",
+        "Carry two sets of portals — one set for boss entry, one for safety",
+        "Uber Elder requires Shaper + Elder fragments — run guardians efficiently",
+        "Boss farming is most profitable at high investment with fast kill speed"
+      ]
+    },
+    {
+      "id": "div_card_farming",
+      "name": "Div Card Farming",
+      "mechanic": "Div Cards",
+      "best_maps": ["Burial Chambers", "Vault", "Tower"],
+      "key_drops": [
+        {"item": "The Doctor (Headhunter)", "drop_rate": "~1 per 3000 maps", "value_chaos": 1200},
+        {"item": "Seven Years Bad Luck (Mirror)", "drop_rate": "extremely rare", "value_chaos": 48000},
+        {"item": "The Fiend (Headhunter frag)", "drop_rate": "~1 per 500 maps", "value_chaos": 250},
+        {"item": "Abandoned Wealth (Exalted x3)", "drop_rate": "~1 per 300 maps", "value_chaos": 300}
+      ],
+      "chaos_per_hour": {"low": 70, "high": 220},
+      "hours_to_goal": {"goal": "Full set of The Doctor (8 cards)", "hours": 80.0},
+      "difficulty": "Medium",
+      "tips": [
+        "Check poedb.tw for which maps drop which div cards before farming",
+        "Use Divination scarabs to increase card drop rates significantly",
+        "Bulk-sell partial sets when card prices are high mid-league",
+        "Cemetery for Abandoned Wealth, Vault for Emperor's Luck are reliable"
+      ]
+    },
+    {
+      "id": "currency_flipping",
+      "name": "Currency Flipping",
+      "mechanic": "Trading",
+      "best_maps": [],
+      "key_drops": [
+        {"item": "Divine Orb (buy low/sell high)", "drop_rate": "per trade", "value_chaos": 220},
+        {"item": "Exalted Orb arbitrage", "drop_rate": "per trade", "value_chaos": 95},
+        {"item": "Bulk Orb of Alteration flip", "drop_rate": "per trade", "value_chaos": 0.2},
+        {"item": "Sextant bulk flip", "drop_rate": "per trade", "value_chaos": 8}
+      ],
+      "chaos_per_hour": {"low": 50, "high": 400},
+      "hours_to_goal": {"goal": "50 Chaos profit", "hours": 0.5},
+      "difficulty": "Low",
+      "tips": [
+        "Use currency.poe.trade or poe.ninja to find spread opportunities",
+        "Bulk alteration/fusing flips are low-margin but reliable and fast",
+        "Whisper the lowest-priced listings — first-come gets the deal",
+        "Divine/Exalted spreads widen early league — best window is league start",
+        "Keep 200+ chaos liquid for quick bulk trades to avoid missing windows"
+      ]
+    }
+  ]
+}

@@ -12,7 +12,10 @@ from dataclasses import dataclass, field
 from typing import Optional
 
 _DATA_PATH = os.path.join(os.path.dirname(__file__), "..", "data", "atlas_tree.json")
-_FALLBACK_URL = "https://raw.githubusercontent.com/grindinggear/skilltree-export/master/atlasTree.json"
+# GGG does not publish the Atlas tree in their skilltree-export repo.
+# This URL is a placeholder — atlas tree geometry is not publicly available
+# in machine-readable form outside the game client files.
+_FALLBACK_URL = None
 _HEADERS = {"User-Agent": "PoELens/1.0"}
 
 
@@ -69,7 +72,19 @@ class AtlasTree:
 
     @classmethod
     def download(cls, callback=None) -> "AtlasTree":
-        """Download the Atlas tree data from GGG's export repo and cache it."""
+        """
+        Atlas tree geometry is not publicly available in GGG's export repo.
+        This method raises NotImplementedError to signal that clearly.
+        """
+        raise NotImplementedError(
+            "Atlas passive tree data is not available for download — "
+            "GGG does not publish atlas_tree.json in their export repository. "
+            "The strategy guide and respec calculator work without this data."
+        )
+
+    @classmethod
+    def _download_legacy(cls, callback=None) -> "AtlasTree":
+        """Legacy download stub — kept for future use if data becomes available."""
         def emit(msg):
             if callback:
                 callback(msg)
@@ -77,6 +92,8 @@ class AtlasTree:
                 print(msg)
 
         emit("Downloading Atlas passive tree...")
+        if not _FALLBACK_URL:
+            raise RuntimeError("No download URL configured for Atlas tree data.")
         req = urllib.request.Request(_FALLBACK_URL, headers=_HEADERS)
         with urllib.request.urlopen(req, timeout=30) as resp:
             data = resp.read()

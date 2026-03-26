@@ -259,8 +259,9 @@ class PoEBackground(QWidget):
     DARK_UI   = QColor(0x08, 0x08, 0x0c)
     ORB_BORDER= QColor(0x8a, 0x64, 0x28)
 
-    def __init__(self, screenshot_path: str | None = None):
+    def __init__(self, screenshot_path: str | None = None, cmd_palette=None):
         super().__init__()
+        self._cmd_palette = cmd_palette
         self._screenshot: QPixmap | None = None
         if screenshot_path:
             px = QPixmap(screenshot_path)
@@ -282,6 +283,9 @@ class PoEBackground(QWidget):
     def keyPressEvent(self, event):
         if event.key() == Qt.Key.Key_Escape:
             QApplication.quit()
+        elif event.key() == Qt.Key.Key_QuoteLeft:   # backtick
+            if self._cmd_palette is not None:
+                self._cmd_palette.toggle()
 
     def paintEvent(self, _event):
         p = QPainter(self)
@@ -652,18 +656,23 @@ def main():
     app = QApplication(sys.argv)
     app.setApplicationName("PoELens Preview")
 
-    # ── Background window ─────────────────────────────────────────────
-    bg = PoEBackground(args.screenshot)
-    screen = app.primaryScreen().geometry()
-    bg.setGeometry(screen)
-    bg.show()
-
-    # ── Real HUD over the background ──────────────────────────────────
+    # ── Stubs ─────────────────────────────────────────────────────────
     (state, quest_tracker, price_checker, currency_tracker,
      crafting, map_overlay, xp_tracker, chaos_recipe, conf) = _make_stubs()
 
     conf["overlay_opacity"] = args.opacity
 
+    # ── Command palette (created before bg so it can be passed in) ────
+    from ui.widgets.command_palette import CommandPalette
+    cmd_palette = CommandPalette()
+
+    # ── Background window ─────────────────────────────────────────────
+    bg = PoEBackground(args.screenshot, cmd_palette=cmd_palette)
+    screen = app.primaryScreen().geometry()
+    bg.setGeometry(screen)
+    bg.show()
+
+    # ── Real HUD over the background ──────────────────────────────────
     import ui.hud as hud_module
     hud = hud_module.HUD(
         state=state,
@@ -688,6 +697,30 @@ def main():
         character_api=None,
     )
     hud.show()
+
+    # ── Zone popup demo — shows for 15s then fades ────────────────────
+    from ui.widgets.zone_popup import ZonePopup
+    zone_popup = ZonePopup(timeout_ms=15000)
+    zone_popup.show_zone({
+        "name": "The Burial Chambers",
+        "tier": 9,
+        "type": "map",
+        "area_level": 74,
+        "boss": "The Plagued",
+        "notes": "High density · Boss has Bleed/Poison · Good for div card farming",
+    })
+
+    # ── Wire command palette actions ──────────────────────────────────
+    def handle_command(cmd, args):
+        if cmd == "zone":
+            zone_popup.show_zone({
+                "name": "The Burial Chambers", "tier": 9, "type": "map",
+                "area_level": 74, "boss": "The Plagued",
+                "notes": "High density · Boss has Bleed/Poison",
+            })
+        elif cmd == "help":
+            cmd_palette.show()  # stay open after help
+    cmd_palette.command_selected.connect(handle_command)
 
     # Keep background behind the overlay
     bg.lower()

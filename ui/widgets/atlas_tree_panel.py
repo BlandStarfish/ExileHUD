@@ -246,21 +246,16 @@ class AtlasTreePanel(QWidget):
         dl_layout = QVBoxLayout(self._download_frame)
         dl_layout.setContentsMargins(8, 8, 8, 8)
         dl_lbl = QLabel(
-            "Atlas tree data not downloaded yet.\n"
-            "Click below to download it from GGG's export repo (~2 MB)."
+            "Atlas passive tree geometry is not publicly available.\n\n"
+            "GGG does not publish atlas_tree.json in their export repository.\n"
+            "The strategy guide and respec calculator above are fully functional\n"
+            "without the visual tree.\n\n"
+            "If you have atlas_tree.json from the game client, place it in data/."
         )
         dl_lbl.setAlignment(Qt.AlignmentFlag.AlignCenter)
-        dl_lbl.setStyleSheet("color: #d4c5a9; font-size: 11px;")
+        dl_lbl.setStyleSheet("color: #8a7a65; font-size: 11px;")
         dl_lbl.setWordWrap(True)
         dl_layout.addWidget(dl_lbl)
-
-        self._download_btn = QPushButton("Download Atlas Tree Data")
-        self._download_btn.setStyleSheet(
-            "QPushButton { color: #4ae8c8; font-size: 11px; padding: 6px 12px; }"
-            "QPushButton:hover { background: #0a2a1a; }"
-        )
-        self._download_btn.clicked.connect(self._download_atlas)
-        dl_layout.addWidget(self._download_btn, alignment=Qt.AlignmentFlag.AlignCenter)
         self._download_frame.hide()
         layout.addWidget(self._download_frame)
 
