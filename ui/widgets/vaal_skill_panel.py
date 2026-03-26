@@ -75,7 +75,7 @@ class VaalSkillPanel(QWidget):
         self._elements     = [_ALL] + elements
         self._active_elem  = _ALL
         self._build_ui()
-        self._refresh()
+        self._set_element(_ALL)
 
     # ------------------------------------------------------------------
 
@@ -130,7 +130,6 @@ class VaalSkillPanel(QWidget):
             elem_row.addWidget(btn)
         elem_row.addStretch()
         layout.addLayout(elem_row)
-        self._set_element(_ALL)
 
         scroll = QScrollArea()
         scroll.setWidgetResizable(True)

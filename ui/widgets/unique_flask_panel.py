@@ -70,7 +70,7 @@ class UniqueFlaskPanel(QWidget):
         self._categories   = [_ALL] + data.get("categories", [])
         self._active_cat   = _ALL
         self._build_ui()
-        self._refresh()
+        self._set_category(_ALL)
 
     # ------------------------------------------------------------------
 
@@ -125,7 +125,6 @@ class UniqueFlaskPanel(QWidget):
             cat_row.addWidget(btn)
         cat_row.addStretch()
         layout.addLayout(cat_row)
-        self._set_category(_ALL)
 
         scroll = QScrollArea()
         scroll.setWidgetResizable(True)
